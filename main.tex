@@ -37,7 +37,7 @@
 
 % -----------------------------------------------------
 
-\title{ItiNova: An AI-Powered Personalized and Collaborative Travel Planning System}
+\title{ItiNova: An AI-Assisted Personalized Travel Planning System}
 
 \BvrSetLabInstructor{Dr. Nisha Thakur}
 
@@ -71,232 +71,460 @@
 \maketitle
 
 \section{Higher-order goal \BvrHint{\ldots secondary framing}}
-This project aims to reduce the time and effort required to plan a personalized trip by bringing itinerary planning, weather information, accommodation recommendations, maps, packing assistance, safety information, and collaborative planning into a unified platform. While the topic is broader than any single travel destination, the immediate engineering objective is to translate efficient and personalized travel planning into a measurable, deployable software solution.
+
+This project aims to reduce the time and effort required to plan a personalized trip by providing users with a unified travel-planning platform. ItiNova allows users to either select a destination they already know or discover suitable destinations based on their preferences such as mood, travel style, budget, duration, starting location, and maximum travel distance. The system then helps users explore relevant places and activities, build and customize their own itinerary, and receive AI-assisted modifications along with weather-aware packing and destination-specific health information.
+
+The immediate engineering objective is to provide a practical, personalized, and user-controlled travel-planning workflow that combines conventional web technologies, external travel information services, and AI assistance.
 
 \section{Time-to-value \BvrHint{\ldots primary heuristic}}
+
 \begin{itemize}
-\item We will deliver meaningful increments quickly by prototyping the core trip creation and itinerary workflow and validating it with users within a short iteration window.
-\item We will prioritize fast feedback over perfection by using weekly iterations and targeting CI-backed automation early to reduce release friction.
-\item We will first establish the core trip planner and then integrate weather, AI itinerary generation, packing, map, stay, safety, and collaboration features incrementally.
-\item Success is defined by what can be delivered and measured in the first iteration, then improved based on user feedback.
+\item We will first implement the core destination selection and trip-planning workflow so that users can create a trip and build an itinerary from relevant place and activity suggestions.
+\item We will prioritize the core user experience before implementing supporting features such as packing assistance, health information, and map visualization.
+\item Weather will be integrated as contextual information for itinerary planning and packing rather than as a separate standalone feature.
+\item AI will be introduced as an assistance layer for itinerary modification and personalization rather than making the system fully dependent on AI-generated plans.
+\item Development will follow incremental iterations so that a functional trip-planning workflow is available early and can be tested before additional modules are integrated.
 \end{itemize}
 
 \section{Problem Statement}
-Travellers often need to gather and combine information from multiple sources, including maps, weather services, accommodation platforms, travel guides, and recommendation websites. Common pain points include:
+
+Travellers often need to search across multiple sources to decide where to travel, identify suitable places and activities, and manually organize them into a practical itinerary. This becomes more difficult when users have specific preferences regarding budget, travel distance, mood, interests, and travel pace.
+
+Common pain points include:
+
 \begin{itemize}
-\item \textbf{Fragmentation:} trip information is distributed across multiple applications and websites, making it difficult to maintain a single coherent travel plan.
-\item \textbf{Generic recommendations:} existing travel recommendations may not sufficiently account for individual interests, budget, travel style, trip duration, weather, and planned activities.
-\item \textbf{Manual itinerary planning:} travellers often need to research attractions, estimate suitable timings, and manually arrange activities into a practical day-by-day schedule.
-\item \textbf{Dynamic conditions:} weather can affect the suitability of outdoor activities and what travellers need to pack, but this information is often handled separately from itinerary planning.
-\item \textbf{Packing uncertainty:} generic packing lists do not necessarily account for destination, weather, duration, and planned activities.
-\item \textbf{Group coordination:} travelling with friends or family introduces additional difficulty because participants need to share information and coordinate changes to the itinerary.
-\item \textbf{Information overload:} travellers may spend considerable time comparing accommodation, attractions, weather conditions, and activities before arriving at a final plan.
+\item \textbf{Destination uncertainty:} users may know their preferred budget, travel distance, mood, or environment but may not know which destination would suit them.
+\item \textbf{Generic recommendations:} available travel recommendations may not sufficiently account for individual interests, budget, trip duration, travel style, and preferred pace.
+\item \textbf{Manual itinerary planning:} travellers often need to search for attractions and activities separately and manually decide how to arrange them across different days.
+\item \textbf{Dynamic weather conditions:} weather can affect outdoor activities and what travellers need to carry, but this information is often considered separately from trip planning.
+\item \textbf{Packing uncertainty:} generic packing lists do not account for the destination, trip duration, expected weather, and planned activities.
+\item \textbf{Health and disease awareness:} travellers may not be aware of destination-specific health risks, seasonal disease concerns, and basic precautions before travelling.
+\item \textbf{Travel-distance management:} selecting places without considering their geographical locations can result in inefficient itineraries and unnecessary travel.
+\item \textbf{Frequent itinerary changes:} users may want to modify their plans according to changing preferences without rebuilding the entire itinerary manually.
 \end{itemize}
 
-\textbf{Why this matters now (contextual relevance):} As travel planning involves increasingly large amounts of online information, an integrated system can reduce repetitive searching and provide a more structured and personalized planning workflow.
+\textbf{Why this matters now (contextual relevance):} Travel planning involves information from multiple sources and requires users to make several decisions before arriving at a practical plan. A personalized system can reduce repetitive searching while keeping the user in control of the final itinerary.
 
 \section{Proposed Solution \BvrHint{\ldots Software Proposition}}
+
 \subsection{Overview}
+
 Build a web-based ``ItiNova'' system with the following components:
+
 \begin{itemize}
-\item \textbf{Trip planner:} users enter destination, travel dates or duration, number of travellers, budget, interests, and travel style. The system creates a basic day-by-day trip plan that users can edit, delete, and reorder.
-\item \textbf{Weather and best-time recommendations:} the system provides destination-specific weather information for the selected dates, indicates general travel suitability, and provides simple weather-based recommendations.
-\item \textbf{Hotel/stay recommendations:} users can discover and compare suitable stays based on budget, rating, type, and location, save preferred options, and open an external booking source. The platform will not handle hotel bookings.
-\item \textbf{Smart packing assistant:} the system generates a personalized checklist using destination, weather, trip duration, and planned activities. Users can mark items as packed and modify the checklist.
-\item \textbf{Travel health and safety:} the system provides general destination-specific health precautions, safety information, a travel safety checklist, emergency information, and useful medical-facility information where reliable data is available. It is not intended for diagnosis.
-\item \textbf{Interactive travel map:} the map displays saved places, itinerary locations, and hotel locations. Users can open directions and add places to their itinerary.
-\item \textbf{AI itinerary generator:} an AI module generates a structured day-by-day itinerary based on destination, dates, budget, interests, weather, and travel preferences. Users can request changes to the generated itinerary.
+
+\item \textbf{Destination discovery:} users who already know where they want to travel can directly enter their destination. Users who are uncertain can instead provide preferences such as starting location, budget, duration, maximum travel distance, mood, preferred environment, interests, and travel style. The system recommends destinations that match these preferences.
+
+\item \textbf{Place and activity suggestions:} after selecting a destination, the system retrieves relevant attractions, activities, and places that match the user's interests and trip requirements. These suggestions act as the building blocks for the user's itinerary.
+
+\item \textbf{Personalized itinerary planning:} users can select suggested places and activities and create their own day-by-day itinerary. They can add, remove, edit, and reorder activities according to their preferences.
+
+\item \textbf{AI-assisted itinerary modification:} an AI module assists users in modifying their itinerary through natural-language requests. Users can request changes such as making a day less hectic, adding more adventure activities, rearranging activities, or adapting the plan to their preferences.
+
+\item \textbf{Weather-aware planning:} weather information for the selected travel period is used as contextual information while planning activities and generating packing recommendations. Weather is not treated as a separate standalone feature.
+
+\item \textbf{Smart packing assistant:} the system generates a personalized packing checklist using destination, trip duration, expected weather, and planned activities. Users can mark items as packed and modify the checklist.
+
+\item \textbf{Travel health and disease awareness:} the system provides general destination-specific health information, relevant disease or health-risk awareness, precautions, and a basic pre-travel checklist. The feature is intended for general travel guidance and is not a medical diagnosis system.
+
+\item \textbf{Interactive travel map:} the map displays the locations included in the user's itinerary and allows users to visualize the geographical arrangement of planned activities and routes.
+
+\item \textbf{Trip saving and history:} users can save their created trips and access previously planned itineraries for future reference.
 
 \end{itemize}
 
 \subsection{Core workflow}
+
 \begin{enumerate}
-\item User creates an account and enters destination, travel dates or duration, number of travellers, budget, interests, and preferred travel style.
-\item The system creates a basic trip plan around the selected destination and duration.
-\item The system retrieves relevant weather information and presents travel suitability and simple weather-based recommendations.
-\item The AI module can generate a more detailed structured itinerary using destination, dates, budget, interests, weather, and preferences.
-\item The user reviews and modifies the itinerary by adding, removing, editing, or reordering activities.
-\item The packing assistant generates a checklist based on destination, weather, duration, and planned activities.
-\item Users can view itinerary locations, saved places, and stay locations on an interactive map.
-\item Users can explore suitable stays based on their preferences, save them, and access external booking sources.
-\item Users can view destination-specific general health and safety information and complete a travel safety checklist.
-\item For group trips, the trip creator can invite companions who can view and modify the shared itinerary.
+
+\item The user enters the application and chooses either:
+\begin{itemize}
+    \item a known destination, or
+    \item the ``Help Me Choose'' option when they are unsure where to travel.
+\end{itemize}
+
+\item If the user chooses ``Help Me Choose'', they provide information such as starting location, budget, duration, maximum travel distance, mood or vibe, preferred environment, interests, and travel style.
+
+\item The system processes these preferences and recommends suitable destinations based on the user's major constraints and preferences.
+
+\item The user selects a destination and provides or confirms trip details such as travel dates, duration, number of travellers, budget, interests, and preferred travel pace.
+
+\item The system retrieves relevant places and activities for the selected destination using external travel information services.
+
+\item Relevant weather and geographical information are retrieved for the selected trip period and destination.
+
+\item The user views the suggested places and activities and creates their itinerary by selecting, adding, removing, editing, and reordering activities according to their needs.
+
+\item The AI module can assist the user in modifying the created itinerary through natural-language instructions such as making a particular day less hectic, adding more activities of a particular type, or rearranging activities according to weather and travel preferences.
+
+\item The packing assistant generates a personalized checklist using destination, trip duration, expected weather, and planned activities.
+
+\item The system provides destination-specific general health and disease awareness information together with relevant precautions and a basic travel health checklist.
+
+\item The itinerary locations are displayed on an interactive map so that users can visualize their planned activities and travel routes.
+
+\item The completed trip and itinerary can be saved so that the user can access and modify it later.
+
 \end{enumerate}
 
 \subsection{Operational constraints for an educational travel-planning setting}
+
 \begin{itemize}
-\item Keep the solution usable on low-to-mid range devices via responsive web design.
-\item Avoid dependence on advanced research algorithms; focus on workflow, practical AI integration, automation, and system correctness.
-\item Design external API integrations as modular services so that individual service failures do not affect the entire application.
-\item Provide stay recommendations rather than directly handling hotel bookings or payments.
-\item Present health and safety information as general travel guidance and not as medical diagnosis or treatment recommendations.
-\item Keep AI-generated itineraries editable by users rather than treating them as authoritative or final plans.
-\item Keep collaborative planning to shared trips and shared itinerary editing in the initial scope; real-time synchronization is not required for the first implementation.
+
+\item Keep the solution usable on low-to-mid range devices through responsive web design.
+
+\item Avoid maintaining a large manually curated travel database. Relevant places, geographical information, and weather data will be retrieved through external services when required.
+
+\item Use an existing large language model/API rather than training a new foundation model.
+
+\item Keep external API integrations modular so that failure of an individual service does not affect the entire application.
+
+\item Keep the user in control of the itinerary. AI-generated modifications will be treated as suggestions that users can accept, reject, or further edit.
+
+\item Present health and disease information as general travel guidance and not as medical diagnosis or treatment recommendations.
+
+\item Use current external information for dynamic travel information such as weather, locations, and routes instead of relying solely on the language model's stored knowledge.
+
 \end{itemize}
 
 \section{Solution Approach \BvrHint{\ldots Engineering focus}}
-This is an engineering course project, so we focus on building a reliable integrated travel-planning workflow rather than developing a novel AI model. The system will combine conventional software engineering techniques with existing AI and external information services.
 
-\subsection{AI-powered itinerary generation \BvrHint{\ldots practical AI integration}}
-The itinerary generation module will use an existing large language model/API rather than training a new foundation model.
+This is an engineering course project focused on building a practical AI-assisted travel-planning workflow rather than developing a new machine learning model. The system will combine conventional web development, external travel information services, a database for persistent application data, and an existing large language model.
 
-The backend will provide the AI component with:
+\subsection{Destination discovery and place suggestions \BvrHint{\ldots personalized search}}
+
+The destination discovery component will support two different user scenarios.
+
 \begin{itemize}
+
+\item \textbf{Known destination:} users can directly enter the destination they want to visit.
+
+\item \textbf{Unknown destination:} users can provide preferences such as starting location, budget, duration, maximum travel distance, mood, environment, interests, and travel style. The system will use these preferences to recommend suitable destinations.
+
+\end{itemize}
+
+After the destination is selected, relevant places and activities will be retrieved through external travel information services rather than maintaining a large manually curated database.
+
+The retrieved information may include:
+
+\begin{itemize}
+\item Place name and location
+\item Place category or type
+\item Ratings where available
+\item Geographical coordinates
+\item Relevant activities
+\item Distance and travel-time information
+\end{itemize}
+
+These suggestions will then be displayed to the user as possible building blocks for their itinerary.
+
+\subsection{User-controlled itinerary planning \BvrHint{\ldots practical personalization}}
+
+The initial itinerary will be created and controlled by the user rather than being automatically generated by AI.
+
+Users will be able to:
+
+\begin{itemize}
+\item Select suggested places and activities.
+\item Add activities to particular days.
+\item Remove activities.
+\item Edit activity details.
+\item Reorder activities.
+\item Move activities between different days.
+\item Adjust the itinerary according to their own preferences.
+\end{itemize}
+
+The system will use available geographical and weather information to provide useful context while the user plans the trip.
+
+\subsection{AI-assisted itinerary modification \BvrHint{\ldots practical AI integration}}
+
+The AI component will use an existing large language model/API rather than training a new foundation model.
+
+The AI will not be responsible for making the user's initial itinerary. Instead, it will assist users when they want to modify or improve their existing plan.
+
+The backend can provide the AI with:
+
+\begin{itemize}
+\item Existing itinerary
 \item Destination
 \item Travel dates and duration
 \item Budget
-\item Interests
-\item Travel style
 \item Number of travellers
+\item Interests
+\item Mood or travel vibe
+\item Preferred travel pace
+\item Relevant places and activities
 \item Weather information
-\item Relevant activities and places
+\item Travel distance and route information
 \end{itemize}
 
-The AI will return a structured itinerary containing activities, approximate timings, locations, and other relevant information. The generated itinerary will be displayed by the frontend and remain editable by the user.
+\subsection{Weather-aware planning \BvrHint{\ldots contextual information}}
 
-The same mechanism can support targeted modification requests such as ``Make Day 2 less hectic'' or ``Add more indoor activities.'' The AI will operate as a component of the application rather than as an independent chatbot.
+Weather will not be implemented as an independent travel recommendation module.
 
-\subsection{Recommendation and contextual assistance \BvrHint{\ldots non-research}}
-The recommendation components will use external APIs and rule-based filtering where appropriate:
+Instead, weather information will be used as contextual information for:
+
 \begin{itemize}
-\item Weather data will influence packing recommendations and travel-suitability information.
-\item Trip duration will influence the quantity and type of packing items.
-\item Planned activities will influence required clothing and equipment.
-\item User budget, rating, type, and location preferences will filter accommodation recommendations.
-\item Map and location information will support itinerary visualization and adding places to the trip.
-\item Destination-specific health and safety information will be presented as general travel guidance.
+\item Selecting suitable activities for particular days.
+\item Helping users decide between outdoor and indoor activities.
+\item Assisting AI-based itinerary modifications.
+\item Generating a personalized packing checklist.
 \end{itemize}
 
-The objective is to provide context-aware recommendations without claiming state-of-the-art recommendation research.
+Current or forecast weather information will be retrieved through an external weather service rather than relying on the language model's internal knowledge.
+
+\subsection{Smart packing assistant \BvrHint{\ldots contextual assistance}}
+
+The packing assistant will generate a personalized checklist using:
+
+\begin{itemize}
+\item Destination
+\item Trip duration
+\item Weather conditions
+\item Planned activities
+\item General travel requirements
+\end{itemize}
+
+The checklist will be displayed in an interactive format where users can mark items as packed, remove unnecessary items, and add their own items.
+
+\subsection{Travel health and disease awareness \BvrHint{\ldots responsible guidance}}
+
+The health module will provide general destination-specific health and disease awareness information.
+
+The system may consider:
+
+\begin{itemize}
+\item Destination
+\item Travel season
+\item Relevant environmental conditions
+\item General destination-specific health risks
+\item Basic precautions
+\end{itemize}
+
+The feature will be presented as general travel guidance and will not provide medical diagnosis or treatment recommendations.
+
+\subsection{Interactive travel map \BvrHint{\ldots geographical context}}
+
+The interactive map will display locations included in the user's itinerary.
+
+The map will allow users to:
+
+\begin{itemize}
+\item View itinerary locations.
+\item Understand the geographical arrangement of activities.
+\item View routes between planned locations.
+\item Explore the destination visually.
+\end{itemize}
 
 \subsection{Web architecture \BvrHint{\ldots web-based solution}}
-A typical 3-tier web architecture:
+
+A typical 3-tier web architecture will be used:
+
 \begin{itemize}
-\item \textbf{Frontend:} responsive UI for trip creation, itinerary management, maps, packing lists, stay recommendations, safety information, collaboration, and saved trips.
-\item \textbf{Backend API:} authentication, trip management, itinerary management, AI integration, weather integration, recommendation logic, collaboration, and external API communication.
-\item \textbf{Database:} store users, trips, itineraries, activities, trip members, packing items, saved stays/places, and related trip data.
+
+\item \textbf{Frontend:} responsive interface for destination selection, preference collection, place suggestions, itinerary creation and editing, packing checklist, health information, map visualization, and saved trips.
+
+\item \textbf{Backend API:} authentication, trip management, destination recommendation logic, external API communication, AI integration, itinerary modification, weather integration, and data validation.
+
+\item \textbf{Database:} store users, trip information, preferences, created itineraries, and saved trip data. The database will not be used as a large repository of all possible destinations and attractions.
+
 \end{itemize}
 
-External services will be accessed through backend service modules rather than directly exposing API credentials to the frontend.
-
-\subsection{CI/CD and fast delivery enabler}
-CI/CD will be used to:
-\begin{itemize}
-\item Automatically build and run tests on every change.
-\item Produce repeatable deployment artifacts to staging.
-\item Enable safe and frequent releases of incremental features.
-\end{itemize}
+External services will be accessed through the backend so that API credentials are not directly exposed to the frontend.
 
 \section{Evaluation Criterion \BvrHint{\ldots measurable and attributable}}
-We define success using measurable metrics tied to the core travel-planning workflow.
+
+We define success using measurable metrics related to the core travel-planning workflow.
 
 \subsection{Primary evaluation metric}
-\textbf{Time-to-itinerary (TTI):} time between the user submitting their trip requirements and receiving the first usable generated itinerary.
+
+\textbf{Time-to-itinerary (TTI):} time between the user submitting their trip requirements and obtaining a usable itinerary containing selected activities.
+
 \begin{itemize}
-\item \textbf{Target:} median TTI $\leq$ 60 seconds during pilot window.
-\item \textbf{Attribution:} measured from application timestamps between trip submission and successful itinerary generation.
+\item \textbf{Target:} median TTI $\leq$ 60 seconds during the pilot window.
+\item \textbf{Attribution:} measured using application timestamps between trip submission and the availability of the initial usable itinerary.
 \end{itemize}
 
 \subsection{Secondary evaluation metrics}
+
 \begin{itemize}
-\item \textbf{Planning effort reduction:} reduction in the number of separate sources/applications users need to consult while creating a trip compared with their normal planning process.
-\item \textbf{Itinerary usefulness:} user rating of generated itineraries on a simple 1--5 scale.
-\item \textbf{Packing relevance:} percentage of generated packing items users consider relevant, measured through a short planning survey.
-\item \textbf{Itinerary modification rate:} percentage of generated activities that users retain, modify, or remove.
-\item \textbf{Collaboration usefulness:} user rating of the shared trip and itinerary-editing functionality on a 1--5 scale.
-\item \textbf{Reliability:} availability of core functionality such as login, trip creation, itinerary access, and packing lists during the pilot.
+
+\item \textbf{Destination recommendation relevance:} user rating of recommended destinations on a 1--5 scale.
+
+\item \textbf{Place suggestion relevance:} user rating of the relevance of suggested places and activities on a 1--5 scale.
+
+\item \textbf{Itinerary usefulness:} user rating of the usefulness of the created itinerary on a 1--5 scale.
+
+\item \textbf{User control:} percentage of users who successfully add, remove, edit, or reorder activities without assistance.
+
+\item \textbf{AI modification usefulness:} user rating of AI-assisted itinerary modifications on a 1--5 scale.
+
+\item \textbf{Packing relevance:} percentage of generated packing items that users consider relevant.
+
+\item \textbf{Health-information usefulness:} user rating of the usefulness and clarity of the provided health and disease awareness information.
+
+\item \textbf{System reliability:} successful completion rate of core workflows such as destination selection, place retrieval, itinerary creation, itinerary modification, and trip saving.
+
 \end{itemize}
 
 \subsection{Pilot validation plan \BvrHint{\ldots high-level}}
+
 \begin{itemize}
+
 \item Recruit 10--20 pilot users as student travellers.
-\item Ask users to create a sample trip using both their usual planning approach and TripWise.
-\item Compare the time required to produce an initial itinerary.
-\item Collect 1--5 ratings for itinerary usefulness, packing relevance, and overall planning experience.
-\item Conduct a small group-trip test to evaluate shared trip and itinerary-editing functionality.
-\item Use application logs to measure system response times and workflow completion.
+
+\item Ask users to create sample trips using different destinations, budgets, durations, and travel preferences.
+
+\item Measure the time required to create an initial usable itinerary.
+
+\item Collect 1--5 ratings for destination recommendation relevance, place suggestion relevance, itinerary usefulness, AI modification usefulness, packing relevance, and overall planning experience.
+
+\item Ask users to perform common itinerary modifications such as adding, removing, editing, and reordering activities.
+
+\item Use application logs to measure response times and workflow completion.
+
 \end{itemize}
 
 \section{Scalability \BvrHint{\ldots with foresight}}
-The proposition should scale in both theoretical and practical senses.
+
+The system should remain practical as the number of users and saved trips increases.
 
 \begin{enumerate}
-\item \textbf{Scalable (theoretically):} The system should support growth in number of trips and concurrent usage by:
+
+\item \textbf{Scalable (theoretically):} the system should support growth through:
 \begin{itemize}
-\item decoupling components (frontend/backend),
-\item enabling pagination and indexing for common queries,
-\item using stateless API design,
-\item separating external API integrations into independent services.
+\item separation of frontend and backend components,
+\item indexed database queries,
+\item stateless API design where appropriate,
+\item modular external API integrations,
+\item selective retrieval of external travel information,
+\item storing only required user and trip data instead of maintaining a large manually curated travel database.
 \end{itemize}
 
-\item \textbf{Operationally deployable (practically):} The system should run on common web hosting:
+\item \textbf{Operationally deployable (practically):} the system should be deployable using:
 \begin{itemize}
-\item managed database,
-\item containerized or platform-hosted deployment,
+\item a managed database,
 \item environment-based configuration for API credentials,
-\item CI/CD pipeline for staging/production.
+\item a web-hosted frontend and backend,
+\item modular external API services.
 \end{itemize}
+
 \end{enumerate}
 
 \section{Engine availability heuristic}
-A mature set of ``engines'' (tooling/services) is available to implement this as a web-based project:
+
+A mature set of tools and services is available to implement the proposed system:
+
 \begin{itemize}
+
 \item Web framework for responsive frontend development and REST APIs.
-\item Managed relational database.
-\item Authentication approach (token-based or session-based).
-\item Existing LLM/API for itinerary generation.
-\item Weather API.
-\item Maps and places API.
-\item External accommodation/recommendation sources.
-\item Test framework for unit/integration tests.
-\item CI runner and staging deployment target.
+
+\item Node.js and Express for backend development.
+
+\item MongoDB for persistent application data.
+
+\item Existing large language model/API for itinerary modification and personalization.
+
+\item Current weather API for forecast information.
+
+\item Current places and geocoding API for destination and place information.
+
+\item Routing API for geographical distance and travel-time information.
+
+\item Open-source map technologies for itinerary visualization.
+
+\item Authentication and session management for user accounts.
+
+\item Testing tools for backend and application functionality.
+
 \end{itemize}
 
-We will use these mature components to focus on workflow design, practical AI integration, correctness, usability, and measurement rather than inventing new infrastructure or foundation AI models.
+These mature components allow the project to focus on workflow design, practical AI assistance, personalized travel planning, usability, and system correctness rather than developing new infrastructure or training a foundation AI model.
 
 \section{Project scope and deliverables \BvrHint{\ldots iteration-friendly}}
+
 \subsection{Initial deliverable \BvrHint{\ldots first iteration}}
+
 \begin{itemize}
-\item User registration/login
-\item Trip creation form
-\item Destination, date/duration, traveller, budget, interest, and travel-style storage
-\item Basic itinerary creation and editing
-\item AI-generated initial itinerary
-\item Basic itinerary modification
-\item Weather information integration
-\item Basic logging and timestamps for TTI measurement
-\item CI: build + backend unit tests + linting
-\item CD to staging with a single command or pipeline job
+
+\item User registration/login.
+
+\item Trip creation form.
+
+\item Known-destination trip planning.
+
+\item ``Help Me Choose'' destination discovery based on starting location, budget, distance, duration, mood, interests, and travel style.
+
+\item Destination recommendation and selection.
+
+\item Retrieval of relevant places and activities.
+
+\item User-controlled itinerary creation.
+
+\item Basic itinerary editing, deletion, and reordering.
+
+\item Weather information integration as contextual trip information.
+
+\item Saving generated trips and itineraries.
+
 \end{itemize}
 
 \subsection{Subsequent deliverables}
+
 \begin{itemize}
-\item Smart packing assistant
-\item Interactive travel map
-\item Stay recommendations with external booking links
-\item Travel health and safety information
-\item Weather-based packing and travel recommendations
-\item Collaborative trips with shared itinerary editing
-\item Improved AI itinerary modification
-\item Improved search/filtering and indexed queries for scale readiness
-\item Improved recommendation quality based on user feedback
+
+\item AI-assisted itinerary modification through natural-language requests.
+
+\item Smart packing assistant based on destination, duration, activities, and weather.
+
+\item Interactive travel map showing itinerary locations and routes.
+
+\item Travel health and disease awareness information.
+
+\item Basic travel health and safety checklist.
+
+\item Improved destination and place recommendations.
+
+\item Improved AI itinerary modification using weather and geographical information.
+
+\item Improved validation of itinerary constraints.
+
 \end{itemize}
 
 \section{Risks and mitigations}
+
 \begin{itemize}
-\item \textbf{External API availability:} weather, maps, places, or accommodation APIs may have rate limits or temporary failures. Use modular service layers, caching where appropriate, and fallback handling.
-\item \textbf{AI-generated information:} AI may generate inaccurate or unsuitable recommendations. Present generated itineraries as recommendations, validate structured outputs, and allow users to edit them.
-\item \textbf{AI response latency:} itinerary-generation requests may take time. Display generation status and measure response time during evaluation.
-\item \textbf{Data privacy / consent:} minimize collection of personal information and store only data required for trip planning and collaboration.
-\item \textbf{Recommendation quality:} generic or unsuitable recommendations may reduce user trust. Collect user feedback and allow manual editing rather than forcing AI-generated decisions.
-\item \textbf{Collaboration complexity:} shared itinerary editing can increase implementation complexity. Start with shared trips and basic add/edit functionality; real-time synchronization is not required in the initial implementation.
-\item \textbf{Evaluation measurement ambiguity:} instrument timestamps and define clear measurement procedures for time-to-itinerary and user usefulness ratings before development begins.
-\item \textbf{Operational issues in pilot:} use staging early and ensure CI/CD produces repeatable deployments.
+
+\item \textbf{External API availability:} weather, places, geocoding, or routing services may have rate limits or temporary failures. Use modular service layers, limited API calls, and fallback handling.
+
+\item \textbf{AI-generated information:} AI may generate inaccurate or unsuitable itinerary modifications. Present AI output as a recommendation, validate structured responses, and allow users to review and edit all changes.
+
+\item \textbf{AI response latency:} AI modification requests may take time. Display an appropriate loading state and measure response time during evaluation.
+
+\item \textbf{Outdated AI knowledge:} dynamic travel information should not be obtained solely from the language model. Current weather, place, and route information will be retrieved from external services and provided as context to the AI.
+
+\item \textbf{Recommendation quality:} destination or place suggestions may not always match user expectations. Allow users to modify their preferences and manually select or remove suggested activities.
+
+\item \textbf{API quota limitations:} free external APIs may impose daily request limits. API calls will be minimized by retrieving only relevant information and avoiding unnecessary repeated requests.
+
+\item \textbf{Health information accuracy:} health and disease information can be sensitive and time-dependent. The system will present it as general awareness information and avoid medical diagnosis or treatment recommendations.
+
+\item \textbf{Data privacy:} only information required for account management and trip planning will be stored.
+
 \end{itemize}
 
 \section{Summary}
-This project proposes a deployable web platform, \textbf{ItiNova}, designed to reduce the time and effort required for personalized travel planning. It integrates a core trip planner with AI-powered itinerary generation, weather and best-time recommendations, smart packing assistance, stay recommendations, an interactive travel map, travel health and safety information, and collaborative trip planning.
 
-It meets the course criteria by emphasizing time-to-value through rapid iterations, implementing CI/CD to support frequent safe releases, and using measurable evaluation criteria (especially time-to-itinerary). It remains focused on engineering an integrated and usable travel-planning workflow rather than research-driven novelty.
+This project proposes \textbf{ItiNova}, an AI-assisted personalized travel-planning platform designed to reduce the time and effort required to plan a trip.
+
+The system supports two primary entry points: users can either provide a destination they already know or receive destination recommendations based on preferences such as starting location, budget, travel distance, duration, mood, interests, and travel style.
+
+After selecting a destination, the system retrieves relevant places, activities, weather, and geographical information. Users can then create their own itinerary by selecting, adding, removing, editing, and reordering activities according to their preferences.
+
+AI is used as an assistance layer rather than as the sole decision-maker. Users can provide natural-language instructions to modify their existing itinerary, such as making a day less hectic, adding more adventure activities, or rearranging activities based on weather and preferences.
+
+Supporting features include a smart packing assistant, destination-specific health and disease awareness, and an interactive travel map. Weather is treated as contextual information that supports itinerary planning and packing rather than as a separate standalone feature.
+
+The project focuses on practical AI integration, external travel information services, user-controlled personalization, and a deployable web-based architecture without requiring a large manually maintained travel database or development of a new AI model.
 
 \end{document}
