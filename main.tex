@@ -1,302 +1,886 @@
 \documentclass[11pt,a4paper]{article}
+
 \usepackage[margin=1in]{geometry}
 \usepackage{hyperref}
 \usepackage{enumitem}
 \usepackage{graphicx}
 \usepackage{xcolor}
-
-% -----------------------------------------------------
-% bvraghav-tiet-ucs503p-article.sty
-% -----------------------------------------------------
-
-% Variable: Lab Instructor
-\makeatletter \newcommand{\BvrSetLabInstructor}[1]{%
-  \gdef\Bvr@LabInstructor{#1}}
-% default
-\newcommand{\Bvr@LabInstructor}{Dr. Nisha Thakur}
-% public accessor
-\newcommand{\BvrLabInstructorValue}{\Bvr@LabInstructor}
-\makeatother
-
-% Add subtitle
 \usepackage{titling}
-% -- Set title bold
-\pretitle{\begin{center}\bfseries\fontsize{18bp}{18bp}\selectfont}
-\makeatletter
-\newcommand{\BvrSubtitle}[1]{%
-  \posttitle{%
-    \par\end{center}
-    \begin{center}\large#1\end{center}
-    \vskip 0.5em}%
-}
-\makeatother
-
-% Hints in the section title(s)
-\newcommand{\BvrHint}[1]{%
-  {\normalfont\normalsize\itshape\hfill #1}}
 
 % -----------------------------------------------------
+% Title formatting
+% -----------------------------------------------------
 
-\title{ItiNova: An AI-Powered Personalized and Collaborative Travel Planning System}
-
-\BvrSetLabInstructor{Dr. Nisha Thakur}
-
-\BvrSubtitle{%
-  Project Proposal for UCS503P  \\
-  Submitted to: \BvrLabInstructorValue \\ \bfseries
-  Thapar Institute of Engineering and Technology%
+\pretitle{
+    \begin{center}
+    \bfseries
+    \fontsize{18bp}{18bp}\selectfont
 }
+
+\posttitle{
+    \par
+    \end{center}
+}
+
+\predate{
+    \begin{center}
+}
+
+\postdate{
+    \end{center}
+}
+
+% -----------------------------------------------------
+% Project Information
+% -----------------------------------------------------
+
+\title{TravelSync: An Intelligent and Collaborative Travel Platform}
 
 \author{
-  Shreya, [CSED]%
-  \thanks{Roll No: \texttt{1024030520}, %
-    Email: \texttt{sshreya1\_be24\@thapar.edu}}
-  \and
-  Molika Goela, [CSED]%
-  \thanks{Roll No: \texttt{1024030524}, %
-    Email: \texttt{mgoela\_be24\@thapar.edu}}
-  \and
-  Jiya Gupta, [CSED]%
-  \thanks{Roll No: \texttt{1024030501}, %
-    Email: \texttt{jgupta1\_be24\@thapar.edu}}
-  \and
-  Himani Nayyar, [CSED]%
-  \thanks{Roll No: \texttt{1024030510}, %
-    Email: \texttt{hnayyar\_be24\@thapar.edu}}
+    Shreya
+    \and
+    Molika Goela
+    \and
+    Jiya Gupta
+    \and
+    Himani Nayyar
 }
 
-\date{\today}
+\date{August 18, 2026}
+
+% -----------------------------------------------------
 
 \begin{document}
+
 \maketitle
 
-\section{Higher-order goal \BvrHint{\ldots secondary framing}}
-This project aims to reduce the time and effort required to plan a personalized trip by bringing itinerary planning, weather information, accommodation recommendations, maps, packing assistance, safety information, and collaborative planning into a unified platform. While the topic is broader than any single travel destination, the immediate engineering objective is to translate efficient and personalized travel planning into a measurable, deployable software solution.
+\begin{center}
+\large
+Thapar Institute of Engineering and Technology
+\end{center}
 
-\section{Time-to-value \BvrHint{\ldots primary heuristic}}
+\vspace{0.5em}
+
+\begin{center}
+\large
+Project Proposal for UCS503P
+\end{center}
+
+\vspace{1em}
+
+
+% =====================================================
+% 1. HIGHER-ORDER GOAL
+% =====================================================
+
+\section{Higher-order Goal}
+
+TravelSync aims to provide a unified travel platform that helps users discover suitable destinations, explore places and hotels, prepare for travel, access destination-specific health information, collaborate with travel companions, manage travel bookings and tickets, and access information about previous trips.
+
+The system supports two main destination-selection scenarios. Users who already know where they want to travel can directly select a destination and explore the available information. Users who are unsure about their destination can instead enter their travel preferences such as mood, travel vibe, budget, number of people, duration, interests, starting location, and preferred travel distance. The system then recommends suitable destinations using a machine learning based recommendation component combined with backend filtering.
+
+After selecting a destination, users can view relevant places, place details, weather information, recommended hotels, health and safety information, and other travel-related information.
+
+TravelSync also provides a collaborative travel space where users can create or join groups, communicate through group chat, share destination suggestions, and vote on destination options to collectively decide which destination the group should choose. Users can additionally manage their travel bookings and tickets and view their previous trips.
+
+The overall objective is to reduce the effort involved in travel planning by bringing destination discovery, travel information, preparation, collaboration, and travel management into one platform.
+
+
+% =====================================================
+% 2. TIME TO VALUE
+% =====================================================
+
+\section{Time-to-value}
+
+The development of TravelSync will prioritize the core destination discovery and travel-information workflow before implementing supporting modules.
+
 \begin{itemize}
-\item We will deliver meaningful increments quickly by prototyping the core trip creation and itinerary workflow and validating it with users within a short iteration window.
-\item We will prioritize fast feedback over perfection by using weekly iterations and targeting CI-backed automation early to reduce release friction.
-\item We will first establish the core trip planner and then integrate weather, AI itinerary generation, packing, map, stay, safety, and collaboration features incrementally.
-\item Success is defined by what can be delivered and measured in the first iteration, then improved based on user feedback.
+
+\item The first priority will be allowing users to either select a known destination or receive destination recommendations based on their preferences.
+
+\item The recommendation system will use a K-Nearest Neighbors (KNN) based machine learning approach to identify destinations with similar preference profiles.
+
+\item Practical constraints such as budget, trip duration, starting location, and maximum travel distance will be handled through backend filtering and ranking.
+
+\item After selecting a destination, users will be able to view relevant places and place details.
+
+\item Weather information, recommended hotels, and health and safety information will be integrated as supporting destination information.
+
+\item A smart packing assistant will generate a personalized packing list using destination, trip duration, weather conditions, and optional activities.
+
+\item The Collaborative Travel Hub will allow users to create or join groups, communicate through group chat, share destination suggestions, and vote on the available destination options.
+
+\item The group voting mechanism will help members collectively decide on the destination for their trip.
+
+\item Travel bookings and tickets will be associated with the relevant trip or group.
+
+\item Users will be able to view their previous trips through the travel history component.
+
+\item A floating AI Travel Assistant will provide conversational travel assistance without automatically making travel decisions on behalf of the user.
+
 \end{itemize}
+
+
+% =====================================================
+% 3. PROBLEM STATEMENT
+% =====================================================
 
 \section{Problem Statement}
-Travellers often need to gather and combine information from multiple sources, including maps, weather services, accommodation platforms, travel guides, and recommendation websites. Common pain points include:
+
+Travel planning often requires users to search across multiple platforms for destinations, attractions, accommodation, weather information, health information, and travel-related resources. This makes the process time-consuming and difficult to personalize.
+
+Common problems include:
+
 \begin{itemize}
-\item \textbf{Fragmentation:} trip information is distributed across multiple applications and websites, making it difficult to maintain a single coherent travel plan.
-\item \textbf{Generic recommendations:} existing travel recommendations may not sufficiently account for individual interests, budget, travel style, trip duration, weather, and planned activities.
-\item \textbf{Manual itinerary planning:} travellers often need to research attractions, estimate suitable timings, and manually arrange activities into a practical day-by-day schedule.
-\item \textbf{Dynamic conditions:} weather can affect the suitability of outdoor activities and what travellers need to pack, but this information is often handled separately from itinerary planning.
-\item \textbf{Packing uncertainty:} generic packing lists do not necessarily account for destination, weather, duration, and planned activities.
-\item \textbf{Group coordination:} travelling with friends or family introduces additional difficulty because participants need to share information and coordinate changes to the itinerary.
-\item \textbf{Information overload:} travellers may spend considerable time comparing accommodation, attractions, weather conditions, and activities before arriving at a final plan.
+
+\item \textbf{Destination uncertainty:} users may know their budget, preferred travel distance, duration, or interests but may not know which destination is suitable for them.
+
+\item \textbf{Generic recommendations:} available travel recommendations may not sufficiently consider individual interests, budget, duration, travel distance, and traveller type.
+
+\item \textbf{Scattered travel information:} places, hotels, weather, health information, and geographical information are often distributed across different platforms.
+
+\item \textbf{Manual destination comparison:} users may need to search for several destinations separately before finding one that fits their requirements.
+
+\item \textbf{Budget and distance constraints:} recommendations may not adequately consider the user's available budget and geographical travel limits.
+
+\item \textbf{Weather uncertainty:} changing weather conditions can affect travel preparation and outdoor activities.
+
+\item \textbf{Packing difficulty:} generic packing lists do not account for destination, duration, weather, and planned activities together.
+
+\item \textbf{Accommodation discovery:} users may need to search separately for hotels and other accommodation near their selected destination.
+
+\item \textbf{Health awareness:} travellers may not have easy access to destination-specific current health alerts, precautions, and historical health information.
+
+\item \textbf{Group destination decisions:} groups travelling together may find it difficult to compare destination options and reach a collective decision.
+
+\item \textbf{Group communication:} travel companions often use separate communication applications to discuss destinations and share travel suggestions.
+
+\item \textbf{Travel booking management:} tickets and booking information may be distributed across different applications, emails, or files.
+
+\item \textbf{Travel history:} users may not have a structured record of their previous trips.
+
 \end{itemize}
 
-\textbf{Why this matters now (contextual relevance):} As travel planning involves increasingly large amounts of online information, an integrated system can reduce repetitive searching and provide a more structured and personalized planning workflow.
+TravelSync addresses these problems by combining personalized destination recommendation, destination information, travel preparation, health intelligence, group collaboration, destination voting, booking management, and previous-trip information within one platform.
 
-\section{Proposed Solution \BvrHint{\ldots Software Proposition}}
-\subsection{Overview}
-Build a web-based ``ItiNova'' system with the following components:
+
+% =====================================================
+% 4. PROPOSED SOLUTION
+% =====================================================
+
+\section{Proposed Solution}
+
+\subsection{Intelligent Trip Planner}
+
+The Intelligent Trip Planner is the primary module of TravelSync.
+
+Users can either directly select a destination they already know or use the destination recommendation system when they are unsure about where to travel.
+
+For destination discovery, the user can provide information such as:
+
 \begin{itemize}
-\item \textbf{Trip planner:} users enter destination, travel dates or duration, number of travellers, budget, interests, and travel style. The system creates a basic day-by-day trip plan that users can edit, delete, and reorder.
-\item \textbf{Weather and best-time recommendations:} the system provides destination-specific weather information for the selected dates, indicates general travel suitability, and provides simple weather-based recommendations.
-\item \textbf{Hotel/stay recommendations:} users can discover and compare suitable stays based on budget, rating, type, and location, save preferred options, and open an external booking source. The platform will not handle hotel bookings.
-\item \textbf{Smart packing assistant:} the system generates a personalized checklist using destination, weather, trip duration, and planned activities. Users can mark items as packed and modify the checklist.
-\item \textbf{Travel health and safety:} the system provides general destination-specific health precautions, safety information, a travel safety checklist, emergency information, and useful medical-facility information where reliable data is available. It is not intended for diagnosis.
-\item \textbf{Interactive travel map:} the map displays saved places, itinerary locations, and hotel locations. Users can open directions and add places to their itinerary.
-\item \textbf{AI itinerary generator:} an AI module generates a structured day-by-day itinerary based on destination, dates, budget, interests, weather, and travel preferences. Users can request changes to the generated itinerary.
-
+\item Starting location
+\item Preferred maximum travel distance
+\item Budget
+\item Trip duration
+\item Mood
+\item Travel vibe
+\item Travel interests
+\item Number of travellers
+\item Traveller type such as family, friends, couple, or solo
 \end{itemize}
 
-\subsection{Core workflow}
-\begin{enumerate}
-\item User creates an account and enters destination, travel dates or duration, number of travellers, budget, interests, and preferred travel style.
-\item The system creates a basic trip plan around the selected destination and duration.
-\item The system retrieves relevant weather information and presents travel suitability and simple weather-based recommendations.
-\item The AI module can generate a more detailed structured itinerary using destination, dates, budget, interests, weather, and preferences.
-\item The user reviews and modifies the itinerary by adding, removing, editing, or reordering activities.
-\item The packing assistant generates a checklist based on destination, weather, duration, and planned activities.
-\item Users can view itinerary locations, saved places, and stay locations on an interactive map.
-\item Users can explore suitable stays based on their preferences, save them, and access external booking sources.
-\item Users can view destination-specific general health and safety information and complete a travel safety checklist.
-\item For group trips, the trip creator can invite companions who can view and modify the shared itinerary.
-\end{enumerate}
+The system converts these preferences into a numerical feature representation.
 
-\subsection{Operational constraints for an educational travel-planning setting}
-\begin{itemize}
-\item Keep the solution usable on low-to-mid range devices via responsive web design.
-\item Avoid dependence on advanced research algorithms; focus on workflow, practical AI integration, automation, and system correctness.
-\item Design external API integrations as modular services so that individual service failures do not affect the entire application.
-\item Provide stay recommendations rather than directly handling hotel bookings or payments.
-\item Present health and safety information as general travel guidance and not as medical diagnosis or treatment recommendations.
-\item Keep AI-generated itineraries editable by users rather than treating them as authoritative or final plans.
-\item Keep collaborative planning to shared trips and shared itinerary editing in the initial scope; real-time synchronization is not required for the first implementation.
-\end{itemize}
+The destination recommendation workflow is:
 
-\section{Solution Approach \BvrHint{\ldots Engineering focus}}
-This is an engineering course project, so we focus on building a reliable integrated travel-planning workflow rather than developing a novel AI model. The system will combine conventional software engineering techniques with existing AI and external information services.
+\begin{center}
+User Preferences
+$\rightarrow$
+Feature Vector
+$\rightarrow$
+KNN Recommendation
+$\rightarrow$
+Candidate Destinations
+$\rightarrow$
+Backend Filtering
+$\rightarrow$
+Ranked Recommendations
+\end{center}
 
-\subsection{AI-powered itinerary generation \BvrHint{\ldots practical AI integration}}
-The itinerary generation module will use an existing large language model/API rather than training a new foundation model.
+KNN identifies destinations that are similar to the user's preference profile. Backend logic then applies practical constraints such as acceptable budget, suitable trip duration, and geographical distance.
 
-The backend will provide the AI component with:
+The recommendation system therefore combines machine learning based similarity with deterministic travel constraints.
+
+
+\subsection{Machine Learning Based Destination Recommendation}
+
+TravelSync uses the K-Nearest Neighbors algorithm for destination recommendation.
+
+The destination dataset contains destination-level attributes such as:
+
 \begin{itemize}
 \item Destination
-\item Travel dates and duration
-\item Budget
-\item Interests
-\item Travel style
-\item Number of travellers
+\item State or region
+\item Latitude
+\item Longitude
+\item Approximate daily budget
+\item Ideal trip duration
+\item Mountain
+\item Beach
+\item Nature
+\item Adventure
+\item Culture
+\item Relaxation
+\item Nightlife
+\item Spiritual
+\item Trekking
+\item Photography
+\item Food
+\item Family
+\item Couple
+\item Friends
+\item Solo
+\item Heritage
+\end{itemize}
+
+The user's preferences are converted into corresponding numerical values and standardized before calculating similarity.
+
+KNN identifies destinations that are closest to the user's preference vector.
+
+Additional backend filtering is then applied for:
+
+\begin{itemize}
+\item Budget range
+\item Duration compatibility
+\item Maximum travel distance
+\item Starting location
+\end{itemize}
+
+The final recommendations are ranked and displayed to the user.
+
+
+\subsection{Known Destination Selection}
+
+Users who already know their destination can directly select it without using the destination recommendation model.
+
+For a selected destination, the system can provide:
+
+\begin{itemize}
+\item Places to visit
+\item Place categories
+\item Place details
+\item Ratings where available
+\item Geographical information
 \item Weather information
-\item Relevant activities and places
+\item Recommended hotels
+\item Health and safety information
 \end{itemize}
 
-The AI will return a structured itinerary containing activities, approximate timings, locations, and other relevant information. The generated itinerary will be displayed by the frontend and remain editable by the user.
+This path primarily uses backend services and external travel information APIs rather than machine learning based destination discovery.
 
-The same mechanism can support targeted modification requests such as ``Make Day 2 less hectic'' or ``Add more indoor activities.'' The AI will operate as a component of the application rather than as an independent chatbot.
 
-\subsection{Recommendation and contextual assistance \BvrHint{\ldots non-research}}
-The recommendation components will use external APIs and rule-based filtering where appropriate:
+\subsection{Places and Place Details}
+
+After selecting a destination, users can view places available at that destination.
+
+The system may provide information such as:
+
 \begin{itemize}
-\item Weather data will influence packing recommendations and travel-suitability information.
-\item Trip duration will influence the quantity and type of packing items.
-\item Planned activities will influence required clothing and equipment.
-\item User budget, rating, type, and location preferences will filter accommodation recommendations.
-\item Map and location information will support itinerary visualization and adding places to the trip.
-\item Destination-specific health and safety information will be presented as general travel guidance.
+\item Place name
+\item Category
+\item Description
+\item Location
+\item Coordinates
+\item Rating where available
+\item Other available place information
 \end{itemize}
 
-The objective is to provide context-aware recommendations without claiming state-of-the-art recommendation research.
+Place information will be retrieved using appropriate external places and geographical services.
 
-\subsection{Web architecture \BvrHint{\ldots web-based solution}}
-A typical 3-tier web architecture:
+The system does not require a manually maintained database containing every attraction.
+
+
+\subsection{Smart Packing Assistant}
+
+The Smart Packing Assistant generates a personalized packing list using information related to the user's trip.
+
+The inputs include:
+
 \begin{itemize}
-\item \textbf{Frontend:} responsive UI for trip creation, itinerary management, maps, packing lists, stay recommendations, safety information, collaboration, and saved trips.
-\item \textbf{Backend API:} authentication, trip management, itinerary management, AI integration, weather integration, recommendation logic, collaboration, and external API communication.
-\item \textbf{Database:} store users, trips, itineraries, activities, trip members, packing items, saved stays/places, and related trip data.
+\item Destination
+\item Trip duration
+\item Travel dates
+\item Weather conditions
+\item Optional planned activities
 \end{itemize}
 
-External services will be accessed through backend service modules rather than directly exposing API credentials to the frontend.
+Activities are optional and therefore are not required for generating the packing list.
 
-\subsection{CI/CD and fast delivery enabler}
-CI/CD will be used to:
+The packing system can generate categories such as:
+
 \begin{itemize}
-\item Automatically build and run tests on every change.
-\item Produce repeatable deployment artifacts to staging.
-\item Enable safe and frequent releases of incremental features.
+\item Clothing
+\item Weather-related items
+\item Toiletries
+\item Electronics
+\item Documents
+\item Activity-specific items
 \end{itemize}
 
-\section{Evaluation Criterion \BvrHint{\ldots measurable and attributable}}
-We define success using measurable metrics tied to the core travel-planning workflow.
+Users can:
 
-\subsection{Primary evaluation metric}
-\textbf{Time-to-itinerary (TTI):} time between the user submitting their trip requirements and receiving the first usable generated itinerary.
 \begin{itemize}
-\item \textbf{Target:} median TTI $\leq$ 60 seconds during pilot window.
-\item \textbf{Attribution:} measured from application timestamps between trip submission and successful itinerary generation.
+\item View the generated packing list.
+\item Edit the packing list.
+\item Mark items as packed.
+\item Add their own items.
 \end{itemize}
 
-\subsection{Secondary evaluation metrics}
+
+\subsection{Smart Stay Recommendations}
+
+TravelSync will provide recommended hotels and accommodation options for the selected destination.
+
+The accommodation information can be retrieved through an appropriate Hotel API or places service.
+
+The workflow is:
+
+\begin{center}
+Destination
+$\rightarrow$
+Location
+$\rightarrow$
+Nearby Hotels
+$\rightarrow$
+Filtering
+$\rightarrow$
+Recommended Hotels
+\end{center}
+
+The system may consider available information such as:
+
 \begin{itemize}
-\item \textbf{Planning effort reduction:} reduction in the number of separate sources/applications users need to consult while creating a trip compared with their normal planning process.
-\item \textbf{Itinerary usefulness:} user rating of generated itineraries on a simple 1--5 scale.
-\item \textbf{Packing relevance:} percentage of generated packing items users consider relevant, measured through a short planning survey.
-\item \textbf{Itinerary modification rate:} percentage of generated activities that users retain, modify, or remove.
-\item \textbf{Collaboration usefulness:} user rating of the shared trip and itinerary-editing functionality on a 1--5 scale.
-\item \textbf{Reliability:} availability of core functionality such as login, trip creation, itinerary access, and packing lists during the pilot.
+\item Location
+\item Distance
+\item Accommodation type
+\item Rating where available
+\item User preferences
 \end{itemize}
 
-\subsection{Pilot validation plan \BvrHint{\ldots high-level}}
+The system will not display fabricated hotel prices. Pricing will only be displayed when reliable pricing information is provided by the selected external service.
+
+
+\subsection{Travel Health and Safety Intelligence}
+
+TravelSync provides destination-specific health and safety information.
+
+The current health component can provide:
+
 \begin{itemize}
-\item Recruit 10--20 pilot users as student travellers.
-\item Ask users to create a sample trip using both their usual planning approach and TripWise.
-\item Compare the time required to produce an initial itinerary.
-\item Collect 1--5 ratings for itinerary usefulness, packing relevance, and overall planning experience.
-\item Conduct a small group-trip test to evaluate shared trip and itinerary-editing functionality.
-\item Use application logs to measure system response times and workflow completion.
+\item Current health alerts
+\item Destination-specific health information
+\item General precautions
+\item Travel safety guidance
 \end{itemize}
 
-\section{Scalability \BvrHint{\ldots with foresight}}
-The proposition should scale in both theoretical and practical senses.
+Historical health activity can also be displayed where historical data is available.
 
-\begin{enumerate}
-\item \textbf{Scalable (theoretically):} The system should support growth in number of trips and concurrent usage by:
+The historical component can be used to identify patterns in disease activity over time.
+
+The system may use:
+
 \begin{itemize}
-\item decoupling components (frontend/backend),
-\item enabling pagination and indexing for common queries,
-\item using stateless API design,
-\item separating external API integrations into independent services.
+\item Seasonal analysis to identify recurring patterns.
+\item Isolation Forest for detecting unusual historical activity.
+\item K-Means as an optional exploratory technique for grouping destinations with similar historical health profiles.
 \end{itemize}
 
-\item \textbf{Operationally deployable (practically):} The system should run on common web hosting:
+The health module is intended for general travel awareness and does not provide medical diagnosis or treatment.
+
+
+\subsection{Collaborative Travel Hub}
+
+The Collaborative Travel Hub allows users to collaborate with other travellers around a common trip.
+
+Users can:
+
 \begin{itemize}
-\item managed database,
-\item containerized or platform-hosted deployment,
-\item environment-based configuration for API credentials,
-\item CI/CD pipeline for staging/production.
+\item Create a travel group.
+\item Join an existing travel group.
+\item Communicate through group chat.
+\item Share destination suggestions.
+\item Discuss the suggested destinations with group members.
+\item Vote on destination options.
+\item Use the voting results to collectively decide the destination for the group.
 \end{itemize}
-\end{enumerate}
 
-\section{Engine availability heuristic}
-A mature set of ``engines'' (tooling/services) is available to implement this as a web-based project:
+The group chat provides the communication space for members to discuss the available destination options before voting.
+
+The destination voting mechanism is intended specifically for group decision-making. A member can propose or share a destination, other group members can review the suggestions, and the group can vote to determine the preferred destination.
+
+
+\subsection{Destination Suggestion Sharing}
+
+Users can share destinations they have discovered through TravelSync with their travel group.
+
+A shared destination suggestion can contain:
+
 \begin{itemize}
-\item Web framework for responsive frontend development and REST APIs.
-\item Managed relational database.
-\item Authentication approach (token-based or session-based).
-\item Existing LLM/API for itinerary generation.
-\item Weather API.
-\item Maps and places API.
-\item External accommodation/recommendation sources.
-\item Test framework for unit/integration tests.
-\item CI runner and staging deployment target.
+\item Destination name
+\item Recommendation context
+\item Budget
+\item Duration
+\item Relevant preferences
+\item Suggested places
 \end{itemize}
 
-We will use these mature components to focus on workflow design, practical AI integration, correctness, usability, and measurement rather than inventing new infrastructure or foundation AI models.
+Group members can view the shared destination suggestions, discuss them through the group chat, and vote on the available options.
 
-\section{Project scope and deliverables \BvrHint{\ldots iteration-friendly}}
-\subsection{Initial deliverable \BvrHint{\ldots first iteration}}
+The voting results help the group reach a collective decision about the destination they want to select.
+
+
+\subsection{Travel Bookings and Tickets}
+
+TravelSync provides a facility for managing travel-related bookings and tickets.
+
+Users can associate travel information with their trip or group, including:
+
 \begin{itemize}
-\item User registration/login
-\item Trip creation form
-\item Destination, date/duration, traveller, budget, interest, and travel-style storage
-\item Basic itinerary creation and editing
-\item AI-generated initial itinerary
-\item Basic itinerary modification
-\item Weather information integration
-\item Basic logging and timestamps for TTI measurement
-\item CI: build + backend unit tests + linting
-\item CD to staging with a single command or pipeline job
+\item Hotel bookings
+\item Flight tickets
+\item Train tickets
+\item Bus tickets
+\item Activity tickets
+\item Other travel reservations
 \end{itemize}
 
-\subsection{Subsequent deliverables}
+The system can store relevant booking metadata and uploaded documents where required.
+
+Access to group-related travel information will be restricted to authorized users.
+
+
+\subsection{Previous Trips}
+
+TravelSync allows users to view their previous trips.
+
+A previous trip record can contain information such as:
+
 \begin{itemize}
-\item Smart packing assistant
-\item Interactive travel map
-\item Stay recommendations with external booking links
-\item Travel health and safety information
-\item Weather-based packing and travel recommendations
-\item Collaborative trips with shared itinerary editing
-\item Improved AI itinerary modification
-\item Improved search/filtering and indexed queries for scale readiness
-\item Improved recommendation quality based on user feedback
+\item Destination
+\item Travel dates
+\item Travel companions
+\item Selected places
+\item Hotel information
+\item Travel bookings
 \end{itemize}
 
-\section{Risks and mitigations}
+This allows users to access their past travel information within TravelSync.
+
+
+\subsection{AI Travel Assistant}
+
+TravelSync includes a floating AI Travel Assistant that provides conversational travel assistance.
+
+The assistant can answer questions related to:
+
 \begin{itemize}
-\item \textbf{External API availability:} weather, maps, places, or accommodation APIs may have rate limits or temporary failures. Use modular service layers, caching where appropriate, and fallback handling.
-\item \textbf{AI-generated information:} AI may generate inaccurate or unsuitable recommendations. Present generated itineraries as recommendations, validate structured outputs, and allow users to edit them.
-\item \textbf{AI response latency:} itinerary-generation requests may take time. Display generation status and measure response time during evaluation.
-\item \textbf{Data privacy / consent:} minimize collection of personal information and store only data required for trip planning and collaboration.
-\item \textbf{Recommendation quality:} generic or unsuitable recommendations may reduce user trust. Collect user feedback and allow manual editing rather than forcing AI-generated decisions.
-\item \textbf{Collaboration complexity:} shared itinerary editing can increase implementation complexity. Start with shared trips and basic add/edit functionality; real-time synchronization is not required in the initial implementation.
-\item \textbf{Evaluation measurement ambiguity:} instrument timestamps and define clear measurement procedures for time-to-itinerary and user usefulness ratings before development begins.
-\item \textbf{Operational issues in pilot:} use staging early and ensure CI/CD produces repeatable deployments.
+\item Destinations
+\item Places
+\item Weather-related travel questions
+\item Packing
+\item Travel preparation
+\item General travel queries
+\item The user's own saved travel information where authorized
+\item How to use TravelSync
 \end{itemize}
+
+The AI assistant will use an existing large language model/API rather than training a new foundation model.
+
+For questions involving private user information, the backend will authenticate the user and provide only the relevant authorized information to the AI service.
+
+
+\subsection{Interactive Travel Map}
+
+TravelSync will provide an interactive map for geographical visualization.
+
+The map can display:
+
+\begin{itemize}
+\item User's current location
+\item Selected destination
+\item Recommended places
+\item Recommended hotels
+\item Other relevant locations
+\end{itemize}
+
+The user's current location can be obtained using the browser Geolocation API after permission is granted.
+
+OpenStreetMap-based services and a map library such as Leaflet can be used to provide the interactive map.
+
+Geographical information can also be used to calculate the distance between locations.
+
+
+% =====================================================
+% 5. SYSTEM ARCHITECTURE
+% =====================================================
+
+\section{System Architecture}
+
+TravelSync will follow a modular web-based architecture consisting of a frontend, backend, machine learning component, database, external services, and AI service.
+
+\begin{itemize}
+
+\item \textbf{Frontend:} React will provide the user interface for registration, destination discovery, destination selection, place information, packing lists, hotel recommendations, health information, group collaboration, destination voting, bookings, previous trips, chatbot interaction, and map visualization.
+
+\item \textbf{Backend:} Python FastAPI will provide REST APIs for authentication, user management, destination recommendation, external API communication, packing logic, health information processing, group functionality, destination voting, booking management, and AI integration.
+
+\item \textbf{Machine Learning Layer:} Scikit-learn will be used for the KNN destination recommendation model. Additional historical health analysis may use Isolation Forest, seasonal analysis, and optionally K-Means.
+
+\item \textbf{Database:} MongoDB will store users, destinations and application-specific information, groups, messages, destination suggestions, votes, bookings, previous trips, and other required persistent data.
+
+\item \textbf{External Services:} weather, hotel, places, geocoding, and OpenStreetMap-based services will provide dynamic travel and geographical information.
+
+\item \textbf{AI Service:} an existing large language model/API will provide the Travel Assistant functionality.
+
+\item \textbf{Real-Time Communication:} WebSockets or Socket.IO can be used for group chat and collaborative group communication.
+
+\item \textbf{Administration:} an administrative interface will allow authorized administrators to manage users and destination/place information.
+
+\end{itemize}
+
+
+\subsection{System Actors}
+
+The major actors of TravelSync are:
+
+\begin{itemize}
+
+\item \textbf{Traveller:} uses TravelSync to register/login, plan travel, receive destination recommendations, select destinations, view places, check weather, generate packing lists, view hotels, access health information, create or join groups, share destination suggestions, vote on destination options, manage bookings and tickets, view previous trips, and interact with the Travel Assistant.
+
+\item \textbf{Group Member:} participates in a travel group, communicates through group chat, views shared destination suggestions, discusses destination options, and votes on destinations.
+
+\item \textbf{Administrator:} manages users and destination/place information.
+
+\item \textbf{Weather API:} provides weather information.
+
+\item \textbf{Hotel API:} provides hotel or accommodation information.
+
+\item \textbf{OpenStreetMap-based Service:} provides geographical and map-related information.
+
+\end{itemize}
+
+
+% =====================================================
+% 6. EVALUATION
+% =====================================================
+
+\section{Evaluation Criterion}
+
+The system will be evaluated using measurable criteria related to destination recommendation, system functionality, and user experience.
+
+\subsection{Destination Recommendation Evaluation}
+
+The KNN recommendation component will be evaluated using:
+
+\begin{itemize}
+
+\item Relevance of recommended destinations to the user's preferences.
+
+\item Percentage of recommendations satisfying the specified budget range.
+
+\item Percentage of recommendations satisfying the requested travel-distance constraint.
+
+\item Suitability of recommendations for the requested trip duration.
+
+\item User ratings of recommendation relevance on a 1--5 scale.
+
+\end{itemize}
+
+Because the system does not initially have a large labelled dataset of real user choices, recommendation quality will be evaluated through controlled test cases and pilot-user feedback rather than claiming an unsupported supervised ``accuracy'' value.
+
+
+\subsection{System Evaluation}
+
+The following metrics will also be considered:
+
+\begin{itemize}
+
+\item \textbf{Recommendation response time:} time required to generate destination recommendations.
+
+\item \textbf{Place information usefulness:} user rating of the relevance of displayed places.
+
+\item \textbf{Packing relevance:} percentage of generated packing items considered useful by users.
+
+\item \textbf{Hotel recommendation usefulness:} user rating of the recommended accommodation options.
+
+\item \textbf{Health information usefulness:} user rating of the clarity and usefulness of health information.
+
+\item \textbf{Group collaboration usability:} user rating of the usefulness of group chat, destination sharing, and destination voting.
+
+\item \textbf{Destination decision usefulness:} user feedback on whether group voting helped members reach a destination decision.
+
+\item \textbf{AI assistant usefulness:} user rating of the usefulness of the Travel Assistant for travel-related questions.
+
+\item \textbf{System reliability:} successful completion rate of core application workflows.
+
+\end{itemize}
+
+
+\subsection{Pilot Validation}
+
+A small pilot evaluation can be conducted with student travellers.
+
+The evaluation can include:
+
+\begin{itemize}
+
+\item 10--20 pilot users.
+
+\item Different destination preferences.
+
+\item Different budgets.
+
+\item Different trip durations.
+
+\item Different traveller types such as family, friends, couple, and solo.
+
+\item Testing both known-destination and destination-discovery workflows.
+
+\item Testing destination recommendations.
+
+\item Testing place and hotel discovery.
+
+\item Testing packing-list generation.
+
+\item Testing group creation, chat, destination sharing, and voting.
+
+\item Testing previous-trip access and booking management.
+
+\item Testing the AI Travel Assistant.
+
+\end{itemize}
+
+User feedback and application logs will be used to identify usability and recommendation-quality issues.
+
+
+% =====================================================
+% 7. SCALABILITY
+% =====================================================
+
+\section{Scalability}
+
+TravelSync is designed as a modular system so that individual components can be scaled independently.
+
+The system can support growth through:
+
+\begin{itemize}
+
+\item Modular FastAPI services.
+
+\item Indexed MongoDB collections.
+
+\item Stateless REST APIs where appropriate.
+
+\item Separation of machine learning inference from the frontend.
+
+\item Caching frequently requested external information.
+
+\item Limiting repeated external API requests.
+
+\item Modular external API integrations.
+
+\item Appropriate storage for uploaded travel documents.
+
+\item Separate handling of real-time group communication.
+
+\end{itemize}
+
+The system can initially be deployed at a small scale for academic evaluation and later expanded if required.
+
+
+% =====================================================
+% 8. ENGINE AVAILABILITY
+% =====================================================
+
+\section{Engine Availability Heuristic}
+
+The proposed system can be implemented using mature and available technologies.
+
+\begin{itemize}
+
+\item React for frontend development.
+
+\item Python and FastAPI for backend API development.
+
+\item Python and Scikit-learn for machine learning.
+
+\item MongoDB for persistent application data.
+
+\item K-Nearest Neighbors for destination recommendation.
+
+\item Isolation Forest and seasonal analysis for historical health intelligence.
+
+\item K-Means as an optional technique for historical health analysis.
+
+\item An existing large language model/API for the Travel Assistant.
+
+\item Weather APIs for current and forecast weather information.
+
+\item Hotel APIs for accommodation information.
+
+\item Places and geocoding APIs for destination and place information.
+
+\item OpenStreetMap-based services for geographical and map information.
+
+\item WebSockets or Socket.IO for real-time group communication.
+
+\item Appropriate storage services for travel booking documents.
+
+\end{itemize}
+
+These technologies allow the project to focus on personalized destination recommendation, travel information integration, health intelligence, group collaboration, destination voting, and practical AI assistance without requiring development of a new foundation AI model.
+
+
+% =====================================================
+% 9. PROJECT SCOPE AND DELIVERABLES
+% =====================================================
+
+\section{Project Scope and Deliverables}
+
+\subsection{Initial Deliverable}
+
+The initial implementation will include:
+
+\begin{itemize}
+
+\item User registration and login.
+
+\item Destination discovery.
+
+\item User preference collection.
+
+\item KNN-based destination recommendation.
+
+\item Budget and duration matching.
+
+\item Starting-location and maximum-distance filtering.
+
+\item Known-destination selection.
+
+\item Place discovery.
+
+\item Place details.
+
+\item Basic weather information.
+
+\item Basic hotel recommendations.
+
+\item MongoDB-based storage.
+
+\end{itemize}
+
+
+\subsection{Subsequent Deliverables}
+
+The subsequent implementation will include:
+
+\begin{itemize}
+
+\item Smart Packing Assistant.
+
+\item Health and Safety information.
+
+\item Current health alerts.
+
+\item Historical health activity analysis.
+
+\item Interactive map.
+
+\item Collaborative Travel Hub.
+
+\item Group creation and joining.
+
+\item Real-time group chat.
+
+\item Destination suggestion sharing.
+
+\item Destination voting for group decision-making.
+
+\item Travel bookings and tickets.
+
+\item Previous trip records.
+
+\item Floating AI Travel Assistant.
+
+\item Administrative user management.
+
+\item Administrative destination and place management.
+
+\item Integration and testing of all modules.
+
+\end{itemize}
+
+
+% =====================================================
+% 10. RISKS AND MITIGATIONS
+% =====================================================
+
+\section{Risks and Mitigations}
+
+\begin{itemize}
+
+\item \textbf{External API availability:} weather, hotel, places, or map services may experience downtime or rate limits. Modular service layers and fallback handling will be used.
+
+\item \textbf{Recommendation quality:} KNN recommendations may not always match user expectations. Backend filtering, appropriate feature selection, and pilot-user feedback will be used to improve the recommendation process.
+
+\item \textbf{Dataset limitations:} the quality of the destination recommendation model depends on the quality and coverage of the destination dataset. The dataset will contain a broad range of destinations and consistently structured attributes.
+
+\item \textbf{Lack of labelled user data:} a newly developed travel system may not initially have sufficient historical user-choice data. Recommendation quality will therefore be evaluated using controlled test cases and user feedback rather than an unsupported accuracy claim.
+
+\item \textbf{AI-generated information:} the AI Travel Assistant may produce inaccurate information. Dynamic information such as weather, places, and maps will be obtained from appropriate external services rather than relying solely on the language model.
+
+\item \textbf{AI response latency:} AI requests may require additional processing time. Appropriate loading states will be implemented.
+
+\item \textbf{API quota limitations:} external APIs may impose request limits. API calls will be minimized through selective retrieval and caching where appropriate.
+
+\item \textbf{Health information accuracy:} health information can be sensitive and time-dependent. The system will prioritize authoritative sources and present the information as general travel awareness rather than medical diagnosis.
+
+\item \textbf{Real-time communication reliability:} WebSocket connections may disconnect. Reconnection handling and persistent storage of important group information will be considered.
+
+\item \textbf{Group voting:} group members may have different destination preferences. The voting mechanism will provide a transparent way for members to express their preferences and identify the destination receiving the strongest group support.
+
+\item \textbf{Privacy and security:} authentication and authorization will be used to protect user accounts, group information, bookings, and travel documents.
+
+\item \textbf{Administrative access:} administrative functions will be restricted to authorized administrators.
+
+\end{itemize}
+
+
+% =====================================================
+% 11. SUMMARY
+% =====================================================
 
 \section{Summary}
-This project proposes a deployable web platform, \textbf{ItiNova}, designed to reduce the time and effort required for personalized travel planning. It integrates a core trip planner with AI-powered itinerary generation, weather and best-time recommendations, smart packing assistance, stay recommendations, an interactive travel map, travel health and safety information, and collaborative trip planning.
 
-It meets the course criteria by emphasizing time-to-value through rapid iterations, implementing CI/CD to support frequent safe releases, and using measurable evaluation criteria (especially time-to-itinerary). It remains focused on engineering an integrated and usable travel-planning workflow rather than research-driven novelty.
+TravelSync is an intelligent and collaborative travel platform designed to help users discover destinations, explore travel information, prepare for trips, collaborate with travel companions, manage bookings and tickets, and access previous-trip information within a unified system.
+
+The platform supports two main destination-selection paths. Users who already know where they want to travel can directly select a destination. Users who are unsure can enter preferences such as mood, budget, travel vibe, number of travellers, duration, starting location, preferred distance, and interests. These preferences are processed by a KNN-based machine learning recommendation component to identify suitable destinations. Backend filtering then considers practical constraints such as budget, duration, and geographical distance.
+
+After selecting a destination, users can view places and their details, weather information, recommended hotels, and destination-specific health and safety information. The Smart Packing Assistant generates a personalized packing list using trip duration, destination, weather, and optional activities.
+
+The health component provides current health alerts, precautions, and historical health activity. Historical information can be analyzed using seasonal analysis and anomaly detection techniques, with K-Means available as an optional exploratory method where sufficient data exists.
+
+The Collaborative Travel Hub allows users to create or join travel groups, communicate through group chat, share destination suggestions, and vote on destination options. The voting mechanism allows group members to compare the proposed destinations and collectively decide which destination to choose for their trip.
+
+TravelSync also provides functionality for managing travel bookings and tickets and allows users to access information about their previous trips.
+
+TravelSync includes a floating AI Travel Assistant that provides conversational travel support. The AI assistant is intended to answer travel-related questions and provide contextual assistance rather than automatically making travel decisions on behalf of the user.
+
+An interactive map provides geographical visualization using location and map services, while administrative functionality allows authorized administrators to manage users and destination/place information.
+
+The system uses React for the frontend, Python FastAPI for the backend, MongoDB for persistent application data, Scikit-learn for machine learning, external APIs for weather, hotel, place, and geographical information, and an existing large language model/API for the Travel Assistant.
+
+TravelSync therefore combines machine learning, AI assistance, database management, external API integration, geographical services, and collaborative web development into a single travel platform.
 
 \end{document}
