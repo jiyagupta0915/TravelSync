@@ -153,7 +153,10 @@ def start_locations():
 @app.get("/api/destinations/search")
 def destination_search():
     query = request.args.get("q", "").strip().lower()
-    limit = min(max(int(request.args.get("limit", 10)), 1), 20)
+    try:
+        limit = min(max(int(request.args.get("limit", 10)), 1), 20)
+    except ValueError:
+        return jsonify({"error": "limit must be an integer"}), 400
     if not query:
         rows = DF.head(limit)
     else:
@@ -231,8 +234,11 @@ def create_trip():
         return jsonify({"error": "Please choose a destination from the available suggestions."}), 400
 
     row = destination_row.iloc[0]
-    duration_value = int(data["duration"]) if data.get("duration") not in (None, "") else None
-    budget_value = float(data["budget"]) if data.get("budget") not in (None, "") else None
+    try:
+        duration_value = int(data["duration"]) if data.get("duration") not in (None, "") else None
+        budget_value = float(data["budget"]) if data.get("budget") not in (None, "") else None
+    except (TypeError, ValueError):
+        return jsonify({"error": "Duration and budget must be valid numbers."}), 400
     if duration_value is not None and not 1 <= duration_value <= 30:
         return jsonify({"error": "Trip duration must be between 1 and 30 days."}), 400
     if budget_value is not None and budget_value <= 0:
