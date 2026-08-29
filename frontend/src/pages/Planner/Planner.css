@@ -1,0 +1,24 @@
+.planner-placeholder {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-6);
+  background-color: var(--surface-cream);
+}
+
+.planner-placeholder h1 {
+  font-size: 1.8rem;
+  margin-bottom: var(--space-3);
+}
+
+.planner-placeholder p {
+  color: var(--text-secondary);
+  margin-bottom: var(--space-8);
+}
+
+.planner-placeholder .btn--ghost {
+  background-color: var(--surface-white);
+}

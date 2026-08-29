@@ -1,0 +1,125 @@
+/* ============================================
+   TravelSync — Global Design Tokens & Base Styles
+   ============================================ */
+
+:root {
+  /* ---- Official TravelSync pastel palette ---- */
+  --pastel-blue: #D6E6FF;
+  --pastel-aqua: #D7F9F8;
+  --soft-cream: #FFFFEA;
+  --pastel-peach: #FFF0D4;
+  --pastel-pink: #FBE0E0;
+  --pastel-lavender: #E5D4EF;
+
+  /* ---- Text ---- */
+  --text-primary: #272342;      /* dark navy/purple */
+  --text-secondary: #6E6B80;    /* muted slate, tinted toward the navy hue */
+  --text-on-dark: #FDFCFF;
+
+  /* ---- Derived "ink" tones for buttons/dark surfaces ----
+     Kept in the same hue family as --text-primary so CTAs
+     feel native to the palette instead of a generic indigo. */
+  --ink: #272342;
+  --ink-soft: #4B4570;
+  --ink-hover: #34305A;
+
+  /* ---- Surfaces ---- */
+  --surface-white: #FFFFFF;
+  --surface-cream: #FFFDF6; /* very subtle warm off-white for page backgrounds */
+
+  /* ---- Radius scale ---- */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+
+  /* ---- Shadow scale ---- */
+  --shadow-sm: 0 2px 8px rgba(39, 35, 66, 0.06);
+  --shadow-md: 0 8px 24px rgba(39, 35, 66, 0.08);
+  --shadow-lg: 0 16px 40px rgba(39, 35, 66, 0.12);
+
+  /* ---- Spacing scale ---- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-8: 3rem;
+  --space-10: 4rem;
+  --space-12: 6rem;
+
+  /* ---- Typography ---- */
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* ---- Reset ---- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text-primary);
+  background-color: var(--surface-white);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--text-primary);
+  line-height: 1.15;
+  font-weight: 600;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input {
+  font-family: var(--font-body);
+}
+
+ul {
+  list-style: none;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* ---- Visible keyboard focus (accessibility) ---- */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--ink-soft);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ---- Reduced motion respected ---- */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

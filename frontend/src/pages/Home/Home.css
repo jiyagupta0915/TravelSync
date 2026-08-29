@@ -1,0 +1,124 @@
+.dashboard {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--surface-white);
+}
+
+.dashboard__main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard__topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-8);
+  border-bottom: 1px solid rgba(39, 35, 66, 0.06);
+}
+
+.dashboard__search {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  background-color: var(--surface-cream);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-pill);
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  min-width: 240px;
+}
+
+.dashboard__topbar-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.dashboard__icon-btn {
+  color: var(--text-secondary);
+}
+
+.dashboard__icon-btn:hover {
+  color: var(--text-primary);
+}
+
+.dashboard__avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--pastel-lavender);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.dashboard__content {
+  padding: var(--space-8);
+  max-width: 960px;
+}
+
+.dashboard__greeting {
+  font-size: 1.9rem;
+  margin-bottom: var(--space-2);
+}
+
+.dashboard__subgreeting {
+  color: var(--text-secondary);
+  margin-bottom: var(--space-8);
+}
+
+.dashboard__path-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+  margin-bottom: var(--space-10);
+}
+
+.dashboard__trips h2 {
+  font-size: 1.3rem;
+  margin-bottom: var(--space-4);
+}
+
+.dashboard__trips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space-4);
+}
+
+.trip-chip {
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.trip-chip__destination {
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.trip-chip__dates {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 760px) {
+  .dashboard__path-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard__search span {
+    display: none;
+  }
+
+  .dashboard__content {
+    padding: var(--space-5);
+  }
+}
