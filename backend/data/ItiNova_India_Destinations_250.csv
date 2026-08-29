@@ -1,0 +1,251 @@
+Destination,State,Region,Mountain,Beach,Nature,Adventure,Culture,Relaxation,Nightlife,Spiritual,Trekking,Photography,Food,Heritage,Family,Couple,Friends,Solo,Avg_Daily_Budget_INR,Ideal_Days,Latitude,Longitude,Profile_Type,Data_Source
+Manali,Himachal Pradesh,North,0.95,0.0,0.9,0.9,0.5,0.7,0.25,0.2,0.95,0.9,0.8,0.65,0.85,0.9,0.95,0.75,2306,5,32.2396,77.1887,existing-curated-profile,Existing ItiNova v2 profile
+Shimla,Himachal Pradesh,North,0.9,0.0,0.75,0.45,0.8,0.8,0.3,0.25,0.65,0.8,0.8,0.85,0.9,0.85,0.75,0.7,1836,4,31.1048,77.1734,existing-curated-profile,Existing ItiNova v2 profile
+Dharamshala,Himachal Pradesh,North,0.85,0.0,0.95,0.7,0.7,0.85,0.15,0.55,0.8,0.95,0.8,0.8,0.85,0.85,0.85,0.8,2462,6,32.219,76.3234,existing-curated-profile,Existing ItiNova v2 profile
+Kasol,Himachal Pradesh,North,0.9,0.0,0.95,0.9,0.3,0.8,0.1,0.1,1.0,0.95,0.7,0.6,0.55,0.75,0.95,0.9,2529,3,32.01,77.315,existing-curated-profile,Existing ItiNova v2 profile
+Spiti Valley,Himachal Pradesh,North,1.0,0.0,0.95,1.0,0.4,0.4,0.05,0.1,1.0,1.0,0.65,0.55,0.45,0.65,0.9,0.95,1517,6,32.246,78.034,existing-curated-profile,Existing ItiNova v2 profile
+Dalhousie,Himachal Pradesh,North,0.9,0.0,0.9,0.45,0.55,0.9,0.1,0.3,0.7,0.9,0.75,0.75,0.9,0.85,0.7,0.75,1744,6,32.5387,75.97,existing-curated-profile,Existing ItiNova v2 profile
+Kasauli,Himachal Pradesh,North,0.85,0.0,0.8,0.25,0.45,1.0,0.05,0.15,0.45,0.75,0.7,0.75,0.85,0.85,0.65,0.75,2244,2,30.8986,76.9656,existing-curated-profile,Existing ItiNova v2 profile
+Kullu,Himachal Pradesh,North,0.9,0.0,0.9,0.8,0.45,0.75,0.1,0.2,0.85,0.9,0.75,0.65,0.85,0.85,0.9,0.75,2089,2,31.9579,77.1095,existing-curated-profile,Existing ItiNova v2 profile
+Bir Billing,Himachal Pradesh,North,0.85,0.0,0.9,1.0,0.35,0.65,0.1,0.15,1.0,0.95,0.65,0.55,0.55,0.7,0.95,0.9,2194,4,32.0514,76.723,existing-curated-profile,Existing ItiNova v2 profile
+Tirthan Valley,Himachal Pradesh,North,0.9,0.0,1.0,0.75,0.25,0.95,0.05,0.1,0.9,1.0,0.7,0.6,0.7,0.8,0.9,0.9,1901,2,31.65,77.5,existing-curated-profile,Existing ItiNova v2 profile
+Auli,Uttarakhand,North,1.0,0.0,0.9,0.95,0.35,0.75,0.05,0.15,0.95,1.0,0.65,0.6,0.7,0.75,0.9,0.9,2507,3,30.5286,79.5677,existing-curated-profile,Existing ItiNova v2 profile
+Mussoorie,Uttarakhand,North,0.85,0.0,0.8,0.45,0.65,0.9,0.2,0.3,0.65,0.85,0.8,0.8,0.9,0.85,0.75,0.75,2472,4,30.4598,78.0664,existing-curated-profile,Existing ItiNova v2 profile
+Rishikesh,Uttarakhand,North,0.65,0.0,0.95,1.0,0.65,0.75,0.15,0.9,0.9,0.95,0.85,0.8,0.75,0.8,0.95,0.85,2223,6,30.0869,78.2676,existing-curated-profile,Existing ItiNova v2 profile
+Nainital,Uttarakhand,North,0.8,0.0,0.85,0.35,0.6,0.95,0.15,0.35,0.6,0.85,0.8,0.8,0.9,0.85,0.75,0.7,2594,6,29.3919,79.4542,existing-curated-profile,Existing ItiNova v2 profile
+Jim Corbett,Uttarakhand,North,0.3,0.0,1.0,0.75,0.45,0.85,0.05,0.1,0.9,1.0,0.8,0.65,0.9,0.8,0.75,0.7,2363,2,29.53,78.7747,existing-curated-profile,Existing ItiNova v2 profile
+Kedarnath,Uttarakhand,North,0.95,0.0,0.95,1.0,0.7,0.35,0.02,1.0,1.0,1.0,0.55,0.55,0.55,0.6,0.8,0.9,1899,6,30.7346,79.0669,existing-curated-profile,Existing ItiNova v2 profile
+Badrinath,Uttarakhand,North,0.95,0.0,0.9,0.75,0.75,0.45,0.02,1.0,0.9,0.9,0.6,0.6,0.65,0.65,0.75,0.8,2329,2,30.7433,79.4938,existing-curated-profile,Existing ItiNova v2 profile
+Valley of Flowers,Uttarakhand,North,1.0,0.0,1.0,0.95,0.25,0.85,0.02,0.15,1.0,1.0,0.55,0.55,0.55,0.65,0.85,0.9,1864,5,30.728,79.605,existing-curated-profile,Existing ItiNova v2 profile
+Almora,Uttarakhand,North,0.7,0.0,0.9,0.35,0.6,0.95,0.05,0.35,0.65,0.9,0.75,0.7,0.8,0.8,0.7,0.75,2507,6,29.5971,79.6591,existing-curated-profile,Existing ItiNova v2 profile
+Lansdowne,Uttarakhand,North,0.7,0.0,0.85,0.2,0.35,1.0,0.02,0.2,0.55,0.8,0.7,0.7,0.85,0.8,0.65,0.75,2182,6,29.8413,78.6801,existing-curated-profile,Existing ItiNova v2 profile
+Leh,Ladakh,North,1.0,0.0,0.95,1.0,0.55,0.5,0.05,0.45,1.0,1.0,0.6,0.6,0.55,0.7,0.9,0.9,2135,3,34.1526,77.5771,existing-curated-profile,Existing ItiNova v2 profile
+Nubra Valley,Ladakh,North,1.0,0.0,1.0,1.0,0.35,0.55,0.02,0.35,1.0,1.0,0.55,0.55,0.5,0.65,0.85,0.9,1961,6,35.425,77.6,existing-curated-profile,Existing ItiNova v2 profile
+Pangong Lake,Ladakh,North,1.0,0.0,1.0,0.85,0.25,0.65,0.02,0.3,0.95,1.0,0.5,0.55,0.5,0.65,0.8,0.85,2627,2,33.7595,78.6675,existing-curated-profile,Existing ItiNova v2 profile
+Srinagar,Jammu and Kashmir,North,0.55,0.0,0.95,0.35,0.8,0.9,0.15,0.85,0.75,0.95,0.85,0.85,0.8,0.85,0.75,0.8,2145,4,34.0837,74.7973,existing-curated-profile,Existing ItiNova v2 profile
+Gulmarg,Jammu and Kashmir,North,0.98,0.0,0.9,1.0,0.35,0.8,0.05,0.2,1.0,1.0,0.7,0.65,0.7,0.75,0.85,0.85,2050,4,34.0484,74.3805,existing-curated-profile,Existing ItiNova v2 profile
+Pahalgam,Jammu and Kashmir,North,0.95,0.0,1.0,0.8,0.45,0.95,0.05,0.25,0.9,1.0,0.75,0.7,0.8,0.85,0.8,0.8,2076,3,34.0161,75.315,existing-curated-profile,Existing ItiNova v2 profile
+Jammu,Jammu and Kashmir,North,0.45,0.0,0.65,0.45,0.9,0.65,0.2,0.95,0.55,0.7,0.85,0.8,0.8,0.75,0.65,0.65,2386,2,32.7266,74.857,existing-curated-profile,Existing ItiNova v2 profile
+Amritsar,Punjab,North,0.0,0.0,0.45,0.1,1.0,0.55,0.35,0.95,0.3,0.45,1.0,0.95,0.85,0.75,0.65,0.7,2327,5,31.634,74.8723,existing-curated-profile,Existing ItiNova v2 profile
+Chandigarh,Chandigarh,North,0.0,0.0,0.45,0.1,0.7,0.65,0.55,0.45,0.2,0.4,0.85,0.85,0.8,0.7,0.7,0.65,2344,3,30.7333,76.7794,existing-curated-profile,Existing ItiNova v2 profile
+Agra,Uttar Pradesh,North,0.0,0.0,0.25,0.05,1.0,0.55,0.25,0.9,0.15,0.3,1.0,0.9,0.8,0.75,0.55,0.6,2350,5,27.1767,78.0081,existing-curated-profile,Existing ItiNova v2 profile
+Varanasi,Uttar Pradesh,North,0.0,0.0,0.4,0.1,1.0,0.55,0.2,1.0,0.1,0.5,1.0,0.9,0.75,0.7,0.55,0.65,2949,4,25.3176,82.9739,existing-curated-profile,Existing ItiNova v2 profile
+Lucknow,Uttar Pradesh,North,0.0,0.0,0.35,0.1,0.95,0.65,0.45,0.65,0.05,0.4,0.95,0.85,0.85,0.75,0.65,0.65,2057,3,26.8467,80.9462,existing-curated-profile,Existing ItiNova v2 profile
+Mathura,Uttar Pradesh,North,0.0,0.0,0.4,0.1,0.85,0.6,0.1,0.95,0.1,0.45,0.95,0.8,0.85,0.75,0.55,0.6,2020,6,27.4924,77.6737,existing-curated-profile,Existing ItiNova v2 profile
+Ayodhya,Uttar Pradesh,North,0.0,0.0,0.35,0.05,0.9,0.55,0.05,1.0,0.05,0.4,0.95,0.75,0.85,0.7,0.5,0.6,1915,2,26.799,82.204,existing-curated-profile,Existing ItiNova v2 profile
+Haridwar,Uttarakhand,North,0.25,0.0,0.7,0.2,0.9,0.7,0.1,1.0,0.4,0.7,0.9,0.8,0.85,0.75,0.6,0.7,2415,5,29.9457,78.1642,existing-curated-profile,Existing ItiNova v2 profile
+Udaipur,Rajasthan,West,0.0,0.0,0.45,0.15,1.0,0.9,0.55,0.85,0.1,0.75,0.95,0.95,0.85,0.9,0.75,0.75,2695,5,24.5854,73.7125,existing-curated-profile,Existing ItiNova v2 profile
+Jaipur,Rajasthan,West,0.0,0.0,0.4,0.2,1.0,0.65,0.65,0.8,0.1,0.65,1.0,0.95,0.85,0.8,0.75,0.7,2260,3,26.9124,75.7873,existing-curated-profile,Existing ItiNova v2 profile
+Jodhpur,Rajasthan,West,0.0,0.0,0.3,0.15,1.0,0.6,0.5,0.7,0.05,0.6,1.0,0.9,0.8,0.75,0.7,0.7,2005,3,26.2389,73.0243,existing-curated-profile,Existing ItiNova v2 profile
+Jaisalmer,Rajasthan,West,0.0,0.0,0.4,0.65,0.95,0.7,0.35,0.65,0.05,0.9,0.95,0.9,0.75,0.75,0.8,0.75,2011,2,26.9157,70.9083,existing-curated-profile,Existing ItiNova v2 profile
+Pushkar,Rajasthan,West,0.0,0.0,0.4,0.2,0.9,0.8,0.2,1.0,0.05,0.6,0.9,0.85,0.7,0.75,0.75,0.75,2527,6,26.4899,74.5511,existing-curated-profile,Existing ItiNova v2 profile
+Mount Abu,Rajasthan,West,0.45,0.0,0.75,0.25,0.65,0.95,0.1,0.4,0.65,0.8,0.75,0.75,0.85,0.85,0.65,0.7,2560,6,24.5926,72.7156,existing-curated-profile,Existing ItiNova v2 profile
+Ranthambore,Rajasthan,West,0.0,0.0,1.0,0.75,0.45,0.8,0.05,0.1,0.85,1.0,0.75,0.65,0.85,0.75,0.75,0.75,2490,3,26.0173,76.5026,existing-curated-profile,Existing ItiNova v2 profile
+Bikaner,Rajasthan,West,0.0,0.0,0.3,0.35,0.9,0.6,0.2,0.6,0.05,0.55,0.9,0.85,0.8,0.7,0.65,0.65,2067,2,28.0229,73.3119,existing-curated-profile,Existing ItiNova v2 profile
+Kumbhalgarh,Rajasthan,West,0.2,0.0,0.65,0.35,1.0,0.8,0.05,0.5,0.7,0.85,0.7,0.75,0.8,0.8,0.65,0.7,2381,2,25.1475,73.583,existing-curated-profile,Existing ItiNova v2 profile
+Ahmedabad,Gujarat,West,0.0,0.0,0.35,0.15,0.95,0.55,0.6,0.5,0.05,0.55,0.9,0.9,0.85,0.75,0.65,0.65,2340,2,23.0225,72.5714,existing-curated-profile,Existing ItiNova v2 profile
+Rann of Kutch,Gujarat,West,0.0,0.0,0.8,0.55,0.7,0.8,0.1,0.45,0.75,0.9,0.7,0.75,0.75,0.75,0.8,0.75,2376,6,23.7337,69.8597,existing-curated-profile,Existing ItiNova v2 profile
+Dwarka,Gujarat,West,0.0,0.0,0.45,0.15,0.85,0.55,0.1,1.0,0.1,0.5,0.85,0.75,0.8,0.7,0.6,0.65,2605,6,22.2442,68.9685,existing-curated-profile,Existing ItiNova v2 profile
+Somnath,Gujarat,West,0.0,0.0,0.4,0.1,0.9,0.55,0.05,1.0,0.1,0.45,0.85,0.75,0.8,0.7,0.6,0.65,2378,2,20.888,70.4017,existing-curated-profile,Existing ItiNova v2 profile
+Diu,Daman and Diu,West,0.0,1.0,0.75,0.45,0.45,0.9,0.35,0.35,0.7,0.85,0.75,0.85,0.8,0.85,0.75,0.7,2537,5,20.7141,70.9874,existing-curated-profile,Existing ItiNova v2 profile
+Mumbai,Maharashtra,West,0.0,0.7,0.55,0.55,0.9,0.6,1.0,0.55,0.35,0.65,1.0,1.0,0.8,0.85,0.85,0.8,2323,2,19.076,72.8777,existing-curated-profile,Existing ItiNova v2 profile
+Pune,Maharashtra,West,0.25,0.0,0.55,0.3,0.85,0.7,0.6,0.4,0.45,0.65,0.9,0.85,0.8,0.8,0.8,0.75,2401,3,18.5204,73.8567,existing-curated-profile,Existing ItiNova v2 profile
+Lonavala,Maharashtra,West,0.65,0.0,0.9,0.45,0.35,0.95,0.1,0.2,0.7,0.9,0.75,0.8,0.85,0.85,0.8,0.8,2520,4,18.7546,73.4062,existing-curated-profile,Existing ItiNova v2 profile
+Mahabaleshwar,Maharashtra,West,0.6,0.0,0.9,0.35,0.3,1.0,0.05,0.2,0.7,0.9,0.75,0.8,0.85,0.85,0.75,0.75,1789,5,17.9307,73.6477,existing-curated-profile,Existing ItiNova v2 profile
+Nashik,Maharashtra,West,0.35,0.0,0.7,0.35,0.65,0.8,0.25,0.3,0.65,0.75,0.85,0.9,0.8,0.8,0.75,0.7,2188,6,19.9975,73.7898,existing-curated-profile,Existing ItiNova v2 profile
+Aurangabad,Maharashtra,West,0.0,0.0,0.35,0.15,1.0,0.55,0.3,0.55,0.05,0.45,0.95,0.9,0.8,0.75,0.65,0.65,2135,2,19.8762,75.3433,existing-curated-profile,Existing ItiNova v2 profile
+Alibaug,Maharashtra,West,0.0,1.0,0.75,0.45,0.35,0.9,0.2,0.25,0.65,0.85,0.75,0.85,0.8,0.85,0.8,0.75,2076,2,18.6414,72.8722,existing-curated-profile,Existing ItiNova v2 profile
+Goa,Goa,West,0.0,1.0,0.75,0.75,0.6,0.95,1.0,0.55,0.35,0.75,1.0,1.0,0.75,0.95,0.95,0.85,2203,3,15.4909,73.8278,existing-curated-profile,Existing ItiNova v2 profile
+Gokarna,Karnataka,South,0.0,1.0,0.85,0.6,0.45,0.95,0.3,0.5,0.75,0.95,0.8,0.9,0.65,0.85,0.9,0.85,2723,3,14.55,74.55,existing-curated-profile,Existing ItiNova v2 profile
+Hampi,Karnataka,South,0.2,0.0,0.55,0.35,1.0,0.7,0.2,0.55,0.2,0.65,0.9,0.9,0.7,0.75,0.8,0.75,1896,6,15.335,76.46,existing-curated-profile,Existing ItiNova v2 profile
+Coorg,Karnataka,South,0.55,0.0,1.0,0.55,0.35,1.0,0.1,0.25,0.7,0.95,0.8,0.85,0.8,0.9,0.8,0.8,2538,5,12.3375,75.8069,existing-curated-profile,Existing ItiNova v2 profile
+Chikmagalur,Karnataka,South,0.65,0.0,1.0,0.7,0.35,0.95,0.1,0.2,0.8,0.95,0.75,0.85,0.75,0.85,0.85,0.8,1610,3,13.3161,75.772,existing-curated-profile,Existing ItiNova v2 profile
+Bengaluru,Karnataka,South,0.1,0.0,0.55,0.2,0.8,0.6,1.0,0.35,0.25,0.6,0.95,0.9,0.8,0.8,0.85,0.75,2082,6,12.9716,77.5946,existing-curated-profile,Existing ItiNova v2 profile
+Mysuru,Karnataka,South,0.1,0.0,0.55,0.15,0.95,0.75,0.45,0.55,0.35,0.65,0.95,0.9,0.85,0.8,0.7,0.7,2256,4,12.2958,76.6394,existing-curated-profile,Existing ItiNova v2 profile
+Kabini,Karnataka,South,0.2,0.0,1.0,0.6,0.35,0.9,0.03,0.15,0.75,1.0,0.8,0.65,0.75,0.8,0.75,0.75,2405,4,11.951,76.298,existing-curated-profile,Existing ItiNova v2 profile
+Udupi,Karnataka,South,0.0,0.85,0.85,0.35,0.6,0.9,0.2,0.65,0.6,0.9,0.85,0.9,0.8,0.85,0.8,0.75,2448,4,13.3409,74.7421,existing-curated-profile,Existing ItiNova v2 profile
+Mangalore,Karnataka,South,0.0,0.9,0.7,0.35,0.7,0.8,0.45,0.65,0.45,0.75,0.9,0.9,0.8,0.85,0.85,0.75,2477,2,12.9141,74.856,existing-curated-profile,Existing ItiNova v2 profile
+Wayanad,Kerala,South,0.55,0.0,1.0,0.65,0.45,0.95,0.05,0.35,0.85,1.0,0.8,0.85,0.8,0.85,0.8,0.8,2077,6,11.6854,76.132,existing-curated-profile,Existing ItiNova v2 profile
+Munnar,Kerala,South,0.8,0.0,1.0,0.45,0.45,1.0,0.05,0.25,0.8,1.0,0.85,0.9,0.85,0.9,0.8,0.8,2038,2,10.0889,77.0595,existing-curated-profile,Existing ItiNova v2 profile
+Alappuzha,Kerala,South,0.0,0.75,0.95,0.3,0.45,1.0,0.15,0.45,0.65,0.9,0.85,0.9,0.8,0.9,0.8,0.75,2500,2,9.4981,76.3388,existing-curated-profile,Existing ItiNova v2 profile
+Kochi,Kerala,South,0.0,0.55,0.65,0.25,0.95,0.75,0.75,0.75,0.35,0.7,1.0,0.95,0.85,0.85,0.8,0.75,2133,3,9.9312,76.2673,existing-curated-profile,Existing ItiNova v2 profile
+Kovalam,Kerala,South,0.0,1.0,0.85,0.35,0.45,1.0,0.35,0.55,0.55,0.9,0.8,0.9,0.8,0.9,0.8,0.75,1753,3,8.4004,76.9787,existing-curated-profile,Existing ItiNova v2 profile
+Varkala,Kerala,South,0.0,1.0,0.85,0.45,0.45,0.95,0.45,0.65,0.65,0.95,0.85,0.95,0.8,0.9,0.85,0.8,1803,2,8.7379,76.7163,existing-curated-profile,Existing ItiNova v2 profile
+Thekkady,Kerala,South,0.3,0.0,1.0,0.65,0.45,0.95,0.05,0.35,0.8,1.0,0.8,0.8,0.8,0.85,0.8,0.75,1878,2,9.6031,77.1615,existing-curated-profile,Existing ItiNova v2 profile
+Kumarakom,Kerala,South,0.0,0.65,1.0,0.2,0.35,1.0,0.05,0.4,0.55,0.9,0.8,0.85,0.8,0.9,0.75,0.7,2374,5,9.617,76.43,existing-curated-profile,Existing ItiNova v2 profile
+Kanyakumari,Tamil Nadu,South,0.0,0.75,0.7,0.2,0.85,0.7,0.25,0.85,0.55,0.8,0.9,0.9,0.8,0.8,0.7,0.7,2249,6,8.0883,77.5385,existing-curated-profile,Existing ItiNova v2 profile
+Ooty,Tamil Nadu,South,0.6,0.0,0.9,0.3,0.45,1.0,0.1,0.3,0.65,0.9,0.85,0.85,0.85,0.9,0.75,0.75,2441,2,11.4102,76.695,existing-curated-profile,Existing ItiNova v2 profile
+Kodaikanal,Tamil Nadu,South,0.65,0.0,0.95,0.4,0.35,1.0,0.05,0.3,0.7,0.95,0.8,0.85,0.85,0.9,0.75,0.8,2050,3,10.2381,77.4892,existing-curated-profile,Existing ItiNova v2 profile
+Chennai,Tamil Nadu,South,0.0,0.8,0.55,0.25,0.8,0.6,0.8,0.6,0.25,0.6,0.95,0.95,0.8,0.8,0.85,0.75,2255,4,13.0827,80.2707,existing-curated-profile,Existing ItiNova v2 profile
+Mahabalipuram,Tamil Nadu,South,0.0,0.55,0.6,0.2,1.0,0.75,0.25,0.55,0.3,0.65,0.9,0.9,0.8,0.8,0.75,0.7,2418,6,12.6208,80.1945,existing-curated-profile,Existing ItiNova v2 profile
+Madurai,Tamil Nadu,South,0.0,0.0,0.35,0.1,1.0,0.6,0.25,0.95,0.05,0.55,0.95,0.9,0.8,0.75,0.65,0.65,2091,5,9.9252,78.1198,existing-curated-profile,Existing ItiNova v2 profile
+Rameswaram,Tamil Nadu,South,0.0,0.45,0.5,0.1,0.9,0.55,0.1,1.0,0.15,0.5,0.9,0.8,0.8,0.75,0.6,0.65,2359,5,9.2881,79.3129,existing-curated-profile,Existing ItiNova v2 profile
+Pondicherry,Puducherry,South,0.0,0.65,0.65,0.3,0.8,0.9,0.55,0.65,0.4,0.75,0.95,0.95,0.85,0.9,0.9,0.8,1968,4,11.9416,79.8083,existing-curated-profile,Existing ItiNova v2 profile
+Andaman,Andaman and Nicobar Islands,East,0.0,1.0,1.0,0.9,0.45,1.0,0.45,0.65,0.9,1.0,0.85,0.95,0.75,0.95,0.9,0.85,1972,4,11.7401,92.6586,existing-curated-profile,Existing ItiNova v2 profile
+Lakshadweep,Lakshadweep,South,0.0,1.0,1.0,0.65,0.2,1.0,0.2,0.55,0.85,1.0,0.9,0.95,0.65,0.9,0.85,0.8,2066,2,10.5667,72.6417,existing-curated-profile,Existing ItiNova v2 profile
+Darjeeling,West Bengal,East,0.85,0.0,0.85,0.45,0.8,0.9,0.25,0.65,0.8,0.9,0.85,0.9,0.8,0.85,0.75,0.75,1681,6,27.041,88.2663,existing-curated-profile,Existing ItiNova v2 profile
+Kalimpong,West Bengal,East,0.75,0.0,0.9,0.35,0.55,0.95,0.1,0.45,0.65,0.9,0.75,0.8,0.8,0.85,0.7,0.75,2270,6,27.0667,88.4667,existing-curated-profile,Existing ItiNova v2 profile
+Kolkata,West Bengal,East,0.0,0.0,0.45,0.15,0.95,0.6,0.9,0.75,0.2,0.65,1.0,0.95,0.8,0.8,0.9,0.75,1935,2,22.5726,88.3639,existing-curated-profile,Existing ItiNova v2 profile
+Sundarbans,West Bengal,East,0.0,0.0,1.0,0.55,0.35,0.85,0.02,0.2,0.75,1.0,0.75,0.6,0.7,0.75,0.7,0.7,2104,5,21.9497,89.1833,existing-curated-profile,Existing ItiNova v2 profile
+Digha,West Bengal,East,0.0,0.95,0.75,0.3,0.35,0.9,0.25,0.35,0.6,0.85,0.8,0.85,0.8,0.85,0.75,0.7,2268,2,21.628,87.508,existing-curated-profile,Existing ItiNova v2 profile
+Gangtok,Sikkim,East,0.9,0.0,0.95,0.65,0.75,0.9,0.1,0.65,0.85,0.95,0.75,0.85,0.8,0.85,0.8,0.8,2256,5,27.3389,88.6065,existing-curated-profile,Existing ItiNova v2 profile
+Pelling,Sikkim,East,0.95,0.0,0.95,0.45,0.6,0.95,0.05,0.4,0.75,0.95,0.7,0.8,0.75,0.8,0.75,0.75,2332,6,27.315,88.235,existing-curated-profile,Existing ItiNova v2 profile
+Tawang,Arunachal Pradesh,East,1.0,0.0,1.0,0.85,0.55,0.75,0.02,0.55,1.0,1.0,0.65,0.65,0.6,0.7,0.85,0.9,2065,2,27.586,91.865,existing-curated-profile,Existing ItiNova v2 profile
+Ziro,Arunachal Pradesh,East,0.55,0.0,1.0,0.55,0.45,1.0,0.02,0.35,0.75,0.95,0.65,0.65,0.7,0.8,0.75,0.85,1951,4,27.544,93.819,existing-curated-profile,Existing ItiNova v2 profile
+Shillong,Meghalaya,East,0.6,0.0,1.0,0.6,0.65,0.9,0.2,0.55,0.85,0.95,0.8,0.85,0.8,0.85,0.85,0.8,2072,2,25.5788,91.8933,existing-curated-profile,Existing ItiNova v2 profile
+Cherrapunji,Meghalaya,East,0.55,0.0,1.0,0.75,0.4,0.85,0.05,0.35,0.95,1.0,0.75,0.75,0.7,0.8,0.85,0.85,1509,4,25.284,91.721,existing-curated-profile,Existing ItiNova v2 profile
+Kaziranga,Assam,East,0.0,0.0,1.0,0.75,0.4,0.85,0.02,0.1,0.85,1.0,0.8,0.65,0.75,0.75,0.75,0.7,1593,6,26.5775,93.1711,existing-curated-profile,Existing ItiNova v2 profile
+Guwahati,Assam,East,0.15,0.0,0.65,0.25,0.75,0.6,0.35,0.75,0.45,0.65,0.9,0.85,0.8,0.75,0.75,0.7,1637,2,26.1445,91.7362,existing-curated-profile,Existing ItiNova v2 profile
+Majuli,Assam,East,0.0,0.0,0.8,0.25,0.8,0.9,0.02,0.55,0.65,0.85,0.7,0.7,0.7,0.75,0.65,0.75,1750,3,27.001,94.224,existing-curated-profile,Existing ItiNova v2 profile
+Bodh Gaya,Bihar,East,0.0,0.0,0.35,0.1,0.85,0.55,0.05,1.0,0.1,0.45,0.85,0.75,0.75,0.7,0.55,0.6,2239,6,24.6961,84.9911,existing-curated-profile,Existing ItiNova v2 profile
+Ranchi,Jharkhand,East,0.2,0.0,0.8,0.55,0.45,0.8,0.2,0.55,0.6,0.8,0.75,0.7,0.75,0.75,0.7,0.7,1783,3,23.3441,85.3096,existing-curated-profile,Existing ItiNova v2 profile
+Puri,Odisha,East,0.0,0.85,0.8,0.3,0.85,0.85,0.35,0.9,0.55,0.85,0.9,0.9,0.85,0.9,0.8,0.75,1967,2,19.8135,85.8312,existing-curated-profile,Existing ItiNova v2 profile
+Bhubaneswar,Odisha,East,0.0,0.25,0.55,0.2,0.95,0.65,0.4,0.75,0.4,0.7,0.9,0.9,0.85,0.75,0.7,0.65,2554,4,20.2961,85.8245,existing-curated-profile,Existing ItiNova v2 profile
+Konark,Odisha,East,0.0,0.3,0.6,0.15,1.0,0.7,0.15,0.75,0.3,0.65,0.85,0.85,0.8,0.75,0.65,0.65,1975,4,19.8876,86.0945,existing-curated-profile,Existing ItiNova v2 profile
+Gopalpur,Odisha,East,0.0,0.95,0.8,0.25,0.45,0.95,0.15,0.4,0.65,0.9,0.8,0.85,0.8,0.85,0.75,0.7,2358,5,19.2586,84.9054,existing-curated-profile,Existing ItiNova v2 profile
+Hyderabad,Telangana,South,0.0,0.0,0.35,0.15,0.9,0.6,0.75,0.65,0.15,0.6,0.95,0.9,0.8,0.8,0.8,0.7,1873,3,17.385,78.4867,existing-curated-profile,Existing ItiNova v2 profile
+Warangal,Telangana,South,0.0,0.0,0.45,0.15,0.95,0.65,0.15,0.55,0.1,0.55,0.85,0.85,0.8,0.75,0.65,0.65,2128,6,17.9689,79.5941,existing-curated-profile,Existing ItiNova v2 profile
+Havelock Island,Andaman and Nicobar Islands,East,0.0,1.0,1.0,0.95,0.35,1.0,0.3,0.7,0.95,1.0,0.8,0.95,0.7,0.95,0.9,0.85,1767,4,12.988,92.976,existing-curated-profile,Existing ItiNova v2 profile
+Dhanaulti,Uttarakhand,North,0.8,0.0,0.9,0.3,0.3,1.0,0.02,0.2,0.7,0.9,0.65,0.7,0.8,0.85,0.65,0.75,2081,3,30.414,78.241,existing-curated-profile,Existing ItiNova v2 profile
+Chopta,Uttarakhand,North,0.95,0.0,1.0,0.9,0.2,0.9,0.01,0.2,1.0,1.0,0.6,0.6,0.6,0.7,0.8,0.9,2494,6,30.415,79.205,existing-curated-profile,Existing ItiNova v2 profile
+Mcleodganj,Himachal Pradesh,North,0.85,0.0,0.95,0.55,0.6,0.9,0.1,0.65,0.85,0.95,0.75,0.8,0.8,0.85,0.8,0.85,1595,6,32.2426,76.3213,existing-curated-profile,Existing ItiNova v2 profile
+Kinnaur,Himachal Pradesh,North,0.95,0.0,1.0,0.8,0.45,0.7,0.03,0.35,0.95,1.0,0.65,0.6,0.65,0.75,0.8,0.85,2352,4,31.5833,78.4167,existing-curated-profile,Existing ItiNova v2 profile
+Kalpa,Himachal Pradesh,North,0.95,0.0,0.95,0.45,0.45,0.95,0.02,0.3,0.9,1.0,0.65,0.6,0.7,0.8,0.7,0.8,2283,2,31.536,78.25,existing-curated-profile,Existing ItiNova v2 profile
+Munsiyari,Uttarakhand,North,0.95,0.0,1.0,0.85,0.25,0.9,0.01,0.2,1.0,1.0,0.6,0.6,0.6,0.7,0.75,0.9,1992,4,30.067,80.239,existing-curated-profile,Existing ItiNova v2 profile
+Chakrata,Uttarakhand,North,0.8,0.0,0.95,0.55,0.3,0.95,0.02,0.25,0.8,0.95,0.65,0.7,0.75,0.8,0.65,0.8,1693,4,30.7,77.867,existing-curated-profile,Existing ItiNova v2 profile
+Kausani,Uttarakhand,North,0.8,0.0,0.9,0.3,0.4,1.0,0.02,0.25,0.7,0.9,0.7,0.7,0.8,0.85,0.65,0.75,2225,2,29.8414,79.603,existing-curated-profile,Existing ItiNova v2 profile
+Bhimtal,Uttarakhand,North,0.65,0.0,0.85,0.3,0.35,0.95,0.05,0.3,0.6,0.85,0.75,0.75,0.8,0.85,0.65,0.7,2014,5,29.3445,79.563,existing-curated-profile,Existing ItiNova v2 profile
+Mukteshwar,Uttarakhand,North,0.75,0.0,0.9,0.45,0.35,1.0,0.03,0.25,0.7,0.9,0.7,0.75,0.8,0.85,0.65,0.75,2281,6,29.4726,79.6479,existing-curated-profile,Existing ItiNova v2 profile
+Kashid,Maharashtra,West,0.0,1.0,0.8,0.4,0.25,0.95,0.2,0.3,0.65,0.9,0.75,0.9,0.8,0.9,0.8,0.75,2307,2,18.4141,72.922,existing-curated-profile,Existing ItiNova v2 profile
+Tarkarli,Maharashtra,West,0.0,1.0,0.95,0.75,0.3,0.95,0.15,0.45,0.8,0.95,0.75,0.9,0.75,0.85,0.85,0.8,2860,5,16.0515,73.492,existing-curated-profile,Existing ItiNova v2 profile
+Ratnagiri,Maharashtra,West,0.0,0.95,0.85,0.3,0.5,0.9,0.2,0.45,0.65,0.9,0.8,0.9,0.8,0.85,0.8,0.75,2216,2,16.9944,73.3,existing-curated-profile,Existing ItiNova v2 profile
+Dandeli,Karnataka,South,0.3,0.0,1.0,1.0,0.3,0.7,0.05,0.25,0.9,1.0,0.75,0.7,0.7,0.8,0.9,0.85,1841,5,15.2472,74.618,existing-curated-profile,Existing ItiNova v2 profile
+Sakleshpur,Karnataka,South,0.55,0.0,1.0,0.65,0.3,0.95,0.05,0.25,0.75,0.95,0.75,0.8,0.75,0.85,0.8,0.8,2276,2,12.9416,75.7847,existing-curated-profile,Existing ItiNova v2 profile
+Vijayawada,Andhra Pradesh,South,0.0,0.2,0.45,0.15,0.8,0.55,0.3,0.75,0.35,0.6,0.85,0.85,0.8,0.75,0.7,0.65,2675,6,16.5062,80.648,existing-curated-profile,Existing ItiNova v2 profile
+Visakhapatnam,Andhra Pradesh,South,0.15,0.9,0.75,0.35,0.7,0.75,0.6,0.65,0.5,0.75,0.95,0.9,0.8,0.85,0.85,0.75,2492,2,17.6868,83.2185,existing-curated-profile,Existing ItiNova v2 profile
+Araku Valley,Andhra Pradesh,South,0.55,0.0,0.95,0.55,0.4,0.95,0.05,0.3,0.75,0.95,0.75,0.8,0.75,0.85,0.8,0.8,2324,4,18.3273,82.875,existing-curated-profile,Existing ItiNova v2 profile
+Tirupati,Andhra Pradesh,South,0.15,0.0,0.45,0.1,0.85,0.6,0.1,1.0,0.2,0.55,0.9,0.8,0.8,0.7,0.6,0.65,2712,2,13.6288,79.4192,existing-curated-profile,Existing ItiNova v2 profile
+Gandikota,Andhra Pradesh,South,0.15,0.0,0.65,0.75,0.8,0.65,0.05,0.2,0.8,0.9,0.65,0.75,0.7,0.75,0.7,0.8,1783,6,14.8137,78.2901,existing-curated-profile,Existing ItiNova v2 profile
+Bastar,Chhattisgarh,Central,0.2,0.0,1.0,0.7,0.65,0.75,0.02,0.45,0.7,0.9,0.7,0.7,0.65,0.75,0.65,0.75,1676,5,19.076,82.033,existing-curated-profile,Existing ItiNova v2 profile
+Khajuraho,Madhya Pradesh,Central,0.0,0.0,0.35,0.1,1.0,0.65,0.15,0.7,0.1,0.55,0.95,0.9,0.75,0.75,0.65,0.65,1575,6,24.8318,79.9199,existing-curated-profile,Existing ItiNova v2 profile
+Pachmarhi,Madhya Pradesh,Central,0.6,0.0,0.9,0.55,0.45,0.95,0.05,0.35,0.75,0.9,0.75,0.75,0.8,0.85,0.7,0.75,1763,4,22.4676,78.4331,existing-curated-profile,Existing ItiNova v2 profile
+Bhopal,Madhya Pradesh,Central,0.1,0.0,0.5,0.2,0.8,0.65,0.3,0.55,0.35,0.6,0.9,0.85,0.8,0.75,0.75,0.65,1418,4,23.2599,77.4126,existing-curated-profile,Existing ItiNova v2 profile
+Indore,Madhya Pradesh,Central,0.0,0.0,0.3,0.15,0.75,0.6,0.65,0.45,0.1,0.55,1.0,0.95,0.8,0.8,0.85,0.7,2122,5,22.7196,75.8577,existing-curated-profile,Existing ItiNova v2 profile
+Orchha,Madhya Pradesh,Central,0.0,0.0,0.45,0.1,1.0,0.75,0.05,0.65,0.1,0.55,0.9,0.9,0.75,0.75,0.6,0.65,1822,5,25.3519,78.6417,existing-curated-profile,Existing ItiNova v2 profile
+Jabalpur,Madhya Pradesh,Central,0.2,0.0,0.75,0.45,0.6,0.75,0.1,0.4,0.65,0.8,0.85,0.8,0.8,0.75,0.7,0.7,1385,6,23.1815,79.9864,existing-curated-profile,Existing ItiNova v2 profile
+Saputara,Gujarat,West,0.55,0.0,0.8,0.3,0.4,0.95,0.05,0.3,0.65,0.85,0.75,0.75,0.8,0.85,0.65,0.75,2409,5,20.583,73.743,existing-curated-profile,Existing ItiNova v2 profile
+Daman,Daman and Diu,West,0.0,0.9,0.7,0.3,0.55,0.9,0.35,0.4,0.65,0.85,0.8,0.9,0.8,0.85,0.8,0.7,2593,2,20.3974,72.8328,existing-curated-profile,Existing ItiNova v2 profile
+Neemrana,Rajasthan,West,0.0,0.0,0.35,0.1,0.95,0.7,0.1,0.55,0.05,0.5,0.85,0.85,0.8,0.75,0.6,0.65,3319,6,27.993,76.386,existing-curated-profile,Existing ItiNova v2 profile
+Bundi,Rajasthan,West,0.0,0.0,0.45,0.15,0.95,0.75,0.05,0.6,0.05,0.55,0.85,0.85,0.75,0.75,0.6,0.65,2445,3,25.4305,75.6499,existing-curated-profile,Existing ItiNova v2 profile
+Chittorgarh,Rajasthan,West,0.0,0.0,0.3,0.1,1.0,0.6,0.05,0.55,0.05,0.45,0.85,0.85,0.75,0.7,0.55,0.6,1953,5,24.8887,74.6269,existing-curated-profile,Existing ItiNova v2 profile
+Sawai Madhopur,Rajasthan,West,0.0,0.0,0.9,0.65,0.55,0.75,0.05,0.15,0.8,0.95,0.75,0.65,0.8,0.75,0.7,0.7,1553,4,26.0173,76.5026,existing-curated-profile,Existing ItiNova v2 profile
+Kanha,Madhya Pradesh,Central,0.1,0.0,1.0,0.7,0.35,0.85,0.02,0.1,0.8,1.0,0.8,0.65,0.75,0.8,0.7,0.7,1993,3,22.3345,80.6115,existing-curated-profile,Existing ItiNova v2 profile
+Bandhavgarh,Madhya Pradesh,Central,0.15,0.0,1.0,0.75,0.35,0.85,0.02,0.1,0.85,1.0,0.8,0.65,0.75,0.8,0.7,0.7,1615,3,23.7,81.02,existing-curated-profile,Existing ItiNova v2 profile
+Pench,Madhya Pradesh,Central,0.1,0.0,1.0,0.65,0.3,0.85,0.02,0.1,0.8,1.0,0.75,0.65,0.75,0.8,0.7,0.7,1754,4,21.65,79.3,existing-curated-profile,Existing ItiNova v2 profile
+Dooars,West Bengal,East,0.3,0.0,1.0,0.7,0.4,0.9,0.03,0.2,0.8,0.95,0.75,0.7,0.75,0.8,0.7,0.75,1885,5,26.85,89.0,existing-curated-profile,Existing ItiNova v2 profile
+Mirik,West Bengal,East,0.6,0.0,0.9,0.3,0.4,0.95,0.05,0.35,0.7,0.9,0.75,0.75,0.8,0.85,0.65,0.75,2050,5,26.888,88.187,existing-curated-profile,Existing ItiNova v2 profile
+Lachung,Sikkim,East,1.0,0.0,1.0,0.8,0.5,0.75,0.02,0.45,0.95,1.0,0.65,0.6,0.65,0.75,0.75,0.85,2473,6,27.6875,88.738,existing-curated-profile,Existing ItiNova v2 profile
+Lachen,Sikkim,East,1.0,0.0,1.0,0.8,0.4,0.7,0.02,0.4,0.95,1.0,0.65,0.6,0.65,0.75,0.75,0.85,2154,6,27.7167,88.565,existing-curated-profile,Existing ItiNova v2 profile
+Namchi,Sikkim,East,0.75,0.0,0.9,0.3,0.75,0.9,0.05,0.6,0.7,0.9,0.7,0.75,0.75,0.8,0.65,0.75,2044,5,27.1667,88.35,existing-curated-profile,Existing ItiNova v2 profile
+Mawlynnong,Meghalaya,East,0.25,0.0,1.0,0.35,0.55,1.0,0.02,0.35,0.8,0.95,0.7,0.75,0.75,0.85,0.7,0.75,1513,3,25.2,91.8833,existing-curated-profile,Existing ItiNova v2 profile
+Dawki,Meghalaya,East,0.35,0.0,1.0,0.85,0.35,0.9,0.03,0.45,0.9,1.0,0.7,0.75,0.7,0.8,0.8,0.85,1929,4,25.192,92.024,existing-curated-profile,Existing ItiNova v2 profile
+Aizawl,Mizoram,East,0.45,0.0,0.8,0.3,0.7,0.8,0.05,0.45,0.65,0.85,0.7,0.75,0.75,0.8,0.65,0.75,2081,2,23.7271,92.7176,existing-curated-profile,Existing ItiNova v2 profile
+Kohima,Nagaland,East,0.55,0.0,0.85,0.35,0.8,0.75,0.05,0.55,0.75,0.9,0.75,0.8,0.75,0.8,0.65,0.75,2718,3,25.6751,94.1086,existing-curated-profile,Existing ItiNova v2 profile
+Imphal,Manipur,East,0.35,0.0,0.7,0.25,0.75,0.7,0.1,0.55,0.55,0.8,0.8,0.8,0.75,0.75,0.65,0.7,2145,6,24.817,93.9368,existing-curated-profile,Existing ItiNova v2 profile
+Agartala,Tripura,East,0.15,0.0,0.6,0.2,0.8,0.65,0.1,0.65,0.45,0.75,0.8,0.8,0.75,0.75,0.6,0.65,2443,4,23.8315,91.2868,existing-curated-profile,Existing ItiNova v2 profile
+Port Blair,Andaman and Nicobar Islands,East,0.0,1.0,0.95,0.7,0.5,0.9,0.3,0.7,0.85,0.95,0.85,0.95,0.7,0.9,0.85,0.8,1925,2,11.6234,92.7265,existing-curated-profile,Existing ItiNova v2 profile
+Bekal,Kerala,South,0.0,0.95,0.9,0.25,0.55,0.95,0.15,0.45,0.7,0.9,0.8,0.9,0.8,0.9,0.75,0.75,1862,6,12.391,75.032,existing-curated-profile,Existing ItiNova v2 profile
+Kannur,Kerala,South,0.0,0.9,0.85,0.3,0.65,0.9,0.25,0.55,0.65,0.9,0.85,0.9,0.8,0.85,0.8,0.75,1946,6,11.8745,75.3704,existing-curated-profile,Existing ItiNova v2 profile
+Thrissur,Kerala,South,0.0,0.2,0.55,0.15,0.95,0.7,0.25,0.75,0.45,0.7,0.9,0.9,0.85,0.8,0.7,0.65,2944,3,10.5276,76.2144,existing-curated-profile,Existing ItiNova v2 profile
+Thanjavur,Tamil Nadu,South,0.0,0.0,0.3,0.1,1.0,0.6,0.15,0.8,0.05,0.55,0.9,0.9,0.8,0.75,0.6,0.6,1912,4,10.787,79.1378,existing-curated-profile,Existing ItiNova v2 profile
+Pudukkottai,Tamil Nadu,South,0.0,0.0,0.4,0.1,0.95,0.65,0.05,0.55,0.05,0.5,0.85,0.85,0.75,0.75,0.55,0.6,2493,4,10.3833,78.8,existing-curated-profile,Existing ItiNova v2 profile
+Yercaud,Tamil Nadu,South,0.55,0.0,0.85,0.25,0.35,0.95,0.05,0.25,0.6,0.85,0.75,0.75,0.8,0.85,0.65,0.75,1883,3,11.7753,78.2093,existing-curated-profile,Existing ItiNova v2 profile
+Valparai,Tamil Nadu,South,0.55,0.0,1.0,0.55,0.3,0.95,0.03,0.25,0.75,0.95,0.7,0.75,0.75,0.85,0.7,0.8,2526,3,10.326,76.951,existing-curated-profile,Existing ItiNova v2 profile
+Hogenakkal,Tamil Nadu,South,0.25,0.0,0.9,0.8,0.25,0.75,0.05,0.25,0.7,0.9,0.7,0.7,0.75,0.8,0.75,0.75,2334,3,12.119,77.777,existing-curated-profile,Existing ItiNova v2 profile
+Bomdila,Arunachal Pradesh,North East,0.9,0.0,0.95,0.65,0.4,0.8,0.15,0.2,0.8,0.95,0.65,0.35,0.8,0.85,0.85,0.8,1900,4,27.264,92.425,mountain_nature,Curated prototype profile
+Dirang,Arunachal Pradesh,North East,0.9,0.0,0.95,0.65,0.4,0.8,0.15,0.2,0.8,0.95,0.65,0.35,0.8,0.85,0.85,0.8,1900,4,27.361,92.242,mountain_nature,Curated prototype profile
+Pasighat,Arunachal Pradesh,North East,0.45,0.1,0.95,0.9,0.3,0.65,0.1,0.1,0.9,0.95,0.6,0.25,0.65,0.75,0.95,0.85,1800,4,28.066,95.326,nature_adventure,Curated prototype profile
+Mechuka,Arunachal Pradesh,North East,0.95,0.0,0.9,0.9,0.45,0.7,0.2,0.2,0.9,0.9,0.7,0.4,0.75,0.85,0.95,0.8,2200,5,28.588,94.128,mountain_adventure,Curated prototype profile
+Itanagar,Arunachal Pradesh,North East,0.25,0.05,0.8,0.35,0.85,0.7,0.15,0.45,0.35,0.9,0.75,0.8,0.85,0.75,0.7,0.75,1800,4,27.084,93.606,nature_culture,Curated prototype profile
+Sivasagar,Assam,North East,0.05,0.05,0.35,0.15,0.98,0.55,0.25,0.35,0.05,0.9,0.85,0.98,0.9,0.8,0.65,0.75,1700,3,27.0,94.633,heritage_culture,Curated prototype profile
+Tezpur,Assam,North East,0.25,0.05,0.8,0.35,0.85,0.7,0.15,0.45,0.35,0.9,0.75,0.8,0.85,0.75,0.7,0.75,1800,4,26.652,92.792,nature_culture,Curated prototype profile
+Dibrugarh,Assam,North East,0.15,0.2,0.85,0.3,0.45,0.75,0.25,0.1,0.3,0.9,0.98,0.3,0.8,0.85,0.8,0.75,1800,4,27.472,94.912,nature_food,Curated prototype profile
+Unakoti,Tripura,North East,0.05,0.05,0.35,0.1,0.9,0.65,0.05,0.98,0.05,0.85,0.7,0.95,0.9,0.7,0.55,0.75,1600,3,24.328,92.035,spiritual_heritage,Curated prototype profile
+Chumukedima,Nagaland,North East,0.45,0.1,0.95,0.9,0.3,0.65,0.1,0.1,0.9,0.95,0.6,0.25,0.65,0.75,0.95,0.85,1800,4,25.862,93.727,nature_adventure,Curated prototype profile
+Moirang,Manipur,North East,0.25,0.05,0.8,0.35,0.85,0.7,0.15,0.45,0.35,0.9,0.75,0.8,0.85,0.75,0.7,0.75,1800,4,24.498,93.78,nature_culture,Curated prototype profile
+Sohra,Meghalaya,North East,0.45,0.1,0.95,0.9,0.3,0.65,0.1,0.1,0.9,0.95,0.6,0.25,0.65,0.75,0.95,0.85,1800,4,25.268,91.732,nature_adventure,Curated prototype profile
+Nongriat,Meghalaya,North East,0.45,0.1,0.95,0.9,0.3,0.65,0.1,0.1,0.9,0.95,0.6,0.25,0.65,0.75,0.95,0.85,1800,4,25.226,91.74,trekking_nature,Curated prototype profile
+Jowai,Meghalaya,North East,0.3,0.1,0.95,0.4,0.3,0.8,0.1,0.15,0.45,0.95,0.6,0.25,0.8,0.8,0.8,0.8,1700,4,25.451,92.196,nature,Curated prototype profile
+Champhai,Mizoram,North East,0.3,0.1,0.95,0.4,0.3,0.8,0.1,0.15,0.45,0.95,0.6,0.25,0.8,0.8,0.8,0.8,1700,4,23.467,93.326,nature,Curated prototype profile
+Kurseong,West Bengal,East,0.9,0.0,0.95,0.65,0.4,0.8,0.15,0.2,0.8,0.95,0.65,0.35,0.8,0.85,0.85,0.8,1900,4,26.882,88.277,mountain_nature,Curated prototype profile
+Siliguri,West Bengal,East,0.3,0.1,0.95,0.4,0.3,0.8,0.1,0.15,0.45,0.95,0.6,0.25,0.8,0.8,0.8,0.8,1700,4,26.727,88.395,nature,Curated prototype profile
+Bishnupur,West Bengal,East,0.05,0.05,0.35,0.15,0.98,0.55,0.25,0.35,0.05,0.9,0.85,0.98,0.9,0.8,0.65,0.75,1700,3,23.073,87.319,heritage_culture,Curated prototype profile
+Murshidabad,West Bengal,East,0.05,0.05,0.35,0.15,0.98,0.55,0.25,0.35,0.05,0.9,0.85,0.98,0.9,0.8,0.65,0.75,1700,3,24.183,88.27,heritage_culture,Curated prototype profile
+Bakkhali,West Bengal,East,0.0,0.98,0.75,0.45,0.3,0.95,0.55,0.15,0.1,0.9,0.85,0.2,0.8,0.95,0.85,0.7,2300,4,21.562,88.257,beach_relax,Curated prototype profile
+Gaya,Bihar,East,0.05,0.05,0.35,0.1,0.9,0.65,0.05,0.98,0.05,0.85,0.7,0.95,0.9,0.7,0.55,0.75,1600,3,24.796,85.0,spiritual_heritage,Curated prototype profile
+Rajgir,Bihar,East,0.25,0.05,0.8,0.35,0.85,0.7,0.15,0.45,0.35,0.9,0.75,0.8,0.85,0.75,0.7,0.75,1700,4,25.028,85.421,spiritual_nature,Curated prototype profile
+Nalanda,Bihar,East,0.05,0.05,0.35,0.15,0.98,0.55,0.25,0.35,0.05,0.9,0.85,0.98,0.9,0.8,0.65,0.75,1700,3,25.136,85.444,heritage_culture,Curated prototype profile
+Vaishali,Bihar,East,0.05,0.05,0.35,0.1,0.9,0.65,0.05,0.98,0.05,0.85,0.7,0.95,0.9,0.7,0.55,0.75,1600,3,25.986,85.13,spiritual_heritage,Curated prototype profile
+Deoghar,Jharkhand,East,0.1,0.05,0.4,0.1,0.7,0.75,0.05,0.98,0.1,0.75,0.65,0.7,0.9,0.7,0.55,0.75,1500,3,24.492,86.697,spiritual,Curated prototype profile
+Jamshedpur,Jharkhand,East,0.15,0.2,0.85,0.3,0.45,0.75,0.25,0.1,0.3,0.9,0.98,0.3,0.8,0.85,0.8,0.75,1800,4,22.804,86.203,nature_food,Curated prototype profile
+Netarhat,Jharkhand,East,0.3,0.15,0.95,0.25,0.3,0.95,0.1,0.15,0.35,0.9,0.65,0.25,0.85,0.9,0.75,0.75,1800,4,23.474,84.267,nature_relax,Curated prototype profile
+Daringbadi,Odisha,East,0.9,0.0,0.95,0.65,0.4,0.8,0.15,0.2,0.8,0.95,0.65,0.35,0.8,0.85,0.85,0.8,1900,4,19.907,84.145,nature_mountain,Curated prototype profile
+Simlipal,Odisha,East,0.35,0.05,1.0,0.75,0.2,0.55,0.05,0.1,0.7,1.0,0.55,0.15,0.85,0.8,0.9,0.8,2200,4,21.46,86.36,wildlife_nature,Curated prototype profile
+Chilika,Odisha,East,0.3,0.15,0.95,0.25,0.3,0.95,0.1,0.15,0.35,0.9,0.65,0.25,0.85,0.9,0.75,0.75,1800,4,19.715,85.324,nature_relax,Curated prototype profile
+Bhitarkanika,Odisha,East,0.35,0.05,1.0,0.75,0.2,0.55,0.05,0.1,0.7,1.0,0.55,0.15,0.85,0.8,0.9,0.8,2200,4,20.718,86.74,wildlife_nature,Curated prototype profile
+Barbil,Odisha,East,0.3,0.1,0.95,0.4,0.3,0.8,0.1,0.15,0.45,0.95,0.6,0.25,0.8,0.8,0.8,0.8,1700,4,22.113,85.386,nature,Curated prototype profile
+Raipur,Chhattisgarh,Central,0.05,0.1,0.25,0.15,0.95,0.55,0.35,0.35,0.05,0.9,1.0,0.9,0.85,0.82,0.75,0.8,1900,3,21.251,81.629,food_culture,Curated prototype profile
+Jagdalpur,Chhattisgarh,Central,0.45,0.1,0.95,0.9,0.3,0.65,0.1,0.1,0.9,0.95,0.6,0.25,0.65,0.75,0.95,0.85,1800,4,19.075,82.008,nature_adventure,Curated prototype profile
+Mandu,Madhya Pradesh,Central,0.05,0.05,0.35,0.15,0.98,0.55,0.25,0.35,0.05,0.9,0.85,0.98,0.9,0.8,0.65,0.75,1700,3,22.345,75.396,heritage_culture,Curated prototype profile
+Sanchi,Madhya Pradesh,Central,0.05,0.05,0.35,0.1,0.9,0.65,0.05,0.98,0.05,0.85,0.7,0.95,0.9,0.7,0.55,0.75,1600,3,23.48,77.739,spiritual_heritage,Curated prototype profile
+Gwalior,Madhya Pradesh,Central,0.05,0.05,0.35,0.15,0.98,0.55,0.25,0.35,0.05,0.9,0.85,0.98,0.9,0.8,0.65,0.75,1700,3,26.218,78.183,heritage_culture,Curated prototype profile
+Amaravati,Andhra Pradesh,South,0.05,0.05,0.35,0.1,0.9,0.65,0.05,0.98,0.05,0.85,0.7,0.95,0.9,0.7,0.55,0.75,1600,3,16.574,80.358,spiritual_heritage,Curated prototype profile
+Nellore,Andhra Pradesh,South,0.0,0.9,0.65,0.45,0.35,0.8,0.55,0.1,0.05,0.8,0.95,0.2,0.8,0.9,0.85,0.7,2100,4,14.442,79.986,beach_food,Curated prototype profile
+Kurnool,Andhra Pradesh,South,0.05,0.05,0.45,0.55,0.98,0.55,0.25,0.35,0.05,0.9,0.85,0.98,0.9,0.8,0.65,0.75,1900,3,15.828,78.037,heritage_adventure,Curated prototype profile
+Rajahmundry,Andhra Pradesh,South,0.3,0.15,0.95,0.25,0.3,0.95,0.1,0.15,0.35,0.9,0.65,0.25,0.85,0.9,0.75,0.75,1800,4,16.989,81.783,nature_relax,Curated prototype profile
+Kakinada,Andhra Pradesh,South,0.0,0.9,0.65,0.45,0.35,0.8,0.55,0.1,0.05,0.8,0.95,0.2,0.8,0.9,0.85,0.7,2100,4,16.989,82.247,beach_food,Curated prototype profile
+Lepakshi,Andhra Pradesh,South,0.05,0.05,0.35,0.15,0.98,0.55,0.25,0.35,0.05,0.9,0.85,0.98,0.9,0.8,0.65,0.75,1700,3,14.121,77.607,heritage_culture,Curated prototype profile
+Belur,Karnataka,South,0.05,0.05,0.35,0.15,0.98,0.55,0.25,0.35,0.05,0.9,0.85,0.98,0.9,0.8,0.65,0.75,1700,3,13.165,75.866,heritage_culture,Curated prototype profile
+Halebidu,Karnataka,South,0.05,0.05,0.35,0.15,0.98,0.55,0.25,0.35,0.05,0.9,0.85,0.98,0.9,0.8,0.65,0.75,1700,3,13.214,75.995,heritage_culture,Curated prototype profile
+Badami,Karnataka,South,0.05,0.05,0.45,0.55,0.98,0.55,0.25,0.35,0.05,0.9,0.85,0.98,0.9,0.8,0.65,0.75,1900,3,15.919,75.676,heritage_adventure,Curated prototype profile
+Pattadakal,Karnataka,South,0.05,0.05,0.35,0.15,0.98,0.55,0.25,0.35,0.05,0.9,0.85,0.98,0.9,0.8,0.65,0.75,1700,3,15.949,75.817,heritage_culture,Curated prototype profile
+Bijapur,Karnataka,South,0.05,0.05,0.35,0.15,0.98,0.55,0.25,0.35,0.05,0.9,0.85,0.98,0.9,0.8,0.65,0.75,1700,3,16.831,75.715,heritage_culture,Curated prototype profile
+Agumbe,Karnataka,South,0.45,0.1,0.95,0.9,0.3,0.65,0.1,0.1,0.9,0.95,0.6,0.25,0.65,0.75,0.95,0.85,1800,4,13.508,75.096,nature_trekking,Curated prototype profile
+Murudeshwar,Karnataka,South,0.0,0.85,0.6,0.25,0.55,0.8,0.2,0.9,0.05,0.8,0.7,0.6,0.85,0.85,0.65,0.7,1800,4,14.094,74.485,beach_spiritual,Curated prototype profile
+Maravanthe,Karnataka,South,0.0,0.98,0.75,0.45,0.3,0.95,0.55,0.15,0.1,0.9,0.85,0.2,0.8,0.95,0.85,0.7,2300,4,13.754,74.628,beach_nature,Curated prototype profile
+Kudremukh,Karnataka,South,0.98,0.0,0.95,0.95,0.25,0.55,0.05,0.1,1.0,0.98,0.55,0.2,0.55,0.75,0.98,0.9,2300,5,13.134,75.34,mountain_trekking,Curated prototype profile
+Vagamon,Kerala,South,0.9,0.0,0.95,0.65,0.4,0.8,0.15,0.2,0.8,0.95,0.65,0.35,0.8,0.85,0.85,0.8,1900,4,9.686,76.907,mountain_nature,Curated prototype profile
+Athirappilly,Kerala,South,0.3,0.15,0.95,0.25,0.3,0.95,0.1,0.15,0.35,0.9,0.65,0.25,0.85,0.9,0.75,0.75,1800,4,10.285,76.569,nature_relax,Curated prototype profile
+Kozhikode,Kerala,South,0.0,0.9,0.65,0.45,0.35,0.8,0.55,0.1,0.05,0.8,0.95,0.2,0.8,0.9,0.85,0.7,2100,4,11.258,75.78,beach_food,Curated prototype profile
+Kottayam,Kerala,South,0.0,0.45,0.9,0.2,0.4,0.98,0.2,0.1,0.05,0.95,0.9,0.3,0.85,0.98,0.7,0.7,2400,4,9.591,76.522,backwater_relax,Curated prototype profile
+Poovar,Kerala,South,0.0,0.98,0.75,0.45,0.3,0.95,0.55,0.15,0.1,0.9,0.85,0.2,0.8,0.95,0.85,0.7,2300,4,8.317,77.067,beach_relax,Curated prototype profile
+Thenmala,Kerala,South,0.45,0.1,0.95,0.9,0.3,0.65,0.1,0.1,0.9,0.95,0.6,0.25,0.65,0.75,0.95,0.85,1800,4,8.958,77.063,nature_adventure,Curated prototype profile
+Karaikudi,Tamil Nadu,South,0.05,0.05,0.3,0.15,0.9,0.55,0.2,0.35,0.05,0.85,0.98,0.95,0.9,0.8,0.7,0.75,1900,3,10.073,78.781,heritage_food,Curated prototype profile
+Chettinad,Tamil Nadu,South,0.05,0.05,0.3,0.15,0.9,0.55,0.2,0.35,0.05,0.85,0.98,0.95,0.9,0.8,0.7,0.75,1900,3,10.15,78.8,heritage_food,Curated prototype profile
+Kumbakonam,Tamil Nadu,South,0.05,0.05,0.35,0.1,0.9,0.65,0.05,0.98,0.05,0.85,0.7,0.95,0.9,0.7,0.55,0.75,1600,3,10.961,79.388,spiritual_heritage,Curated prototype profile
+Kolli Hills,Tamil Nadu,South,0.98,0.0,0.95,0.95,0.25,0.55,0.05,0.1,1.0,0.98,0.55,0.2,0.55,0.75,0.98,0.9,2300,5,11.247,78.338,mountain_trekking,Curated prototype profile
+Hassan,Karnataka,South,0.05,0.05,0.3,0.15,0.9,0.55,0.2,0.35,0.05,0.85,0.98,0.95,0.9,0.8,0.7,0.75,1900,3,13.006,76.1,heritage_food,Curated prototype profile
+Gandhinagar,Gujarat,West,0.05,0.1,0.25,0.15,0.95,0.55,0.35,0.35,0.05,0.9,1.0,0.9,0.85,0.82,0.75,0.8,1900,3,23.215,72.636,culture_food,Curated prototype profile
+Patan,Gujarat,West,0.05,0.05,0.35,0.15,0.98,0.55,0.25,0.35,0.05,0.9,0.85,0.98,0.9,0.8,0.65,0.75,1700,3,23.849,72.126,heritage_culture,Curated prototype profile
+Champaner,Gujarat,West,0.05,0.05,0.35,0.15,0.98,0.55,0.25,0.35,0.05,0.9,0.85,0.98,0.9,0.8,0.65,0.75,1700,3,22.487,73.533,heritage_culture,Curated prototype profile
+Dholavira,Gujarat,West,0.05,0.05,0.45,0.55,0.98,0.55,0.25,0.35,0.05,0.9,0.85,0.98,0.9,0.8,0.65,0.75,1900,3,23.886,70.213,heritage_adventure,Curated prototype profile
+Mandvi,Gujarat,West,0.0,0.98,0.75,0.45,0.3,0.95,0.55,0.15,0.1,0.9,0.85,0.2,0.8,0.95,0.85,0.7,2300,4,22.833,69.352,beach_relax,Curated prototype profile
+Junagadh,Gujarat,West,0.25,0.05,0.8,0.35,0.85,0.7,0.15,0.45,0.35,0.9,0.75,0.8,0.85,0.75,0.7,0.75,1800,4,21.523,70.457,heritage_nature,Curated prototype profile
+Palitana,Gujarat,West,0.05,0.05,0.35,0.1,0.9,0.65,0.05,0.98,0.05,0.85,0.7,0.95,0.9,0.7,0.55,0.75,1600,3,21.526,71.83,spiritual_heritage,Curated prototype profile
+Kolhapur,Maharashtra,West,0.05,0.05,0.3,0.15,0.9,0.55,0.2,0.35,0.05,0.85,0.98,0.95,0.9,0.8,0.7,0.75,1900,3,16.705,74.243,food_heritage,Curated prototype profile
+Tadoba,Maharashtra,West,0.35,0.05,1.0,0.75,0.2,0.55,0.05,0.1,0.7,1.0,0.55,0.15,0.85,0.8,0.9,0.8,2200,4,20.25,79.3,wildlife_nature,Curated prototype profile
+Bhandardara,Maharashtra,West,0.9,0.0,0.95,0.65,0.4,0.8,0.15,0.2,0.8,0.95,0.65,0.35,0.8,0.85,0.85,0.8,1900,4,19.545,73.757,mountain_nature,Curated prototype profile
+Matheran,Maharashtra,West,0.85,0.0,0.9,0.35,0.3,0.95,0.1,0.1,0.55,0.9,0.65,0.25,0.8,0.92,0.7,0.7,2000,4,18.988,73.271,mountain_relax,Curated prototype profile
+Delhi,Delhi,North,0.05,0.05,0.2,0.15,0.9,0.45,0.75,0.3,0.05,0.9,0.95,0.95,0.8,0.75,0.8,0.8,2400,3,28.66,77.23,metro_heritage,Curated prototype profile
+Sambhar Lake,Rajasthan,West,0.3,0.15,0.95,0.25,0.3,0.95,0.1,0.15,0.35,0.9,0.65,0.25,0.85,0.9,0.75,0.75,1800,4,26.908,75.015,nature_relax,Curated prototype profile
+Osian,Rajasthan,West,0.05,0.05,0.35,0.15,0.98,0.55,0.25,0.35,0.05,0.9,0.85,0.98,0.9,0.8,0.65,0.75,1700,3,26.72,72.921,heritage_culture,Curated prototype profile
+Bharatpur,Rajasthan,West,0.35,0.05,1.0,0.75,0.2,0.55,0.05,0.1,0.7,1.0,0.55,0.15,0.85,0.8,0.9,0.8,2200,4,27.217,77.49,wildlife_nature,Curated prototype profile
+Shekhawati,Rajasthan,West,0.05,0.05,0.35,0.15,0.98,0.55,0.25,0.35,0.05,0.9,0.85,0.98,0.9,0.8,0.65,0.75,1700,3,28.117,75.15,heritage_culture,Curated prototype profile
+Dhar,Madhya Pradesh,Central,0.05,0.05,0.35,0.15,0.98,0.55,0.25,0.35,0.05,0.9,0.85,0.98,0.9,0.8,0.65,0.75,1700,3,22.593,75.297,heritage_culture,Curated prototype profile
+Amarkantak,Madhya Pradesh,Central,0.25,0.05,0.8,0.35,0.85,0.7,0.15,0.45,0.35,0.9,0.75,0.8,0.85,0.75,0.7,0.75,1700,4,22.675,81.75,spiritual_nature,Curated prototype profile
+Lonar,Maharashtra,West,0.45,0.1,0.95,0.9,0.3,0.65,0.1,0.1,0.9,0.95,0.6,0.25,0.65,0.75,0.95,0.85,1800,4,19.985,76.51,nature_adventure,Curated prototype profile
+Ganpatipule,Maharashtra,West,0.0,0.98,0.75,0.45,0.3,0.95,0.55,0.15,0.1,0.9,0.85,0.2,0.8,0.95,0.85,0.7,2300,4,17.144,73.266,beach_relax,Curated prototype profile
+Panhala,Maharashtra,West,0.25,0.05,0.8,0.35,0.85,0.7,0.15,0.45,0.35,0.9,0.75,0.8,0.85,0.75,0.7,0.75,1800,4,16.813,74.11,heritage_nature,Curated prototype profile
+Yelagiri,Tamil Nadu,South,0.9,0.0,0.95,0.65,0.4,0.8,0.15,0.2,0.8,0.95,0.65,0.35,0.8,0.85,0.85,0.8,1900,4,12.579,78.631,mountain_nature,Curated prototype profile
+Ranikhet,Uttarakhand,North,0.85,0.0,0.9,0.35,0.3,0.95,0.1,0.1,0.55,0.9,0.65,0.25,0.8,0.92,0.7,0.7,2000,4,29.643,79.432,mountain_relax,Curated prototype profile
+Dhanbad,Jharkhand,East,0.05,0.1,0.25,0.15,0.95,0.55,0.35,0.35,0.05,0.9,1.0,0.9,0.85,0.82,0.75,0.8,1900,3,23.7957,86.4304,food_culture,Curated prototype profile

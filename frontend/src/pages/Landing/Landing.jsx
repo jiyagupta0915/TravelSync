@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import Navbar from "../../components/Navbar/Navbar";
 import FeatureCard from "../../components/FeatureCard/FeatureCard";
+import Footer from "../../components/Footer/Footer";
 import "./Landing.css";
 
 const features = [
@@ -175,9 +176,7 @@ export default function Landing() {
         </section>
       </main>
 
-      <footer className="footer">
-        <p>© 2026 TravelSync — University Software Engineering Project</p>
-      </footer>
+      <Footer />
     </>
   );
 }
