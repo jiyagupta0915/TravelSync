@@ -22,8 +22,8 @@ import numpy as np
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
 
-BASE_DIR = Path(__file__).resolve().parent
-DATA_PATH = BASE_DIR / "data" / "ItiNova_India_Destinations_250.csv"
+APP_DIR = Path(__file__).resolve().parent.parent  # app/services -> app/
+DATA_PATH = APP_DIR / "data" / "ItiNova_India_Destinations_250.csv"
 
 # Feature order matters: it must match the order used to build the scaler
 # and the order used to build every user vector. Keep this list, the CSV
@@ -40,10 +40,15 @@ REQUIRED_COLUMNS = FEATURES + [
     "Avg_Daily_Budget_INR", "Ideal_Days",
 ]
 
+STARTING_DATA_PATH = APP_DIR / "data" / "starting_locations.csv"
+
 if not DATA_PATH.exists():
     raise RuntimeError(f"Destination dataset not found at {DATA_PATH}")
+if not STARTING_DATA_PATH.exists():
+    raise RuntimeError(f"Starting-locations dataset not found at {STARTING_DATA_PATH}")
 
 DF = pd.read_csv(DATA_PATH)
+STARTING = pd.read_csv(STARTING_DATA_PATH)
 
 _missing_columns = [c for c in REQUIRED_COLUMNS if c not in DF.columns]
 if _missing_columns:
