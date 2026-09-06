@@ -12,7 +12,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.config import settings
 from app.core.error_handlers import register_error_handlers
 from app.database import close_mongo_connection, connect_to_mongo
-from app.routers import auth, destinations, meta, recommend, trips
+from app.routers import auth, destinations, meta, recommend, trips, packing
 
 
 @asynccontextmanager
@@ -39,3 +39,4 @@ app.include_router(auth.router)
 app.include_router(destinations.router)
 app.include_router(recommend.router)
 app.include_router(trips.router)
+app.include_router(packing.router)

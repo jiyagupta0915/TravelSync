@@ -5,6 +5,8 @@ import Signup from "../pages/Auth/Signup";
 import Home from "../pages/Home/Home";
 import SelectDestination from "../pages/Planner/SelectDestination";
 import RecommendDestination from "../pages/Planner/RecommendDestination";
+import PackingHome from "../pages/Packing/PackingHome";
+import PackingAssistant from "../pages/Packing/PackingAssistant";
 import ProtectedRoute from "./ProtectedRoute";
 
 // All app routes are centralized here so no component needs to
@@ -42,6 +44,25 @@ export default function AppRoutes() {
           </ProtectedRoute>
         }
       />
+
+      <Route
+        path="/packing"
+        element={
+          <ProtectedRoute>
+            <PackingHome />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/trip/:tripId/packing"
+        element={
+          <ProtectedRoute>
+            <PackingAssistant />
+          </ProtectedRoute>
+        }
+      />  
+
     </Routes>
   );
 }

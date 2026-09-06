@@ -33,6 +33,7 @@ async def connect_to_mongo() -> None:
     try:
         await database.db.users.create_index("email", unique=True)
         await database.db.trips.create_index([("user_id", 1), ("created_at", -1)])
+        await database.db.packing_lists.create_index("trip_id", unique=True)
     except PyMongoError as exc:
         logger.warning("Could not verify MongoDB indexes at startup: %s", exc)
 
