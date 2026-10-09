@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { MapPin, Sparkles, Search, Bell, CalendarDays, WalletCards } from "lucide-react";
+import { MapPin, Sparkles, Search, Bell, CalendarDays, WalletCards, HeartPulse } from "lucide-react";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import TripPathCard from "../../components/TripPathCard/TripPathCard";
 import { useAuth } from "../../context/AuthContext";
@@ -73,13 +73,18 @@ export default function Home() {
               </div>
             ) : (
               <div className="dashboard__trips-grid">
-                {trips.map((trip) => (
-                  <button key={trip.id} className="trip-chip" onClick={() => navigate(`/home?trip=${trip.id}`)}>
-                    <span className="trip-chip__destination">{trip.destination}</span>
-                    <span className="trip-chip__meta">{trip.state} · {trip.duration ? `${trip.duration}-day plan` : "Destination selected"}</span>
-                    {trip.budget && <span className="trip-chip__budget"><WalletCards size={14} /> ₹{Number(trip.budget).toLocaleString("en-IN")}</span>}
-                    <span className="trip-chip__dates">Created {formatCreatedAt(trip.created_at)}</span>
-                  </button>
+                                {trips.map((trip) => (
+                  <div key={trip.id} className="trip-card">
+                    <button className="trip-chip" onClick={() => navigate(`/home?trip=${trip.id}`)}>
+                      <span className="trip-chip__destination">{trip.destination}</span>
+                      <span className="trip-chip__meta">{trip.state} · {trip.duration ? `${trip.duration}-day plan` : "Destination selected"}</span>
+                      {trip.budget && <span className="trip-chip__budget"><WalletCards size={14} /> ₹{Number(trip.budget).toLocaleString("en-IN")}</span>}
+                      <span className="trip-chip__dates">Created {formatCreatedAt(trip.created_at)}</span>
+                    </button>
+                    <button className="trip-card__health" onClick={() => navigate(`/health?destination=${encodeURIComponent(trip.destination)}`)}>
+                      <HeartPulse size={14} /> Health &amp; safety
+                    </button>
+                  </div>
                 ))}
               </div>
             )}

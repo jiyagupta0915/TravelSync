@@ -1,0 +1,27 @@
+{
+  "last_reviewed": null,
+  "alerts": [
+    {
+      "id": "chandipura-gujarat-2026-07",
+      "states": ["Gujarat"],
+      "disease": "Chandipura virus",
+      "title": "Chandipura virus cases reported in Gujarat",
+      "summary": "Media reported 27 cases, including 12 deaths, in Gujarat over the preceding month.",
+      "severity": "watch",
+      "reported_date": "2026-07-14",
+      "source_name": "UK Health Security Agency, Outbreaks under monitoring (week 29, 2026)",
+      "source_url": "https://www.gov.uk/government/publications/outbreaks-under-monitoring-in-2026/outbreaks-under-monitoring-week-29-week-ending-19-july-2026"
+    },
+    {
+      "id": "nipah-west-bengal-2026-01",
+      "states": ["West Bengal"],
+      "disease": "Nipah virus",
+      "title": "Nipah virus cases in West Bengal",
+      "summary": "Two confirmed cases among healthcare workers were reported in January 2026. India's health ministry said on 27 January that no further cases had been found. WHO advised against travel or trade restrictions.",
+      "severity": "info",
+      "reported_date": "2026-01-30",
+      "source_name": "WHO Disease Outbreak News",
+      "source_url": "https://www.who.int/emergencies/disease-outbreak-news/item/2025-DON577"
+    }
+  ]
+}

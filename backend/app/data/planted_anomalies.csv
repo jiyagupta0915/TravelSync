@@ -1,0 +1,27 @@
+type,state,disease,year,month,extra_rows,cases,deaths
+surge_cluster,Uttar Pradesh,Acute Diarrheal Disease,2024,6,18.0,,
+surge_cluster,Assam,Measles,2019,3,19.0,,
+surge_cluster,West Bengal,Viral Hepatitis,2016,8,16.0,,
+surge_cluster,Odisha,Cholera,2023,7,16.0,,
+surge_cluster,Uttar Pradesh,Malaria,2024,9,24.0,,
+surge_cluster,Telangana,Measles,2014,2,25.0,,
+mega_outbreak,Mizoram,Acute Diarrheal Disease,2023,5,,350.0,1.0
+mega_outbreak,Jammu and Kashmir,Cholera,2021,4,,522.0,3.0
+mega_outbreak,Himachal Pradesh,Suspected Food Poisoning,2023,2,,823.0,2.0
+mega_outbreak,Mizoram,Cholera,2014,5,,505.0,0.0
+mega_outbreak,Chhattisgarh,Suspected Food Poisoning,2023,12,,445.0,4.0
+mega_outbreak,Chandigarh,Dengue,2013,7,,770.0,5.0
+mega_outbreak,Bihar,Viral Fever,2014,9,,432.0,3.0
+mega_outbreak,Manipur,Dengue,2022,7,,546.0,0.0
+mega_outbreak,Madhya Pradesh,Viral Fever,2023,10,,439.0,1.0
+mega_outbreak,Jammu and Kashmir,Dengue,2025,7,,787.0,5.0
+mega_outbreak,Manipur,Cholera,2018,10,,765.0,4.0
+mega_outbreak,Bihar,Cholera,2024,6,,584.0,5.0
+mega_outbreak,Bihar,Viral Fever,2016,8,,566.0,2.0
+mega_outbreak,Mizoram,Cholera,2018,8,,709.0,2.0
+mega_outbreak,Jharkhand,Suspected Food Poisoning,2017,6,,482.0,2.0
+mega_outbreak,Karnataka,Cholera,2022,10,,435.0,2.0
+mega_outbreak,Arunachal Pradesh,Viral Fever,2021,4,,862.0,2.0
+mega_outbreak,Nagaland,Dengue,2025,11,,681.0,3.0
+mega_outbreak,Manipur,Suspected Food Poisoning,2011,6,,623.0,5.0
+mega_outbreak,Mizoram,Suspected Food Poisoning,2024,4,,622.0,2.0

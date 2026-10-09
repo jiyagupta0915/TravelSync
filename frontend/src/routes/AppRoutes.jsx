@@ -8,6 +8,7 @@ import RecommendDestination from "../pages/Planner/RecommendDestination";
 import PackingHome from "../pages/Packing/PackingHome";
 import PackingAssistant from "../pages/Packing/PackingAssistant";
 import ProtectedRoute from "./ProtectedRoute";
+import HealthSafety from "../pages/Health/HealthSafety";
 
 // All app routes are centralized here so no component needs to
 // know about routing structure beyond this file.
@@ -50,6 +51,15 @@ export default function AppRoutes() {
         element={
           <ProtectedRoute>
             <PackingHome />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/health"
+        element={
+          <ProtectedRoute>
+            <HealthSafety />
           </ProtectedRoute>
         }
       />

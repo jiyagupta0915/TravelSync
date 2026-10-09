@@ -29,3 +29,10 @@
 .dashboard__empty .btn { margin-top:9px; }
 .dashboard__empty--error { color:#7c3c3c; background:var(--pastel-pink); border-style:solid; }
 @media(max-width:760px){ .dashboard__topbar{padding:14px 20px}.dashboard__content{padding:34px 20px}.dashboard__path-cards{grid-template-columns:1fr;margin-bottom:42px}.dashboard__search{min-width:0}.dashboard__search span{display:none}.dashboard__greeting{font-size:1.7rem} }
+
+.trip-card { display:flex; flex-direction:column; gap:8px; }
+.trip-card .trip-chip { flex:1; }
+.trip-card:nth-child(3n+2) .trip-chip { background:var(--pastel-aqua); }
+.trip-card:nth-child(3n) .trip-chip { background:var(--pastel-peach); }
+.trip-card__health { display:flex; align-items:center; justify-content:center; gap:6px; padding:9px 12px; border-radius:var(--radius-pill); background:var(--surface-cream); font-size:.8rem; font-weight:700; }
+.trip-card__health:hover { background:var(--pastel-blue); }

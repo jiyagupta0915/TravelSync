@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Home, Compass, Briefcase, Users, Ticket, Backpack, User, Settings, LogOut } from "lucide-react";
+import { Home, Compass, Briefcase, Users, Ticket, Backpack, HeartPulse,User, Settings, LogOut } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
 import "./Sidebar.css";
 
@@ -15,6 +15,7 @@ export default function Sidebar() {
     { label: "Explore", icon: Compass, to: "#" },
     { label: "My Trips", icon: Briefcase, to: "#" },
     { label: "Packing", icon: Backpack, to: "/packing" },
+    { label: "Health", icon: HeartPulse, to: "/health" },
     { label: "Groups", icon: Users, to: "#" },
     { label: "Bookings", icon: Ticket, to: "#" },
   ];
