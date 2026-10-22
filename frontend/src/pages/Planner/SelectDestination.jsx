@@ -3,6 +3,7 @@ import { ArrowRight, Check, MapPin, Search, Sparkles } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
+import TopPlaces from "../../components/TopPlaces/TopPlaces";
 import { searchDestinations } from "../../services/recommendationApi";
 import { createTrip } from "../../services/tripApi";
 import "./Planner.css";
@@ -58,6 +59,8 @@ export default function SelectDestination() {
           {query && !selected && <div className="known-results">{searching ? <div className="known-message">Searching destinations…</div> : results.length ? results.map((item) => <button type="button" key={`${item.Destination}-${item.State}`} onClick={() => { setSelected(item); setQuery(item.Destination); setResults([]); }}><MapPin size={16}/><span><strong>{item.Destination}</strong><small>{item.State} · {item.Region}</small></span></button>) : <div className="known-message">No matching destination found.</div>}</div>}
 
           {selected && <div className="selected-destination"><div><div className="selected-destination__title"><Check size={17}/> {selected.Destination}</div><p>{selected.State} · {selected.Region}</p></div><button type="button" onClick={() => { setSelected(null); setQuery(""); }}>Change</button></div>}
+
+          {selected && <TopPlaces destination={selected.Destination} />}
 
           <div className="known-details">
             <label><span>Trip duration</span><div className="known-input"><input type="number" min="1" max="30" value={duration} onChange={(e) => setDuration(e.target.value)}/><b>days</b></div></label>

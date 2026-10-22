@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { MapPin, Sparkles, Search, Bell, CalendarDays, WalletCards, HeartPulse } from "lucide-react";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import TripPathCard from "../../components/TripPathCard/TripPathCard";
+import TopPlacesModal from "../../components/TopPlaces/TopPlacesModal";
 import { useAuth } from "../../context/AuthContext";
 import { getTrips } from "../../services/tripApi";
 import "./Home.css";
@@ -18,6 +19,7 @@ export default function Home() {
   const [trips, setTrips] = useState([]);
   const [loadingTrips, setLoadingTrips] = useState(true);
   const [tripError, setTripError] = useState("");
+  const [placesFor, setPlacesFor] = useState(null);
 
   useEffect(() => {
     let active = true;
@@ -75,7 +77,7 @@ export default function Home() {
               <div className="dashboard__trips-grid">
                                 {trips.map((trip) => (
                   <div key={trip.id} className="trip-card">
-                    <button className="trip-chip" onClick={() => navigate(`/home?trip=${trip.id}`)}>
+                    <button className="trip-chip" onClick={() => setPlacesFor(trip.destination)} aria-haspopup="dialog">
                       <span className="trip-chip__destination">{trip.destination}</span>
                       <span className="trip-chip__meta">{trip.state} · {trip.duration ? `${trip.duration}-day plan` : "Destination selected"}</span>
                       {trip.budget && <span className="trip-chip__budget"><WalletCards size={14} /> ₹{Number(trip.budget).toLocaleString("en-IN")}</span>}
@@ -91,6 +93,7 @@ export default function Home() {
           </section>
         </main>
       </div>
+      <TopPlacesModal destination={placesFor} onClose={() => setPlacesFor(null)} />
     </div>
   );
 }

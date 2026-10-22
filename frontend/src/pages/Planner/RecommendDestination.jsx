@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { ArrowRight, Check, Compass, MapPin, RotateCcw, Search, Sparkles, Users, SlidersHorizontal } from "lucide-react";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
+import TopPlacesModal from "../../components/TopPlaces/TopPlacesModal";
 import { getFeatures, recommendDestinations, searchStartingLocations } from "../../services/recommendationApi";
 import { createTrip } from "../../services/tripApi";
 import { useNavigate } from "react-router-dom";
@@ -37,6 +38,7 @@ export default function RecommendDestination() {
   const [savingDestination, setSavingDestination] = useState("");
   const [error, setError] = useState("");
   const [searched, setSearched] = useState(false);
+  const [placesFor, setPlacesFor] = useState(null);
 
   useEffect(() => {
     getFeatures().then((data) => {
@@ -161,11 +163,17 @@ export default function RecommendDestination() {
 
         <section className="results-section">
           <div className="results-header"><div><span className="section-kicker">YOUR MATCHES</span><h2>{results.length ? "Destinations worth considering" : searched ? "No suitable matches yet" : "Your recommendations will appear here"}</h2><p>{results.length ? "Choose a destination to save it to your TravelSync trips." : searched ? "Try widening the maximum distance or changing the interest mix." : "Submit the form above to see ranked destination suggestions."}</p></div>{results.length > 0 && <span className="result-count">{results.length} matches</span>}</div>
-          {results.length > 0 && <div className="result-grid">{results.map((result, index) => <article className="result-card" key={`${result.Destination}-${result.State}`}><div className="result-card__top"><span className="rank">0{index + 1}</span><span className="match-badge">{Math.round(result.final_score * 100)}% match</span></div><h3>{result.Destination}</h3><p className="result-location">{result.State} · {result.Region}</p><div className="result-stats"><div><span>Estimated budget</span><strong>₹{Number(result.estimated_trip_budget_inr).toLocaleString("en-IN")}</strong></div><div><span>Ideal stay</span><strong>{result.Ideal_Days} days</strong></div><div><span>From you</span><strong>{result.distance_km} km</strong></div></div><div className="result-checks"><span className={result.duration_score >= .8 ? "ok" : "soft"}><Check size={14}/> Duration</span><span className={result.budget_score >= .85 ? "ok" : "soft"}><Check size={14}/> Budget</span><span className={result.distance_score >= .75 ? "ok" : "soft"}><Check size={14}/> Distance</span></div><button type="button" className="choose-button" disabled={savingDestination === result.Destination} onClick={() => chooseDestination(result)}>{savingDestination === result.Destination ? "Saving…" : "Choose this destination"}<ArrowRight size={16}/></button></article>)}</div>}
+          {results.length > 0 && <div className="result-grid">{results.map((result, index) => <article className="result-card" key={`${result.Destination}-${result.State}`}><div className="result-card__top"><span className="rank">0{index + 1}</span><span className="match-badge">{Math.round(result.final_score * 100)}% match</span></div><h3>{result.Destination}</h3><p className="result-location">{result.State} · {result.Region}</p><div className="result-stats"><div><span>Estimated budget</span><strong>₹{Number(result.estimated_trip_budget_inr).toLocaleString("en-IN")}</strong></div><div><span>Ideal stay</span><strong>{result.Ideal_Days} days</strong></div><div><span>From you</span><strong>{result.distance_km} km</strong></div></div><div className="result-checks"><span className={result.duration_score >= .8 ? "ok" : "soft"}><Check size={14}/> Duration</span><span className={result.budget_score >= .85 ? "ok" : "soft"}><Check size={14}/> Budget</span><span className={result.distance_score >= .75 ? "ok" : "soft"}><Check size={14}/> Distance</span></div><button type="button" className="places-button" onClick={() => setPlacesFor(result.Destination)}><MapPin size={15}/> View top 5 places</button><button type="button" className="choose-button" disabled={savingDestination === result.Destination} onClick={() => chooseDestination(result)}>{savingDestination === result.Destination ? "Saving…" : "Choose this destination"}<ArrowRight size={16}/></button></article>)}</div>}
           {!results.length && searched && !loading && <div className="empty-results"><Compass size={25}/><h3>No destination matched those constraints.</h3><p>The recommendation engine did not find an eligible candidate inside the practical limits you selected.</p></div>}
           {rules && <p className="results-footnote">{rules.duration}. {rules.budget}. {rules.distance}.</p>}
         </section>
       </main>
+      <TopPlacesModal
+        destination={placesFor}
+        onClose={() => setPlacesFor(null)}
+        choosing={savingDestination === placesFor}
+        onChoose={() => { const name = placesFor; setPlacesFor(null); chooseDestination({ Destination: name }); }}
+      />
       <Footer />
     </div>
   );

@@ -1,0 +1,156 @@
+/* ============================================
+   TopPlaces — list, modal and trigger button
+   Uses only the global TravelSync design tokens.
+   ============================================ */
+
+/* ---- Section heading ---- */
+.top-places { margin-top: var(--space-5); }
+.top-places__heading { margin-bottom: var(--space-4); }
+.top-places__heading h3 { font-size: 1.25rem; margin-top: 6px; }
+.top-places__heading p { color: var(--text-secondary); font-size: .76rem; margin-top: 5px; }
+
+/* ---- List ---- */
+.top-places__list { display: grid; gap: 10px; list-style: none; }
+
+.place-card {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 14px;
+  padding: 16px 17px;
+  border: 1px solid rgba(39, 35, 66, .08);
+  border-radius: 18px;
+  background: var(--surface-white);
+  transition: transform .16s ease, box-shadow .16s ease;
+}
+.place-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+.place-card.is-top { background: var(--surface-cream); border-color: rgba(75, 69, 112, .18); }
+
+.place-card__rank {
+  width: 44px; height: 44px;
+  border-radius: 14px;
+  display: grid; place-items: center;
+  background: var(--pastel-lavender);
+  font-family: var(--font-display);
+  font-size: 1rem; font-weight: 600;
+  color: var(--ink);
+}
+.place-card.is-top .place-card__rank { background: var(--ink); color: var(--text-on-dark); }
+
+.place-card__body { min-width: 0; }
+.place-card__title-row { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+.place-card__title-row h4 { font-size: 1.05rem; }
+.place-card__top-pick {
+  padding: 4px 9px;
+  border-radius: var(--radius-pill);
+  background: var(--pastel-aqua);
+  font-size: .62rem; font-weight: 900;
+}
+.place-card__desc { color: var(--text-secondary); font-size: .76rem; line-height: 1.55; margin-top: 5px; }
+
+.place-card__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-top: 11px; }
+.place-card__meta > span:not(.place-tag) {
+  display: inline-flex; align-items: center; gap: 4px;
+  color: var(--text-primary);
+  font-size: .68rem; font-weight: 800;
+}
+.place-card__meta svg { color: var(--ink-soft); }
+
+.place-tag { padding: 4px 10px; border-radius: var(--radius-pill); font-size: .64rem; font-weight: 900; }
+.place-tag--blue { background: var(--pastel-blue); }
+.place-tag--aqua { background: var(--pastel-aqua); }
+.place-tag--peach { background: var(--pastel-peach); }
+.place-tag--pink { background: var(--pastel-pink); }
+.place-tag--lavender { background: var(--pastel-lavender); }
+.place-tag--cream { background: var(--soft-cream); border: 1px solid rgba(39, 35, 66, .08); }
+
+.place-card__popularity { display: flex; align-items: center; gap: 9px; margin-top: 12px; }
+.place-card__popularity span, .place-card__popularity b { font-size: .62rem; font-weight: 800; color: var(--text-secondary); }
+.place-card__popularity div { flex: 1; height: 5px; border-radius: var(--radius-pill); background: rgba(39, 35, 66, .08); overflow: hidden; }
+.place-card__popularity i { display: block; height: 100%; border-radius: var(--radius-pill); background: var(--ink-soft); }
+
+/* ---- Loading + empty ---- */
+.place-skeleton {
+  height: 112px;
+  border-radius: 18px;
+  background: linear-gradient(90deg, var(--surface-cream), var(--pastel-blue), var(--surface-cream));
+  background-size: 200% 100%;
+  animation: place-shimmer 1.4s ease-in-out infinite;
+  opacity: .6;
+}
+@keyframes place-shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+
+.top-places__empty {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  padding: 26px; border-radius: 18px;
+  background: var(--surface-cream);
+  border: 1px dashed rgba(39, 35, 66, .15);
+  color: var(--text-secondary); text-align: center; font-size: .78rem;
+}
+
+/* ---- Trigger button on the recommendation cards ---- */
+.result-card .places-button {
+  margin-top: 18px; width: 100%;
+  display: flex; justify-content: center; align-items: center; gap: 7px;
+  padding: 10px; border-radius: 12px;
+  background: var(--pastel-blue);
+  color: var(--text-primary);
+  font-size: .73rem; font-weight: 900;
+  transition: background .15s ease;
+}
+.result-card .places-button:hover { background: var(--pastel-lavender); }
+.result-card .places-button + .choose-button { margin-top: 8px; }
+
+/* ---- Modal ---- */
+.places-modal {
+  position: fixed; inset: 0; z-index: 100;
+  display: grid; place-items: center;
+  padding: 24px;
+  background: rgba(39, 35, 66, .42);
+  animation: places-fade .18s ease;
+}
+.places-modal__panel {
+  position: relative;
+  width: min(680px, 100%); max-height: min(86vh, 800px);
+  display: flex; flex-direction: column;
+  border-radius: 28px;
+  background: var(--surface-white);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  animation: places-rise .2s ease;
+}
+.places-modal__scroll { overflow-y: auto; padding: 8px 28px 20px; }
+.places-modal__scroll .top-places { margin-top: 0; padding-top: 24px; }
+.places-modal__close {
+  position: absolute; top: 16px; right: 16px; z-index: 2;
+  width: 36px; height: 36px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--surface-cream); color: var(--text-secondary);
+}
+.places-modal__close:hover { background: var(--pastel-lavender); color: var(--text-primary); }
+.places-modal__footer {
+  display: flex; justify-content: flex-end; align-items: center; gap: 10px;
+  padding: 16px 28px 22px;
+  border-top: 1px solid rgba(39, 35, 66, .07);
+}
+.places-modal__secondary { padding: 12px 16px; border-radius: 12px; font-size: .76rem; font-weight: 800; color: var(--text-secondary); }
+.places-modal__secondary:hover { background: var(--surface-cream); color: var(--text-primary); }
+.places-modal__primary {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 12px 18px; border-radius: 12px;
+  background: var(--ink); color: var(--text-on-dark);
+  font-size: .76rem; font-weight: 900;
+}
+.places-modal__primary:hover:not(:disabled) { background: var(--ink-hover); }
+.places-modal__primary:disabled { opacity: .65; cursor: wait; }
+
+@keyframes places-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes places-rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+@media (max-width: 560px) {
+  .places-modal { padding: 12px; }
+  .places-modal__scroll { padding: 4px 16px 16px; }
+  .places-modal__footer { padding: 14px 16px 18px; flex-direction: column-reverse; align-items: stretch; }
+  .places-modal__primary { justify-content: center; }
+  .place-card { grid-template-columns: 38px 1fr; gap: 11px; padding: 14px; }
+  .place-card__rank { width: 38px; height: 38px; font-size: .9rem; }
+}
