@@ -9,6 +9,8 @@ import PackingHome from "../pages/Packing/PackingHome";
 import PackingAssistant from "../pages/Packing/PackingAssistant";
 import ProtectedRoute from "./ProtectedRoute";
 import HealthSafety from "../pages/Health/HealthSafety";
+import StaysHome from "../pages/Stays/StaysHome";
+import StayRecommendations from "../pages/Stays/StayRecommendations";
 
 // All app routes are centralized here so no component needs to
 // know about routing structure beyond this file.
@@ -72,6 +74,24 @@ export default function AppRoutes() {
           </ProtectedRoute>
         }
       />  
+
+      <Route
+        path="/stays"
+        element={
+          <ProtectedRoute>
+            <StaysHome />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/trip/:tripId/stays"
+        element={
+          <ProtectedRoute>
+            <StayRecommendations />
+          </ProtectedRoute>
+        }
+      />
 
     </Routes>
   );

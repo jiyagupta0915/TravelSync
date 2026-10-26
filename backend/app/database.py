@@ -34,6 +34,8 @@ async def connect_to_mongo() -> None:
         await database.db.users.create_index("email", unique=True)
         await database.db.trips.create_index([("user_id", 1), ("created_at", -1)])
         await database.db.packing_lists.create_index("trip_id", unique=True)
+                # Cached Geoapify stay lists expire automatically after 7 days.
+        await database.db.stay_cache.create_index("fetched_at", expireAfterSeconds=7 * 24 * 60 * 60)
     except PyMongoError as exc:
         logger.warning("Could not verify MongoDB indexes at startup: %s", exc)
 

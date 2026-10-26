@@ -13,7 +13,7 @@ from app.config import settings
 from app.core.error_handlers import register_error_handlers
 from app.database import close_mongo_connection, connect_to_mongo
 from app.routers import auth, destinations, meta, recommend, trips, packing, travel_health
-from app.routers import places
+from app.routers import places, stays
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -42,3 +42,4 @@ app.include_router(trips.router)
 app.include_router(packing.router)
 app.include_router(travel_health.router)
 app.include_router(places.router)
+app.include_router(stays.router)

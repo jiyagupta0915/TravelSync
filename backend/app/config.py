@@ -39,6 +39,9 @@ class Settings:
         os.getenv("CORS_ORIGINS", "http://localhost:5173,http://127.0.0.1:5173")
     )
 
+    # Smart Stay Recommendations (Geoapify Places API). The key stays on the server only.
+    geoapify_api_key: str = os.getenv("GEOAPIFY_API_KEY", "")
+
     # Misc
     environment: str = os.getenv("ENVIRONMENT", "development")
 
