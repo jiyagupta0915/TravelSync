@@ -17,3 +17,19 @@ async function request(path, options = {}) {
 export function getTripStays(tripId) {
   return request(`/api/trips/${tripId}/stays`);
 }
+
+
+export function getSavedStays(tripId) {
+  return request(`/api/trips/${tripId}/stays/saved`);
+}
+
+export function saveStay(tripId, stayKey) {
+  return request(`/api/trips/${tripId}/stays/saved`, {
+    method: "POST",
+    body: JSON.stringify({ stay_key: stayKey }),
+  });
+}
+
+export function removeSavedStay(tripId, stayKey) {
+  return request(`/api/trips/${tripId}/stays/saved/${encodeURIComponent(stayKey)}`, { method: "DELETE" });
+}

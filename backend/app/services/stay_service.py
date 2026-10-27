@@ -20,6 +20,7 @@ We estimate a price band from the stay type + star rating, scaled by how expensi
 destination is, and always label it "estimate" in the UI.
 """
 
+import hashlib
 import logging
 import math
 import re
@@ -45,6 +46,7 @@ MIN_STAYS_WANTED = 8
 FETCH_LIMIT = 60
 CACHE_TTL = timedelta(days=7)
 MAX_RESULTS = 18
+MAX_SAVED_STAYS = 10
 MAX_PLACE_DISTANCE_FROM_CENTRE_KM = 150   # ignore obviously wrong place coordinates
 
 STAY_SHARE_OF_BUDGET = 0.45     # share of the all-in trip budget we assume goes on accommodation
@@ -117,6 +119,10 @@ def _parse_stars(*values):
                 return stars
     return None
 
+def make_stay_key(name: str, lat: float, lon: float) -> str:
+    """A stable id for one stay (same hotel -> same key), used to save/remove it on a trip."""
+    raw = f"{name.strip().lower()}|{round(float(lat), 4)}|{round(float(lon), 4)}"
+    return hashlib.sha1(raw.encode("utf-8")).hexdigest()[:16]
 
 def _clean_url(value) -> str | None:
     url = str(value or "").strip()
@@ -386,6 +392,7 @@ async def build_stay_recommendations(db, trip: dict) -> dict:
     for rank, item in enumerate(scored[:MAX_RESULTS], start=1):
         stay, price = item["stay"], item["price"]
         stays.append({
+            "key": make_stay_key(stay["name"], stay["lat"], stay["lon"]),
             "rank": rank,
             "name": stay["name"],
             "type": stay["type"],
@@ -410,6 +417,7 @@ async def build_stay_recommendations(db, trip: dict) -> dict:
             "budget_fit": item["budget_fit"],
             "reasons": _reasons(item, trip, anchor, nightly_budget),
         })
+    saved_keys = [doc["stay_key"] async for doc in db.saved_stays.find({"trip_id": trip["_id"]}, {"stay_key": 1})]
 
     return {
         "destination": trip["destination"],
@@ -419,5 +427,41 @@ async def build_stay_recommendations(db, trip: dict) -> dict:
         "budget_basis": budget_basis,
         "source": source,
         "stays": stays,
+        "saved_keys": saved_keys,
         "attribution": "Stay data © OpenStreetMap contributors, powered by Geoapify. Prices are estimates.",
     }
+
+
+
+# ---------------------------------------------------------------- 5. saved stays (the trip's shortlist)
+async def list_saved_stays(db, trip: dict) -> list[dict]:
+    cursor = db.saved_stays.find({"trip_id": trip["_id"]}).sort("saved_at", 1)
+    return [doc["stay"] async for doc in cursor]
+
+
+async def save_stay(db, trip: dict, stay_key: str) -> dict:
+    """Adds one of the currently recommended stays to the trip. Saving twice is harmless."""
+    existing = await db.saved_stays.find_one({"trip_id": trip["_id"], "stay_key": stay_key})
+    if existing:
+        return existing["stay"]
+
+    # Look the stay up on the server (served from the cache), never trust details from the browser.
+    result = await build_stay_recommendations(db, trip)
+    stay = next((item for item in result["stays"] if item["key"] == stay_key), None)
+    if stay is None:
+        raise StayError("That stay isn't in the current results any more. Please refresh the page.", 404)
+
+    if await db.saved_stays.count_documents({"trip_id": trip["_id"]}) >= MAX_SAVED_STAYS:
+        raise StayError(f"You can save up to {MAX_SAVED_STAYS} stays per trip. Remove one first.", 400)
+
+    await db.saved_stays.update_one(
+        {"trip_id": trip["_id"], "stay_key": stay_key},
+        {"$setOnInsert": {"user_id": trip["user_id"], "stay": stay, "saved_at": datetime.now(timezone.utc)}},
+        upsert=True,
+    )
+    return stay
+
+
+async def remove_saved_stay(db, trip: dict, stay_key: str) -> bool:
+    result = await db.saved_stays.delete_one({"trip_id": trip["_id"], "stay_key": stay_key})
+    return result.deleted_count > 0

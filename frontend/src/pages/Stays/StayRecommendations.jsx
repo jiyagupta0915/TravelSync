@@ -1,8 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { ArrowLeft, Check, ExternalLink, MapPin, Navigation, Phone, Star, Wallet } from "lucide-react";
+import {
+  ArrowLeft, BookmarkCheck, BookmarkPlus, Check, ExternalLink, MapPin, Navigation, Phone, Star, Trash2, Wallet,
+} from "lucide-react";
 import Sidebar from "../../components/Sidebar/Sidebar";
-import { getTripStays } from "../../services/stayApi";
+import { getSavedStays, getTripStays, removeSavedStay, saveStay } from "../../services/stayApi";
 import "../Packing/Packing.css"; // reuses the "back" link style
 import "./Stays.css";
 
@@ -18,10 +20,10 @@ function formatInr(value) {
   return `₹${Number(value).toLocaleString("en-IN")}`;
 }
 
-function StayCard({ stay, index }) {
+function StayCard({ stay, index, saved, busy, onToggle }) {
   const phoneHref = stay.phone ? `tel:${String(stay.phone).replace(/[^+\d]/g, "")}` : null;
   return (
-    <li className="stay-card">
+    <li className={`stay-card ${saved ? "is-saved" : ""}`}>
       <div className="stay-card__top">
         <span className="stay-card__rank">{String(index + 1).padStart(2, "0")}</span>
         <span className={`stay-tag stay-tag--${stay.type}`}>{stay.type_label}</span>
@@ -53,6 +55,17 @@ function StayCard({ stay, index }) {
         <span className={`stay-fit stay-fit--${stay.budget_fit}`}><Wallet size={12} /> {BUDGET_LABELS[stay.budget_fit]}</span>
       </div>
 
+      <button
+        type="button"
+        className={`stay-save ${saved ? "is-saved" : ""}`}
+        onClick={onToggle}
+        disabled={busy}
+        aria-pressed={saved}
+      >
+        {saved ? <BookmarkCheck size={16} /> : <BookmarkPlus size={16} />}
+        {busy ? "Please wait…" : saved ? "In your trip · Remove" : "Add to my trip"}
+      </button>
+
       <div className="stay-card__actions">
         {stay.website && (
           <a href={stay.website} target="_blank" rel="noopener noreferrer"><ExternalLink size={14} /> Website</a>
@@ -69,6 +82,9 @@ export default function StayRecommendations() {
   const navigate = useNavigate();
 
   const [result, setResult] = useState({ tripId: null, data: null, error: "" });
+  const [savedState, setSavedState] = useState({ tripId: null, list: [] });
+  const [busyKeys, setBusyKeys] = useState({});
+  const [actionError, setActionError] = useState("");
   const [filter, setFilter] = useState("all");
   const [visible, setVisible] = useState(PAGE_SIZE);
 
@@ -80,10 +96,21 @@ export default function StayRecommendations() {
     return () => { active = false; };
   }, [tripId]);
 
+  // Loaded separately, so your saved stays still show even if the live stay search is unavailable.
+  useEffect(() => {
+    let active = true;
+    getSavedStays(tripId)
+      .then((data) => active && setSavedState({ tripId, list: data.saved || [] }))
+      .catch(() => active && setSavedState({ tripId, list: [] }));
+    return () => { active = false; };
+  }, [tripId]);
+
   // Loading until the answer for *this* trip has arrived (also covers switching between trips).
   const loading = result.tripId !== tripId;
   const data = loading ? null : result.data;
   const error = loading ? "" : result.error;
+  const savedList = useMemo(() => (savedState.tripId === tripId ? savedState.list : []), [savedState, tripId]);
+  const savedKeys = useMemo(() => new Set(savedList.map((stay) => stay.key)), [savedList]);
 
   const typeCounts = useMemo(() => {
     const counts = {};
@@ -105,6 +132,32 @@ export default function StayRecommendations() {
     setVisible(PAGE_SIZE);
   }
 
+  async function toggleSaved(stay) {
+    if (busyKeys[stay.key]) return;
+    setActionError("");
+    setBusyKeys((prev) => ({ ...prev, [stay.key]: true }));
+    try {
+      if (savedKeys.has(stay.key)) {
+        await removeSavedStay(tripId, stay.key);
+        setSavedState((prev) => ({ tripId, list: (prev.tripId === tripId ? prev.list : []).filter((s) => s.key !== stay.key) }));
+      } else {
+        const { stay: savedStay } = await saveStay(tripId, stay.key);
+        setSavedState((prev) => {
+          const list = prev.tripId === tripId ? prev.list : [];
+          return { tripId, list: list.some((s) => s.key === savedStay.key) ? list : [...list, savedStay] };
+        });
+      }
+    } catch (err) {
+      setActionError(err.message);
+    } finally {
+      setBusyKeys((prev) => {
+        const next = { ...prev };
+        delete next[stay.key];
+        return next;
+      });
+    }
+  }
+
   const usingPlaces = data?.anchor.basis === "top_places";
 
   return (
@@ -124,6 +177,44 @@ export default function StayRecommendations() {
               </h1>
             </div>
           </div>
+
+          {actionError && <div className="stay-action-error" role="alert">{actionError}</div>}
+
+          {savedList.length > 0 && (
+            <section className="stay-saved" aria-label="Your saved stays">
+              <div className="stay-saved__head">
+                <strong><BookmarkCheck size={16} /> Your saved stays</strong>
+                <span>{savedList.length} in this trip</span>
+              </div>
+              <ul className="stay-saved__list">
+                {savedList.map((stay) => (
+                  <li key={stay.key}>
+                    <div className="stay-saved__info">
+                      <b>{stay.name}</b>
+                      <small>
+                        {stay.type_label}{stay.stars ? ` · ${stay.stars}★` : ""} · {formatInr(stay.price_low_inr)}–{formatInr(stay.price_high_inr)} per {stay.price_unit} (estimate)
+                      </small>
+                    </div>
+                    <div className="stay-saved__actions">
+                      {stay.website && (
+                        <a href={stay.website} target="_blank" rel="noopener noreferrer" aria-label={`${stay.name} website`}><ExternalLink size={15} /></a>
+                      )}
+                      <a href={stay.maps_url} target="_blank" rel="noopener noreferrer" aria-label={`${stay.name} on the map`}><MapPin size={15} /></a>
+                      <button
+                        type="button"
+                        onClick={() => toggleSaved(stay)}
+                        disabled={Boolean(busyKeys[stay.key])}
+                        aria-label={`Remove ${stay.name} from trip`}
+                        title="Remove from trip"
+                      >
+                        <Trash2 size={15} />
+                      </button>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
 
           {loading && (
             <div className="stay-grid" aria-busy="true">
@@ -173,7 +264,14 @@ export default function StayRecommendations() {
 
               <ol className="stay-grid">
                 {filtered.slice(0, visible).map((stay, index) => (
-                  <StayCard stay={stay} index={index} key={`${stay.name}-${stay.lat}-${stay.lon}`} />
+                  <StayCard
+                    key={stay.key}
+                    stay={stay}
+                    index={index}
+                    saved={savedKeys.has(stay.key)}
+                    busy={Boolean(busyKeys[stay.key])}
+                    onToggle={() => toggleSaved(stay)}
+                  />
                 ))}
               </ol>
 
