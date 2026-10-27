@@ -7,6 +7,8 @@ import SelectDestination from "../pages/Planner/SelectDestination";
 import RecommendDestination from "../pages/Planner/RecommendDestination";
 import PackingHome from "../pages/Packing/PackingHome";
 import PackingAssistant from "../pages/Packing/PackingAssistant";
+import MyTrips from "../pages/Trips/MyTrips";
+import TripHub from "../pages/Trips/TripHub";
 import ProtectedRoute from "./ProtectedRoute";
 import HealthSafety from "../pages/Health/HealthSafety";
 import StaysHome from "../pages/Stays/StaysHome";
@@ -89,6 +91,24 @@ export default function AppRoutes() {
         element={
           <ProtectedRoute>
             <StayRecommendations />
+          </ProtectedRoute>
+        }
+      />
+
+        <Route
+        path="/trips"
+        element={
+          <ProtectedRoute>
+            <MyTrips />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path="/trip/:tripId"
+        element={
+          <ProtectedRoute>
+            <TripHub />
           </ProtectedRoute>
         }
       />

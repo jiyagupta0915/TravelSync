@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { MapPin, Sparkles, Search, Bell, CalendarDays, WalletCards, HeartPulse } from "lucide-react";
+import { MapPin, Sparkles, Search, Bell, CalendarDays, WalletCards } from "lucide-react";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import TripPathCard from "../../components/TripPathCard/TripPathCard";
-import TopPlacesModal from "../../components/TopPlaces/TopPlacesModal";
 import { useAuth } from "../../context/AuthContext";
 import { getTrips } from "../../services/tripApi";
 import "./Home.css";
+
+const HOME_TRIP_LIMIT = 4;
 
 function formatCreatedAt(value) {
   if (!value) return "";
@@ -19,7 +20,6 @@ export default function Home() {
   const [trips, setTrips] = useState([]);
   const [loadingTrips, setLoadingTrips] = useState(true);
   const [tripError, setTripError] = useState("");
-  const [placesFor, setPlacesFor] = useState(null);
 
   useEffect(() => {
     let active = true;
@@ -75,25 +75,25 @@ export default function Home() {
               </div>
             ) : (
               <div className="dashboard__trips-grid">
-                                {trips.map((trip) => (
+                {trips.slice(0, HOME_TRIP_LIMIT).map((trip) => (
                   <div key={trip.id} className="trip-card">
-                    <button className="trip-chip" onClick={() => setPlacesFor(trip.destination)} aria-haspopup="dialog">
+                    <button className="trip-chip" onClick={() => navigate(`/trip/${trip.id}`)}>
                       <span className="trip-chip__destination">{trip.destination}</span>
                       <span className="trip-chip__meta">{trip.state} · {trip.duration ? `${trip.duration}-day plan` : "Destination selected"}</span>
                       {trip.budget && <span className="trip-chip__budget"><WalletCards size={14} /> ₹{Number(trip.budget).toLocaleString("en-IN")}</span>}
                       <span className="trip-chip__dates">Created {formatCreatedAt(trip.created_at)}</span>
                     </button>
-                    <button className="trip-card__health" onClick={() => navigate(`/health?destination=${encodeURIComponent(trip.destination)}`)}>
-                      <HeartPulse size={14} /> Health &amp; safety
-                    </button>
                   </div>
                 ))}
               </div>
             )}
+
+            {trips.length > HOME_TRIP_LIMIT && (
+              <button type="button" className="dashboard__view-all" onClick={() => navigate("/trips")}>View all {trips.length} trips →</button>
+            )}
           </section>
         </main>
       </div>
-      <TopPlacesModal destination={placesFor} onClose={() => setPlacesFor(null)} />
     </div>
   );
 }

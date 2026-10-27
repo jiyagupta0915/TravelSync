@@ -13,7 +13,7 @@ export default function Sidebar() {
   const navItems = [
     { label: "Home", icon: Home, to: "/home" },
     { label: "Explore", icon: Compass, to: "#" },
-    { label: "My Trips", icon: Briefcase, to: "#" },
+    { label: "My Trips", icon: Briefcase, to: "/trips" },
     { label: "Packing", icon: Backpack, to: "/packing" },
     { label: "Health", icon: HeartPulse, to: "/health" },
     { label: "Groups", icon: Users, to: "#" },

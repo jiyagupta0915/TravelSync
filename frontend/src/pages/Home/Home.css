@@ -36,3 +36,15 @@
 .trip-card:nth-child(3n) .trip-chip { background:var(--pastel-peach); }
 .trip-card__health { display:flex; align-items:center; justify-content:center; gap:6px; padding:9px 12px; border-radius:var(--radius-pill); background:var(--surface-cream); font-size:.8rem; font-weight:700; }
 .trip-card__health:hover { background:var(--pastel-blue); }
+
+.dashboard__view-all {
+  margin-top: var(--space-5);
+  padding: 10px 16px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(39, 35, 66, 0.15);
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--ink-soft);
+}
+.dashboard__view-all:hover { background: var(--pastel-lavender); color: var(--ink); }
+
