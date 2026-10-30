@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { BedDouble, CalendarDays, MapPin } from "lucide-react";
-import Sidebar from "../../components/Sidebar/Sidebar";
 import { getTrips } from "../../services/tripApi";
 import "../Packing/Packing.css"; // reuses the trip-picker card styles
 import "./Stays.css";
@@ -22,10 +21,7 @@ export default function StaysHome() {
   }, []);
 
   return (
-    <div className="dashboard">
-      <Sidebar />
-      <div className="dashboard__main">
-        <main className="dashboard__content">
+    <main className="dashboard__content">
           <div className="dashboard__welcome">
             <div>
               <span className="dashboard__eyebrow">SMART STAY RECOMMENDATIONS</span>
@@ -66,7 +62,5 @@ export default function StaysHome() {
             </div>
           )}
         </main>
-      </div>
-    </div>
   );
 }

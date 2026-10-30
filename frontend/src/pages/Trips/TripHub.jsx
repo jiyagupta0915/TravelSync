@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import {
-  ArrowLeft, Backpack, BedDouble, CalendarDays, FileText, HeartPulse, MapPin, Star, Trash2, WalletCards,
+  ArrowLeft, Backpack, BedDouble, CalendarDays, HeartPulse, MapPin, Star, Ticket, Trash2, Users, WalletCards,
 } from "lucide-react";
-import Sidebar from "../../components/Sidebar/Sidebar";
 import DeleteTripDialog from "../../components/DeleteTripDialog/DeleteTripDialog";
 import TopPlacesModal from "../../components/TopPlaces/TopPlacesModal";
-import { getTrips } from "../../services/tripApi";
+import { getTrip } from "../../services/tripApi";
+import { listBookings } from "../../services/bookingApi";
 import { getPackingList } from "../../services/packingApi";
 import { getSavedStays, removeSavedStay } from "../../services/stayApi";
 import { getTravelHealth } from "../../services/healthApi";
-import { formatTripDates } from "./tripFormat";
+import { formatDate, formatTripDates } from "./tripFormat";
 import { useResource } from "./useResource";
 import "../Packing/Packing.css"; // reuses the "back" link style
 import "./Trips.css";
@@ -134,6 +134,31 @@ function StaysSummary({ tripId }) {
   );
 }
 
+function BookingsSummary({ tripId }) {
+  const { data, loading, error } = useResource(`bookings:${tripId}`, () => listBookings(tripId));
+  const bookings = data?.bookings || [];
+  let body;
+  if (loading) body = <p className="hub-muted">Loading…</p>;
+  else if (error) body = <p className="hub-muted">{error}</p>;
+  else if (bookings.length === 0) body = <p className="hub-muted">No bookings recorded yet. Keep your hotel, flight, train, bus and activity details for this trip in one place.</p>;
+  else {
+    body = (
+      <ul className="hub-list">
+        {bookings.slice(0, 3).map((b) => (
+          <li key={b.id}><strong>{b.title}</strong><span className="hub-muted"> · {b.kind}{b.start_date ? ` · ${formatDate(b.start_date)}` : ""}</span></li>
+        ))}
+        {bookings.length > 3 && <li className="hub-muted">+ {bookings.length - 3} more</li>}
+      </ul>
+    );
+  }
+  return (
+    <HubCard icon={Ticket} tone="lavender" title="Bookings & tickets"
+      footer={<Link className="hub-link" to={`/bookings?trip=${tripId}`}>{bookings.length ? "Manage bookings" : "Add a booking"} →</Link>}>
+      {body}
+    </HubCard>
+  );
+}
+
 function HealthSummary({ trip }) {
   const month = trip.start_date ? new Date(trip.start_date).getMonth() + 1 : null;
   const { loading, data, error } = useResource(`${trip.destination}:${month}`, () => getTravelHealth(trip.destination, month));
@@ -179,14 +204,18 @@ export default function TripHub() {
   const [showPlaces, setShowPlaces] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
 
-  const tripsResource = useResource(`trip:${tripId}`, () => getTrips());
-  const trip = tripsResource.data ? (tripsResource.data.trips || []).find((t) => t.id === tripId) || null : null;
+  // A 404 (deleted trip, or someone else's) becomes {trip: null} so the friendly "couldn't find this trip" screen shows.
+  const tripsResource = useResource(`trip:${tripId}`, () => getTrip(tripId).catch((err) => {
+    if (err.kind === "notfound") return { trip: null };
+    throw err;
+  }));
+  const trip = tripsResource.data?.trip || null;
 
   let content;
   if (tripsResource.loading) {
-    content = <div className="dashboard__empty">Loading your trip…</div>;
+    content = <div className="dashboard__empty" role="status">Loading your trip…</div>;
   } else if (tripsResource.error) {
-    content = <div className="dashboard__empty dashboard__empty--error">{tripsResource.error}</div>;
+    content = <div className="dashboard__empty dashboard__empty--error" role="alert">{tripsResource.error}</div>;
   } else if (!trip) {
     content = (
       <div className="dashboard__empty">
@@ -207,6 +236,7 @@ export default function TripHub() {
               <span><CalendarDays size={14} /> {trip.duration ? `${trip.duration}-day plan` : "Duration not set"} · {formatTripDates(trip)}</span>
               {trip.budget && <span><WalletCards size={14} /> {formatInr(trip.budget)}</span>}
               {trip.traveller_type && <span><Star size={14} /> {trip.traveller_type}</span>}
+              {trip.companions?.length > 0 && <span><Users size={14} /> With {trip.companions.join(", ")}</span>}
             </div>
             {!(trip.start_date && trip.end_date) && (
               <p className="hub-muted hub-header__tip">
@@ -226,9 +256,7 @@ export default function TripHub() {
           <PackingSummary tripId={trip.id} />
           <StaysSummary tripId={trip.id} />
           <HealthSummary trip={trip} />
-          <HubCard icon={FileText} tone="lavender" title="Trip documents">
-            <p className="hub-muted">Coming soon: keep tickets, bookings and ID copies for this trip in one private place.</p>
-          </HubCard>
+          <BookingsSummary tripId={trip.id} />
         </div>
 
         <TopPlacesModal destination={showPlaces ? trip.destination : null} onClose={() => setShowPlaces(false)} />
@@ -240,16 +268,11 @@ export default function TripHub() {
   }
 
   return (
-    <div className="dashboard">
-      <Sidebar />
-      <div className="dashboard__main">
-        <main className="dashboard__content">
+    <main className="dashboard__content">
           <button className="packing-back" onClick={() => navigate("/trips")}>
             <ArrowLeft size={16} /> All trips
           </button>
           {content}
         </main>
-      </div>
-    </div>
   );
 }

@@ -132,3 +132,10 @@
 @media (max-width: 860px) {
   .hub-grid { grid-template-columns: 1fr; }
 }
+.mytrip-filters { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-5); }
+.mytrip-filter { padding: 8px 16px; border-radius: var(--radius-pill); background: var(--surface-cream); border: 1px solid rgba(39, 35, 66, 0.1); font-size: 0.82rem; font-weight: 700; color: var(--text-secondary); }
+.mytrip-filter:hover { background: var(--pastel-lavender); }
+.mytrip-filter.is-active { background: var(--ink); color: var(--text-on-dark); border-color: var(--ink); }
+.mytrip-card__meta svg { vertical-align: -2px; margin-right: 3px; }
+
+.hub-list { display: grid; gap: 6px; font-size: 0.86rem; list-style: none; padding: 0; }

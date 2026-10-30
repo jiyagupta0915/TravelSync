@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X, LogOut, UserRound } from "lucide-react";
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../context/useAuth";
+import { getFirstName } from "../../utils/userDisplay";
 import "./Navbar.css";
 
 export default function Navbar() {
@@ -49,7 +50,7 @@ export default function Navbar() {
             {isAuthenticated ? (
               <>
                 <button className="navbar__login navbar__user" onClick={() => go("/home")}>
-                  <UserRound size={16} /> {user?.name?.split(" ")[0] || "Account"}
+                  <UserRound size={16} /> {getFirstName(user)}
                 </button>
                 <button className="navbar__cta" onClick={handleLogout}>
                   <LogOut size={16} /> Log Out
@@ -68,7 +69,7 @@ export default function Navbar() {
           {isAuthenticated ? (
             <>
               <button className="navbar__login navbar__user" onClick={() => navigate("/home")}>
-                <UserRound size={16} /> {user?.name?.split(" ")[0] || "Account"}
+                <UserRound size={16} /> {getFirstName(user)}
               </button>
               <button className="navbar__cta" onClick={handleLogout}>
                 <LogOut size={16} /> Log Out

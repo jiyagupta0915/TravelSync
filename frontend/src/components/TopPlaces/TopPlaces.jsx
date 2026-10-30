@@ -26,22 +26,23 @@ function formatDuration(hours) {
 }
 
 export default function TopPlaces({ destination, heading = true }) {
-  const [places, setPlaces] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  // The result remembers which destination it belongs to. A different destination therefore counts as "loading"
+  // without any state being set synchronously inside the effect.
+  const [result, setResult] = useState({ destination: null, places: [], error: "" });
 
   useEffect(() => {
     if (!destination) return undefined;
     let active = true;
-    setLoading(true);
-    setError("");
-    setPlaces([]);
     getTopPlaces(destination)
-      .then((data) => active && setPlaces(data.places || []))
-      .catch((err) => active && setError(err.message || "Top places could not be loaded."))
-      .finally(() => active && setLoading(false));
+      .then((data) => active && setResult({ destination, places: data.places || [], error: "" }))
+      .catch((err) => active && setResult({ destination, places: [], error: err.message || "Top places could not be loaded." }));
     return () => { active = false; };
   }, [destination]);
+
+  const settled = result.destination === destination;
+  const loading = Boolean(destination) && !settled;
+  const places = settled ? result.places : [];
+  const error = settled ? result.error : "";
 
   if (!destination) return null;
 

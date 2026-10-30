@@ -1,0 +1,6 @@
+.status-screen { min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: var(--space-3); padding: var(--space-6); text-align: center; color: var(--text-secondary); }
+.status-screen h1 { font-size: 1.5rem; color: var(--text-primary); }
+.status-screen p { max-width: 420px; }
+.status-screen__icon { width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; background: var(--pastel-pink); color: var(--text-primary); }
+.status-screen__spinner { width: 28px; height: 28px; border-radius: 50%; border: 3px solid var(--pastel-lavender); border-top-color: var(--ink-soft); animation: status-spin 0.8s linear infinite; }
+@keyframes status-spin { to { transform: rotate(360deg); } }

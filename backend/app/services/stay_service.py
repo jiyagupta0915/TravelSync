@@ -429,6 +429,10 @@ async def build_stay_recommendations(db, trip: dict) -> dict:
         "stays": stays,
         "saved_keys": saved_keys,
         "attribution": "Stay data © OpenStreetMap contributors, powered by Geoapify. Prices are estimates.",
+        "price_basis": "estimate",
+        "availability": "not_checked",
+        "disclaimer": "Prices are TravelSync estimates, not live rates. Availability is not checked; "
+                      "confirm price and availability with the stay before booking.",
     }
 
 

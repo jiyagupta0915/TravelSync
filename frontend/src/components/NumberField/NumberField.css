@@ -1,0 +1,4 @@
+/* In case any numeric input elsewhere is rendered natively, never show the spinner arrows. */
+input.number-field::-webkit-outer-spin-button,
+input.number-field::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+input.number-field { -moz-appearance: textfield; appearance: textfield; }

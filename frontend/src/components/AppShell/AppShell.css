@@ -1,0 +1,35 @@
+/* Layout of the signed-in area. min-width:0 on the main column + no fixed widths prevents horizontal overflow. */
+.dashboard { display: flex; min-height: 100vh; min-height: 100dvh; background: var(--surface-white); }
+.dashboard__main { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.dashboard__page { flex: 1; min-width: 0; outline: none; }
+
+.dashboard__topbar { position: sticky; top: 0; z-index: 30; display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); padding: 12px 32px; background: var(--surface-white); border-bottom: 1px solid rgba(39, 35, 66, 0.06); }
+.dashboard__topbar-left { display: flex; align-items: center; gap: var(--space-2); min-width: 0; flex: 1; }
+.dashboard__topbar-right { display: flex; align-items: center; gap: var(--space-3); flex-shrink: 0; }
+
+.dashboard__search { display: flex; align-items: center; gap: 8px; background: var(--surface-cream); padding: 9px 15px; border-radius: var(--radius-pill); color: var(--text-secondary); font-size: 0.86rem; width: min(320px, 100%); min-width: 0; }
+.dashboard__search input { border: 0; background: transparent; outline: none; min-width: 0; width: 100%; font: inherit; color: var(--text-primary); }
+.dashboard__search:focus-within { box-shadow: 0 0 0 2px var(--pastel-lavender); }
+
+.dashboard__icon-btn { color: var(--text-secondary); padding: 8px; border-radius: 50%; display: grid; place-items: center; position: relative; }
+.dashboard__icon-btn:hover { background: var(--pastel-lavender); color: var(--text-primary); }
+
+.sidebar-backdrop { position: fixed; inset: 0; z-index: 55; background: rgba(39, 35, 66, 0.4); animation: backdrop-in 0.2s ease; }
+@keyframes backdrop-in { from { opacity: 0; } to { opacity: 1; } }
+
+.skip-link { position: absolute; left: -9999px; top: 8px; z-index: 100; background: var(--ink); color: var(--text-on-dark); padding: 8px 14px; border-radius: var(--radius-sm); }
+.skip-link:focus { left: 8px; }
+
+/* Shared page container used by every page inside the shell */
+.dashboard__content { width: min(1080px, 100%); padding: 40px 40px 64px; margin: 0; }
+
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, [tabindex]:focus-visible {
+  outline: 2px solid var(--ink-soft); outline-offset: 2px;
+}
+
+@media (max-width: 900px) {
+  .dashboard__topbar { padding: 10px 16px; }
+  .dashboard__content { padding: 28px 18px 56px; }
+}
+@media (max-width: 480px) { .dashboard__search { width: 100%; } }
+@media (prefers-reduced-motion: reduce) { .sidebar-backdrop { animation: none; } }

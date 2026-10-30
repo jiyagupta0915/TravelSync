@@ -1,16 +1,6 @@
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
+import { apiRequest } from "./apiClient";
 
-// Permanently deletes a trip together with its packing list and saved stays.
-export async function deleteTrip(tripId) {
-  const response = await fetch(`${API_BASE_URL}/api/trips/${tripId}`, {
-    method: "DELETE",
-    credentials: "include",
-  });
-  const data = await response.json().catch(() => ({}));
-  if (!response.ok) {
-    const error = new Error(data.error || "The trip could not be deleted.");
-    error.status = response.status;
-    throw error;
-  }
-  return data;
+// Permanently deletes a trip together with its packing list, saved stays and bookings.
+export function deleteTrip(tripId) {
+  return apiRequest(`/api/trips/${encodeURIComponent(tripId)}`, { method: "DELETE", fallbackMessage: "The trip could not be deleted." });
 }

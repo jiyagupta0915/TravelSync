@@ -1,0 +1,14 @@
+.profile-menu { position: relative; }
+.profile-menu__button { border-radius: 50%; padding: 0; }
+.profile-menu__avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--pastel-lavender); color: var(--text-primary); display: grid; place-items: center; font-weight: 800; font-size: 0.85rem; letter-spacing: 0.02em; }
+.profile-menu__avatar--large { width: 44px; height: 44px; flex-shrink: 0; }
+.profile-menu__button:hover .profile-menu__avatar { background: var(--pastel-blue); }
+
+.profile-menu__panel { position: absolute; right: 0; top: calc(100% + 8px); z-index: 70; width: min(280px, calc(100vw - 24px)); background: var(--surface-white); border: 1px solid rgba(39, 35, 66, 0.08); border-radius: var(--radius-md); box-shadow: var(--shadow-lg); padding: var(--space-2); }
+.profile-menu__identity { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-3); border-bottom: 1px solid rgba(39, 35, 66, 0.08); margin-bottom: var(--space-2); min-width: 0; }
+.profile-menu__identity > div { min-width: 0; }
+.profile-menu__name { font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.profile-menu__email { color: var(--text-secondary); font-size: 0.8rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.profile-menu__item { display: flex; align-items: center; gap: var(--space-3); width: 100%; text-align: left; padding: var(--space-3); border-radius: var(--radius-sm); font-size: 0.9rem; color: var(--text-primary); }
+.profile-menu__item:hover, .profile-menu__item:focus-visible { background: var(--pastel-lavender); }
+.profile-menu__item--danger { color: #8a2f2f; }

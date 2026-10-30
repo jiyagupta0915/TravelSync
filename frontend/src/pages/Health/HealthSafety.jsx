@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { AlertTriangle, CalendarDays, HeartPulse, Info, MapPin, Search, ShieldCheck } from "lucide-react";
-import Sidebar from "../../components/Sidebar/Sidebar";
 import { searchDestinations } from "../../services/recommendationApi";
 import { getTravelHealth } from "../../services/healthApi";
+import { isAbort } from "../../services/apiClient";
 import "./Health.css";
 
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -42,6 +42,10 @@ function CurrentSituation({ alerts }) {
   return (
     <section className="hs-card">
       <h3 className="hs-h3">Current situation</h3>
+      <p className="hs-muted hs-small" data-testid="alerts-label">
+        Hand-maintained list from official sources — not a live feed.{" "}
+        {alerts.verified ? `Last reviewed ${alerts.last_reviewed}.` : "It has not been verified recently, so an empty list does not mean there are no outbreaks."}
+      </p>
       <div className={`hs-status ${hasAlert ? "hs-status--alert" : "hs-status--none"}`}>
         {hasAlert ? <AlertTriangle size={18} /> : <ShieldCheck size={18} />}
         <strong>{alerts.message}</strong>
@@ -91,22 +95,35 @@ export default function HealthSafety() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [searchParams] = useSearchParams();
+  const latestRequest = useRef({ id: 0, controller: null });
 
   useEffect(() => {
+    const controller = new AbortController();
     const timer = setTimeout(async () => {
       if (!query.trim() || selected) { setResults([]); return; }
-      try { const res = await searchDestinations(query); setResults(res.results || []); }
-      catch { setResults([]); }
+      try { const res = await searchDestinations(query, controller.signal); setResults(res.results || []); }
+      catch (err) { if (!isAbort(err)) setResults([]); }
     }, 220);
-    return () => clearTimeout(timer);
+    return () => { clearTimeout(timer); controller.abort(); };
   }, [query, selected]);
 
-  async function load(destination, m) {
+  // Only the newest request may change what's on screen; picking a destination/month quickly can't show old data.
+  const load = useCallback(async (destination, m) => {
+    latestRequest.current.controller?.abort();
+    const controller = new AbortController();
+    const id = latestRequest.current.id + 1;
+    latestRequest.current = { id, controller };
     setLoading(true); setError("");
-    try { setData(await getTravelHealth(destination, m)); }
-    catch (err) { setData(null); setError(err.message); }
-    finally { setLoading(false); }
-  }
+    try {
+      const result = await getTravelHealth(destination, m, controller.signal);
+      if (latestRequest.current.id === id) setData(result);
+    } catch (err) {
+      if (isAbort(err) || latestRequest.current.id !== id) return;
+      setData(null); setError(err.message);
+    } finally {
+      if (latestRequest.current.id === id) setLoading(false);
+    }
+  }, []);
 
   function choose(item) {
     setSelected(item); setQuery(item.Destination); setResults([]);
@@ -123,24 +140,22 @@ export default function HealthSafety() {
   useEffect(() => {
     const name = searchParams.get("destination");
     if (!name) return undefined;
-    let active = true;
-    searchDestinations(name)
+    const controller = new AbortController();
+    searchDestinations(name, controller.signal)
       .then((res) => {
         const match = (res.results || []).find((r) => r.Destination.toLowerCase() === name.toLowerCase());
-        if (active && match) choose(match);
+        if (controller.signal.aborted || !match) return;
+        setSelected(match); setQuery(match.Destination); setResults([]);
+        load(match.Destination, "");
       })
       .catch(() => {});
-    return () => { active = false; };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    return () => controller.abort();
+  }, [searchParams, load]);
 
   const mixMax = data?.disease_mix ? Math.max(...data.disease_mix.map((d) => d.outbreaks)) : 0;
 
   return (
-    <div className="dashboard">
-      <Sidebar />
-      <div className="dashboard__main">
-        <main className="dashboard__content">
+    <main className="dashboard__content">
           <div className="dashboard__welcome">
             <div>
               <span className="dashboard__eyebrow">TRAVEL HEALTH &amp; SAFETY</span>
@@ -332,7 +347,5 @@ export default function HealthSafety() {
             </div>
           )}
         </main>
-      </div>
-    </div>
   );
 }

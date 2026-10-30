@@ -3,7 +3,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import {
   ArrowLeft, BookmarkCheck, BookmarkPlus, Check, ExternalLink, MapPin, Navigation, Phone, Star, Trash2, Wallet,
 } from "lucide-react";
-import Sidebar from "../../components/Sidebar/Sidebar";
 import { getSavedStays, getTripStays, removeSavedStay, saveStay } from "../../services/stayApi";
 import "../Packing/Packing.css"; // reuses the "back" link style
 import "./Stays.css";
@@ -161,10 +160,7 @@ export default function StayRecommendations() {
   const usingPlaces = data?.anchor.basis === "top_places";
 
   return (
-    <div className="dashboard">
-      <Sidebar />
-      <div className="dashboard__main">
-        <main className="dashboard__content">
+    <main className="dashboard__content">
           <button className="packing-back" onClick={() => navigate("/stays")}>
             <ArrowLeft size={16} /> All trips
           </button>
@@ -291,7 +287,5 @@ export default function StayRecommendations() {
             </>
           )}
         </main>
-      </div>
-    </div>
   );
 }

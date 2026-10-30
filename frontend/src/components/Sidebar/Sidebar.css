@@ -1,79 +1,63 @@
+/* ---- Desktop: persistent sidebar (open by default), collapsible to an icon rail ---- */
 .sidebar {
-  width: 240px;
-  min-height: 100vh;
+  width: 248px;
+  flex-shrink: 0;
+  height: 100vh;
+  height: 100dvh;
+  position: sticky;
+  top: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
   background-color: var(--surface-cream);
   border-right: 1px solid rgba(39, 35, 66, 0.06);
   display: flex;
   flex-direction: column;
-  padding: var(--space-6) var(--space-5);
-  position: sticky;
-  top: 0;
+  padding: var(--space-5) var(--space-4);
+  transition: width 0.22s ease, padding 0.22s ease;
 }
 
-.sidebar__brand {
-  font-family: var(--font-display);
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin-bottom: var(--space-10);
-}
+.sidebar__header { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); margin-bottom: var(--space-8); min-height: 40px; }
+.sidebar__brand { font-family: var(--font-display); font-size: 1.3rem; font-weight: 600; padding-left: var(--space-2); }
 
-.sidebar__nav {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-  flex: 1;
-}
+.sidebar__toggle { width: 38px; height: 38px; display: grid; place-items: center; border-radius: var(--radius-sm); color: var(--text-secondary); flex-shrink: 0; }
+.sidebar__toggle:hover { background-color: var(--pastel-lavender); color: var(--text-primary); }
+
+.sidebar__nav { display: flex; flex-direction: column; gap: var(--space-1); flex: 1; }
 
 .sidebar__nav-item {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
+  display: flex; align-items: center; gap: var(--space-3);
   padding: var(--space-3) var(--space-4);
   border-radius: var(--radius-md);
-  font-size: 0.92rem;
-  font-weight: 500;
+  font-size: 0.92rem; font-weight: 500;
   color: var(--text-secondary);
-  width: 100%;
-  text-align: left;
+  width: 100%; text-align: left;
+  white-space: nowrap;
   transition: background-color 0.15s ease, color 0.15s ease;
 }
+.sidebar__nav-item svg { flex-shrink: 0; }
+.sidebar__nav-item:hover { background-color: var(--pastel-lavender); color: var(--text-primary); }
+.sidebar__nav-item.is-active { background-color: var(--pastel-blue); color: var(--text-primary); font-weight: 700; }
 
-.sidebar__nav-item:hover {
-  background-color: var(--pastel-lavender);
-  color: var(--text-primary);
+.sidebar__footer { display: flex; flex-direction: column; gap: var(--space-1); border-top: 1px solid rgba(39, 35, 66, 0.08); padding-top: var(--space-4); margin-top: var(--space-4); }
+.sidebar__logout { color: var(--text-secondary); }
+
+/* Collapsed rail (desktop) */
+.sidebar--rail { width: 76px; padding: var(--space-5) var(--space-3); align-items: center; }
+.sidebar--rail .sidebar__header { justify-content: center; }
+.sidebar--rail .sidebar__nav-item { justify-content: center; padding-left: 0; padding-right: 0; }
+.sidebar--rail .sidebar__nav-item span { display: none; }
+
+/* ---- Mobile / tablet: off-canvas drawer, closed by default ---- */
+.sidebar--drawer {
+  position: fixed; top: 0; left: 0; bottom: 0; z-index: 60;
+  width: min(300px, 85vw);
+  box-shadow: var(--shadow-lg);
+  transform: translateX(-105%);
+  visibility: hidden;
+  transition: transform 0.24s ease, visibility 0s linear 0.24s;
 }
+.sidebar--drawer.is-open { transform: translateX(0); visibility: visible; transition: transform 0.24s ease, visibility 0s; }
 
-.sidebar__footer {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-  border-top: 1px solid rgba(39, 35, 66, 0.08);
-  padding-top: var(--space-4);
-}
-
-.sidebar__logout {
-  color: var(--text-secondary);
-}
-
-/* ---- Responsive: collapse to icon-only rail on small screens ---- */
-@media (max-width: 900px) {
-  .sidebar {
-    width: 76px;
-    padding: var(--space-5) var(--space-3);
-    align-items: center;
-  }
-
-  .sidebar__brand {
-    font-size: 0.75rem;
-    text-align: center;
-  }
-
-  .sidebar__nav-item span,
-  .sidebar__logout span {
-    display: none;
-  }
-
-  .sidebar__nav-item {
-    justify-content: center;
-  }
+@media (prefers-reduced-motion: reduce) {
+  .sidebar, .sidebar--drawer, .sidebar--drawer.is-open { transition: none; }
 }

@@ -9,14 +9,13 @@ Smart Stay Recommendations endpoint.
 Login is required and the trip must belong to the logged-in user (same rule as packing).
 """
 
-from bson import ObjectId
-from bson.errors import InvalidId
 from fastapi import APIRouter, Depends, HTTPException
 from pymongo.errors import PyMongoError
 
 from app.database import get_db
 from app.dependencies import require_current_user
 from app.models.stay import SaveStayRequest
+from app.routers.trips import get_owned_trip
 from app.services.stay_service import (
     StayError, build_stay_recommendations, list_saved_stays, remove_saved_stay, save_stay,
 )
@@ -24,16 +23,7 @@ from app.services.stay_service import (
 router = APIRouter(prefix="/api/trips/{trip_id}/stays", tags=["stays"])
 
 
-async def _get_owned_trip(trip_id: str, user: dict, db) -> dict:
-    try:
-        object_id = ObjectId(trip_id)
-    except InvalidId:
-        raise HTTPException(status_code=400, detail="Invalid trip id.")
-
-    trip = await db.trips.find_one({"_id": object_id, "user_id": user["_id"]})
-    if trip is None:
-        raise HTTPException(status_code=404, detail="Trip not found.")
-    return trip
+_get_owned_trip = get_owned_trip
 
 
 @router.get("")

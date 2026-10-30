@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { MapPin, Sparkles, Search, Bell, CalendarDays, WalletCards } from "lucide-react";
-import Sidebar from "../../components/Sidebar/Sidebar";
+import { MapPin, Sparkles, CalendarDays, WalletCards } from "lucide-react";
 import TripPathCard from "../../components/TripPathCard/TripPathCard";
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../context/useAuth";
+import { getFirstName } from "../../utils/userDisplay";
 import { getTrips } from "../../services/tripApi";
 import "./Home.css";
 
@@ -31,22 +31,11 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="dashboard">
-      <Sidebar />
-      <div className="dashboard__main">
-        <header className="dashboard__topbar">
-          <div className="dashboard__search"><Search size={17} /><span>Search destinations, trips...</span></div>
-          <div className="dashboard__topbar-right">
-            <button className="dashboard__icon-btn" aria-label="Notifications"><Bell size={19} /></button>
-            <div className="dashboard__avatar" title={user?.name}>{user?.name?.charAt(0).toUpperCase()}</div>
-          </div>
-        </header>
-
-        <main className="dashboard__content">
+    <main className="dashboard__content">
           <div className="dashboard__welcome">
             <div>
               <span className="dashboard__eyebrow">YOUR TRAVEL SPACE</span>
-              <h1 className="dashboard__greeting">Where are we going next, {user?.name?.split(" ")[0]}? ✈️</h1>
+              <h1 className="dashboard__greeting">Where are we going next, {getFirstName(user)}? ✈️</h1>
               <p className="dashboard__subgreeting">Start with a destination or let TravelSync help you discover one.</p>
             </div>
           </div>
@@ -93,7 +82,5 @@ export default function Home() {
             )}
           </section>
         </main>
-      </div>
-    </div>
   );
 }

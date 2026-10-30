@@ -1,23 +1,34 @@
-// Wraps any private page. If the user is not authenticated, they are
-// redirected to /login instead of seeing the protected content.
-// Once real FastAPI/JWT auth exists, only useAuth()'s internals change —
-// this component stays the same.
+// Guards every private page.
+//   loading         -> a loading screen (no flash-redirect to /login)
+//   error           -> "can't reach TravelSync" with Retry (the session may still be valid)
+//   unauthenticated -> redirect to /login, remembering where the user was going
+// Works both wrapping children and as a layout route (renders <Outlet/> when it has no children).
 
-import { Navigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
+import StatusScreen from "../components/StatusScreen/StatusScreen";
+import { useAuth } from "../context/useAuth";
 
 export default function ProtectedRoute({ children }) {
-  const { isAuthenticated, isLoading } = useAuth();
+  const { status, error, retry } = useAuth();
+  const location = useLocation();
 
-  // Avoid a flash-redirect to /login while we're still checking
-  // localStorage for an existing mock session on first load.
-  if (isLoading) {
-    return null;
+  if (status === "loading") return <StatusScreen kind="loading" message="Checking your session…" />;
+
+  if (status === "error") {
+    const offline = error?.kind === "network";
+    return (
+      <StatusScreen
+        kind="error"
+        title={offline ? "Can't reach TravelSync" : "TravelSync is having trouble"}
+        message={error?.message || "Please try again in a moment."}
+        onRetry={retry}
+      />
+    );
   }
 
-  if (!isAuthenticated) {
-    return <Navigate to="/login" replace />;
+  if (status !== "authenticated") {
+    return <Navigate to="/login" replace state={{ from: `${location.pathname}${location.search}` }} />;
   }
 
-  return children;
+  return children ?? <Outlet />;
 }

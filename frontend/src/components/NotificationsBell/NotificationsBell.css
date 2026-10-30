@@ -1,0 +1,11 @@
+.notif { position: relative; }
+.notif__badge { position: absolute; top: 0; right: 0; min-width: 17px; height: 17px; padding: 0 4px; border-radius: 9px; background: #b94a4a; color: #fff; font-size: 0.65rem; font-weight: 800; display: grid; place-items: center; }
+.notif__panel { position: absolute; right: 0; top: calc(100% + 8px); z-index: 70; width: min(340px, calc(100vw - 24px)); max-height: min(420px, 70vh); overflow-y: auto; background: var(--surface-white); border: 1px solid rgba(39, 35, 66, 0.08); border-radius: var(--radius-md); box-shadow: var(--shadow-lg); }
+.notif__header { display: flex; justify-content: space-between; align-items: center; padding: var(--space-3) var(--space-4); border-bottom: 1px solid rgba(39, 35, 66, 0.08); }
+.notif__link { color: var(--ink-soft); font-size: 0.8rem; font-weight: 700; text-decoration: underline; }
+.notif__empty { padding: var(--space-5) var(--space-4); color: var(--text-secondary); font-size: 0.86rem; text-align: center; }
+.notif__empty--error { color: #8a2f2f; }
+.notif__item { display: flex; flex-direction: column; gap: 2px; width: 100%; text-align: left; padding: var(--space-3) var(--space-4); font-size: 0.86rem; border-bottom: 1px solid rgba(39, 35, 66, 0.05); }
+.notif__item:hover { background: var(--pastel-lavender); }
+.notif__item.is-unread { background: var(--pastel-blue); font-weight: 600; }
+.notif__item small { color: var(--text-secondary); font-weight: 500; }
