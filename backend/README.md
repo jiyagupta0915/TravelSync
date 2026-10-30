@@ -66,10 +66,36 @@ backend/
 The API runs on `http://127.0.0.1:5001`. Interactive API docs are
 auto-generated at `http://127.0.0.1:5001/docs`.
 
+## Layout additions
+
+```
+app/core/        security.py, password_policy.py, csrf.py, rate_limit.py, error_handlers.py
+app/models/      user.py, trip.py, recommend.py, packing.py, group.py, booking.py, limits.py
+app/routers/     auth, users, trips, trip_manage, packing, stays, travel_health, recommend, destinations,
+                 places, groups, bookings, notifications, meta
+app/services/    email_service.py, notifications.py (+ existing engines)
+tests/           pytest suite (in-memory MongoDB)
+```
+
 ## Auth model
 
-Authentication uses a JWT stored in an `httpOnly` cookie (`access_token`),
-set on signup/login and cleared on logout. This is the stateless
-equivalent of the previous Flask session cookie - no server-side session
-store is needed, and the frontend's `credentials: "include"` fetch calls
-work unchanged.
+Authentication uses a JWT stored in an `httpOnly` cookie (`access_token`), set on signup/login and cleared on logout.
+Tokens carry `exp`, `sub`, `iat` and a token version; changing or resetting a password bumps the version and signs out
+other devices. State-changing requests are checked against `CORS_ORIGINS` (Origin/Referer) in addition to `SameSite=Lax`.
+See the repository README for the full security model, environment variables and database index notes.
+
+## Error format
+
+```json
+{ "error": "password: Password must contain a number.", "code": "validation_error",
+  "details": [{ "field": "password", "message": "Password must contain a number." }] }
+```
+
+`error` is always a message safe to show a user. Database problems return 503; unexpected problems return a generic 500.
+
+## Tests
+
+```bash
+pip install -r requirements-dev.txt
+python -m pytest -q
+```

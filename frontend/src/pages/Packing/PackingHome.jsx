@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Backpack, CalendarDays, MapPin } from "lucide-react";
-import Sidebar from "../../components/Sidebar/Sidebar";
 import { getTrips } from "../../services/tripApi";
 import "./Packing.css";
 
@@ -21,10 +20,7 @@ export default function PackingHome() {
   }, []);
 
   return (
-    <div className="dashboard">
-      <Sidebar />
-      <div className="dashboard__main">
-        <main className="dashboard__content">
+    <main className="dashboard__content">
           <div className="dashboard__welcome">
             <div>
               <span className="dashboard__eyebrow">SMART PACKING ASSISTANT</span>
@@ -65,7 +61,5 @@ export default function PackingHome() {
             </div>
           )}
         </main>
-      </div>
-    </div>
   );
 }

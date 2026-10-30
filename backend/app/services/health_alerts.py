@@ -87,7 +87,11 @@ def get_alerts_for_state(state: str, today: date | None = None) -> dict:
             notes.insert(0, f"The alert list was last reviewed on {last_reviewed} and may be out of date.")
 
     return {
-        "connected": True,
+        # This is a hand-maintained list, NOT a live or verified feed. The flags below let the UI say so.
+        "connected": False,
+        "is_live_feed": False,
+        "source_type": "manually_curated_list",
+        "verified": bool(last_reviewed) and not stale,
         "status": "alert" if active else "none",
         "message": (f"{len(active)} active alert{'s' if len(active) != 1 else ''} for {state}."
                     if active else f"No active alert found for {state} in our alert list."),

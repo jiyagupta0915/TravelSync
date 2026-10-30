@@ -17,4 +17,18 @@ frontend/dist-ssr/
 *.log
 
 
+node_modules/
+dist/
+__pycache__/
+*.pyc
+.pytest_cache/
+venv/
+.venv/
+.env
+.env.*
+!.env.example
+.DS_Store
+
+
+
 

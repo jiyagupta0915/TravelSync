@@ -1,4 +1,5 @@
-import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   Compass,
   MapPin,
@@ -46,6 +47,13 @@ const valueStrip = [
 ];
 
 export default function Landing() {
+  // Links like /#features from other pages: scroll to the section once the landing page has rendered.
+  const { hash } = useLocation();
+  useEffect(() => {
+    if (!hash) return;
+    document.getElementById(decodeURIComponent(hash.slice(1)))?.scrollIntoView({ behavior: "smooth" });
+  }, [hash]);
+
   const navigate = useNavigate();
 
   return (

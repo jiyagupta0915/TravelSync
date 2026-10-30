@@ -1,28 +1,16 @@
-from datetime import date, datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 
 from bson import ObjectId
-from bson.errors import InvalidId
 from fastapi import APIRouter, Depends, HTTPException
-from pymongo.errors import PyMongoError
 
 from app.database import get_db
 from app.dependencies import require_current_user
+from app.models.limits import MAX_TRIP_LENGTH_DAYS
 from app.models.packing import GenerateRequest, SetDatesRequest, UpdateItemsRequest
+from app.routers.trips import get_owned_trip as _get_owned_trip
 from app.services.packing_engine import REGION_CLIMATE, build_checklist, fetch_weather_summary
 
 router = APIRouter(prefix="/api/trips/{trip_id}/packing-list", tags=["packing"])
-
-
-async def _get_owned_trip(trip_id: str, user: dict, db) -> dict:
-    try:
-        object_id = ObjectId(trip_id)
-    except InvalidId:
-        raise HTTPException(status_code=400, detail="Invalid trip id.")
-
-    trip = await db.trips.find_one({"_id": object_id, "user_id": user["_id"]})
-    if trip is None:
-        raise HTTPException(status_code=404, detail="Trip not found.")
-    return trip
 
 
 def _serialize(doc: dict) -> dict:
@@ -40,11 +28,7 @@ async def get_packing_list(trip_id: str, user: dict = Depends(require_current_us
     db = get_db()
     await _get_owned_trip(trip_id, user, db)
 
-    try:
-        doc = await db.packing_lists.find_one({"trip_id": ObjectId(trip_id)})
-    except PyMongoError as exc:
-        raise HTTPException(status_code=503, detail=f"Could not load packing list: {exc}")
-
+    doc = await db.packing_lists.find_one({"trip_id": ObjectId(trip_id)})
     if doc is None:
         raise HTTPException(status_code=404, detail="No packing list generated yet.")
     return {"packing_list": _serialize(doc)}
@@ -101,11 +85,7 @@ async def generate_packing_list(
         "updated_at": now,
     }
 
-    try:
-        await db.packing_lists.update_one({"trip_id": object_id}, {"$set": doc}, upsert=True)
-    except PyMongoError as exc:
-        raise HTTPException(status_code=503, detail=f"Could not save packing list: {exc}")
-
+    await db.packing_lists.update_one({"trip_id": object_id}, {"$set": doc}, upsert=True)
     return {"packing_list": _serialize(doc)}
 
 
@@ -124,12 +104,11 @@ async def update_packing_list(
     now = datetime.now(timezone.utc)
     items = [item.model_dump() for item in payload.items]
 
-    try:
-        await db.packing_lists.update_one(
-            {"trip_id": object_id}, {"$set": {"items": items, "updated_at": now}}
-        )
-    except PyMongoError as exc:
-        raise HTTPException(status_code=503, detail=f"Could not update packing list: {exc}")
+    result = await db.packing_lists.update_one(
+        {"trip_id": object_id}, {"$set": {"items": items, "updated_at": now}}
+    )
+    if result.matched_count == 0:
+        raise HTTPException(status_code=404, detail="No packing list generated yet.")
 
     existing["items"] = items
     existing["updated_at"] = now
@@ -142,20 +121,24 @@ async def set_trip_dates(
 ):
     """Attach travel dates to a trip so packing (and later, health) can use real forecasts."""
     db = get_db()
-    await _get_owned_trip(trip_id, user, db)
+    trip = await _get_owned_trip(trip_id, user, db)
 
     try:
-        date.fromisoformat(payload.start_date)
-        date.fromisoformat(payload.end_date)
+        start = date.fromisoformat(payload.start_date)
+        end = date.fromisoformat(payload.end_date)
     except ValueError:
-        raise HTTPException(status_code=400, detail="Dates must be in YYYY-MM-DD format.")
+        raise HTTPException(status_code=422, detail="Dates must be valid dates in YYYY-MM-DD format.")
 
-    try:
-        await db.trips.update_one(
-            {"_id": ObjectId(trip_id)},
-            {"$set": {"start_date": payload.start_date, "end_date": payload.end_date}},
-        )
-    except PyMongoError as exc:
-        raise HTTPException(status_code=503, detail=f"Could not save trip dates: {exc}")
+    if end < start:
+        raise HTTPException(status_code=422, detail="The end date cannot be earlier than the start date.")
+    if (end - start).days + 1 > MAX_TRIP_LENGTH_DAYS:
+        raise HTTPException(status_code=422, detail=f"A trip can span at most {MAX_TRIP_LENGTH_DAYS} days.")
+    today = date.today()
+    if start < today - timedelta(days=5 * 365) or end > today + timedelta(days=3 * 365):
+        raise HTTPException(status_code=422, detail="Please choose dates within the next three years.")
 
-    return {"start_date": payload.start_date, "end_date": payload.end_date}
+    await db.trips.update_one(
+        {"_id": trip["_id"], "user_id": user["_id"]},
+        {"$set": {"start_date": start.isoformat(), "end_date": end.isoformat()}},
+    )
+    return {"start_date": start.isoformat(), "end_date": end.isoformat()}

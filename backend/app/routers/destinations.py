@@ -6,7 +6,7 @@ router = APIRouter(prefix="/api", tags=["destinations"])
 
 
 @router.get("/destinations/search")
-async def destination_search(q: str = "", limit: int = Query(10)):
+async def destination_search(q: str = Query("", max_length=100), limit: int = Query(10)):
     query = q.strip().lower()
     try:
         limit = min(max(int(limit), 1), 20)
@@ -27,7 +27,7 @@ async def destination_search(q: str = "", limit: int = Query(10)):
 
 
 @router.get("/start-locations/search")
-async def start_locations_search(q: str = "", limit: int = Query(15)):
+async def start_locations_search(q: str = Query("", max_length=100), limit: int = Query(15)):
     try:
         limit = min(max(int(limit), 1), 15)
     except (TypeError, ValueError):

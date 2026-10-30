@@ -1,0 +1,1251 @@
+Destination,Place_Name,Category,Rating,Popularity,Duration_Hrs,Best_Season,Description,Latitude,Longitude
+Manali,Solang Valley,Adventure,4.4,0.95,4.0,All Year,Paragliding; zorbing and skiing in winter,32.245461,77.187293
+Manali,Rohtang Pass,Nature,4.4,0.95,5.0,May-Nov,High mountain pass with snow views; permit required,32.244211,77.186724
+Manali,Hadimba Devi Temple,Spiritual,4.5,0.9,1.5,All Year,Ancient wooden temple in a cedar forest,32.248444,77.180839
+Manali,Old Manali,Culture,4.3,0.8,3.0,All Year,Cafes; riverside lanes and backpacker vibe,32.255158,77.176593
+Manali,Vashisht Temple and Hot Springs,Spiritual,4.3,0.7,1.5,All Year,Hillside village temple with natural hot springs,32.24211,77.18732
+Shimla,Mall Road,Culture,4.3,0.95,2.0,All Year,Colonial-era promenade for shopping and food,31.1037,77.176378
+Shimla,The Ridge,Culture,4.5,0.9,1.5,All Year,Open esplanade with Himalayan views,31.104805,77.174026
+Shimla,Jakhu Temple,Spiritual,4.5,0.85,2.0,All Year,Hanuman temple at the highest point in Shimla,31.104723,77.177377
+Shimla,Kufri,Nature,4.1,0.8,4.0,Dec-Mar,Snow activities and pony rides; 16 km away,31.100663,77.263384
+Shimla,Christ Church,Heritage,4.5,0.75,1.0,All Year,Neo-Gothic church on the Ridge,31.104309,77.176016
+Dharamshala,Tsuglagkhang Complex,Spiritual,4.6,0.95,2.0,All Year,Dalai Lama's temple and Tibetan museum in McLeod Ganj,32.211301,76.320747
+Dharamshala,Triund Trek,Trekking,4.6,0.9,6.0,Mar-Jun; Sep-Nov,Popular day trek with Dhauladhar views,32.261519,76.354641
+Dharamshala,Bhagsu Waterfall,Nature,4.2,0.8,2.0,Jun-Oct,Waterfall beside the Bhagsunag Temple,32.235314,76.325187
+Dharamshala,HPCA Cricket Stadium,Sightseeing,4.7,0.75,1.5,All Year,Cricket ground set against snow-capped peaks,32.214304,76.319672
+Dharamshala,St. John in the Wilderness Church,Heritage,4.5,0.6,1.0,All Year,1852 stone church amid deodar forest,32.214304,76.319672
+Kasol,Manikaran Sahib,Spiritual,4.7,0.9,2.0,All Year,Sikh gurudwara with hot springs,32.026924,77.344907
+Kasol,Kheerganga Trek,Trekking,4.5,0.9,8.0,May-Oct,Trek to a hot spring meadow in Parvati Valley,32.010432,77.316604
+Kasol,Parvati River Banks,Nature,4.5,0.85,2.0,All Year,Riverside walks and cafes,32.010432,77.316604
+Kasol,Chalal Village,Culture,4.4,0.75,3.0,All Year,Quiet forest village reached by a short trek,32.010432,77.316604
+Kasol,Tosh Village,Culture,4.3,0.7,4.0,Mar-Nov,Mountain village with valley views,32.010432,77.316604
+Spiti Valley,Key Monastery,Spiritual,4.7,0.95,2.0,May-Oct,Tibetan Buddhist monastery on a hilltop,32.246005,78.032843
+Spiti Valley,Chandratal Lake,Nature,4.7,0.9,4.0,Jun-Oct,High-altitude crescent lake and campsite,32.246005,78.032843
+Spiti Valley,Kibber Village,Culture,4.5,0.8,2.0,May-Oct,One of the highest inhabited villages,32.246005,78.032843
+Spiti Valley,Langza Village,Nature,4.6,0.75,2.0,May-Oct,Fossil-rich village with a Buddha statue,32.246005,78.032843
+Spiti Valley,Dhankar Monastery,Heritage,4.6,0.75,2.0,May-Oct,Cliffside monastery above the Spiti river,32.246005,78.032843
+Dalhousie,Khajjiar,Nature,4.4,0.95,3.0,All Year,Meadow and lake called Mini Switzerland,32.546377,76.058049
+Dalhousie,Kalatop Wildlife Sanctuary,Nature,4.4,0.75,3.0,Mar-Nov,Forest walks and wildlife in the Dhauladhars,32.536047,75.979749
+Dalhousie,Dainkund Peak,Trekking,4.4,0.75,3.0,Mar-Nov,Highest peak in town with 360 degree views,32.536047,75.979749
+Dalhousie,Panchpula,Nature,4.2,0.8,2.0,All Year,Streams and a waterfall; Satdhara spring,32.526239,75.989454
+Dalhousie,St. John's Church,Heritage,4.3,0.55,1.0,All Year,19th-century colonial church,32.536708,75.97649
+Kasauli,Monkey Point,Sightseeing,4.3,0.9,2.0,All Year,Highest point with an Air Force station and temple,30.900717,76.962011
+Kasauli,Christ Church Kasauli,Heritage,4.4,0.8,1.0,All Year,1844 Neo-Gothic church,30.900973,76.965116
+Kasauli,Gilbert Trail,Trekking,4.3,0.65,2.0,All Year,Forest trail with valley views,30.900717,76.962011
+Kasauli,Sunset Point,Sightseeing,4.1,0.65,1.0,All Year,Evening viewpoint over the plains,,
+Kasauli,Kasauli Mall Road,Culture,4.0,0.6,1.5,All Year,Small market street for local food and shopping,30.900717,76.962011
+Kullu,Bijli Mahadev Temple,Spiritual,4.7,0.85,3.0,Mar-Nov,Hilltop Shiva temple with valley views,31.9233,77.150377
+Kullu,Raghunath Temple,Spiritual,4.5,0.85,1.0,All Year,Main Rama temple; centre of the Dussehra festival,31.957897,77.108923
+Kullu,Naggar Castle,Heritage,4.4,0.75,1.5,All Year,15th-century castle and art gallery,31.957897,77.108923
+Kullu,Bhekhli Temple,Spiritual,4.4,0.55,1.0,All Year,Hilltop temple with panoramic views,31.957897,77.108923
+Kullu,Vaishno Devi Cave Temple Kullu,Spiritual,4.5,0.6,1.5,All Year,Cave temple replica on the Kullu-Manali route,31.957897,77.108923
+Bir Billing,Billing Paragliding Site,Adventure,4.7,0.95,3.0,Mar-Jun; Sep-Nov,Asia's well-known paragliding launch point,32.050071,76.738191
+Bir Billing,Chokling Monastery,Spiritual,4.6,0.8,1.5,All Year,Tibetan monastery in Bir's colony,32.036204,76.71532
+Bir Billing,Sherabling Monastery,Spiritual,4.7,0.75,2.0,All Year,Large monastery in the hills above Bir,32.036204,76.71532
+Bir Billing,Deer Park Institute,Culture,4.7,0.55,2.0,All Year,Buddhist learning centre with peaceful gardens,32.039776,76.715043
+Bir Billing,Palampur Tea Gardens,Nature,4.4,0.65,2.0,Mar-Nov,Green tea estates 15 km away,32.088254,76.526232
+Tirthan Valley,Great Himalayan National Park,Nature,4.6,0.9,5.0,Apr-Jun; Sep-Nov,UNESCO World Heritage national park,31.667965,77.473183
+Tirthan Valley,Serolsar Lake,Nature,4.6,0.8,5.0,Apr-Nov,Forest lake near Jalori Pass,31.626408,77.529191
+Tirthan Valley,Jalori Pass,Nature,4.5,0.8,3.0,Mar-Nov,High pass with meadows and short trails,31.621898,77.32058
+Tirthan Valley,Chehni Kothi,Heritage,4.5,0.7,1.5,All Year,Tall traditional wood-and-stone tower,31.626408,77.529191
+Tirthan Valley,Jibhi Waterfall,Nature,4.5,0.65,2.0,Mar-Nov,Forest waterfall in Jibhi village,31.626408,77.529191
+Auli,Gorson Bugyal Trek,Trekking,4.6,0.85,6.0,Mar-Jun; Sep-Nov,Meadow trek with Nanda Devi views,,
+Auli,Auli Ropeway,Adventure,4.4,0.9,1.5,All Year,Cable car from Joshimath to Auli,30.525709,79.569699
+Auli,Auli Artificial Lake,Sightseeing,4.3,0.7,1.0,Dec-Mar,Snow-making lake at the ski slopes,,
+Auli,Chenab Lake,Nature,4.5,0.65,3.0,Mar-Jun; Sep-Nov,Quiet lake in a pine and oak forest,30.378178,79.512978
+Auli,Narsingh Temple Joshimath,Spiritual,4.5,0.6,1.0,All Year,Winter seat of Badrinath's deity,30.556441,79.565832
+Mussoorie,Mall Road,Culture,4.2,0.95,2.0,All Year,Main promenade for shopping and cafes,30.45449,78.084671
+Mussoorie,Kempty Falls,Nature,4.0,0.9,2.0,Jun-Oct,Popular waterfall 15 km away,30.451252,78.078118
+Mussoorie,Gun Hill,Sightseeing,4.1,0.85,1.5,All Year,Hilltop viewpoint reached by a ropeway,30.459428,78.07479
+Mussoorie,Lal Tibba,Sightseeing,4.5,0.75,1.0,All Year,Highest point in Mussoorie with Himalayan views,30.466744,78.095053
+Mussoorie,Camel's Back Road,Nature,4.4,0.7,1.5,All Year,Scenic walk past a rock shaped like a camel,30.463506,78.074839
+Rishikesh,Triveni Ghat Ganga Aarti,Spiritual,4.7,0.95,1.5,All Year,Evening aarti on the Ganga,30.108654,78.291619
+Rishikesh,Laxman Jhula,Culture,4.5,0.9,1.0,All Year,Iconic suspension bridge over the Ganga,30.124418,78.330341
+Rishikesh,Shivpuri River Rafting,Adventure,4.6,0.9,3.0,Sep-Jun,White-water rafting on the Ganga,30.108654,78.291619
+Rishikesh,Beatles Ashram,Heritage,4.4,0.75,1.5,Oct-Mar,Abandoned ashram with graffiti and meditation huts,30.112552,78.312231
+Rishikesh,Neelkanth Mahadev Temple,Spiritual,4.7,0.8,2.0,All Year,Shiva temple in the hills 30 km away,30.108654,78.291619
+Nainital,Naini Lake,Nature,4.4,0.95,2.0,All Year,Boating on the central lake,29.385585,79.46048
+Nainital,Naina Devi Temple,Spiritual,4.5,0.85,1.0,All Year,Shakti peeth on the lake's north shore,29.389108,79.454421
+Nainital,Snow View Point,Sightseeing,4.2,0.8,2.0,Oct-Mar,Cable car to a Himalayan viewpoint,29.395226,79.461999
+Nainital,Tiffin Top,Trekking,4.3,0.7,2.5,Mar-Nov,Short trek to Dorothy's Seat viewpoint,29.390529,79.460869
+Nainital,Eco Cave Gardens,Sightseeing,4.0,0.6,1.5,All Year,Cave-like walkways for families,29.392146,79.445339
+Jim Corbett,Dhikala Zone,Wildlife,4.6,0.9,5.0,Nov-Jun,Core safari zone; best tiger sighting chance,29.585189,78.862563
+Jim Corbett,Bijrani Zone,Wildlife,4.5,0.9,3.5,Nov-Jun,Popular safari zone open for day trips,,
+Jim Corbett,Jhirna Zone,Wildlife,4.5,0.75,3.5,Oct-Jun,Safari zone open all year,,
+Jim Corbett,Corbett Falls,Nature,4.2,0.65,1.5,Jul-Oct,Waterfall near Kaladhungi,29.557475,78.842495
+Jim Corbett,Garjiya Devi Temple,Spiritual,4.5,0.65,1.0,All Year,Hilltop temple on a boulder in the Kosi river,29.862156,79.069256
+Kedarnath,Kedarnath Temple,Spiritual,4.9,0.98,3.0,May-Jun; Sep-Oct,Shiva Jyotirlinga reached after a 16 km trek,30.734895,79.067025
+Kedarnath,Vasuki Tal,Trekking,4.7,0.55,8.0,Jun-Sep,High-altitude lake beyond the temple,30.726107,79.036552
+Kedarnath,Bhairavnath Temple,Spiritual,4.7,0.6,1.0,May-Oct,Small temple above Kedarnath with valley views,30.734217,79.066866
+Kedarnath,Chorabari Tal,Nature,4.6,0.6,3.0,May-Oct,Glacial lake also called Gandhi Sarovar,30.733982,79.063748
+Kedarnath,Gaurikund,Spiritual,4.5,0.75,1.0,May-Oct,Trek starting point with a hot spring and temple,30.715154,79.072387
+Badrinath,Badrinath Temple,Spiritual,4.8,0.98,2.0,May-Jun; Sep-Oct,Vishnu temple; one of the Char Dham,30.744688,79.491158
+Badrinath,Mana Village,Culture,4.4,0.8,2.0,May-Oct,Last Indian village before the Tibet border,30.770933,79.495859
+Badrinath,Bheem Pul,Sightseeing,4.4,0.7,0.5,May-Oct,Natural rock bridge over the Saraswati river,30.774254,79.493002
+Badrinath,Vasudhara Falls,Nature,4.5,0.65,4.0,May-Oct,Waterfall reached by a trek from Mana,30.74233,79.493026
+Badrinath,Tapt Kund,Spiritual,4.5,0.7,0.5,All Year,Hot spring beside the temple,30.744721,79.491692
+Valley of Flowers,Valley of Flowers National Park,Nature,4.8,0.98,6.0,Jul-Sep,UNESCO World Heritage alpine flower valley,30.743088,79.617725
+Valley of Flowers,Hemkund Sahib,Spiritual,4.9,0.95,7.0,Jun-Oct,High-altitude Sikh shrine beside a glacial lake,30.69886,79.618556
+Valley of Flowers,Ghangaria Village,Culture,4.5,0.8,2.0,Jun-Oct,Base camp for both treks,30.7007,79.59303
+Valley of Flowers,Govindghat,Spiritual,4.5,0.6,1.0,Jun-Oct,Trek start point with a large gurudwara,30.638798,79.616546
+Valley of Flowers,Pushpawati River Trail,Nature,4.6,0.45,2.0,Jul-Sep,River path inside the valley,,
+Almora,Jageshwar Dham,Spiritual,4.7,0.85,2.0,All Year,Cluster of ancient stone temples in a deodar forest,29.601699,79.663263
+Almora,Chitai Golu Devta Temple,Spiritual,4.7,0.85,1.0,All Year,Temple known for bells offered to the deity,29.61697,79.70154
+Almora,Kasar Devi Temple,Spiritual,4.6,0.8,1.5,All Year,Hilltop temple on the Crank's Ridge,29.599816,79.661012
+Almora,Binsar Wildlife Sanctuary,Nature,4.5,0.75,4.0,Mar-Jun; Oct-Nov,Oak and rhododendron forest with Himalayan views,29.670074,79.711003
+Almora,Katarmal Sun Temple,Heritage,4.5,0.6,1.0,All Year,9th-century Sun temple with carved stone,29.632402,79.614568
+Lansdowne,Tip-n-Top,Sightseeing,4.3,0.85,1.5,All Year,Hilltop viewpoint with a short walk,29.848948,78.678786
+Lansdowne,Bhulla Tal,Nature,4.2,0.85,1.5,All Year,Small lake built by the Garhwal Rifles,29.841726,78.680284
+Lansdowne,Santoshi Mata Mandir,Spiritual,4.4,0.7,1.0,All Year,Hillside temple among pine trees,29.850292,78.676203
+Lansdowne,Darwan Singh Regimental Museum,Heritage,4.4,0.65,1.0,All Year,Museum of the Garhwal Rifles,29.837841,78.681756
+Lansdowne,Kanvashram,Spiritual,4.3,0.55,1.5,All Year,Ashram on the Malini river; 40 km away,29.837841,78.681756
+Leh,Shanti Stupa,Spiritual,4.6,0.95,1.5,May-Oct,White-domed stupa with sunset views,34.173763,77.574938
+Leh,Leh Palace,Heritage,4.4,0.9,2.0,May-Oct,17th-century palace above the old town,34.165948,77.586203
+Leh,Thiksey Monastery,Spiritual,4.7,0.85,2.0,May-Oct,Large monastery resembling the Potala Palace,34.164203,77.584813
+Leh,Hemis Monastery,Spiritual,4.6,0.8,2.0,May-Oct,Largest monastery in Ladakh,34.164203,77.584813
+Leh,Khardung La,Adventure,4.4,0.8,6.0,Jun-Sep,One of the highest motorable passes,34.278663,77.604689
+Nubra Valley,Diskit Monastery,Spiritual,4.7,0.9,2.0,May-Oct,Oldest monastery in Nubra with a large Buddha statue,,
+Nubra Valley,Hunder Sand Dunes,Adventure,4.4,0.9,2.0,May-Oct,Cold-desert dunes with double-humped camel rides,,
+Nubra Valley,Turtuk Village,Culture,4.7,0.8,5.0,May-Oct,Balti village near the border,,
+Nubra Valley,Samstanling Monastery,Spiritual,4.5,0.65,1.5,May-Oct,Monastery near Sumur village,,
+Nubra Valley,Panamik Hot Springs,Nature,4.2,0.55,1.0,May-Oct,Sulphur hot spring on the way to Siachen base,,
+Pangong Lake,Pangong Tso,Nature,4.8,0.98,4.0,May-Sep,High-altitude lake that changes colour,,
+Pangong Lake,Spangmik Village,Culture,4.6,0.8,2.0,May-Sep,Village with camps on the lakeshore,33.91711,78.45422
+Pangong Lake,Merak Village,Culture,4.6,0.65,2.0,May-Sep,Remote village further along the lake,,
+Pangong Lake,Chang La Pass,Sightseeing,4.6,0.8,1.0,May-Sep,High pass on the road from Leh,,
+Pangong Lake,Tangtse Gompa,Spiritual,4.4,0.45,1.0,May-Sep,Small monastery on the route to the lake,,
+Srinagar,Dal Lake,Nature,4.4,0.98,3.0,Apr-Oct,Shikara rides and houseboats,34.113723,74.870006
+Srinagar,Shalimar Bagh,Heritage,4.4,0.8,1.5,Apr-Oct,Mughal terrace garden built in 1619,34.149707,74.873228
+Srinagar,Shankaracharya Temple,Spiritual,4.6,0.8,1.5,Apr-Nov,Hilltop Shiva temple with city views,34.078937,74.843612
+Srinagar,Indira Gandhi Memorial Tulip Garden,Nature,4.5,0.85,2.0,Mar-Apr,Asia's largest tulip garden; seasonal,34.096705,74.880755
+Srinagar,Hazratbal Shrine,Spiritual,4.6,0.75,1.0,All Year,White marble shrine on the Dal Lake's shore,34.128764,74.84138
+Gulmarg,Gulmarg Gondola,Adventure,4.6,0.98,3.0,All Year,One of the highest cable cars in the world,34.039174,74.375833
+Gulmarg,Apharwat Peak,Adventure,4.7,0.85,2.0,Dec-Jun,Phase 2 summit with skiing and snow views,34.04897,74.39212
+Gulmarg,Alpather Lake,Nature,4.7,0.6,4.0,Jun-Sep,Frozen glacial lake beyond Apharwat,34.04897,74.39212
+Gulmarg,Khilanmarg,Nature,4.6,0.7,3.0,Apr-Nov,Meadow reached by a trek or pony from Phase 1,34.04897,74.39212
+Gulmarg,Maharani Temple,Heritage,4.3,0.6,1.0,All Year,Hill temple built in 1915,34.04897,74.39212
+Pahalgam,Betaab Valley,Nature,4.5,0.9,2.0,Mar-Nov,Meadow named after a film shot there,34.032205,75.322648
+Pahalgam,Aru Valley,Nature,4.6,0.85,3.0,Apr-Nov,Meadow and a starting point for treks,34.03472,75.324759
+Pahalgam,Chandanwari,Nature,4.4,0.8,2.0,May-Oct,Snow bridge and start of the Amarnath trek,34.080442,75.417624
+Pahalgam,Lidder River,Nature,4.5,0.75,1.5,All Year,Crystal clear river through the town,34.067096,75.39295
+Pahalgam,Mamaleshwar Temple,Spiritual,4.5,0.55,1.0,All Year,One of the oldest Shiva temples in Kashmir,34.032205,75.322648
+Jammu,Vaishno Devi Temple,Spiritual,4.8,0.98,10.0,All Year,Major pilgrimage from Katra; about 50 km from Jammu,32.718561,74.858092
+Jammu,Raghunath Temple,Spiritual,4.5,0.85,1.0,All Year,Large temple complex with many shrines,32.731761,74.858432
+Jammu,Bahu Fort,Heritage,4.4,0.8,1.5,All Year,Ancient fort and the Bagh-e-Bahu garden,32.726202,74.880273
+Jammu,Peer Kho Cave Temple,Spiritual,4.5,0.65,1.0,All Year,Shiva cave temple on the Tawi river bank,32.718561,74.858092
+Jammu,Amar Mahal Palace Museum,Heritage,4.5,0.6,1.5,All Year,Palace museum with a collection of paintings,32.718561,74.858092
+Amritsar,Golden Temple,Spiritual,4.9,0.99,2.5,All Year,Holiest Sikh shrine with free community kitchen,31.619887,74.876552
+Amritsar,Jallianwala Bagh,Heritage,4.6,0.9,1.0,All Year,Memorial of the 1919 massacre,31.620854,74.88013
+Amritsar,Wagah Border Ceremony,Culture,4.5,0.9,3.0,Oct-Mar,Daily flag-lowering ceremony at the border,31.60466,74.57328
+Amritsar,Partition Museum,Heritage,4.6,0.7,2.0,All Year,Museum of 1947 Partition stories,31.625702,74.87905
+Amritsar,Durgiana Temple,Spiritual,4.6,0.6,1.0,All Year,Silver-doored temple beside a sacred tank,31.627224,74.867414
+Chandigarh,Rock Garden,Sightseeing,4.6,0.95,2.5,All Year,Sculpture park made from waste material,30.753196,76.80663
+Chandigarh,Sukhna Lake,Nature,4.5,0.9,2.0,All Year,Man-made lake with boating and a promenade,30.743695,76.820079
+Chandigarh,Zakir Hussain Rose Garden,Nature,4.4,0.75,1.5,Feb-Mar,Asia's large rose garden,30.733442,76.779714
+Chandigarh,Capitol Complex,Heritage,4.5,0.6,2.0,Oct-Mar,Le Corbusier-designed UNESCO site; book in advance,30.720823,76.750976
+Chandigarh,Sector 17 Plaza,Culture,4.3,0.7,2.0,All Year,Pedestrian shopping and dining plaza,30.735813,76.780549
+Agra,Taj Mahal,Heritage,4.8,0.99,3.0,Oct-Mar,Marble mausoleum and a world wonder,27.175007,78.042101
+Agra,Agra Fort,Heritage,4.5,0.9,2.0,Oct-Mar,Mughal red sandstone fort,27.179826,78.020822
+Agra,Fatehpur Sikri,Heritage,4.4,0.8,3.0,Oct-Mar,Abandoned Mughal capital 40 km away,27.091165,77.662398
+Agra,Mehtab Bagh,Sightseeing,4.4,0.6,1.0,Oct-Mar,Garden with a Taj view across the Yamuna,27.179047,78.042083
+Agra,Itimad-ud-Daulah,Heritage,4.4,0.6,1.0,Oct-Mar,Tomb called the Baby Taj,27.192783,78.031436
+Varanasi,Dashashwamedh Ghat Ganga Aarti,Spiritual,4.7,0.98,1.5,All Year,Nightly aarti on the Ganga,25.335649,83.007629
+Varanasi,Kashi Vishwanath Temple,Spiritual,4.8,0.95,2.0,All Year,Famous Shiva Jyotirlinga temple,25.310822,83.010668
+Varanasi,Ganga Sunrise Boat Ride,Culture,4.7,0.9,2.0,Oct-Mar,Boat trip past the ghats at dawn,25.335649,83.007629
+Varanasi,Sarnath,Heritage,4.5,0.8,2.5,Oct-Mar,Buddha's first sermon site,25.376132,83.032592
+Varanasi,Assi Ghat,Culture,4.6,0.8,1.5,All Year,Southern ghat with morning music and yoga,25.289042,83.006974
+Lucknow,Bara Imambara,Heritage,4.6,0.95,2.0,Oct-Mar,18th-century complex with a maze,26.869658,80.91351
+Lucknow,Rumi Darwaza,Heritage,4.5,0.8,0.5,Oct-Mar,Grand Awadhi gateway,26.8381,80.9346
+Lucknow,Chota Imambara,Heritage,4.5,0.75,1.0,Oct-Mar,Ornate shrine called the Palace of Lights,26.873676,80.904336
+Lucknow,British Residency,Heritage,4.4,0.6,1.5,Oct-Mar,Ruins from the 1857 uprising,26.861636,80.925659
+Lucknow,Hazratganj Market,Food,4.3,0.65,2.0,All Year,Shopping and Awadhi kebabs,26.847394,80.946392
+Mathura,Krishna Janmabhoomi Temple,Spiritual,4.7,0.95,2.0,All Year,Birthplace shrine of Krishna,27.504758,77.669699
+Mathura,Dwarkadhish Temple,Spiritual,4.6,0.8,1.0,All Year,19th-century temple known for festivals,27.505177,77.684899
+Mathura,Vishram Ghat,Spiritual,4.6,0.75,1.0,All Year,Ghat with evening aarti on the Yamuna,27.505719,77.685439
+Mathura,Banke Bihari Temple Vrindavan,Spiritual,4.6,0.85,1.0,All Year,Famous Krishna temple in Vrindavan,27.498487,77.626119
+Mathura,Prem Mandir,Spiritual,4.7,0.85,1.5,All Year,Marble temple with an evening light show,27.572089,77.672038
+Ayodhya,Ram Janmabhoomi Mandir,Spiritual,4.8,0.99,2.5,All Year,Ram temple; book darshan slots online,26.79564,82.194576
+Ayodhya,Hanuman Garhi,Spiritual,4.7,0.85,1.0,All Year,Hilltop Hanuman temple,26.795087,82.201683
+Ayodhya,Kanak Bhavan,Spiritual,4.7,0.8,1.0,All Year,Ram-Sita temple with golden idols,26.79802,82.199162
+Ayodhya,Ram Ki Paidi Saryu Ghat,Spiritual,4.7,0.8,1.5,All Year,Riverfront ghats with evening aarti,26.799071,82.205232
+Ayodhya,Nageshwarnath Temple,Spiritual,4.6,0.5,1.0,All Year,Shiva temple said to be founded by Kush,26.795087,82.201683
+Haridwar,Har Ki Pauri,Spiritual,4.8,0.99,2.0,All Year,Main ghat with a famous Ganga aarti,29.956638,78.170862
+Haridwar,Mansa Devi Temple,Spiritual,4.6,0.85,2.0,All Year,Hilltop temple reached by ropeway,29.957927,78.16524
+Haridwar,Chandi Devi Temple,Spiritual,4.6,0.75,2.0,All Year,Hilltop temple with a ropeway,29.93355,78.180127
+Haridwar,Maya Devi Temple,Spiritual,4.5,0.55,1.0,All Year,Ancient Shakti peeth,29.969727,78.107217
+Haridwar,Bharat Mata Mandir,Spiritual,4.5,0.5,1.0,All Year,Multi-storey temple dedicated to Mother India,30.12249,78.315756
+Udaipur,City Palace,Heritage,4.6,0.98,2.5,All Year,Lakeside palace complex with a museum,24.57606,73.683567
+Udaipur,Lake Pichola Boat Ride,Sightseeing,4.6,0.9,2.0,Oct-Mar,Sunset boat ride past island palaces,24.578721,73.686257
+Udaipur,Jagdish Temple,Spiritual,4.6,0.75,1.0,All Year,17th-century Vishnu temple,24.579626,73.683708
+Udaipur,Sajjangarh Monsoon Palace,Sightseeing,4.4,0.7,1.5,Jul-Mar,Hilltop palace with sunset views,24.5932,73.639453
+Udaipur,Saheliyon Ki Bari,Heritage,4.3,0.65,1.0,All Year,Garden with fountains and lotus pools,24.603066,73.685463
+Jaipur,Amber Fort,Heritage,4.6,0.98,3.0,Oct-Mar,Hilltop fort with mirrored halls,26.98631,75.850661
+Jaipur,Hawa Mahal,Heritage,4.4,0.95,1.0,All Year,Pink sandstone palace of windows,26.923932,75.826865
+Jaipur,City Palace Jaipur,Heritage,4.5,0.85,2.0,All Year,Royal residence and museum,26.92621,75.823835
+Jaipur,Jantar Mantar,Heritage,4.5,0.8,1.5,All Year,UNESCO astronomical observatory,26.924739,75.824466
+Jaipur,Nahargarh Fort,Sightseeing,4.5,0.75,2.0,Oct-Mar,Fort with sunset views over the city,26.929612,75.81702
+Jodhpur,Mehrangarh Fort,Heritage,4.7,0.98,3.0,Oct-Mar,Massive fort above the blue city,26.299541,73.019513
+Jodhpur,Umaid Bhawan Palace,Heritage,4.6,0.8,1.5,All Year,Palace museum and luxury hotel,26.281307,73.04715
+Jodhpur,Jaswant Thada,Heritage,4.5,0.8,1.0,All Year,White marble royal cenotaph,26.304343,73.025313
+Jodhpur,Sardar Market and Clock Tower,Culture,4.3,0.7,1.5,All Year,Busy market for spices and handicrafts,26.296772,73.035143
+Jodhpur,Mandore Gardens,Heritage,4.1,0.5,1.5,All Year,Royal cenotaphs and gardens,26.297209,73.038625
+Jaisalmer,Jaisalmer Fort,Heritage,4.6,0.98,3.0,Oct-Mar,Living golden sandstone fort,26.912765,70.912493
+Jaisalmer,Sam Sand Dunes,Adventure,4.4,0.95,4.0,Oct-Mar,Desert safari and camel rides,26.911662,70.912489
+Jaisalmer,Patwon Ki Haveli,Heritage,4.4,0.75,1.0,Oct-Mar,Group of five ornate havelis,26.91656,70.91228
+Jaisalmer,Gadisar Lake,Nature,4.4,0.7,1.5,Oct-Mar,Historic reservoir with temples,26.90789,70.92134
+Jaisalmer,Bada Bagh,Heritage,4.4,0.6,1.0,Oct-Mar,Royal cenotaphs at sunset,26.911662,70.912489
+Pushkar,Pushkar Lake,Spiritual,4.6,0.95,1.5,All Year,Sacred lake ringed by ghats,26.487634,74.554048
+Pushkar,Brahma Temple,Spiritual,4.6,0.95,1.0,All Year,One of the few Brahma temples in the world,26.487325,74.548928
+Pushkar,Savitri Mata Temple,Spiritual,4.7,0.75,2.0,All Year,Hilltop temple with a ropeway,26.485934,74.546216
+Pushkar,Pushkar Bazaar,Culture,4.3,0.7,1.5,All Year,Handicrafts and street food,26.487785,74.565206
+Pushkar,Varaha Temple,Spiritual,4.5,0.4,0.5,All Year,Ancient temple of Vishnu's boar avatar,26.490611,74.557722
+Mount Abu,Dilwara Jain Temples,Spiritual,4.7,0.95,2.0,All Year,Intricate marble Jain temples,24.592433,72.708188
+Mount Abu,Nakki Lake,Nature,4.2,0.9,1.5,All Year,Hill lake with boating,24.595305,72.703903
+Mount Abu,Guru Shikhar,Sightseeing,4.5,0.8,1.5,All Year,Highest point in Rajasthan,24.592433,72.708188
+Mount Abu,Sunset Point,Sightseeing,4.2,0.8,1.0,All Year,Evening viewpoint,24.585235,72.69535
+Mount Abu,Achalgarh Fort,Heritage,4.5,0.5,1.5,All Year,Ancient fort and temples nearby,24.631005,72.76288
+Ranthambore,Ranthambore National Park,Wildlife,4.5,0.99,4.0,Oct-Jun,Tiger reserve with safaris,26.01733,76.50257
+Ranthambore,Ranthambore Fort,Heritage,4.5,0.85,2.0,Oct-Mar,10th-century fort inside the park,26.028333,76.459007
+Ranthambore,Padam Talao,Wildlife,4.5,0.6,1.0,Oct-Jun,Lake in the park known for tiger sightings,,
+Ranthambore,Trinetra Ganesh Temple,Spiritual,4.7,0.7,1.0,All Year,Famous Ganesh temple inside the fort,26.01753,76.453136
+Ranthambore,Rajbagh Talao,Wildlife,4.4,0.5,1.0,Oct-Jun,Lake with ruins in the park,,
+Bikaner,Junagarh Fort,Heritage,4.6,0.95,2.5,Oct-Mar,Undefeated fort with ornate palaces,28.022348,73.318133
+Bikaner,Karni Mata Temple Deshnoke,Spiritual,4.5,0.9,1.5,All Year,Temple known for its sacred rats,28.03296,73.327877
+Bikaner,National Research Centre on Camel,Culture,4.3,0.6,1.5,Oct-Mar,Camel breeding farm with rides,27.978865,73.360935
+Bikaner,Lalgarh Palace,Heritage,4.3,0.6,1.5,All Year,Red sandstone palace with a museum,28.04012,73.330464
+Bikaner,Bhandasar Jain Temple,Spiritual,4.5,0.6,1.0,All Year,Painted 15th-century Jain temple,28.004719,73.300739
+Kumbhalgarh,Kumbhalgarh Fort,Heritage,4.5,0.98,3.0,Oct-Mar,UNESCO fort with a 36 km wall,25.149449,73.58026
+Kumbhalgarh,Ranakpur Jain Temple,Spiritual,4.7,0.8,2.0,All Year,Marble temple 50 km away,25.146936,73.585209
+Kumbhalgarh,Kumbhalgarh Wildlife Sanctuary,Wildlife,4.3,0.6,3.0,Oct-Jun,Forest sanctuary with leopard and wolf,25.165515,73.499716
+Kumbhalgarh,Fort Light and Sound Show,Culture,4.3,0.6,1.0,Oct-Mar,Evening show on the fort's history,,
+Kumbhalgarh,Mamadev Temple,Spiritual,4.5,0.5,1.0,All Year,Old temple inside the fort grounds,25.147619,73.582625
+Ahmedabad,Sabarmati Ashram,Heritage,4.6,0.9,1.5,All Year,Gandhi's home and museum,23.060165,72.580638
+Ahmedabad,Adalaj Stepwell,Heritage,4.5,0.8,1.5,All Year,Intricately carved 15th-century stepwell,22.974469,72.603359
+Ahmedabad,Kankaria Lake,Nature,4.3,0.8,2.0,All Year,Lakefront with a zoo and food stalls,23.005979,72.60129
+Ahmedabad,Sidi Saiyyed Mosque,Heritage,4.6,0.7,0.5,All Year,Mosque famous for its stone tree-of-life window,23.026843,72.581015
+Ahmedabad,Manek Chowk,Food,4.3,0.65,1.5,All Year,Night food market in the old city,23.022081,72.577341
+Rann of Kutch,White Rann,Nature,4.6,0.98,4.0,Nov-Feb,Vast white salt desert,23.83042,69.52009
+Rann of Kutch,Rann Utsav Tent City,Culture,4.5,0.8,6.0,Nov-Feb,Cultural festival with tent stays,23.662071,70.060583
+Rann of Kutch,Kala Dungar,Sightseeing,4.4,0.7,1.0,Nov-Feb,Highest point in Kutch with rann views,23.93678,69.82741
+Rann of Kutch,Aina Mahal Bhuj,Heritage,4.4,0.55,1.5,All Year,18th-century mirror palace,23.255304,69.668734
+Rann of Kutch,Prag Mahal,Heritage,4.4,0.5,1.5,All Year,Gothic-style palace in Bhuj,,
+Dwarka,Dwarkadhish Temple,Spiritual,4.8,0.99,2.0,All Year,Krishna temple and one of the Char Dham,22.237687,68.967684
+Dwarka,Nageshwar Jyotirlinga,Spiritual,4.7,0.8,1.0,All Year,Jyotirlinga shrine near Dwarka,22.24116,68.967805
+Dwarka,Bet Dwarka,Spiritual,4.6,0.8,3.0,Oct-Mar,Island temple reached by boat,22.238659,68.966705
+Dwarka,Rukmini Devi Temple,Spiritual,4.5,0.6,1.0,All Year,Temple dedicated to Krishna's queen,22.257331,68.964398
+Dwarka,Gomti Ghat,Spiritual,4.6,0.7,1.0,All Year,Sacred riverfront ghat,22.236815,68.967722
+Somnath,Somnath Temple,Spiritual,4.8,0.99,2.0,All Year,First Jyotirlinga on the Arabian Sea,20.887761,70.401391
+Somnath,Triveni Sangam,Spiritual,4.6,0.7,1.0,All Year,Confluence of three rivers near the sea,20.885887,70.409479
+Somnath,Bhalka Tirth,Spiritual,4.6,0.6,1.0,All Year,Site linked to Krishna's departure,20.911796,70.38488
+Somnath,Somnath Beach,Beach,4.5,0.7,1.0,All Year,Quiet beach next to the temple,20.885133,70.402828
+Somnath,Prabhas Patan Museum,Heritage,4.2,0.4,1.0,All Year,Museum of local sculpture and history,20.890524,70.401953
+Diu,Diu Fort,Heritage,4.4,0.9,1.5,Oct-Mar,16th-century Portuguese sea fort,20.715421,70.993768
+Diu,Nagoa Beach,Beach,4.4,0.9,2.0,Oct-Mar,Horseshoe beach with water sports,20.710058,70.987419
+Diu,St. Paul's Church,Heritage,4.5,0.7,0.5,All Year,Baroque Portuguese church,20.714745,70.990663
+Diu,Ghoghla Beach,Beach,4.4,0.6,2.0,Oct-Mar,Wide quiet beach,20.71815,70.981305
+Diu,Gangeshwar Temple,Spiritual,4.6,0.5,1.0,All Year,Sea-facing Shiva temple,20.713778,70.985364
+Mumbai,Gateway of India,Heritage,4.6,0.99,1.0,All Year,Waterfront arch and city icon,18.921966,72.834566
+Mumbai,Marine Drive,Sightseeing,4.6,0.95,1.5,Oct-Mar,Curved seafront promenade,18.949816,72.818815
+Mumbai,Chhatrapati Shivaji Terminus,Heritage,4.6,0.8,1.0,All Year,UNESCO Victorian Gothic railway station,18.939856,72.835519
+Mumbai,Elephanta Caves,Heritage,4.2,0.8,4.0,Oct-Mar,Rock-cut caves on an island,19.13899,72.856992
+Mumbai,Siddhivinayak Temple,Spiritual,4.7,0.8,1.5,All Year,Popular Ganesh temple,19.081512,72.911962
+Pune,Shaniwar Wada,Heritage,4.4,0.9,1.5,Oct-Mar,Peshwa fortification and palace ruins,18.519383,73.855357
+Pune,Aga Khan Palace,Heritage,4.5,0.8,1.5,All Year,Palace linked to Gandhi's detention,18.552445,73.90145
+Pune,Sinhagad Fort,Trekking,4.5,0.85,3.0,Jun-Mar,Hill fort with a monsoon trek,18.365146,73.755224
+Pune,Dagdusheth Halwai Ganpati Temple,Spiritual,4.8,0.85,1.0,All Year,Best-known Ganesh temple in Pune,18.516431,73.856109
+Pune,Parvati Hill,Sightseeing,4.5,0.6,1.5,Oct-Mar,Temple hill with city views,18.505269,73.852362
+Lonavala,Bhushi Dam,Nature,4.1,0.9,2.0,Jun-Sep,Monsoon spot with water-covered steps,18.722513,73.395422
+Lonavala,Tiger's Point,Sightseeing,4.2,0.85,1.5,Jun-Feb,Cliff viewpoint with valley views,18.754583,73.406635
+Lonavala,Karla Caves,Heritage,4.5,0.7,1.5,All Year,Ancient Buddhist rock-cut caves,18.754856,73.401673
+Lonavala,Lohagad Fort,Trekking,4.5,0.8,3.0,Jun-Feb,Hill fort with an easy trek,18.754856,73.401673
+Lonavala,Lion's Point,Sightseeing,4.3,0.8,1.0,Jun-Feb,Viewpoint over the valley,18.754583,73.406635
+Mahabaleshwar,Venna Lake,Nature,4.2,0.9,1.5,All Year,Lake with boating and horse rides,17.934162,73.664823
+Mahabaleshwar,Arthur's Seat,Sightseeing,4.4,0.8,1.5,Oct-May,Cliff viewpoint over the Konkan,17.924276,73.65758
+Mahabaleshwar,Pratapgad Fort,Heritage,4.5,0.75,2.5,Oct-Mar,Fort linked to Shivaji,17.924276,73.65758
+Mahabaleshwar,Mapro Garden,Food,4.2,0.8,1.5,All Year,Strawberry products and fresh snacks,17.92282,73.73474
+Mahabaleshwar,Lingmala Waterfall,Nature,4.2,0.7,1.5,Jun-Oct,Large monsoon waterfall,17.922704,73.692957
+Nashik,Trimbakeshwar Temple,Spiritual,4.7,0.95,2.0,All Year,One of the twelve Jyotirlingas,19.973461,73.685246
+Nashik,Panchavati,Spiritual,4.5,0.8,2.0,All Year,Area linked to the Ramayana,20.006685,73.793572
+Nashik,Pandavleni Caves,Heritage,4.5,0.7,1.5,Jun-Mar,Buddhist caves on a hill,19.940551,73.749626
+Nashik,Sula Vineyards,Food,4.3,0.9,2.0,Nov-Mar,Winery with tastings and tours,20.00644,73.68765
+Nashik,Ramkund,Spiritual,4.6,0.75,1.0,All Year,Holy bathing tank on the Godavari,20.007264,73.79249
+Aurangabad,Ajanta Caves,Heritage,4.7,0.95,4.0,Oct-Mar,UNESCO Buddhist cave paintings 100 km away,19.875889,75.361001
+Aurangabad,Ellora Caves,Heritage,4.7,0.98,4.0,Oct-Mar,UNESCO rock-cut temples including Kailasa,20.026566,75.177692
+Aurangabad,Bibi Ka Maqbara,Heritage,4.2,0.9,1.5,Oct-Mar,Mausoleum known as the mini Taj,19.901448,75.320233
+Aurangabad,Daulatabad Fort,Heritage,4.5,0.8,2.0,Oct-Mar,Hill fort with a defensive maze,19.942488,75.212656
+Aurangabad,Grishneshwar Temple,Spiritual,4.7,0.7,1.0,All Year,Jyotirlinga temple near Ellora,19.885317,75.360983
+Alibaug,Alibaug Beach,Beach,4.1,0.9,2.0,Oct-May,Main beach with the sea fort in view,18.728429,72.867266
+Alibaug,Kolaba Fort,Heritage,4.2,0.8,1.5,Oct-May,Sea fort reached on foot at low tide,18.63411,72.86422
+Alibaug,Nagaon Beach,Beach,4.2,0.75,2.0,Oct-May,Water sports and cafes,18.649843,72.876547
+Alibaug,Kihim Beach,Beach,4.2,0.6,2.0,Oct-May,Quiet beach with birdlife,18.649843,72.876547
+Alibaug,Varsoli Beach,Beach,4.3,0.6,2.0,Oct-May,Clean and uncrowded beach,18.649843,72.876547
+Goa,Baga Beach,Beach,4.3,0.98,3.0,Nov-Feb,Lively beach with shacks and water sports,15.557372,73.75098
+Goa,Basilica of Bom Jesus,Heritage,4.6,0.9,1.0,All Year,UNESCO church with St. Francis Xavier's relics,15.500946,73.911339
+Goa,Fort Aguada,Heritage,4.3,0.9,1.5,Oct-Mar,17th-century Portuguese fort and lighthouse,15.492387,73.773598
+Goa,Palolem Beach,Beach,4.5,0.85,3.0,Nov-Feb,Crescent beach in South Goa,15.009308,74.024229
+Goa,Dudhsagar Falls,Nature,4.5,0.85,5.0,Jun-Dec,Four-tiered waterfall on the Western Ghats,15.315618,74.314249
+Gokarna,Om Beach,Beach,4.4,0.9,2.0,Oct-Mar,Beach shaped like the Om symbol,14.519065,74.325424
+Gokarna,Kudle Beach,Beach,4.5,0.9,2.0,Oct-Mar,Laid-back beach with cafes,14.528447,74.315856
+Gokarna,Mahabaleshwar Temple Gokarna,Spiritual,4.7,0.9,1.0,All Year,Ancient Shiva temple,14.543963,74.318442
+Gokarna,Half Moon Beach,Beach,4.4,0.6,2.0,Oct-Mar,Secluded beach reached by a short trek,14.517973,74.330944
+Gokarna,Paradise Beach,Beach,4.4,0.55,2.0,Oct-Mar,Remote beach with basic camps,14.518118,74.337605
+Hampi,Virupaksha Temple,Spiritual,4.7,0.95,1.5,Oct-Mar,Living temple on the Tungabhadra,15.335165,76.458682
+Hampi,Vittala Temple,Heritage,4.7,0.95,2.0,Oct-Mar,Famed for its stone chariot,15.334948,76.459175
+Hampi,Hemakuta Hill,Heritage,4.6,0.7,1.0,Oct-Mar,Early temples and a sunset view,15.332915,76.460297
+Hampi,Matanga Hill,Trekking,4.7,0.7,1.5,Oct-Mar,Sunrise climb with a panoramic view,15.331351,76.468304
+Hampi,Lotus Mahal,Heritage,4.6,0.75,1.0,Oct-Mar,Indo-Islamic palace in the Zenana Enclosure,15.320282,76.471395
+Coorg,Abbey Falls,Nature,4.1,0.9,1.5,Jun-Dec,Waterfall near Madikeri,12.457024,75.715671
+Coorg,Raja's Seat,Sightseeing,4.2,0.85,1.0,All Year,Garden viewpoint at sunset,,
+Coorg,Namdroling Monastery,Spiritual,4.6,0.85,2.0,All Year,Golden Temple at Bylakuppe,12.43125,75.967003
+Coorg,Dubare Elephant Camp,Wildlife,4.2,0.8,2.5,Oct-Mar,Elephant interactions on the Cauvery,12.371049,75.905181
+Coorg,Talakaveri,Spiritual,4.4,0.6,2.0,Oct-Mar,Source of the Cauvery river,12.329059,75.862916
+Chikmagalur,Mullayanagiri,Trekking,4.6,0.95,3.0,Oct-Mar,Highest peak in Karnataka,13.390922,75.721403
+Chikmagalur,Baba Budangiri,Trekking,4.5,0.8,3.0,Oct-Mar,Hills with a shrine and coffee estates,13.421088,75.7607
+Chikmagalur,Hebbe Falls,Nature,4.4,0.75,3.0,Jun-Dec,Waterfall inside a coffee estate,13.415761,75.693422
+Chikmagalur,Kemmangundi,Nature,4.4,0.6,3.0,Oct-Mar,Hill station with Z Point and rose garden,13.517052,75.771372
+Chikmagalur,Manikyadhara Falls,Nature,4.3,0.5,1.5,Jun-Dec,Waterfall near Baba Budangiri,13.422196,75.769802
+Bengaluru,Lalbagh Botanical Garden,Nature,4.6,0.95,2.0,All Year,Historic garden with a glasshouse,12.948849,77.586888
+Bengaluru,Bangalore Palace,Heritage,4.3,0.85,1.5,All Year,Tudor-style palace,12.998595,77.592009
+Bengaluru,Cubbon Park,Nature,4.6,0.8,1.5,All Year,Green park in the city centre,12.974253,77.592191
+Bengaluru,ISKCON Temple Bangalore,Spiritual,4.7,0.85,1.5,All Year,Large temple complex,13.009263,77.551643
+Bengaluru,Bannerghatta National Park,Wildlife,4.1,0.7,4.0,Oct-Mar,Zoo and safari on the city's edge,12.800729,77.577675
+Mysuru,Mysore Palace,Heritage,4.7,0.99,2.0,All Year,Grand palace lit up on Sundays,12.30522,76.655385
+Mysuru,Chamundi Hills,Spiritual,4.6,0.85,2.0,All Year,Hilltop temple with city views,12.29286,76.68275
+Mysuru,Brindavan Gardens,Sightseeing,4.3,0.8,2.0,All Year,Terraced garden with a musical fountain,12.323301,76.627166
+Mysuru,St. Philomena's Church,Heritage,4.6,0.6,0.5,All Year,Neo-Gothic cathedral,12.320995,76.658282
+Mysuru,Mysore Zoo,Wildlife,4.4,0.7,3.0,All Year,One of India's oldest zoos,12.302349,76.663367
+Kabini,Nagarhole Jeep Safari,Wildlife,4.5,0.99,3.0,Oct-May,Safari with tigers and elephants,,
+Kabini,Kabini Boat Safari,Wildlife,4.5,0.9,2.0,Oct-May,Boat trip along the reservoir shore,11.935933,76.270508
+Kabini,Kabini Reservoir,Nature,4.5,0.75,2.0,Oct-May,Backwaters at the edge of the park,11.943906,76.288897
+Kabini,Namdroling Golden Temple,Spiritual,4.6,0.6,2.0,All Year,Tibetan monastery at Bylakuppe,,
+Kabini,Bandipur National Park,Wildlife,4.4,0.55,3.0,Oct-May,Nearby tiger reserve,11.794994,76.468084
+Udupi,Sri Krishna Temple,Spiritual,4.7,0.98,1.5,All Year,Famous temple with Udupi cuisine,13.341185,74.752042
+Udupi,Malpe Beach,Beach,4.3,0.85,2.0,Oct-Mar,Beach with water sports,13.348817,74.736511
+Udupi,St. Mary's Island,Nature,4.4,0.85,3.0,Oct-May,Island with hexagonal basalt columns,13.379206,74.673344
+Udupi,Kaup Beach and Lighthouse,Beach,4.4,0.7,1.5,Oct-Mar,Beach with a red-and-white lighthouse,13.341917,74.747323
+Udupi,Manipal End Point,Sightseeing,4.5,0.4,1.0,All Year,Sunset spot overlooking the Swarna river,13.355563,74.785609
+Mangalore,Panambur Beach,Beach,4.3,0.85,2.0,Oct-Mar,City beach with water sports,12.938486,74.810356
+Mangalore,Tannirbhavi Beach,Beach,4.3,0.6,2.0,Oct-Mar,Calmer beach with a quiet shore,12.900375,74.813066
+Mangalore,Kadri Manjunath Temple,Spiritual,4.6,0.7,1.0,All Year,10th-century hillside temple,12.885834,74.855249
+Mangalore,St. Aloysius Chapel,Heritage,4.6,0.6,0.5,All Year,Chapel famous for its interior paintings,12.8738,74.845361
+Mangalore,Pilikula Nisargadhama,Nature,4.3,0.65,3.0,All Year,Zoo and science park,12.919266,74.898522
+Wayanad,Edakkal Caves,Heritage,4.4,0.9,3.0,Oct-May,Prehistoric rock carvings,11.626679,76.23548
+Wayanad,Banasura Sagar Dam,Nature,4.3,0.85,2.0,Oct-May,Largest earthen dam in India,11.674039,75.964905
+Wayanad,Chembra Peak,Trekking,4.6,0.8,5.0,Oct-Mar,Trek to a heart-shaped lake,11.553808,76.101955
+Wayanad,Soochipara Falls,Nature,4.4,0.75,3.0,Jun-Dec,Three-tiered waterfall,11.511215,76.163429
+Wayanad,Pookode Lake,Nature,4.2,0.65,1.5,All Year,Freshwater lake with boating,11.542334,76.027306
+Munnar,Eravikulam National Park,Wildlife,4.5,0.95,3.0,Aug-May,Home of the Nilgiri tahr; closed Feb-Mar,10.086996,77.060091
+Munnar,Mattupetty Dam,Nature,4.3,0.85,1.0,All Year,Reservoir with boating,10.087108,77.06082
+Munnar,Kolukkumalai Tea Estate,Nature,4.5,0.85,4.0,Oct-Mar,World's highest-grown tea plantation,10.078813,77.059221
+Munnar,Top Station,Sightseeing,4.4,0.8,1.5,Oct-Mar,Viewpoint over Tamil Nadu,10.087154,77.060885
+Munnar,Echo Point,Sightseeing,4.2,0.6,1.0,All Year,Valley viewpoint with echoes,10.06147,77.064756
+Alappuzha,Alleppey Houseboat Cruise,Relaxation,4.5,0.99,5.0,Oct-Mar,Overnight cruise on the Kerala backwaters,9.492327,76.329149
+Alappuzha,Alappuzha Beach,Beach,4.3,0.8,1.5,All Year,Beach with a historic pier,9.484378,76.319498
+Alappuzha,Marari Beach,Beach,4.4,0.7,2.0,Oct-Mar,Quiet fishing beach,9.492327,76.329149
+Alappuzha,Pathiramanal Island,Nature,4.3,0.55,2.0,Oct-Mar,Small island in Vembanad Lake,9.492327,76.329149
+Alappuzha,Kuttanad Village Tour,Culture,4.4,0.6,3.0,Oct-Mar,Canoe ride through paddy fields below sea level,9.492327,76.329149
+Kochi,Fort Kochi Chinese Fishing Nets,Culture,4.3,0.95,1.0,All Year,Cantilevered nets on the seafront,9.969083,76.251865
+Kochi,Mattancherry Palace,Heritage,4.2,0.8,1.0,All Year,Dutch Palace with Kerala murals,9.958351,76.259181
+Kochi,Jew Town and Paradesi Synagogue,Heritage,4.3,0.8,1.5,Oct-Mar,Antique shops and a 16th-century synagogue,9.967903,76.244438
+Kochi,Santa Cruz Basilica,Heritage,4.6,0.7,0.5,All Year,Colorful Gothic basilica,9.963987,76.241895
+Kochi,Marine Drive Kochi,Sightseeing,4.4,0.75,1.5,All Year,Waterfront promenade at sunset,9.976275,76.276836
+Kovalam,Lighthouse Beach,Beach,4.4,0.95,3.0,Oct-Mar,Main beach by the red-and-white lighthouse,8.385318,76.97908
+Kovalam,Hawa Beach,Beach,4.4,0.7,2.0,Oct-Mar,Wide beach with cafes,8.388753,76.976022
+Kovalam,Samudra Beach,Beach,4.3,0.55,2.0,Oct-Mar,Quieter beach at the northern end,8.39623,76.973207
+Kovalam,Vizhinjam Lighthouse,Sightseeing,4.3,0.8,1.0,All Year,Climb for views of the coast,8.38289,76.979649
+Kovalam,Vellar Crafts Village,Culture,4.2,0.4,1.5,All Year,Craft shops and artists' studios,,
+Varkala,Varkala Beach,Beach,4.5,0.98,3.0,Oct-Mar,Beach below dramatic red cliffs,8.733257,76.705314
+Varkala,Varkala Cliff,Sightseeing,4.5,0.95,2.0,Oct-Mar,Cliff-top walkway with cafes,8.749867,76.718037
+Varkala,Janardhana Swamy Temple,Spiritual,4.6,0.6,1.0,All Year,2000-year-old Vishnu temple,8.731923,76.709916
+Varkala,Kappil Beach,Beach,4.4,0.5,1.5,Oct-Mar,Where a lake meets the sea,8.734043,76.725285
+Varkala,Anjengo Fort,Heritage,4.2,0.4,1.0,All Year,Old colonial fort near the sea,8.734043,76.725285
+Thekkady,Periyar Boat Ride,Wildlife,4.4,0.99,3.0,Oct-May,Boat trip to spot elephants and birds,9.5805,77.181142
+Thekkady,Spice Plantation Tour,Culture,4.3,0.85,2.0,All Year,Guided walk through cardamom and pepper gardens,9.5805,77.181142
+Thekkady,Periyar Bamboo Rafting,Adventure,4.4,0.7,3.0,Oct-Mar,Guided bamboo raft ride in the reserve,9.5805,77.181142
+Thekkady,Kalaripayattu Show,Culture,4.4,0.6,1.0,All Year,Martial arts performance of Kerala,9.605021,77.166842
+Thekkady,Mullaperiyar Dam,Sightseeing,4.2,0.45,1.0,All Year,Historic dam beside the reserve,9.5805,77.181142
+Kumarakom,Kumarakom Bird Sanctuary,Wildlife,4.2,0.9,2.0,Nov-Feb,Migratory birds on Vembanad Lake,9.631495,76.421749
+Kumarakom,Vembanad Lake Houseboat Cruise,Relaxation,4.5,0.9,4.0,Oct-Mar,Backwater cruise with meals on board,9.596054,76.430538
+Kumarakom,Pathiramanal Island,Nature,4.3,0.55,2.0,Oct-Mar,Island reached by boat,9.596054,76.430538
+Kumarakom,Aruvikkuzhy Waterfalls,Nature,4.2,0.4,1.5,Jun-Dec,Small waterfall near Kottayam,9.596054,76.430538
+Kumarakom,Kumarakom Beach,Beach,4.0,0.5,1.0,All Year,Lakeside beach with a small park,9.603361,76.43278
+Kanyakumari,Vivekananda Rock Memorial,Spiritual,4.6,0.98,2.0,All Year,Island memorial reached by ferry,8.07832,77.554956
+Kanyakumari,Thiruvalluvar Statue,Heritage,4.6,0.85,1.0,All Year,133-foot statue of the Tamil poet,8.077753,77.553995
+Kanyakumari,Kanyakumari Sunrise Point,Sightseeing,4.6,0.9,1.0,All Year,Sunrise at the tip of India,8.079367,77.551344
+Kanyakumari,Kumari Amman Temple,Spiritual,4.6,0.75,1.0,All Year,Ancient temple on the shore,8.079332,77.551008
+Kanyakumari,Gandhi Memorial Mandapam,Heritage,4.4,0.6,1.0,All Year,Memorial where ashes were kept for immersion,8.078744,77.549953
+Ooty,Ooty Botanical Garden,Nature,4.3,0.95,1.5,Mar-Jun,Terraced garden with rare plants,11.419062,76.711277
+Ooty,Ooty Lake,Nature,4.0,0.85,1.5,All Year,Boating lake in the town,11.403417,76.691679
+Ooty,Doddabetta Peak,Sightseeing,4.2,0.9,1.5,Oct-Jun,Highest peak in the Nilgiris,11.408076,76.702019
+Ooty,Nilgiri Mountain Railway,Sightseeing,4.6,0.85,3.0,All Year,UNESCO heritage toy train ride,11.406014,76.696496
+Ooty,Government Rose Garden,Nature,4.4,0.8,1.5,Apr-Jun,Large rose garden with many varieties,11.405692,76.708462
+Kodaikanal,Kodaikanal Lake,Nature,4.3,0.95,2.0,All Year,Star-shaped lake for boating and cycling,10.234003,77.486523
+Kodaikanal,Coaker's Walk,Sightseeing,4.3,0.85,1.0,All Year,Cliff-edge walk with valley views,10.230139,77.494008
+Kodaikanal,Pillar Rocks,Sightseeing,4.2,0.8,1.0,All Year,Three granite pillars rising from a valley,10.229903,77.491787
+Kodaikanal,Bryant Park,Nature,4.3,0.8,1.0,Apr-Jun,Botanical garden by the lake,10.230574,77.492403
+Kodaikanal,Guna Caves,Sightseeing,4.0,0.7,1.0,All Year,Caves in the Devil's Kitchen area,10.233712,77.491972
+Chennai,Marina Beach,Beach,4.4,0.98,2.0,Nov-Feb,One of the longest urban beaches,13.053275,80.283311
+Chennai,Kapaleeshwarar Temple,Spiritual,4.7,0.85,1.0,All Year,Dravidian Shiva temple with colorful gopuram,13.033429,80.268658
+Chennai,San Thome Basilica,Heritage,4.7,0.7,0.5,All Year,Gothic basilica over St. Thomas's tomb,13.03258,80.2733
+Chennai,Fort St. George,Heritage,4.3,0.7,1.5,Nov-Feb,First British fort in India with a museum,13.079862,80.284669
+Chennai,Elliot's Beach,Beach,4.5,0.6,1.5,Nov-Feb,Cleaner beach in Besant Nagar,13.000167,80.27118
+Mahabalipuram,Shore Temple,Heritage,4.6,0.98,1.5,Nov-Feb,UNESCO temple by the sea,12.616484,80.199235
+Mahabalipuram,Pancha Rathas,Heritage,4.5,0.85,1.0,Nov-Feb,Five monolithic rock-cut chariots,12.609028,80.189642
+Mahabalipuram,Arjuna's Penance,Heritage,4.5,0.8,1.0,Nov-Feb,Giant open-air rock relief,12.617909,80.192697
+Mahabalipuram,Krishna's Butter Ball,Sightseeing,4.4,0.7,0.5,Nov-Feb,Balanced boulder on a slope,12.619598,80.19365
+Mahabalipuram,Mahabalipuram Beach,Beach,4.3,0.7,1.5,Nov-Feb,Beach beside the monuments,12.609153,80.19598
+Madurai,Meenakshi Amman Temple,Spiritual,4.8,0.99,2.5,Oct-Mar,Large temple with towering gopurams,9.919543,78.118833
+Madurai,Thirumalai Nayakkar Mahal,Heritage,4.3,0.7,1.0,Oct-Mar,17th-century palace with grand pillars,9.926115,78.114098
+Madurai,Gandhi Memorial Museum,Heritage,4.4,0.5,1.5,All Year,Museum of Gandhi's life,9.929879,78.138608
+Madurai,Alagar Koil,Spiritual,4.6,0.5,1.5,All Year,Vishnu temple in a hill setting,9.966683,78.187646
+Madurai,Vandiyur Mariamman Teppakulam,Spiritual,4.5,0.6,1.0,Jan-Feb,Giant temple tank with a float festival,9.911955,78.148941
+Rameswaram,Ramanathaswamy Temple,Spiritual,4.8,0.99,2.5,Oct-Apr,Jyotirlinga temple with long corridors,9.288097,79.317376
+Rameswaram,Pamban Bridge,Sightseeing,4.6,0.9,1.0,All Year,Sea bridge connecting the island,9.27407,79.29112
+Rameswaram,Dhanushkodi,Nature,4.6,0.9,2.0,Oct-Mar,Ghost town at the island's tip,9.184634,79.41475
+Rameswaram,Agni Theertham,Spiritual,4.6,0.8,0.5,All Year,Holy sea bathing spot near the temple,9.286346,79.309195
+Rameswaram,Dr. APJ Abdul Kalam Memorial,Heritage,4.6,0.7,1.0,All Year,Memorial and museum of the former president,9.284466,79.312555
+Pondicherry,Promenade Beach,Beach,4.5,0.95,1.5,Oct-Mar,Seafront walk lined with colonial buildings,11.93115,79.835672
+Pondicherry,Auroville Matrimandir,Spiritual,4.6,0.85,2.0,Oct-Mar,Golden sphere meditation chamber,11.989919,79.834942
+Pondicherry,Paradise Beach,Beach,4.2,0.8,3.0,Oct-Mar,Island beach reached by boat,11.875265,79.821347
+Pondicherry,White Town,Culture,4.4,0.8,2.0,Oct-Mar,French colonial quarter with cafes,11.9412,79.810153
+Pondicherry,Sri Aurobindo Ashram,Spiritual,4.6,0.7,1.0,All Year,Spiritual centre and the samadhi,11.937547,79.833552
+Andaman,Cellular Jail,Heritage,4.6,0.95,2.0,Oct-May,Colonial prison with a light and sound show,11.674453,92.747813
+Andaman,Radhanagar Beach,Beach,4.7,0.95,3.0,Oct-May,Top-rated beach at Havelock,12.011248,92.955767
+Andaman,Ross Island,Heritage,4.4,0.8,3.0,Oct-May,British-era ruins overgrown with trees,11.675434,92.76262
+Andaman,Neil Island Bharatpur Beach,Beach,4.5,0.7,3.0,Oct-May,Calm beach with coral and snorkeling,11.815877,93.04818
+Andaman,Baratang Limestone Caves,Nature,4.3,0.65,6.0,Nov-Apr,Mangrove boat ride to the caves,12.165508,92.776565
+Lakshadweep,Bangaram Island,Beach,4.7,0.8,6.0,Oct-May,Uninhabited island with a lagoon,10.940412,72.287159
+Lakshadweep,Agatti Island,Beach,4.5,0.8,6.0,Oct-May,Main airport island with a lagoon,10.847632,72.188847
+Lakshadweep,Kadmat Island,Adventure,4.6,0.6,6.0,Oct-May,Diving and water sports,10.561079,72.635734
+Lakshadweep,Kavaratti Island,Culture,4.5,0.6,4.0,Oct-May,Island capital with a mosque and aquarium,10.55905,72.636569
+Lakshadweep,Minicoy Lighthouse,Sightseeing,4.5,0.5,1.0,Oct-May,Historic lighthouse on the southern island,,
+Darjeeling,Tiger Hill Sunrise,Sightseeing,4.4,0.95,2.0,Sep-Nov; Mar-May,Sunrise over Kanchenjunga,27.042544,88.26527
+Darjeeling,Darjeeling Himalayan Railway,Sightseeing,4.4,0.9,2.0,All Year,UNESCO toy train ride,27.026516,88.255308
+Darjeeling,Batasia Loop,Sightseeing,4.4,0.85,1.0,All Year,Spiral rail loop with a war memorial,27.016704,88.247131
+Darjeeling,Happy Valley Tea Estate,Nature,4.4,0.75,1.5,Mar-Nov,Tea plantation tour and tasting,27.051105,88.258533
+Darjeeling,Himalayan Mountaineering Institute,Heritage,4.6,0.65,1.5,All Year,Mountaineering museum and Everest gallery,27.058773,88.253315
+Kalimpong,Deolo Hill,Sightseeing,4.3,0.8,1.0,All Year,Hilltop viewpoint with a park,27.08876,88.502641
+Kalimpong,Zong Dog Palri Fo-Brang Monastery,Spiritual,4.6,0.8,1.0,All Year,Colorful monastery on Durpin Hill,27.070287,88.472368
+Kalimpong,Mangal Dham,Spiritual,4.6,0.7,1.0,All Year,Krishna temple and Pranami shrine,27.072392,88.476731
+Kalimpong,Dr. Graham's Homes,Heritage,4.4,0.6,1.0,All Year,Historic school campus in colonial style,27.070287,88.472368
+Kalimpong,Durpin Dara Hill,Sightseeing,4.3,0.6,1.0,All Year,Viewpoint over Teesta valley,27.072001,88.473794
+Kolkata,Victoria Memorial,Heritage,4.7,0.98,2.0,Oct-Mar,Marble museum and gardens,22.544956,88.342555
+Kolkata,Howrah Bridge,Sightseeing,4.6,0.9,1.0,All Year,Iconic cantilever bridge over the Hooghly,22.585053,88.346976
+Kolkata,Dakshineswar Kali Temple,Spiritual,4.6,0.85,1.5,All Year,Riverside temple linked to Ramakrishna,22.654827,88.357578
+Kolkata,Park Street,Food,4.4,0.75,2.0,Oct-Mar,Restaurants; cafes and nightlife,22.548709,88.358377
+Kolkata,Indian Museum,Heritage,4.4,0.6,2.0,All Year,One of the oldest museums in Asia,22.557586,88.351027
+Sundarbans,Sundarbans Boat Safari,Wildlife,4.5,0.99,8.0,Oct-Mar,Boat safari in the mangrove tiger reserve,,
+Sundarbans,Sajnekhali Watch Tower,Wildlife,4.2,0.7,2.0,Oct-Mar,Watch tower and wildlife museum,22.10127,88.801325
+Sundarbans,Dobanki Canopy Walk,Wildlife,4.3,0.65,2.0,Oct-Mar,Raised walkway over the mangroves,,
+Sundarbans,Sudhanyakhali Watch Tower,Wildlife,4.2,0.55,2.0,Oct-Mar,Tower with views of the forest,22.10127,88.801325
+Sundarbans,Netidhopani,Heritage,4.3,0.45,2.0,Oct-Mar,Old temple ruins deep in the forest,21.87454,89.13539
+Digha,Old Digha Beach,Beach,4.1,0.95,2.0,Oct-Mar,Main beach with long shallow waters,21.622363,87.524877
+Digha,New Digha Beach,Beach,4.2,0.8,2.0,Oct-Mar,Quieter beach with a promenade,21.617928,87.507116
+Digha,Udaipur Beach,Beach,4.3,0.5,2.0,Oct-Mar,Casuarina-fringed secluded beach,21.619129,87.505719
+Digha,Talsari Beach,Beach,4.3,0.5,2.0,Oct-Mar,Beach near the Odisha border,21.619129,87.505719
+Digha,Marine Aquarium and Research Centre,Sightseeing,3.9,0.55,1.0,All Year,Small aquarium with local sea life,21.621664,87.496329
+Gangtok,Tsomgo Lake,Nature,4.4,0.95,4.0,Mar-Jun; Oct-Dec,High-altitude glacial lake; permit needed,27.329046,88.612267
+Gangtok,MG Marg,Culture,4.5,0.9,2.0,All Year,Pedestrian promenade with cafes,27.328454,88.612385
+Gangtok,Rumtek Monastery,Spiritual,4.5,0.8,2.0,All Year,Major Kagyu monastery,27.333827,88.613598
+Gangtok,Nathu La Pass,Sightseeing,4.5,0.85,5.0,May-Oct,Border pass with China; permit needed,27.332196,88.614194
+Gangtok,Hanuman Tok,Spiritual,4.5,0.6,1.0,All Year,Hilltop temple with Kanchenjunga views,27.347969,88.628717
+Pelling,Pemayangtse Monastery,Spiritual,4.6,0.85,1.5,All Year,One of Sikkim's oldest monasteries,27.305237,88.251263
+Pelling,Khecheopalri Lake,Spiritual,4.5,0.8,1.5,All Year,Sacred wishing lake in the forest,27.300372,88.23565
+Pelling,Rabdentse Ruins,Heritage,4.3,0.7,1.0,All Year,Remains of the old Sikkim capital,27.300372,88.23565
+Pelling,Singshore Bridge,Adventure,4.5,0.7,1.5,All Year,One of Asia's highest suspension bridges,27.302305,88.231976
+Pelling,Pelling Skywalk,Sightseeing,4.4,0.8,1.0,All Year,Glass walkway near a large Chenrezig statue,27.300806,88.230869
+Tawang,Tawang Monastery,Spiritual,4.8,0.99,2.0,Mar-Oct,Largest monastery in India,27.586609,91.85739
+Tawang,Sela Pass,Nature,4.7,0.9,1.0,Mar-Oct,High pass with a lake,27.57417,91.92437
+Tawang,Madhuri Lake,Nature,4.7,0.85,1.5,Mar-Oct,Lake created after an earthquake,27.587919,91.863733
+Tawang,Nuranang Falls,Nature,4.6,0.7,1.0,Mar-Nov,Powerful waterfall near Jang,27.587919,91.863733
+Tawang,Tawang War Memorial,Heritage,4.7,0.6,1.0,All Year,Memorial for soldiers of the 1962 war,27.586795,91.876686
+Ziro,Ziro Paddy Fields,Nature,4.6,0.9,2.0,Jun-Sep,Terraced paddy fields of the Apatani,27.538668,93.815355
+Ziro,Apatani Villages,Culture,4.5,0.7,2.0,All Year,Traditional villages such as Hong and Hari,27.581803,93.82811
+Ziro,Talley Valley Wildlife Sanctuary,Wildlife,4.5,0.6,3.0,Oct-Apr,Forest sanctuary with trails,27.538668,93.815355
+Ziro,Meghna Cave Temple,Spiritual,4.5,0.5,1.0,All Year,Natural cave shrine of Shiva,27.538668,93.815355
+Ziro,Tarin Fish Farm,Sightseeing,4.1,0.4,1.0,All Year,Fish farm in the paddy fields,27.538668,93.815355
+Shillong,Elephant Falls,Nature,4.3,0.9,1.5,Jun-Oct,Three-tiered waterfall,25.576553,91.88284
+Shillong,Shillong Peak,Sightseeing,4.2,0.85,1.0,Oct-Mar,Highest point with city views,25.575993,91.882787
+Shillong,Umiam Lake,Nature,4.4,0.85,2.0,Oct-Mar,Reservoir with water sports,25.643482,91.886604
+Shillong,Don Bosco Museum,Culture,4.5,0.7,2.0,All Year,Museum of northeast India's cultures,25.592979,91.882527
+Shillong,Ward's Lake,Nature,4.1,0.65,1.0,All Year,Garden with a lake in the town,25.574673,91.886891
+Cherrapunji,Nohkalikai Falls,Nature,4.4,0.95,1.5,Jun-Oct,One of the tallest plunge waterfalls in India,25.298901,91.699261
+Cherrapunji,Mawsmai Cave,Nature,4.1,0.85,1.0,Oct-May,Lit limestone cave,25.303353,91.727005
+Cherrapunji,Seven Sisters Falls,Nature,4.4,0.8,1.0,Jun-Oct,Seven falls over a ridge,25.284865,91.721431
+Cherrapunji,Double Decker Living Root Bridge,Trekking,4.7,0.9,6.0,Oct-May,Famous root bridge near Nongriat,25.251456,91.671658
+Cherrapunji,Dainthlen Falls,Nature,4.4,0.5,1.0,Jun-Oct,Waterfall linked to a local legend,25.298901,91.699261
+Kaziranga,Central Range Jeep Safari,Wildlife,4.5,0.99,3.0,Nov-Apr,One-horned rhino viewing,26.58097,93.290806
+Kaziranga,Elephant Safari Kohora,Wildlife,4.4,0.8,1.0,Nov-Apr,Early-morning elephant ride,26.58097,93.290806
+Kaziranga,Western Range Bagori,Wildlife,4.5,0.6,3.0,Nov-Apr,Safari with a good variety of birds,26.575239,93.152744
+Kaziranga,Eastern Range Agoratoli,Wildlife,4.5,0.5,3.0,Nov-Apr,Less crowded safari area,26.575239,93.152744
+Kaziranga,Kaziranga Orchid Park,Nature,4.2,0.4,1.5,Mar-Oct,Orchid and biodiversity park,26.585972,93.428015
+Guwahati,Kamakhya Temple,Spiritual,4.7,0.98,2.5,All Year,Famous Shakti peeth on Nilachal Hill,26.165107,91.70593
+Guwahati,Umananda Island Temple,Spiritual,4.5,0.7,1.5,All Year,Shiva temple on a river island,26.196486,91.744995
+Guwahati,Brahmaputra River Cruise,Sightseeing,4.5,0.8,1.5,Oct-Mar,Sunset cruise on the river,26.274095,92.039558
+Guwahati,Assam State Museum,Culture,4.3,0.5,1.5,All Year,Museum of regional art and history,26.185288,91.752382
+Guwahati,Pobitora Wildlife Sanctuary,Wildlife,4.3,0.55,3.0,Nov-Mar,Rhino sanctuary 50 km away,26.180598,91.753943
+Majuli,Brahmaputra Ferry Ride,Sightseeing,4.4,0.85,2.0,Oct-Mar,Ferry crossing to the river island,,
+Majuli,Auniati Satra,Culture,4.5,0.7,1.0,All Year,Vaishnavite monastery with a museum,26.940424,94.123647
+Majuli,Kamalabari Satra,Culture,4.5,0.7,1.0,All Year,Centre of Assamese art and dance,26.956161,94.172827
+Majuli,Samaguri Satra,Culture,4.6,0.6,1.0,All Year,Known for traditional mask making,,
+Majuli,Majuli Wetlands Birdwatching,Nature,4.3,0.5,2.0,Nov-Mar,Migratory birds in the wetlands,,
+Bodh Gaya,Mahabodhi Temple,Spiritual,4.8,0.99,2.0,Oct-Mar,UNESCO site where Buddha attained enlightenment,24.69593,84.99139
+Bodh Gaya,Great Buddha Statue,Spiritual,4.7,0.8,1.0,Oct-Mar,80-foot seated Buddha,24.690462,84.981795
+Bodh Gaya,Thai Monastery,Spiritual,4.6,0.6,1.0,Oct-Mar,Thai-style temple with golden roof,24.697234,84.989786
+Bodh Gaya,Dungeshwari Cave Temples,Spiritual,4.4,0.5,2.0,Oct-Mar,Caves where Buddha meditated,24.736683,85.047584
+Bodh Gaya,Royal Bhutan Monastery,Spiritual,4.6,0.5,1.0,Oct-Mar,Monastery with a painted interior,24.692457,84.984083
+Ranchi,Hundru Falls,Nature,4.3,0.9,3.0,Jul-Nov,High waterfall on the Subarnarekha,23.367543,85.298354
+Ranchi,Dassam Falls,Nature,4.3,0.75,2.0,Jul-Nov,Cascading waterfall near Taimara,23.37005,85.325039
+Ranchi,Patratu Valley,Nature,4.5,0.8,2.0,Oct-Mar,Winding road and dam views,23.446633,85.375573
+Ranchi,Jagannath Temple Ranchi,Spiritual,4.6,0.7,1.0,All Year,Hilltop temple like the Puri one,23.316941,85.281751
+Ranchi,Tagore Hill,Sightseeing,4.3,0.6,1.0,Oct-Mar,Hill with a view of the city,23.401433,85.338029
+Puri,Jagannath Temple,Spiritual,4.8,0.99,2.0,All Year,One of the Char Dham; non-Hindus cannot enter,19.804773,85.818081
+Puri,Puri Beach,Beach,4.3,0.95,2.0,Oct-Mar,Wide beach with sunrise views,19.816102,85.828807
+Puri,Gundicha Temple,Spiritual,4.6,0.6,1.0,All Year,Destination of the Rath Yatra,19.81657,85.83973
+Puri,Raghurajpur Heritage Crafts Village,Culture,4.4,0.5,2.0,All Year,Village of Pattachitra artists,19.807608,85.825254
+Puri,Swargadwar,Spiritual,4.4,0.5,1.0,All Year,Cremation ghat by the sea,19.8003,85.818574
+Bhubaneswar,Lingaraj Temple,Spiritual,4.7,0.9,1.0,All Year,Large 11th-century Shiva temple,20.238369,85.833719
+Bhubaneswar,Udayagiri and Khandagiri Caves,Heritage,4.4,0.8,2.0,Oct-Mar,Rock-cut Jain caves,,
+Bhubaneswar,Nandankanan Zoological Park,Wildlife,4.3,0.85,3.0,Oct-Mar,Zoo with white tigers,20.395276,85.822475
+Bhubaneswar,Dhauli Shanti Stupa,Spiritual,4.6,0.75,1.5,Oct-Mar,Peace pagoda at the Kalinga war site,20.192401,85.839435
+Bhubaneswar,Mukteshwar Temple,Heritage,4.6,0.6,0.5,All Year,Small temple with fine carvings,20.253479,85.836007
+Konark,Konark Sun Temple,Heritage,4.7,0.99,2.0,Oct-Mar,UNESCO chariot-shaped temple,19.887564,86.094489
+Konark,Chandrabhaga Beach,Beach,4.4,0.8,1.5,Oct-Mar,Beach known for sunrise,19.865826,86.111377
+Konark,Konark Archaeological Museum,Heritage,4.3,0.5,1.0,All Year,Sculptures recovered from the temple,19.891141,86.094478
+Konark,Ramachandi Beach,Beach,4.3,0.6,1.5,Oct-Mar,Quiet beach with a small temple,19.86107,85.99839
+Konark,Pipli Handicrafts Village,Culture,4.2,0.4,1.0,All Year,Applique work and craft shops,,
+Gopalpur,Gopalpur Beach,Beach,4.3,0.95,2.0,Oct-Mar,Quiet beach with an old port,19.256351,84.908289
+Gopalpur,Maa Tara Tarini Temple,Spiritual,4.7,0.7,1.5,All Year,Hill temple known as a Shakti peeth,19.451194,84.963669
+Gopalpur,Tampara Lake,Nature,4.4,0.6,2.0,Oct-Mar,Freshwater lake with birdlife,19.347752,84.997518
+Gopalpur,Gopalpur Old Port,Heritage,4.3,0.5,1.0,All Year,Remains of a historic port,19.298283,84.953443
+Gopalpur,Taptapani Hot Springs,Nature,4.1,0.4,1.5,Oct-Mar,Natural hot spring in the hills,19.484727,84.393636
+Hyderabad,Charminar,Heritage,4.6,0.98,1.0,Oct-Mar,16th-century monument and old city bazaar,17.361602,78.474642
+Hyderabad,Golconda Fort,Heritage,4.5,0.9,3.0,Oct-Mar,Fort with a light and sound show,17.383367,78.401099
+Hyderabad,Ramoji Film City,Culture,4.4,0.9,6.0,Oct-Mar,Large film studio and theme park,17.252137,78.679817
+Hyderabad,Hussain Sagar Lake,Nature,4.4,0.75,1.5,All Year,Lake with a Buddha statue,17.422911,78.475421
+Hyderabad,Salar Jung Museum,Heritage,4.4,0.7,2.0,All Year,One of the biggest private art collections,17.371392,78.48015
+Warangal,Warangal Fort,Heritage,4.4,0.9,1.5,Oct-Mar,Kakatiya fort with carved gateways,17.956495,79.615425
+Warangal,Thousand Pillar Temple,Spiritual,4.6,0.9,1.0,All Year,Star-shaped Kakatiya temple,18.00393,79.574693
+Warangal,Ramappa Temple,Heritage,4.7,0.85,1.5,Oct-Mar,UNESCO temple at Palampet; 70 km away,18.020162,79.718756
+Warangal,Bhadrakali Temple,Spiritual,4.7,0.7,1.0,All Year,Hilltop temple next to a lake,17.994857,79.583047
+Warangal,Laknavaram Lake,Nature,4.4,0.6,2.0,Oct-Mar,Lake with a suspension bridge,17.989981,79.580137
+Havelock Island,Radhanagar Beach,Beach,4.7,0.98,3.0,Oct-May,Often ranked among Asia's best beaches,12.967419,92.974352
+Havelock Island,Elephant Beach,Adventure,4.5,0.9,3.0,Oct-May,Snorkeling and water sports,12.967419,92.974352
+Havelock Island,Kalapathar Beach,Beach,4.5,0.7,2.0,Oct-May,Black-rock beach good for sunrise,12.967419,92.974352
+Havelock Island,Govind Nagar Beach,Beach,4.4,0.6,2.0,Oct-May,Quiet beach near the village,12.967419,92.974352
+Havelock Island,Vijaynagar Beach,Beach,4.4,0.5,2.0,Oct-May,Calm beach with soft sand,12.967419,92.974352
+Dhanaulti,Dhanaulti Eco Park,Nature,4.3,0.85,1.5,Mar-Jun; Oct-Dec,Deodar forest park with trails,30.42342,78.24803
+Dhanaulti,Surkanda Devi Temple,Spiritual,4.6,0.9,2.0,All Year,Hilltop Shakti peeth with views,30.391395,78.447595
+Dhanaulti,Amber and Dhara Eco Park,Nature,4.3,0.6,1.5,Mar-Jun; Oct-Dec,Forest walks and picnic spots,,
+Dhanaulti,Tehri Lake,Nature,4.5,0.6,2.0,Oct-Mar,Large reservoir with water sports,30.45284,78.105936
+Dhanaulti,Kanatal Village,Nature,4.3,0.5,2.0,Mar-Jun; Oct-Dec,Quiet hill village nearby,30.398523,78.026459
+Chopta,Tungnath Temple,Spiritual,4.8,0.95,5.0,Apr-Nov,World's highest Shiva temple,30.481807,79.180659
+Chopta,Chandrashila Peak,Trekking,4.8,0.9,3.0,Mar-Jun; Sep-Nov,Summit with 360-degree Himalayan views,30.486457,79.221231
+Chopta,Deoria Tal,Trekking,4.7,0.85,4.0,Mar-Jun; Sep-Nov,Lake reflecting the Chaukhamba range,30.485424,79.200144
+Chopta,Chopta Meadows,Nature,4.7,0.7,2.0,Mar-Jun; Sep-Nov,Alpine meadows known as Mini Switzerland,30.485424,79.200144
+Chopta,Omkareshwar Temple Ukhimath,Spiritual,4.7,0.4,1.0,All Year,Winter seat of Kedarnath,30.481807,79.180659
+Mcleodganj,Dalai Lama Temple Complex,Spiritual,4.6,0.95,2.0,All Year,Residence of the Dalai Lama,32.232308,76.324449
+Mcleodganj,Namgyal Monastery,Spiritual,4.7,0.85,1.0,All Year,Tibetan monastery in the complex,32.238392,76.323899
+Mcleodganj,Triund Trek,Trekking,4.6,0.9,6.0,Mar-Jun; Sep-Nov,Day trek with Dhauladhar views,32.25,76.31667
+Mcleodganj,Tibet Museum,Culture,4.6,0.65,1.0,All Year,Museum on the Tibetan struggle,32.238668,76.324162
+Mcleodganj,Naddi Viewpoint,Sightseeing,4.4,0.7,1.0,All Year,Sunset view over the Kangra valley,32.245136,76.323709
+Kinnaur,Chitkul Village,Culture,4.7,0.95,3.0,May-Oct,Last village on the Indo-Tibet road,31.356131,78.377156
+Kinnaur,Sangla Valley,Nature,4.7,0.9,3.0,Apr-Oct,Valley of apple orchards and the Baspa river,31.426185,78.263488
+Kinnaur,Nako Lake,Nature,4.4,0.7,1.0,May-Oct,Lake with a Buddhist village,31.879808,78.627972
+Kinnaur,Kamru Fort,Heritage,4.5,0.6,1.0,Apr-Oct,Old wooden fort in Sangla,31.436558,78.258054
+Kinnaur,Rakcham Village,Culture,4.5,0.5,2.0,Apr-Oct,Scenic village on the Baspa river,31.392342,78.353753
+Kalpa,Kinner Kailash View Point,Sightseeing,4.7,0.9,1.0,Apr-Oct,Views of the sacred Kinner Kailash peak,31.533537,78.248473
+Kalpa,Roghi Village,Culture,4.6,0.6,2.0,Apr-Oct,Traditional village with apple orchards,31.533164,78.249833
+Kalpa,Chandika Temple,Spiritual,4.6,0.5,1.0,All Year,Small temple in the village,31.531699,78.252096
+Kalpa,Kalpa Apple Orchards,Nature,4.5,0.7,1.5,Aug-Oct,Orchards best visited in apple season,31.533222,78.248842
+Kalpa,Narayan Nagini Temple,Spiritual,4.5,0.5,0.5,All Year,Temple of local deities,31.531118,78.251871
+Munsiyari,Panchachuli Peaks Viewpoint,Sightseeing,4.7,0.95,1.0,Mar-Jun; Sep-Nov,Views of the five-peaked mountain,,
+Munsiyari,Khaliya Top,Trekking,4.7,0.8,5.0,Apr-Jun; Sep-Nov,Meadow trek above the town,30.126585,79.981597
+Munsiyari,Thamri Kund,Nature,4.6,0.7,3.0,Mar-Jun; Sep-Nov,High-altitude lake in the forest,30.03695,80.245204
+Munsiyari,Nanda Devi Temple Munsiyari,Spiritual,4.7,0.6,1.0,All Year,Local temple to the goddess,30.067966,80.258677
+Munsiyari,Birthi Falls,Nature,4.4,0.6,1.0,Jun-Oct,Waterfall on the road to town,30.041737,80.166914
+Chakrata,Tiger Falls,Nature,4.6,0.95,3.0,Jun-Oct,One of the highest direct-fall waterfalls,30.701325,77.870336
+Chakrata,Deoban,Trekking,4.5,0.55,3.0,Mar-Nov,Deodar forest with Himalayan views,30.73288,77.83034
+Chakrata,Chilmiri Neck,Sightseeing,4.4,0.6,1.0,Oct-Mar,Viewpoint for sunrise and sunset,30.71752,77.86682
+Chakrata,Lakhamandal Temple,Spiritual,4.5,0.5,1.5,All Year,Ancient Shiva temple complex,30.716181,77.864288
+Chakrata,Budher Caves,Nature,4.4,0.4,3.0,Oct-Mar,Natural caves near Chakrata,30.701325,77.870336
+Kausani,Kausani Himalayan Sunrise View,Sightseeing,4.7,0.9,1.0,Oct-Mar,Sunrise over Trishul and Nanda Devi,29.337572,79.504795
+Kausani,Anasakti Ashram,Heritage,4.6,0.8,1.0,All Year,Gandhi's retreat where he wrote Anasakti Yoga,29.337572,79.504795
+Kausani,Baijnath Temple,Spiritual,4.7,0.65,1.5,All Year,12th-century stone temples near Garur,29.845708,79.540832
+Kausani,Kausani Tea Estate,Nature,4.3,0.8,1.0,Mar-Nov,Tea estate with a tasting counter,29.337572,79.504795
+Kausani,Rudradhari Falls and Caves,Nature,4.5,0.45,2.0,Jun-Oct,Waterfall with caves and trails,29.337572,79.504795
+Bhimtal,Bhimtal Lake,Nature,4.3,0.95,2.0,All Year,Largest lake in the Kumaon region,29.343495,79.560587
+Bhimtal,Bhimeshwar Mahadev Temple,Spiritual,4.5,0.6,0.5,All Year,Old Shiva temple by the lake,29.350606,79.554172
+Bhimtal,Sattal Lake,Nature,4.4,0.8,2.0,All Year,Cluster of seven freshwater lakes,29.343495,79.560587
+Bhimtal,Naukuchiatal,Nature,4.4,0.8,2.0,All Year,Deep lake with nine corners,29.350606,79.554172
+Bhimtal,Butterfly Research Centre,Nature,4.2,0.5,1.0,Mar-Nov,Butterfly sanctuary and museum,29.350606,79.554172
+Mukteshwar,Mukteshwar Dham Temple,Spiritual,4.7,0.9,1.5,All Year,Hilltop Shiva temple,29.472078,79.648043
+Mukteshwar,Chauli Ki Jali,Adventure,4.6,0.9,1.0,All Year,Rocky outcrop for rock climbing and views,29.474839,79.643241
+Mukteshwar,Bhalu Gaad Waterfall,Nature,4.4,0.6,1.0,Jun-Oct,Waterfall with a short walk,29.472078,79.648043
+Mukteshwar,Mukteshwar Himalayan Viewpoint,Sightseeing,4.5,0.7,1.0,Oct-Mar,Wide views of the snow peaks,29.472078,79.648043
+Mukteshwar,Sitla Village Orchards,Nature,4.4,0.4,1.5,Jun-Oct,Fruit orchards and village walk,29.472078,79.648043
+Kashid,Kashid Beach,Beach,4.4,0.98,3.0,Oct-May,White sand beach with water sports,18.444568,72.904006
+Kashid,Murud-Janjira Fort,Heritage,4.5,0.8,3.0,Oct-May,Sea fort reached by boat,18.333454,72.954241
+Kashid,Phansad Wildlife Sanctuary,Wildlife,4.3,0.5,3.0,Oct-Mar,Forest sanctuary with birds and wildlife,18.415841,72.943743
+Kashid,Korlai Fort,Heritage,4.4,0.5,1.5,Oct-Mar,Portuguese fort with sea views,18.538599,72.907119
+Kashid,Nandgaon Beach,Beach,4.2,0.4,1.5,Oct-May,Quieter beach near Kashid,18.442394,72.90583
+Tarkarli,Tarkarli Beach,Beach,4.5,0.98,3.0,Oct-May,Clear water and white sand,16.014689,73.48953
+Tarkarli,Sindhudurg Fort,Heritage,4.5,0.9,2.0,Oct-May,Shivaji's sea fort reached by boat,16.042873,73.460259
+Tarkarli,Tsunami Island,Beach,4.2,0.7,2.0,Oct-May,Sandbar island for boat rides,16.006814,73.49184
+Tarkarli,Scuba Diving Tarkarli,Adventure,4.6,0.85,2.0,Oct-May,Beginner-friendly scuba spot,16.006814,73.49184
+Tarkarli,Devbagh Sangam,Nature,4.4,0.6,1.5,Oct-May,Place where the river meets the sea,16.006814,73.49184
+Ratnagiri,Bhatye Beach,Beach,4.3,0.85,2.0,Oct-May,Black sand beach and sunset views,16.990195,73.28425
+Ratnagiri,Ratnadurg Fort,Heritage,4.4,0.7,1.5,Oct-Mar,Fort on a headland with a lighthouse,16.993352,73.295437
+Ratnagiri,Thibaw Palace,Heritage,4.3,0.6,1.0,All Year,Palace of the last king of Burma,16.983578,73.311147
+Ratnagiri,Jaigad Fort,Heritage,4.4,0.6,1.5,Oct-Mar,Fort overlooking the Arabian Sea,16.993352,73.295437
+Ratnagiri,Aare Ware Beach,Beach,4.5,0.6,1.0,Oct-Mar,Scenic coastal road and beach,16.993352,73.295437
+Dandeli,Kali River Rafting,Adventure,4.4,0.95,3.0,Jun-Feb,White-water rafting on the Kali,15.249028,74.623604
+Dandeli,Syntheri Rocks,Nature,4.5,0.75,2.0,Jun-Feb,Granite rocks and a gorge,15.249028,74.623604
+Dandeli,Supa Dam,Nature,4.3,0.6,1.0,All Year,Reservoir with river views,15.249028,74.623604
+Dandeli,Kavala Caves,Nature,4.4,0.6,3.0,Oct-May,Limestone caves with a Shiva lingam,15.249028,74.623604
+Dandeli,Dandeli Wildlife Sanctuary,Wildlife,4.3,0.7,3.0,Oct-May,Forest with hornbills and black panthers,15.267,74.617
+Sakleshpur,Manjarabad Fort,Heritage,4.5,0.8,1.0,Oct-Mar,Star-shaped fort built by Tipu Sultan,12.917338,75.758434
+Sakleshpur,Bisle Ghat Viewpoint,Sightseeing,4.5,0.7,1.0,Jun-Feb,Western Ghats views,12.943435,75.786232
+Sakleshpur,Jenukal Gudda,Trekking,4.5,0.6,3.0,Oct-Mar,Trek to a hill with a view,12.943435,75.786232
+Sakleshpur,Sakleshpur Coffee Estates,Nature,4.4,0.5,2.0,Oct-Mar,Plantation walks and estate stays,12.943435,75.786232
+Sakleshpur,Yedakumeri Railway Trek,Trekking,4.4,0.5,5.0,Jun-Dec,Walk along railway tracks past tunnels,12.943435,75.786232
+Vijayawada,Kanaka Durga Temple,Spiritual,4.7,0.95,1.5,All Year,Hilltop temple on the Krishna river,16.515406,80.606534
+Vijayawada,Prakasam Barrage,Sightseeing,4.4,0.7,1.0,Jul-Dec,Barrage across the Krishna river,16.508564,80.605924
+Vijayawada,Undavalli Caves,Heritage,4.3,0.7,1.5,Oct-Mar,Rock-cut cave temples,16.49667,80.581695
+Vijayawada,Bhavani Island,Nature,4.2,0.6,3.0,Oct-Mar,River island with boating,16.491545,80.668311
+Vijayawada,Kondapalli Fort,Heritage,4.1,0.4,1.0,Oct-Mar,Hill fort known for its wooden toys,16.625013,80.530439
+Visakhapatnam,RK Beach,Beach,4.4,0.98,2.0,Oct-Mar,City beach with a promenade,17.682913,83.197433
+Visakhapatnam,Kailasagiri,Sightseeing,4.5,0.9,2.0,All Year,Hilltop park with a cable car,17.749384,83.341613
+Visakhapatnam,INS Kursura Submarine Museum,Heritage,4.5,0.8,1.5,All Year,Decommissioned submarine on the beach,17.717086,83.329812
+Visakhapatnam,Simhachalam Temple,Spiritual,4.7,0.8,2.0,All Year,Hilltop Narasimha temple,17.766323,83.250525
+Visakhapatnam,Borra Caves,Nature,4.4,0.8,4.0,Oct-Mar,Limestone caves 90 km away,18.178583,83.059278
+Araku Valley,Borra Caves,Nature,4.4,0.9,2.0,Oct-Mar,Limestone caves with stalactites,18.338324,82.846919
+Araku Valley,Katiki Waterfalls,Nature,4.4,0.6,2.0,Jun-Dec,Waterfall near Borra Caves,18.338324,82.846919
+Araku Valley,Tribal Museum Araku,Culture,4.3,0.6,1.0,All Year,Museum of local tribal life,18.324118,82.878706
+Araku Valley,Padmapuram Gardens,Nature,4.2,0.5,1.0,All Year,Botanical gardens with a tree house,18.339391,82.846151
+Araku Valley,Araku Coffee Plantations,Nature,4.4,0.7,2.0,Oct-Mar,Coffee estates and tasting,18.322643,82.877552
+Tirupati,Tirumala Venkateswara Temple,Spiritual,4.8,0.99,5.0,All Year,Famous Vishnu temple; book darshan in advance,13.683258,79.347522
+Tirupati,Sri Padmavathi Temple Tiruchanur,Spiritual,4.7,0.8,1.5,All Year,Temple of Venkateswara's consort,13.607973,79.450015
+Tirupati,Kapila Theertham,Spiritual,4.7,0.7,1.0,All Year,Shiva temple with a waterfall at the foot of the hills,13.656576,79.421034
+Tirupati,Talakona Waterfall,Nature,4.4,0.6,3.0,Jul-Dec,Highest waterfall in Andhra Pradesh,13.631637,79.423171
+Tirupati,Silathoranam,Sightseeing,4.4,0.5,1.0,All Year,Natural rock arch on the Tirumala hills,13.68676,79.340657
+Gandikota,Gandikota Grand Canyon,Nature,4.6,0.99,2.0,Oct-Feb,Gorge carved by the Penna river,14.82209,78.281715
+Gandikota,Gandikota Fort,Heritage,4.5,0.8,1.5,Oct-Feb,Medieval fort above the gorge,14.813318,78.287458
+Gandikota,Madhavaraya Temple,Heritage,4.5,0.6,0.5,All Year,Ancient temple within the fort,14.813351,78.283966
+Gandikota,Jamia Masjid Gandikota,Heritage,4.5,0.5,0.5,All Year,Mosque inside the fort complex,,
+Gandikota,Belum Caves,Nature,4.4,0.7,2.0,Oct-Mar,Long limestone cave system 110 km away,15.103493,78.11255
+Bastar,Chitrakote Falls,Nature,4.6,0.98,2.0,Jul-Oct,Widest waterfall in India,18.91407,81.86516
+Bastar,Tirathgarh Falls,Nature,4.5,0.8,2.0,Jul-Oct,Tiered waterfall in Kanger Valley,18.91407,81.86516
+Bastar,Kanger Valley National Park,Wildlife,4.5,0.8,3.0,Oct-Jun,Forest park with caves and waterfalls,18.833984,82.020105
+Bastar,Kutumsar Cave,Nature,4.2,0.6,2.0,Oct-Jun,One of India's deepest caves,,
+Bastar,Danteshwari Temple,Spiritual,4.6,0.5,1.0,All Year,Shakti peeth in Dantewada,19.096486,82.012938
+Khajuraho,Western Group of Temples,Heritage,4.6,0.99,3.0,Oct-Mar,UNESCO temples with famous sculptures,24.853269,79.920901
+Khajuraho,Eastern Group of Temples,Heritage,4.4,0.6,1.5,Oct-Mar,Jain and Hindu temples near the village,24.853269,79.920901
+Khajuraho,Light and Sound Show,Culture,4.3,0.8,1.0,Oct-Mar,Evening show at the Western Group,,
+Khajuraho,Raneh Falls,Nature,4.4,0.6,2.0,Jul-Oct,Canyon and waterfall 20 km away,24.875433,80.052642
+Khajuraho,Panna National Park,Wildlife,4.4,0.6,4.0,Oct-Jun,Tiger reserve 25 km away,24.638256,79.95591
+Pachmarhi,Pandav Caves,Heritage,4.4,0.85,1.5,Oct-Mar,Rock-cut caves linked to the Mahabharata,22.458499,78.432455
+Pachmarhi,Dhoopgarh,Sightseeing,4.4,0.8,1.0,Oct-Mar,Highest point in Madhya Pradesh,22.473682,78.436054
+Pachmarhi,Bee Falls,Nature,4.3,0.8,1.5,Jul-Dec,Waterfall with a natural pool,22.474258,78.408158
+Pachmarhi,Jata Shankar Caves,Spiritual,4.5,0.7,1.5,All Year,Natural cave shrine of Shiva,22.481555,78.441793
+Pachmarhi,Satpura National Park,Wildlife,4.4,0.6,3.0,Oct-Jun,Tiger reserve with forest walks,22.473682,78.436054
+Bhopal,Upper Lake,Nature,4.4,0.9,2.0,All Year,Large lake with boating,23.239989,77.354662
+Bhopal,Taj-ul-Masajid,Heritage,4.6,0.75,1.0,All Year,One of the largest mosques in India,23.262952,77.392815
+Bhopal,Bhimbetka Rock Shelters,Heritage,4.5,0.7,2.5,Oct-Mar,UNESCO prehistoric cave paintings 45 km away,23.258486,77.401989
+Bhopal,Van Vihar National Park,Wildlife,4.2,0.7,2.0,Oct-Mar,Zoo and park beside the Upper Lake,23.229554,77.365867
+Bhopal,Bharat Bhavan,Culture,4.5,0.6,2.0,All Year,Arts centre with galleries and theatre,23.258486,77.401989
+Indore,Rajwada Palace,Heritage,4.3,0.9,1.0,All Year,Holkar palace in the old city,22.718016,75.854763
+Indore,Sarafa Bazaar,Food,4.5,0.95,2.0,All Year,Night street food market,22.717895,75.851858
+Indore,Chhappan Dukan,Food,4.4,0.85,1.5,All Year,Street of 56 food shops,22.720362,75.8682
+Indore,Lal Bagh Palace,Heritage,4.4,0.75,1.5,All Year,Holkar palace with gardens,22.70254,75.846789
+Indore,Khajrana Ganesh Temple,Spiritual,4.7,0.8,1.0,All Year,Popular Ganesh temple,22.698482,75.836084
+Orchha,Orchha Fort Complex,Heritage,4.5,0.95,2.0,Oct-Mar,Palaces and temples on the Betwa,25.348295,78.645964
+Orchha,Jahangir Mahal,Heritage,4.5,0.85,1.0,Oct-Mar,Mughal-style palace with domes,25.350794,78.643661
+Orchha,Ram Raja Temple,Spiritual,4.7,0.9,1.0,All Year,Only temple where Rama is worshipped as king,25.350838,78.639798
+Orchha,Chaturbhuj Temple,Spiritual,4.6,0.7,1.0,All Year,Large temple with towering spires,25.352794,78.630803
+Orchha,Betwa River Chhatris,Heritage,4.5,0.7,1.0,Oct-Mar,Royal cenotaphs on the riverbank,25.391453,78.66434
+Jabalpur,Marble Rocks Bhedaghat,Nature,4.6,0.95,2.0,Oct-Jun,Boat ride through white marble cliffs,23.163387,79.935363
+Jabalpur,Dhuandhar Falls,Nature,4.5,0.95,1.5,Jul-Dec,Waterfall that makes a misty cloud,23.169279,79.936403
+Jabalpur,Chausath Yogini Temple,Heritage,4.5,0.6,1.0,Oct-Mar,10th-century circular temple,23.12992,79.80122
+Jabalpur,Madan Mahal Fort,Heritage,4.1,0.5,1.0,All Year,Small hilltop fort,23.160281,79.920795
+Jabalpur,Bargi Dam,Nature,4.4,0.5,1.5,Oct-Mar,Reservoir on the Narmada,23.169279,79.936403
+Saputara,Saputara Lake,Nature,4.2,0.9,1.5,All Year,Boating lake in the hill town,20.576378,73.744751
+Saputara,Sunset Point,Sightseeing,4.2,0.8,1.0,All Year,Evening view over the valley,20.574549,73.732339
+Saputara,Table Point,Sightseeing,4.1,0.7,1.0,All Year,Flat hilltop with valley views,20.569208,73.741176
+Saputara,Saputara Ropeway,Adventure,4.2,0.8,1.0,All Year,Cable car ride up the hill,20.573369,73.738096
+Saputara,Gira Waterfalls,Nature,4.3,0.7,1.0,Jul-Oct,Monsoon waterfall 52 km away,20.579669,73.747888
+Daman,Devka Beach,Beach,4.2,0.9,2.0,Oct-Mar,Promenade beach with food stalls,20.445888,72.833076
+Daman,Jampore Beach,Beach,4.2,0.7,2.0,Oct-Mar,Quieter beach with casuarina trees,20.390807,72.827277
+Daman,Moti Daman Fort,Heritage,4.4,0.8,1.5,Oct-Mar,Portuguese fort with old churches,20.40583,72.834084
+Daman,Nani Daman Fort,Heritage,4.3,0.6,1.0,Oct-Mar,Fort at the river mouth,20.41431,72.83236
+Daman,Church of Our Lady of the Sea,Heritage,4.5,0.6,0.5,All Year,Baroque Portuguese church,,
+Neemrana,Neemrana Fort Palace,Heritage,4.5,0.98,3.0,Oct-Mar,15th-century fort palace hotel,27.993796,76.388446
+Neemrana,Neemrana Fort Zip-lining,Adventure,4.5,0.8,2.0,Oct-Mar,Zip lines around the fort,27.992162,76.385656
+Neemrana,Neemrana Baori,Heritage,4.4,0.6,1.0,All Year,Old stepwell,27.992469,76.384999
+Neemrana,Sariska Tiger Reserve,Wildlife,4.3,0.7,4.0,Oct-Jun,Tiger reserve about 60 km away,27.992162,76.385656
+Neemrana,Bhangarh Fort,Heritage,4.2,0.6,2.0,Oct-Mar,Ruined fort known for ghost stories,27.993796,76.388446
+Bundi,Bundi Palace,Heritage,4.4,0.9,2.0,Oct-Mar,Palace with faded Rajput murals,25.43079,75.642842
+Bundi,Taragarh Fort,Heritage,4.3,0.8,2.0,Oct-Mar,Hilltop fort above the town,25.451298,75.636967
+Bundi,Raniji Ki Baori,Heritage,4.5,0.85,1.0,All Year,Decorated stepwell,25.434315,75.643265
+Bundi,Nawal Sagar Lake,Nature,4.4,0.6,1.0,All Year,Lake with a temple in the middle,25.446793,75.633538
+Bundi,84 Pillared Cenotaph,Heritage,4.4,0.5,0.5,All Year,Royal chhatri with 84 columns,25.42979,75.64714
+Chittorgarh,Chittorgarh Fort,Heritage,4.6,0.99,4.0,Oct-Mar,Largest fort in India and a UNESCO site,24.893055,74.643413
+Chittorgarh,Vijay Stambh,Heritage,4.5,0.85,1.0,Oct-Mar,Victory tower inside the fort,24.89203,74.649969
+Chittorgarh,Rani Padmini Palace,Heritage,4.4,0.7,0.5,Oct-Mar,Palace beside a lake in the fort,24.904306,74.622078
+Chittorgarh,Meera Bai Temple,Spiritual,4.5,0.6,0.5,All Year,Temple of the Krishna devotee Meera,24.890393,74.644957
+Chittorgarh,Sanwaliya Seth Temple,Spiritual,4.7,0.7,1.0,All Year,Popular Krishna temple 40 km away,24.883716,74.624415
+Sawai Madhopur,Ranthambore National Park,Wildlife,4.5,0.99,4.0,Oct-Jun,Famous tiger reserve,26.01733,76.50257
+Sawai Madhopur,Ranthambore Fort,Heritage,4.5,0.85,2.0,Oct-Mar,10th-century fort in the park,26.018569,76.455976
+Sawai Madhopur,Trinetra Ganesh Temple,Spiritual,4.7,0.7,1.0,All Year,Temple inside the fort,26.01753,76.453136
+Sawai Madhopur,Surwal Lake,Nature,4.3,0.4,1.0,Nov-Mar,Lake with migratory birds,26.018892,76.352244
+Sawai Madhopur,Padam Talao,Wildlife,4.5,0.6,1.0,Oct-Jun,Lake in the park known for tiger sightings,26.027192,76.457628
+Kanha,Kisli Zone Safari,Wildlife,4.6,0.9,4.0,Nov-Jun,Popular safari entry in Kanha,,
+Kanha,Mukki Zone Safari,Wildlife,4.5,0.85,4.0,Nov-Jun,Grasslands with barasingha,,
+Kanha,Bamni Dadar Sunset Point,Sightseeing,4.5,0.7,1.5,Nov-Jun,Viewpoint for the sunset over the park,22.276984,80.627865
+Kanha,Sarhi Zone Safari,Wildlife,4.4,0.5,4.0,Nov-Jun,Safari with good wildlife,,
+Kanha,Kanha Museum,Culture,4.2,0.5,1.0,All Year,Museum on the park's history,22.28451,80.61843
+Bandhavgarh,Tala Zone Safari,Wildlife,4.7,0.99,4.0,Nov-Jun,Best known zone for tiger sightings,23.723146,81.023601
+Bandhavgarh,Magadhi Zone Safari,Wildlife,4.5,0.8,4.0,Nov-Jun,Good safari area with varied landscape,,
+Bandhavgarh,Khitauli Zone Safari,Wildlife,4.4,0.6,4.0,Nov-Jun,Less crowded safari area,23.708269,80.830856
+Bandhavgarh,Bandhavgarh Fort,Heritage,4.4,0.75,2.0,Nov-Jun,Ancient fort inside the park,23.718036,81.02629
+Bandhavgarh,Shesh Shaiya,Heritage,4.4,0.6,1.0,Nov-Jun,Reclining Vishnu statue and spring,,
+Pench,Turia Gate Safari,Wildlife,4.5,0.9,4.0,Oct-Jun,Main gate on the Madhya Pradesh side,21.668653,79.370026
+Pench,Karmajhiri Gate Safari,Wildlife,4.4,0.7,4.0,Oct-Jun,Safari with a good chance of tiger,21.668653,79.370026
+Pench,Sillari Gate Safari,Wildlife,4.5,0.8,4.0,Oct-Jun,Maharashtra-side safari entry,21.6594,79.31093
+Pench,Totladoh Dam,Nature,4.3,0.5,1.5,Oct-Mar,Large reservoir on the Pench river,21.658707,79.23205
+Pench,Pench River Viewpoint,Nature,4.3,0.4,1.0,Oct-Mar,River scenery with birdlife,21.601097,79.217451
+Dooars,Jaldapara National Park,Wildlife,4.4,0.95,3.0,Nov-Mar,Rhino sanctuary with elephant safari,26.871336,88.870414
+Dooars,Gorumara National Park,Wildlife,4.4,0.9,3.0,Nov-Mar,Forest park with rhino and elephant,26.871336,88.870414
+Dooars,Chapramari Wildlife Sanctuary,Wildlife,4.3,0.6,3.0,Nov-Mar,Forest with a watchtower,,
+Dooars,Buxa Tiger Reserve,Wildlife,4.4,0.6,3.0,Oct-Mar,Forest with trails and a fort,26.652264,89.439806
+Dooars,Samsing Valley,Nature,4.4,0.5,1.5,Oct-Mar,Tea estates and forest hills,26.976246,88.811996
+Mirik,Sumendu Lake,Nature,4.1,0.9,1.5,All Year,Hill lake with boating,26.887996,88.186112
+Mirik,Mirik Tea Gardens,Nature,4.3,0.7,1.5,Mar-Nov,Tea estates with a short tour,26.888187,88.18884
+Mirik,Bokar Monastery,Spiritual,4.4,0.5,1.0,All Year,Small Buddhist monastery,26.886968,88.190666
+Mirik,Rameetay Dara Viewpoint,Sightseeing,4.2,0.6,1.0,Oct-Mar,Hilltop view over the town,26.888187,88.18884
+Mirik,Mirik Garden,Nature,4.1,0.5,1.0,All Year,Garden with orchids and flowers,26.891619,88.182156
+Lachung,Yumthang Valley,Nature,4.7,0.98,4.0,Mar-Jun,Valley of flowers; rhododendrons in spring,27.686143,88.747078
+Lachung,Zero Point,Sightseeing,4.6,0.7,3.0,Mar-Jun; Oct-Dec,Snowy high point beyond Yumthang,27.68971,88.742588
+Lachung,Shingba Rhododendron Sanctuary,Nature,4.6,0.6,2.0,Apr-May,Rhododendron forest in bloom,27.68971,88.742588
+Lachung,Lachung Monastery,Spiritual,4.5,0.6,1.0,All Year,Small monastery in the village,27.688211,88.748913
+Lachung,Bhim Nala Waterfall,Nature,4.5,0.6,0.5,Apr-Oct,Waterfall beside the road,27.68971,88.742588
+Lachen,Gurudongmar Lake,Nature,4.8,0.98,5.0,May-Nov,High-altitude lake; permit needed,27.730614,88.549501
+Lachen,Chopta Valley Sikkim,Nature,4.6,0.7,2.0,May-Nov,Alpine valley on the way to the lake,27.730614,88.549501
+Lachen,Thangu Valley,Nature,4.6,0.7,2.0,May-Nov,High valley with pastures,27.730614,88.549501
+Lachen,Lachen Monastery,Spiritual,4.5,0.5,1.0,All Year,Monastery above the village,27.730546,88.546905
+Lachen,Cholamu Lake,Nature,4.7,0.5,6.0,May-Oct,Remote lake near the Tibetan border,27.730614,88.549501
+Namchi,Char Dham Namchi,Spiritual,4.7,0.95,2.0,All Year,Complex with Char Dham replicas and a tall Shiva statue,27.152658,88.341335
+Namchi,Samdruptse Statue,Spiritual,4.6,0.9,1.5,All Year,Huge statue of Guru Padmasambhava,27.166126,88.365198
+Namchi,Buddha Park Ravangla,Spiritual,4.7,0.85,1.5,All Year,Large Buddha statue and gardens,27.311673,88.36357
+Namchi,Temi Tea Garden,Nature,4.3,0.7,2.0,Mar-Nov,Sikkim's only tea estate,27.166126,88.365198
+Namchi,Tendong Hill,Trekking,4.5,0.6,2.0,Oct-Mar,Hill trek with valley views,27.166182,88.362317
+Mawlynnong,Mawlynnong Village Walk,Culture,4.5,0.95,2.0,Oct-May,Clean village with bamboo dustbins,25.206383,91.90925
+Mawlynnong,Riwai Living Root Bridge,Nature,4.5,0.9,1.0,Oct-May,Living root bridge near the village,25.206543,91.897788
+Mawlynnong,Sky View Machan,Sightseeing,4.3,0.7,0.5,Oct-May,Bamboo tower over the valley,25.207796,91.890529
+Mawlynnong,Balancing Rock,Sightseeing,4.2,0.7,0.5,All Year,Boulder balanced on a smaller rock,25.206383,91.90925
+Mawlynnong,Mawlynnong Church,Heritage,4.4,0.5,0.5,All Year,Village church with a garden,25.206383,91.90925
+Dawki,Umngot River Boating,Adventure,4.7,0.99,2.0,Nov-Apr,Boat ride on crystal-clear water,25.185634,92.021572
+Dawki,Shnongpdeng Village,Adventure,4.6,0.8,3.0,Nov-Apr,Camping and snorkeling on the Umngot,25.203928,92.020819
+Dawki,Dawki Bridge,Sightseeing,4.5,0.8,0.5,All Year,Suspension bridge over the river,25.183915,92.031869
+Dawki,Indo-Bangladesh Border Dawki,Sightseeing,4.3,0.6,1.0,All Year,Border market and viewpoint,25.185634,92.021572
+Dawki,Krang Suri Falls,Nature,4.5,0.6,1.0,Jun-Nov,Waterfall with a turquoise pool,25.185634,92.021572
+Aizawl,Reiek Heritage Village,Culture,4.3,0.6,3.0,Oct-Mar,Traditional village on a hilltop,23.727763,92.717995
+Aizawl,Durtlang Hills,Sightseeing,4.4,0.7,1.0,All Year,Hilltop with city views,23.78101,92.72732
+Aizawl,Bara Bazaar,Culture,4.2,0.8,2.0,All Year,Busy market with local products,23.733988,92.71808
+Aizawl,Mizoram State Museum,Culture,4.3,0.6,1.5,All Year,Museum on Mizo culture,23.73804,92.715794
+Aizawl,Solomon's Temple,Spiritual,4.5,0.5,1.0,All Year,Large church in the city,23.747791,92.68843
+Kohima,Kohima War Cemetery,Heritage,4.7,0.95,1.0,All Year,WWII memorial on Garrison Hill,25.667635,94.103132
+Kohima,Kisama Heritage Village,Culture,4.5,0.85,2.0,Oct-Dec,Venue of the Hornbill Festival,25.661876,94.101916
+Kohima,Dzukou Valley,Trekking,4.7,0.8,8.0,Jun-Sep,Valley of flowers on the Nagaland border,25.551761,94.121738
+Kohima,Khonoma Green Village,Culture,4.6,0.7,3.0,Oct-Apr,Village known for terraced fields and conservation,25.661876,94.101916
+Kohima,Nagaland State Museum,Culture,4.4,0.5,1.5,All Year,Museum of Naga heritage,25.684399,94.107525
+Imphal,Loktak Lake,Nature,4.5,0.95,3.0,Oct-Mar,Lake with floating islands,24.806534,93.933292
+Imphal,Kangla Fort,Heritage,4.4,0.85,2.0,Oct-Mar,Historic seat of the Manipur kings,24.808649,93.942146
+Imphal,Ima Keithel,Culture,4.3,0.8,1.5,All Year,Women-run market in the city,24.807981,93.93439
+Imphal,Shaheed Minar,Heritage,4.3,0.6,0.5,All Year,Memorial of the Manipuri freedom fighters,24.799116,93.936442
+Imphal,Sendra Island,Nature,4.4,0.5,2.0,Oct-Mar,Island on Loktak with a viewpoint,24.77797,94.02299
+Agartala,Ujjayanta Palace,Heritage,4.4,0.95,1.5,Oct-Mar,Royal palace now a state museum,23.836987,91.282751
+Agartala,Neermahal,Heritage,4.5,0.8,2.0,Oct-Mar,Water palace in Rudrasagar Lake,23.831238,91.282382
+Agartala,Tripura Sundari Temple,Spiritual,4.7,0.8,1.5,All Year,Shakti peeth about 55 km away,23.831238,91.282382
+Agartala,Sepahijala Wildlife Sanctuary,Wildlife,4.3,0.6,2.0,Oct-Mar,Zoo and forest with primates,23.831238,91.282382
+Agartala,Jagannath Temple Agartala,Spiritual,4.4,0.5,1.0,All Year,Large temple in the city,23.831238,91.282382
+Port Blair,Cellular Jail,Heritage,4.6,0.98,2.0,Oct-May,Colonial prison with a light and sound show,11.674446,92.747786
+Port Blair,Corbyn's Cove Beach,Beach,4.2,0.8,1.5,Oct-May,Easy beach near the city,11.642249,92.746687
+Port Blair,Ross Island,Heritage,4.4,0.8,3.0,Oct-May,British-era ruins,11.675434,92.76262
+Port Blair,Samudrika Naval Marine Museum,Culture,4.4,0.6,1.0,All Year,Museum on marine life of the islands,11.664535,92.739045
+Port Blair,Chidiya Tapu Sunset,Sightseeing,4.4,0.7,2.0,Oct-May,Bird-watching and sunset spot,11.664535,92.739045
+Bekal,Bekal Fort,Heritage,4.5,0.98,1.5,Oct-Mar,Largest fort in Kerala beside the sea,12.392224,75.032765
+Bekal,Bekal Beach,Beach,4.4,0.8,1.5,Oct-Mar,Beach next to the fort,12.39904,75.03081
+Bekal,Ananthapura Lake Temple,Spiritual,4.6,0.6,1.0,All Year,Temple in the middle of a lake,12.395725,75.037192
+Bekal,Kappil Beach Kasaragod,Beach,4.3,0.5,1.0,Oct-Mar,Beach where a backwater meets the sea,12.391277,75.039321
+Bekal,Valiyaparamba Backwaters,Nature,4.4,0.5,2.0,Oct-Mar,Quiet backwater cruise,12.395725,75.037192
+Kannur,St. Angelo Fort,Heritage,4.5,0.9,1.5,Oct-Mar,Portuguese fort on a sea cliff,11.854121,75.371976
+Kannur,Payyambalam Beach,Beach,4.4,0.85,2.0,Oct-Mar,Beach with a Gandhi memorial,11.881418,75.343821
+Kannur,Muzhappilangad Drive-In Beach,Beach,4.5,0.8,1.5,Oct-Mar,Long beach where cars can drive on the sand,11.876384,75.373797
+Kannur,Parassinikkadavu Muthappan Temple,Spiritual,4.6,0.6,1.5,All Year,Temple known for Theyyam performances,11.869617,75.369113
+Kannur,Dharmadam Island,Nature,4.3,0.4,1.0,Oct-Mar,Small green island near the shore,11.769611,75.450726
+Thrissur,Vadakkunnathan Temple,Spiritual,4.8,0.9,1.5,All Year,Ancient Shiva temple at the heart of the town,10.524389,76.214485
+Thrissur,Guruvayur Temple,Spiritual,4.7,0.85,1.5,All Year,Major Krishna temple 30 km away,10.52701,76.214621
+Thrissur,Punnathur Kotta Elephant Sanctuary,Wildlife,4.2,0.75,1.5,All Year,Home for temple elephants,10.52701,76.214621
+Thrissur,Peechi Dam,Nature,4.3,0.6,2.0,Jul-Mar,Reservoir with a garden,10.537209,76.334138
+Thrissur,Shakthan Thampuran Palace,Heritage,4.3,0.5,1.0,All Year,Palace museum of the Cochin rulers,10.531289,76.216145
+Thanjavur,Brihadeeswarar Temple,Heritage,4.8,0.99,2.0,Oct-Mar,UNESCO Chola temple,10.782764,79.131143
+Thanjavur,Thanjavur Royal Palace,Heritage,4.4,0.7,1.5,Oct-Mar,Nayak and Maratha palace complex,10.791423,79.136042
+Thanjavur,Airavatesvara Temple Darasuram,Heritage,4.7,0.5,1.5,Oct-Mar,UNESCO temple with fine carvings,10.786027,79.13815
+Thanjavur,Saraswathi Mahal Library,Culture,4.3,0.4,1.0,All Year,Old library with rare manuscripts,10.786027,79.13815
+Thanjavur,Thanjavur Art Gallery,Culture,4.3,0.4,1.0,All Year,Chola bronzes and sculptures,10.780513,79.139782
+Pudukkottai,Sittanavasal Cave,Heritage,4.4,0.7,1.0,Oct-Mar,Jain cave with ancient murals,10.454854,78.724831
+Pudukkottai,Thirumayam Fort,Heritage,4.3,0.5,1.0,Oct-Mar,Hill fort with rock-cut temples,10.247584,78.751487
+Pudukkottai,Kudumiyanmalai Temple,Spiritual,4.5,0.5,1.0,All Year,Rock temple with inscriptions,10.383411,78.827481
+Pudukkottai,Avudaiyarkoil Temple,Spiritual,4.6,0.5,1.0,All Year,Temple known for its detailed stone carvings,10.383411,78.827481
+Pudukkottai,Pudukkottai Government Museum,Culture,4.2,0.4,1.0,All Year,Museum of local art and history,10.388926,78.799819
+Yercaud,Yercaud Lake,Nature,4.1,0.9,1.5,All Year,Boating lake in the town,11.783274,78.210469
+Yercaud,Lady's Seat,Sightseeing,4.3,0.8,0.5,All Year,Viewpoint with a telescope,11.770489,78.198084
+Yercaud,Kiliyur Falls,Nature,4.3,0.7,1.5,Jul-Dec,Waterfall with a short walk,11.790596,78.197088
+Yercaud,Servarayan Temple,Spiritual,4.3,0.8,1.0,All Year,Cave temple on the highest hill,11.776075,78.209111
+Yercaud,Pagoda Point,Sightseeing,4.2,0.6,0.5,All Year,Stone pagodas with valley views,11.766305,78.239033
+Valparai,Aliyar Dam,Nature,4.3,0.8,1.5,All Year,Dam and garden at the base of the ghat,10.327993,76.955726
+Valparai,Monkey Falls,Nature,4.2,0.8,1.0,Jun-Dec,Waterfall on the Pollachi road,10.327993,76.955726
+Valparai,Sholayar Dam,Nature,4.4,0.7,1.0,Jun-Feb,Dam amid tea estates,10.327993,76.955726
+Valparai,Loam's View Point,Sightseeing,4.4,0.6,1.0,Oct-Mar,View of the 40 hairpin bends,10.327993,76.955726
+Valparai,Anamalai Tiger Reserve,Wildlife,4.4,0.7,3.0,Oct-Mar,Forest reserve with elephants and lion-tailed macaques,10.327993,76.955726
+Hogenakkal,Hogenakkal Falls,Nature,4.1,0.99,3.0,Aug-Dec,Wide waterfall on the Kaveri,12.118419,77.775863
+Hogenakkal,Coracle Ride,Adventure,4.2,0.95,1.0,Aug-Dec,Round boat ride near the falls,12.12143,77.777679
+Hogenakkal,Mettur Dam,Nature,4.2,0.5,1.0,Jul-Dec,One of the largest dams in India,12.12143,77.777679
+Hogenakkal,Hogenakkal Fish Fry Stalls,Food,4.2,0.6,1.0,All Year,Fresh river fish fry by the falls,12.12143,77.777679
+Hogenakkal,Stanley Reservoir,Nature,4.3,0.4,1.0,Jul-Dec,Large reservoir at Mettur,12.12143,77.777679
+Bomdila,Bomdila Monastery,Spiritual,4.6,0.85,1.0,Mar-Oct,Large Buddhist monastery,27.270797,92.418705
+Bomdila,Upper Gompa,Spiritual,4.5,0.6,1.0,Mar-Oct,Older monastery above the town,27.200099,92.474561
+Bomdila,Bomdila Viewpoint,Sightseeing,4.5,0.6,1.0,Mar-Oct,Views of Himalayan peaks,27.26475,92.42472
+Bomdila,Bomdila Apple Orchards,Nature,4.4,0.6,1.0,Jul-Sep,Apple orchards in the valley,27.26475,92.42472
+Bomdila,Bomdila Craft Centre,Culture,4.1,0.4,1.0,All Year,Local handicrafts and carpets,27.264445,92.420652
+Dirang,Sangti Valley,Nature,4.6,0.85,2.0,Nov-Mar,Valley known for black-necked cranes,27.357504,92.243706
+Dirang,Dirang Hot Springs,Relaxation,4.2,0.8,1.0,Oct-Mar,Natural sulphur hot spring,27.361075,92.237288
+Dirang,Dirang Dzong,Heritage,4.4,0.7,1.0,Mar-Oct,Old fortress-village,27.344382,92.26915
+Dirang,Thembang Fort Village,Culture,4.5,0.6,2.0,Mar-Oct,Heritage village with stone houses,27.36008,92.24121
+Dirang,Dirang Monastery,Spiritual,4.5,0.5,1.0,Mar-Oct,Small monastery in the town,27.360592,92.236722
+Pasighat,Siang River Rafting,Adventure,4.5,0.8,3.0,Oct-Mar,Rafting on the Siang river,28.058968,95.332494
+Pasighat,Siang River Banks,Nature,4.5,0.8,1.0,Oct-Mar,Quiet riverside viewpoints,28.058968,95.332494
+Pasighat,Sirki Falls,Nature,4.4,0.6,1.0,Jun-Oct,Waterfall near the town,28.065791,95.327416
+Pasighat,Komsing Village,Culture,4.4,0.5,1.0,Oct-Mar,Adi tribe village,28.058968,95.332494
+Pasighat,Daying Ering Wildlife Sanctuary,Wildlife,4.2,0.5,2.0,Nov-Mar,River island sanctuary,28.058968,95.332494
+Mechuka,Mechuka Valley,Nature,4.7,0.9,3.0,Mar-Oct,Remote valley beside the Siyom river,28.616136,94.145521
+Mechuka,Samten Yongcha Monastery,Spiritual,4.5,0.7,1.0,Mar-Oct,Old Buddhist monastery in the valley,28.595434,94.128098
+Mechuka,Siyom River Suspension Bridge,Sightseeing,4.5,0.6,0.5,Mar-Oct,Hanging bridge over the river,28.598745,94.133583
+Mechuka,Mechuka Village Walk,Culture,4.4,0.5,2.0,Mar-Oct,Local Memba culture and houses,28.616136,94.145521
+Mechuka,Siyom Riverside Camp,Nature,4.4,0.4,2.0,Mar-Oct,Riverside camps and walks,28.598745,94.133583
+Itanagar,Ita Fort,Heritage,4.3,0.9,1.0,Oct-Mar,14th-century brick fort,27.097966,93.623729
+Itanagar,Ganga Lake,Nature,4.2,0.8,1.0,Oct-Mar,Lake with a forested setting,27.083472,93.600404
+Itanagar,Jawaharlal Nehru State Museum,Culture,4.3,0.6,1.5,All Year,Museum of tribal artifacts,27.097966,93.623729
+Itanagar,Gompa Buddhist Temple,Spiritual,4.7,0.6,1.0,All Year,Golden-roofed Tibetan temple,27.081897,93.606625
+Itanagar,Itanagar Wildlife Sanctuary,Wildlife,4.2,0.5,2.0,Oct-Mar,Forest sanctuary near the city,27.097966,93.623729
+Sivasagar,Rang Ghar,Heritage,4.4,0.9,1.0,Oct-Mar,Ahom pavilion built for sports,26.967119,94.619058
+Sivasagar,Talatal Ghar,Heritage,4.4,0.8,1.5,Oct-Mar,Ahom palace with secret tunnels,26.965294,94.62469
+Sivasagar,Shiva Dol,Spiritual,4.5,0.9,1.5,All Year,Tallest Shiva temple in India beside the tank,26.98865,94.633105
+Sivasagar,Joysagar Tank,Nature,4.4,0.5,1.0,Oct-Mar,Large Ahom-era reservoir,26.952422,94.623143
+Sivasagar,Charaideo Moidams,Heritage,4.5,0.6,1.5,Oct-Mar,Royal burial mounds of the Ahoms,26.983494,94.639423
+Tezpur,Agnigarh Hill,Sightseeing,4.3,0.8,1.0,Oct-Mar,Hill with sculptures and river views,26.617345,92.802329
+Tezpur,Bhairabi Temple,Spiritual,4.5,0.7,1.0,All Year,Old temple of the goddess Bhairabi,26.616917,92.796923
+Tezpur,Nameri National Park,Wildlife,4.4,0.7,3.0,Nov-Apr,Park known for rafting and birding,26.622993,92.797608
+Tezpur,Chitralekha Udyan,Nature,4.2,0.7,1.0,All Year,Cole Park with a lake,26.618269,92.793623
+Tezpur,Kolia Bhomora Bridge,Sightseeing,4.4,0.6,0.5,All Year,Long bridge over the Brahmaputra,26.664829,92.821532
+Dibrugarh,Dibru-Saikhowa National Park,Wildlife,4.4,0.8,3.0,Nov-Apr,Wetland park with feral horses,27.48446,94.901945
+Dibrugarh,Tea Estate Visit Dibrugarh,Culture,4.5,0.7,2.0,Oct-Mar,Plantation walk and tasting,27.48446,94.901945
+Dibrugarh,Brahmaputra Sunset Cruise,Sightseeing,4.4,0.7,2.0,Oct-Mar,Boat ride on the river,27.48446,94.901945
+Dibrugarh,Radha Krishna Temple Dibrugarh,Spiritual,4.5,0.6,1.0,All Year,Large temple in the town,27.48446,94.901945
+Dibrugarh,Namphake Village,Culture,4.4,0.4,1.0,Oct-Mar,Buddhist village with a monastery,27.48446,94.901945
+Unakoti,Unakoti Rock Carvings,Heritage,4.5,0.99,3.0,Oct-Mar,Giant rock-cut Shiva sculptures,24.304628,92.033346
+Unakoti,Unakoti Hill Trail,Trekking,4.5,0.7,1.0,Oct-Mar,Forest walk among the carvings,24.316728,92.066842
+Unakoti,Unakoti Waterfall,Nature,4.4,0.6,0.5,Jun-Oct,Natural waterfall beside the site,24.304628,92.033346
+Unakoti,Ashokashtami Mela,Culture,4.4,0.4,4.0,Mar-Apr,Annual fair at the carvings,,
+Unakoti,Jampui Hills,Nature,4.5,0.5,8.0,Oct-Mar,Hills with orange orchards 100 km away,24.053497,92.277453
+Chumukedima,Triple Falls,Nature,4.3,0.7,1.0,Jun-Oct,Three-tiered waterfall near Dimapur,25.809029,93.788116
+Chumukedima,Rangapahar Reserve Forest,Nature,4.2,0.6,2.0,Oct-Mar,Forest reserve with a short trail,25.855671,93.720073
+Chumukedima,Kachari Ruins,Heritage,4.2,0.7,1.0,Oct-Mar,Remains of the Kachari kingdom in Dimapur,25.90348,93.740327
+Chumukedima,Nagaland Zoological Park,Wildlife,4.0,0.6,2.0,Oct-Mar,Zoo at Rangapahar,25.809029,93.788116
+Chumukedima,Chumukedima Fort Ruins,Heritage,4.1,0.5,1.0,Oct-Mar,Old fort remains in the town,25.809029,93.788116
+Moirang,INA Memorial Moirang,Heritage,4.4,0.9,1.0,All Year,Memorial where the INA flag was raised,24.500551,93.776748
+Moirang,Loktak Lake Moirang,Nature,4.5,0.9,2.0,Oct-Mar,Floating islands and boating,24.500551,93.776748
+Moirang,Keibul Lamjao National Park,Wildlife,4.4,0.7,3.0,Nov-Mar,Only floating national park and Sangai deer home,24.500551,93.776748
+Moirang,Sendra Island,Nature,4.4,0.5,2.0,Oct-Mar,Island view over the lake,24.500551,93.776748
+Moirang,Ibudhou Thangjing Temple,Spiritual,4.5,0.5,1.0,All Year,Temple of the Meitei deity,24.500551,93.776748
+Sohra,Nohkalikai Falls,Nature,4.4,0.95,1.5,Jun-Oct,One of the tallest waterfalls in India,25.281305,91.725638
+Sohra,Mawsmai Cave,Nature,4.1,0.85,1.0,Oct-May,Limestone cave with lit passages,25.244774,91.724778
+Sohra,Seven Sisters Falls,Nature,4.4,0.8,1.0,Jun-Oct,Seven falls over a ridge,25.243044,91.738667
+Sohra,Sohra Eco Park,Nature,4.4,0.7,1.5,Oct-May,Park with views of the plains,25.247277,91.741813
+Sohra,Thangkharang Park,Nature,4.4,0.6,1.5,Oct-May,Park with views of Bangladesh plains,25.253928,91.703136
+Nongriat,Double Decker Living Root Bridge,Trekking,4.7,0.98,5.0,Oct-May,Famous two-tier root bridge reached by a long stair trek,25.251456,91.671658
+Nongriat,Rainbow Falls Nongriat,Nature,4.6,0.7,1.0,Oct-May,Waterfall with a turquoise pool,25.272765,91.732343
+Nongriat,Nongriat Village Trek,Trekking,4.6,0.8,5.0,Oct-May,Stairway trek of about 3500 steps,25.225849,91.675101
+Nongriat,Single Root Bridge,Nature,4.5,0.6,0.5,Oct-May,Single living root bridge on the way down,25.25355,91.687606
+Nongriat,Tyrna Village,Culture,4.4,0.4,1.0,Oct-May,Village at the trek starting point,25.239041,91.682369
+Jowai,Nartiang Monoliths,Heritage,4.4,0.8,1.0,Oct-Mar,Largest group of megaliths in Meghalaya,25.44347,92.197318
+Jowai,Nartiang Durga Temple,Spiritual,4.5,0.6,1.0,All Year,One of the Shakti peeths,25.44347,92.197318
+Jowai,Thadlaskein Lake,Nature,4.3,0.7,1.0,All Year,Lake linked to a local legend,25.44347,92.197318
+Jowai,Krang Suri Falls,Nature,4.5,0.8,1.0,Jun-Nov,Waterfall with a turquoise pool,25.44347,92.197318
+Jowai,Kiang Nangbah Memorial,Heritage,4.2,0.4,0.5,All Year,Memorial to a Jaintia freedom fighter,25.44347,92.197318
+Champhai,Rih Dil Lake,Nature,4.5,0.7,1.0,All Year,Heart-shaped lake on the Myanmar border,23.478718,93.319888
+Champhai,Murlen National Park,Wildlife,4.4,0.6,4.0,Nov-Apr,Park with hill forests and birds,23.478718,93.319888
+Champhai,Zokhawthar Border Market,Culture,4.3,0.4,1.0,All Year,Border market near the Myanmar gate,23.478718,93.319888
+Champhai,Champhai Hill Viewpoint,Sightseeing,4.3,0.5,1.0,All Year,Hill view over the valley,23.47577,93.33209
+Champhai,Champhai Grape Orchards,Nature,4.2,0.4,1.0,Jul-Sep,Vineyards in the valley,23.47577,93.33209
+Kurseong,Makaibari Tea Estate,Nature,4.6,0.9,2.0,Mar-Nov,Well-known organic tea garden,26.857111,88.26486
+Kurseong,Eagle's Crag,Sightseeing,4.3,0.7,1.0,All Year,Viewpoint over the town and the plains,26.881827,88.278364
+Kurseong,Dow Hill,Nature,4.2,0.6,1.5,All Year,Forest walks and a Victorian school campus,26.880807,88.27868
+Kurseong,Netaji Subhas Bose Museum,Heritage,4.2,0.5,1.0,All Year,House linked to Netaji,26.881827,88.278364
+Kurseong,Kurseong Toy Train Ride,Sightseeing,4.3,0.6,1.0,All Year,Short ride on the heritage railway,26.881827,88.278364
+Siliguri,Salugara Monastery,Spiritual,4.5,0.8,1.0,All Year,Large Buddhist stupa and monastery,26.766956,88.444934
+Siliguri,Mahananda Wildlife Sanctuary,Wildlife,4.3,0.8,2.0,Nov-Mar,Forest sanctuary with elephants,26.716413,88.430992
+Siliguri,Teesta Barrage Gajoldoba,Nature,4.3,0.7,1.5,Oct-Mar,Barrage with views and migratory birds,26.73114,88.432676
+Siliguri,Coronation Bridge,Sightseeing,4.2,0.6,0.5,All Year,Old bridge across the Teesta,26.734039,88.42418
+Siliguri,ISKCON Siliguri,Spiritual,4.5,0.5,1.0,All Year,Krishna temple on the outskirts,26.711057,88.432742
+Bishnupur,Rasmancha,Heritage,4.5,0.9,1.0,Oct-Mar,Brick temple with pyramid roof,23.068203,87.322121
+Bishnupur,Jor Bangla Temple,Heritage,4.4,0.8,0.5,Oct-Mar,Terracotta temple with a hut-like roof,23.071682,87.326777
+Bishnupur,Shyam Rai Temple,Heritage,4.5,0.8,0.5,Oct-Mar,Five-pinnacle terracotta temple,23.075733,87.314634
+Bishnupur,Madan Mohan Temple,Heritage,4.5,0.8,0.5,Oct-Mar,Terracotta temple with epic carvings,23.075733,87.314634
+Bishnupur,Dalmadal Cannon,Heritage,4.3,0.7,0.5,All Year,Giant historic cannon,23.075733,87.314634
+Murshidabad,Hazarduari Palace,Heritage,4.3,0.95,2.0,Oct-Mar,Palace with a thousand doors,24.18739,88.269295
+Murshidabad,Nizamat Imambara,Heritage,4.3,0.8,1.0,Oct-Mar,One of the largest imambaras in India,24.188357,88.268646
+Murshidabad,Katra Mosque,Heritage,4.2,0.7,1.0,Oct-Mar,Mosque with the Nawab's tomb,24.174599,88.272133
+Murshidabad,Khushbagh,Heritage,4.3,0.5,1.0,Oct-Mar,Garden with tombs of the Nawabs,24.174599,88.272133
+Murshidabad,Motijheel,Heritage,4.0,0.5,1.0,Oct-Mar,Horseshoe-shaped lake and ruins,24.158071,88.283956
+Bakkhali,Bakkhali Beach,Beach,4.1,0.98,2.0,Oct-Mar,Long quiet beach with red crabs,21.571368,88.250427
+Bakkhali,Henry's Island,Nature,4.2,0.7,1.5,Oct-Mar,Island with a watchtower and beach,21.586989,88.300542
+Bakkhali,Frasergunj Fishing Harbour,Culture,4.2,0.6,1.0,Oct-Mar,Busy harbour with local boats,,
+Bakkhali,Bakkhali Crocodile Project,Wildlife,4.1,0.5,1.0,Oct-Mar,Crocodile breeding project,,
+Bakkhali,Jambu Dwip,Nature,4.1,0.5,2.0,Oct-Mar,Small island reached by boat,,
+Gaya,Vishnupad Temple,Spiritual,4.7,0.99,1.5,All Year,Temple with a footprint of Vishnu,24.777363,85.009338
+Gaya,Falgu River Pind Daan,Spiritual,4.5,0.8,2.0,Sep-Oct,Ancestral rites at the river,24.796436,85.007956
+Gaya,Brahmayoni Hill,Spiritual,4.4,0.7,1.0,Oct-Mar,Hill with temples and a view,24.770228,84.984571
+Gaya,Mangla Gauri Temple,Spiritual,4.6,0.6,1.0,All Year,Shakti peeth on a hill,24.77495,85.002491
+Gaya,Barabar Caves,Heritage,4.3,0.6,2.0,Oct-Mar,Oldest rock-cut caves in India,24.796436,85.007956
+Rajgir,Vishwa Shanti Stupa,Spiritual,4.6,0.9,1.5,Oct-Mar,White peace pagoda on Ratnagiri hill,25.004508,85.444528
+Rajgir,Rajgir Hot Springs,Relaxation,4.2,0.8,1.0,Oct-Mar,Natural hot water springs,25.029997,85.420737
+Rajgir,Griddhakuta Hill,Spiritual,4.5,0.7,1.5,Oct-Mar,Vulture Peak where Buddha preached,25.001689,85.446644
+Rajgir,Rajgir Glass Bridge,Adventure,4.4,0.8,2.0,Oct-Mar,Glass skywalk in the nature safari,25.029997,85.420737
+Rajgir,Rajgir Zoo Safari,Wildlife,4.2,0.6,2.0,Oct-Mar,Safari park in the hills,25.029997,85.420737
+Nalanda,Nalanda University Ruins,Heritage,4.6,0.99,2.0,Oct-Mar,UNESCO ruins of the ancient university,25.026337,85.413453
+Nalanda,Nalanda Archaeological Museum,Heritage,4.3,0.6,1.0,Oct-Mar,Museum with finds from the site,25.135701,85.448322
+Nalanda,Xuanzang Memorial Hall,Heritage,4.4,0.6,1.0,Oct-Mar,Memorial to the Chinese pilgrim,25.144932,85.453635
+Nalanda,Nava Nalanda Mahavihara,Culture,4.3,0.4,1.0,All Year,Institute of Buddhist studies,25.12814,85.445592
+Nalanda,Surya Mandir Baragaon,Spiritual,4.4,0.4,1.0,Nov,Sun temple known for Chhath,25.096395,85.539764
+Vaishali,Ashokan Pillar Kolhua,Heritage,4.5,0.8,1.0,Oct-Mar,Lion pillar built by Ashoka,,
+Vaishali,Vishwa Shanti Stupa Vaishali,Spiritual,4.6,0.7,1.0,Oct-Mar,Peace pagoda near the site,25.992115,85.114947
+Vaishali,Buddha Relic Stupa,Spiritual,4.4,0.6,1.0,Oct-Mar,Stupa that held Buddha relics,25.991096,85.118751
+Vaishali,Abhishek Pushkarni,Heritage,4.4,0.5,0.5,All Year,Ancient coronation tank,25.993268,85.116415
+Vaishali,Raja Vishal Ka Garh,Heritage,4.2,0.4,1.0,Oct-Mar,Archaeological mound of the old capital,25.979243,85.126292
+Deoghar,Baidyanath Temple,Spiritual,4.8,0.99,2.0,All Year,Jyotirlinga temple and pilgrimage centre,24.492565,86.700053
+Deoghar,Trikut Hills Ropeway,Adventure,4.4,0.8,2.0,All Year,Ropeway on Trikut Parvat,24.489832,86.699018
+Deoghar,Tapovan Caves,Spiritual,4.4,0.6,2.0,Oct-Mar,Hill caves linked to sages,24.489832,86.699018
+Deoghar,Naulakha Mandir,Spiritual,4.5,0.6,1.0,All Year,White temple dedicated to Radha-Krishna,24.484414,86.691749
+Deoghar,Basukinath Temple,Spiritual,4.7,0.6,1.5,All Year,Shiva temple in Dumka 45 km away,24.489832,86.699018
+Jamshedpur,Jubilee Park,Nature,4.5,0.95,2.0,All Year,Large garden with fountains and a zoo,22.812008,86.196888
+Jamshedpur,Dimna Lake,Nature,4.4,0.8,1.5,All Year,Reservoir with boating,22.819354,86.211828
+Jamshedpur,Dalma Wildlife Sanctuary,Wildlife,4.3,0.7,3.0,Oct-Mar,Hill sanctuary with elephants,22.891706,86.114274
+Jamshedpur,Tata Steel Zoological Park,Wildlife,4.3,0.7,2.0,Oct-Mar,Zoo beside the Jubilee Park,22.815553,86.197304
+Jamshedpur,Hudco Lake,Nature,4.3,0.5,1.0,All Year,Lake with a walking path,22.761727,86.255745
+Netarhat,Magnolia Sunset Point,Sightseeing,4.5,0.95,1.0,Oct-Mar,Sunset spot with a legend,23.476206,84.26514
+Netarhat,Netarhat Sunrise Point,Sightseeing,4.5,0.8,1.0,Oct-Mar,Sunrise over the plateau,23.476206,84.26514
+Netarhat,Lodh Falls,Nature,4.5,0.8,2.0,Jul-Dec,Highest waterfall in Jharkhand,23.474596,84.267759
+Netarhat,Upper Ghaghri Falls,Nature,4.3,0.5,1.0,Jul-Dec,Waterfall on the plateau,23.476206,84.26514
+Netarhat,Koel View Point,Sightseeing,4.5,0.5,1.0,Oct-Mar,Viewpoint above the Koel river,23.476206,84.26514
+Daringbadi,Daringbadi Coffee Plantations,Nature,4.3,0.7,1.0,Oct-Mar,Coffee estates in the hills,19.908151,84.124298
+Daringbadi,Daringbadi Pine Forests,Nature,4.3,0.6,1.0,All Year,Quiet pine walks,19.906421,84.127853
+Daringbadi,Putudi Waterfall,Nature,4.2,0.5,1.0,Jul-Dec,Small waterfall in the hills,19.908151,84.124298
+Daringbadi,Pakadajhola Waterfall,Nature,4.3,0.5,1.0,Jul-Dec,Waterfall reached by a short walk,19.908151,84.124298
+Daringbadi,Daringbadi Sunset Viewpoint,Sightseeing,4.2,0.5,1.0,Oct-Mar,Evening viewpoint over the hills,19.906421,84.127853
+Simlipal,Simlipal National Park Safari,Wildlife,4.4,0.9,5.0,Nov-Jun,Tiger reserve with black tigers,21.834027,86.382238
+Simlipal,Barehipani Falls,Nature,4.6,0.85,3.0,Jul-Dec,Second highest waterfall in India,21.938062,86.403919
+Simlipal,Joranda Falls,Nature,4.5,0.7,2.0,Jul-Dec,Two-step waterfall,21.938062,86.403919
+Simlipal,Chahala Watchtower,Wildlife,4.3,0.5,1.0,Nov-Jun,Wildlife watchtower in the park,,
+Simlipal,Ramatirtha Crocodile Sanctuary,Wildlife,4.2,0.4,1.0,Oct-Mar,Crocodile sanctuary and temple,,
+Chilika,Chilika Lake Boat Ride,Nature,4.5,0.99,3.0,Nov-Feb,Brackish water lake with birds and dolphins,,
+Chilika,Nalabana Bird Sanctuary,Wildlife,4.3,0.8,2.0,Nov-Feb,Island sanctuary for migratory birds,,
+Chilika,Satapada Dolphin Point,Wildlife,4.4,0.8,2.0,Oct-Mar,Boat trips to see Irrawaddy dolphins,19.668985,85.436778
+Chilika,Kalijai Temple,Spiritual,4.4,0.7,1.0,Jan,Island temple in the lake,19.638707,85.317012
+Chilika,Rambha Bird Island,Wildlife,4.2,0.4,1.0,Nov-Feb,Island near Rambha,,
+Bhitarkanika,Bhitarkanika Boat Safari,Wildlife,4.4,0.99,3.0,Oct-Mar,Mangrove boat safari for saltwater crocodiles,,
+Bhitarkanika,Dangmal Crocodile Project,Wildlife,4.3,0.7,1.0,Oct-Mar,Crocodile breeding and mangrove walk,,
+Bhitarkanika,Gahirmatha Turtle Nesting Beach,Wildlife,4.4,0.7,3.0,Dec-Mar,Olive ridley turtle mass nesting,,
+Bhitarkanika,Habalikhati Nature Camp,Nature,4.3,0.4,1.0,Oct-Mar,Nature camp in the park,,
+Bhitarkanika,Ekakula Beach,Beach,4.4,0.5,1.0,Oct-Mar,Quiet beach near the sanctuary,20.642912,86.942131
+Barbil,Khandadhar Waterfall,Nature,4.5,0.7,1.0,Jul-Dec,Tall waterfall in the forest,22.111888,85.386848
+Barbil,Thakurani Temple,Spiritual,4.6,0.6,1.0,All Year,Hill temple known for its fair,22.111888,85.386848
+Barbil,Gonasika,Spiritual,4.5,0.6,1.0,Oct-Mar,Source of the Baitarani river,22.111888,85.386848
+Barbil,Sanaghagara Waterfall,Nature,4.4,0.5,1.0,Jul-Dec,Small waterfall in the hills,22.111888,85.386848
+Barbil,Sita Pahad,Sightseeing,4.3,0.4,1.0,Oct-Mar,Hill viewpoint near the mines,22.111888,85.386848
+Raipur,Nandan Van Zoo,Wildlife,4.2,0.8,3.0,Oct-Mar,Zoo and safari on the outskirts,21.238091,81.633699
+Raipur,Vivekananda Sarovar,Nature,4.3,0.85,1.0,All Year,Lake with a Vivekananda statue,21.2328,81.634172
+Raipur,Mahamaya Temple Raipur,Spiritual,4.5,0.6,1.0,All Year,Old temple of the goddess Mahamaya,21.240591,81.636989
+Raipur,Purkhauti Muktangan,Culture,4.4,0.6,2.0,All Year,Open-air museum of Chhattisgarh culture,21.238091,81.633699
+Raipur,Mahant Ghasidas Memorial Museum,Heritage,4.3,0.5,1.5,All Year,State museum of art and archaeology,21.243588,81.644988
+Jagdalpur,Chitrakote Falls,Nature,4.6,0.95,4.0,Jul-Oct,Widest waterfall in India,19.087076,82.023572
+Jagdalpur,Tirathgarh Falls,Nature,4.5,0.8,3.0,Jul-Oct,Stepped waterfall in Kanger Valley,19.087076,82.023572
+Jagdalpur,Kanger Valley National Park,Wildlife,4.5,0.8,3.0,Oct-Jun,Forest park with caves,19.087076,82.023572
+Jagdalpur,Bastar Palace,Heritage,4.2,0.6,1.0,All Year,Old palace in the town,19.078875,82.016493
+Jagdalpur,Dalpat Sagar Lake,Nature,4.3,0.6,1.0,All Year,Lake in the heart of the town,19.087076,82.023572
+Mandu,Jahaz Mahal,Heritage,4.6,0.95,1.5,Jul-Mar,Ship-shaped palace between two lakes,22.348412,75.398854
+Mandu,Rani Roopmati Pavilion,Heritage,4.5,0.8,1.0,Jul-Mar,Hilltop pavilion with valley views,22.310495,75.410333
+Mandu,Baz Bahadur Palace,Heritage,4.5,0.8,1.0,Jul-Mar,Palace with courtyards and a reservoir,22.313604,75.408105
+Mandu,Hoshang Shah's Tomb,Heritage,4.6,0.7,1.0,Jul-Mar,White marble Afghan-style tomb,,
+Mandu,Jami Masjid Mandu,Heritage,4.6,0.6,1.0,Jul-Mar,Grand mosque of the Malwa Sultans,22.348402,75.397316
+Sanchi,Great Stupa Sanchi,Heritage,4.6,0.99,2.0,Oct-Mar,UNESCO Buddhist stupa with carved gateways,23.479358,77.739598
+Sanchi,Stupa No. 3,Heritage,4.5,0.6,0.5,Oct-Mar,Smaller stupa with relics,23.479947,77.739955
+Sanchi,Sanchi Archaeological Museum,Heritage,4.3,0.5,1.0,Oct-Mar,Museum of finds from the site,23.484178,77.739398
+Sanchi,Udayagiri Caves,Heritage,4.4,0.5,1.5,Oct-Mar,Rock-cut caves near Vidisha,23.53809,77.77279
+Sanchi,Heliodorus Pillar,Heritage,4.3,0.4,0.5,All Year,Ancient pillar in Vidisha,23.549514,77.800139
+Gwalior,Gwalior Fort,Heritage,4.6,0.99,3.0,Oct-Mar,Hilltop fort with palaces and temples,26.2236,78.166538
+Gwalior,Jai Vilas Palace,Heritage,4.5,0.9,2.0,Oct-Mar,Palace museum with chandeliers,26.204608,78.168554
+Gwalior,Sas Bahu Temples,Heritage,4.4,0.7,1.0,Oct-Mar,Two intricately carved temples in the fort,26.227002,78.200417
+Gwalior,Tansen Tomb,Heritage,4.4,0.6,0.5,All Year,Tomb of the singer Tansen,26.232949,78.177649
+Gwalior,Gujari Mahal Archaeological Museum,Heritage,4.3,0.5,1.0,All Year,Museum in a medieval palace,26.234124,78.170551
+Amaravati,Amareswara Swamy Temple,Spiritual,4.6,0.9,1.0,All Year,Ancient Shiva temple on the Krishna river,16.58043,80.3589
+Amaravati,Dhyana Buddha Statue,Spiritual,4.6,0.8,1.0,All Year,Giant meditating Buddha,16.89054,80.099742
+Amaravati,Amaravati Archaeological Museum,Heritage,4.2,0.5,1.0,All Year,Museum of Buddhist relics,16.574543,80.358072
+Amaravati,Krishna Riverfront,Nature,4.4,0.6,1.0,Oct-Mar,River view near the town,16.465846,80.50743
+Amaravati,Amaravati Mahachaitya,Heritage,4.4,0.5,1.0,All Year,Remains of a Buddhist stupa,16.575703,80.356518
+Nellore,Ranganathaswamy Temple Nellore,Spiritual,4.6,0.7,1.0,All Year,Old Vishnu temple with a tall tower,14.44204,79.989732
+Nellore,Pulicat Lake,Nature,4.3,0.6,2.0,Nov-Mar,Large lagoon with flamingos,14.349214,80.012818
+Nellore,Nelapattu Bird Sanctuary,Wildlife,4.3,0.8,2.0,Nov-Mar,Pelicans and painted storks,14.449372,79.987376
+Nellore,Penchalakona Waterfalls,Nature,4.4,0.6,3.0,Jul-Dec,Waterfall and temple in the hills,14.449372,79.987376
+Nellore,Mypadu Beach,Beach,4.2,0.6,1.0,Oct-Mar,Quiet beach near the city,14.48313,80.085625
+Kurnool,Belum Caves,Nature,4.4,0.9,2.0,Oct-Mar,Long limestone cave system,15.830925,78.042537
+Kurnool,Yaganti Temple,Spiritual,4.7,0.8,1.0,All Year,Shiva temple with a growing Nandi,15.350768,78.13856
+Kurnool,Mahanandi Temple,Spiritual,4.7,0.7,1.0,All Year,Temple with a clear water pond,15.813454,78.025057
+Kurnool,Ahobilam,Spiritual,4.7,0.7,3.0,All Year,Nine Narasimha temples in the hills,,
+Kurnool,Srisailam Mallikarjuna Temple,Spiritual,4.8,0.85,3.0,All Year,Jyotirlinga temple about 180 km away,15.830925,78.042537
+Rajahmundry,Godavari Bridge,Sightseeing,4.4,0.9,1.0,All Year,Historic Havelock bridge over the Godavari,16.997777,81.755799
+Rajahmundry,Pushkar Ghat,Spiritual,4.4,0.8,1.0,All Year,Main ghat for holy dips,17.008396,81.766947
+Rajahmundry,Dowleswaram Barrage,Sightseeing,4.4,0.7,1.5,Oct-Mar,Barrage with a long walkway,16.95,81.75
+Rajahmundry,Papi Hills Boat Cruise,Nature,4.6,0.8,6.0,Oct-Mar,Godavari gorge cruise,17.054277,81.774274
+Rajahmundry,Kotilingeshwara Temple,Spiritual,4.6,0.6,1.0,All Year,Temple with many lingas,17.002128,81.775717
+Kakinada,Coringa Wildlife Sanctuary,Wildlife,4.3,0.8,2.0,Nov-Mar,Mangroves and fishing cats,16.943738,82.235061
+Kakinada,Hope Island,Nature,4.4,0.7,2.0,Oct-Mar,Sand island in the bay,16.92362,82.36267
+Kakinada,Kakinada Beach,Beach,4.2,0.8,1.5,Oct-Mar,Popular local beach,16.986238,82.203306
+Kakinada,Uppada Beach,Beach,4.2,0.5,1.5,Oct-Mar,Quiet beach known for silk sarees,17.019622,82.291748
+Kakinada,Bhimeswara Temple Samalkot,Spiritual,4.6,0.5,1.0,All Year,Chalukya temple with a tall lingam,16.989263,82.241985
+Lepakshi,Veerabhadra Temple,Spiritual,4.7,0.99,1.5,All Year,Vijayanagara temple with painted ceilings,13.801688,77.609119
+Lepakshi,Lepakshi Monolithic Nandi,Heritage,4.6,0.9,0.5,All Year,One of the largest Nandi statues,13.803612,77.612164
+Lepakshi,Hanging Pillar,Heritage,4.6,0.9,0.5,All Year,Pillar that does not touch the floor,13.803158,77.609747
+Lepakshi,Naga Linga,Heritage,4.5,0.7,0.5,All Year,Linga covered by a seven-hooded serpent,13.803158,77.609747
+Lepakshi,Lepakshi Handicrafts Emporium,Culture,4.2,0.4,0.5,All Year,Government store for local crafts,13.803158,77.609747
+Belur,Chennakeshava Temple,Heritage,4.7,0.99,1.5,Oct-Mar,Hoysala temple with fine sculptures,13.002762,76.096298
+Belur,Veeranarayana Temple,Heritage,4.6,0.5,0.5,All Year,Small temple in the complex,13.162903,75.86029
+Belur,Kappe Chennigaraya Shrine,Spiritual,4.6,0.5,0.5,All Year,Shrine with intricate pillars,13.162468,75.860376
+Belur,Belur Archaeological Museum,Heritage,4.2,0.3,0.5,All Year,Sculptures from the Hoysala era,,
+Belur,Yagachi Dam,Nature,4.4,0.5,1.0,Jul-Dec,Reservoir near the town,13.180085,75.864033
+Halebidu,Hoysaleswara Temple,Heritage,4.7,0.99,1.5,Oct-Mar,Hoysala temple with detailed friezes,13.212448,75.994257
+Halebidu,Kedareshwara Temple,Heritage,4.6,0.6,0.5,Oct-Mar,Star-shaped Hoysala temple,13.212588,75.99432
+Halebidu,Halebidu Archaeological Museum,Heritage,4.3,0.5,0.5,All Year,Museum next to the temple,13.213459,75.994721
+Halebidu,Jain Basadis Halebidu,Heritage,4.5,0.5,0.5,All Year,Group of Jain temples,,
+Halebidu,Dwarasamudra Lake,Nature,4.3,0.4,0.5,All Year,Old reservoir near the temple,13.204805,76.003277
+Badami,Badami Cave Temples,Heritage,4.7,0.99,2.0,Oct-Mar,Rock-cut temples on a sandstone cliff,15.918372,75.684385
+Badami,Agastya Lake,Nature,4.5,0.8,1.0,All Year,Lake below the caves,15.920168,75.686643
+Badami,Badami Fort,Heritage,4.4,0.6,1.0,Oct-Mar,Hill fort above the town,15.923521,75.678696
+Badami,Bhutanatha Temples,Heritage,4.7,0.7,0.5,All Year,Temple group on the lakeshore,15.920817,75.687741
+Badami,Mahakuta Temples,Heritage,4.6,0.5,1.0,All Year,Early Chalukya temples near a pond,15.918372,75.684385
+Pattadakal,Pattadakal Group of Monuments,Heritage,4.7,0.99,1.5,Oct-Mar,UNESCO Chalukya temples,,
+Pattadakal,Virupaksha Temple Pattadakal,Heritage,4.7,0.95,1.0,Oct-Mar,Largest temple in the group,15.949274,75.816291
+Pattadakal,Papanatha Temple,Heritage,4.6,0.6,0.5,Oct-Mar,Temple with Dravida and Nagara features,15.94986,75.816272
+Pattadakal,Durga Temple Aihole,Heritage,4.6,0.7,1.0,Oct-Mar,Apsidal temple 13 km away,16.019608,75.880983
+Pattadakal,Sangameshwara Temple,Heritage,4.6,0.6,0.5,Oct-Mar,One of the oldest temples at the site,15.94986,75.816272
+Bijapur,Gol Gumbaz,Heritage,4.6,0.99,1.5,Oct-Mar,Mausoleum with a huge whispering dome,16.829626,75.73601
+Bijapur,Ibrahim Rauza,Heritage,4.6,0.9,1.0,Oct-Mar,Garden tomb called the Taj of the Deccan,16.827089,75.70207
+Bijapur,Jama Masjid Bijapur,Heritage,4.5,0.6,1.0,All Year,Large mosque with arches,16.821904,75.728575
+Bijapur,Malik-e-Maidan,Heritage,4.4,0.6,0.5,All Year,Giant historic cannon,16.831722,75.708986
+Bijapur,Bara Kaman,Heritage,4.4,0.5,0.5,Oct-Mar,Unfinished tomb with arches,16.830318,75.718305
+Agumbe,Agumbe Sunset Point,Sightseeing,4.6,0.95,1.0,Oct-Feb,Famous sunset over the Western Ghats,13.496504,75.080588
+Agumbe,Barkana Falls,Nature,4.6,0.8,2.0,Jul-Dec,Tall waterfall reached by a viewpoint,13.49164,75.09003
+Agumbe,Onake Abbi Falls,Nature,4.5,0.7,2.0,Jul-Dec,Waterfall in the forest,13.507809,75.095791
+Agumbe,Jogigundi Falls,Nature,4.4,0.5,1.0,Jul-Dec,Small waterfall in the rainforest,13.508483,75.096257
+Agumbe,Kudlu Teertha Falls,Nature,4.5,0.6,3.0,Jul-Dec,Waterfall with a trek,13.508483,75.096257
+Murudeshwar,Murudeshwar Temple,Spiritual,4.7,0.99,1.5,All Year,Temple on a hill by the sea,14.123225,74.554579
+Murudeshwar,Murudeshwar Shiva Statue,Spiritual,4.7,0.95,1.0,All Year,One of the tallest Shiva statues,,
+Murudeshwar,Murudeshwar Beach,Beach,4.5,0.85,2.0,Oct-Mar,Beach with temple views,13.871128,74.605136
+Murudeshwar,Netrani Island,Adventure,4.5,0.7,5.0,Nov-Apr,Scuba diving spot,14.09412,74.48232
+Murudeshwar,Murudeshwar Fort,Heritage,4.4,0.5,0.5,All Year,Old fort next to the temple,14.17435,74.65842
+Maravanthe,Maravanthe Beach,Beach,4.5,0.99,2.0,Oct-Mar,Beach on one side and a river on the other,13.732538,74.640378
+Maravanthe,NH 66 Beach Drive,Sightseeing,4.5,0.6,0.5,Oct-Mar,Road between the sea and the Souparnika river,13.708854,74.641865
+Maravanthe,Sowparnika River,Nature,4.4,0.5,1.0,All Year,River beside the highway,13.717741,74.695971
+Maravanthe,Trasi Beach,Beach,4.4,0.5,1.0,Oct-Mar,Quiet beach nearby,13.69523,74.64784
+Maravanthe,Mookambika Temple Kollur,Spiritual,4.7,0.7,1.5,All Year,Temple in the Western Ghats,13.863724,74.814549
+Kudremukh,Kudremukh Peak Trek,Trekking,4.7,0.99,7.0,Oct-Feb,Grassy peak resembling a horse's face,13.134944,75.287192
+Kudremukh,Kudremukh National Park,Wildlife,4.6,0.8,3.0,Oct-Mar,Shola forests and grassy hills,13.219069,75.251032
+Kudremukh,Hanumana Gundi Falls,Nature,4.5,0.7,2.0,Jul-Dec,Waterfall near Sringeri,13.219069,75.251032
+Kudremukh,Kadambi Falls,Nature,4.4,0.6,2.0,Jul-Dec,Waterfall in the forest,13.08109,75.381558
+Kudremukh,Lakya Dam,Nature,4.5,0.5,1.0,Jul-Dec,Reservoir surrounded by hills,13.219542,75.228617
+Vagamon,Vagamon Meadows,Nature,4.4,0.95,1.5,Sep-Mar,Rolling green meadows,9.666267,76.924015
+Vagamon,Vagamon Pine Forest,Nature,4.3,0.85,1.0,All Year,Pine trees in the hills,9.688599,76.906855
+Vagamon,Vagamon Glass Bridge,Adventure,4.4,0.7,1.0,All Year,Cantilever glass bridge over a valley,9.691509,76.906399
+Vagamon,Kurisumala,Spiritual,4.5,0.6,1.5,All Year,Hilltop ashram with a dairy,9.684991,76.888377
+Vagamon,Thangal Para,Sightseeing,4.5,0.7,1.0,All Year,Rock hill with a shrine,9.665472,76.907974
+Athirappilly,Athirappilly Waterfalls,Nature,4.5,0.99,2.0,Jul-Dec,Large waterfall known as the Niagara of India,10.288121,76.565513
+Athirappilly,Vazhachal Falls,Nature,4.5,0.8,1.0,Jul-Dec,Waterfall upstream,10.284799,76.569118
+Athirappilly,Charpa Falls,Nature,4.5,0.6,0.5,Jul-Dec,Waterfall beside the road,10.288118,76.558485
+Athirappilly,Thumboormuzhi Butterfly Garden,Nature,4.3,0.5,1.0,All Year,Garden with a riverside walk,10.288118,76.558485
+Athirappilly,Peringalkuthu Dam,Nature,4.4,0.4,1.0,All Year,Dam in the forest,10.288118,76.558485
+Kozhikode,Kozhikode Beach,Beach,4.3,0.9,1.5,All Year,City beach with evening crowds,11.255511,75.769704
+Kozhikode,Kappad Beach,Beach,4.4,0.85,1.5,All Year,Place where Vasco da Gama landed,11.245056,75.775472
+Kozhikode,Mananchira Square,Culture,4.4,0.6,1.0,All Year,Park and tank in the town,11.25428,75.780441
+Kozhikode,Mithai Theruvu,Food,4.2,0.8,1.0,All Year,Sweet Meat Street for local snacks,11.249909,75.78134
+Kozhikode,Beypore Beach,Beach,4.3,0.5,1.0,Oct-Mar,Fishing port and dhow yard,11.257692,75.769405
+Kottayam,Vembanad Lake Cruise,Relaxation,4.4,0.9,3.0,Oct-Mar,Backwater cruise on the lake,9.591564,76.52216
+Kottayam,Illikkal Kallu,Trekking,4.4,0.6,1.5,Oct-Mar,Rock peak with views,9.588255,76.489793
+Kottayam,Vaikom Mahadeva Temple,Spiritual,4.7,0.6,1.0,All Year,Large Shiva temple,9.590422,76.518785
+Kottayam,Marmala Waterfalls,Nature,4.3,0.5,1.0,Jun-Oct,Waterfall in the hills,9.591564,76.52216
+Kottayam,Elaveezhapoonchira,Trekking,4.5,0.6,3.0,Oct-Mar,Scenic valley and hill walk,9.58692,76.521324
+Poovar,Poovar Island Beach,Beach,4.3,0.9,2.0,Oct-Mar,Island beach where the river meets the sea,8.308,77.081941
+Poovar,Poovar Backwater Boating,Relaxation,4.4,0.9,2.0,Oct-Mar,Boat ride in the estuary,,
+Poovar,Poovar Estuary Sunrise,Sightseeing,4.4,0.6,1.0,Oct-Mar,Sunrise over the backwaters,8.318267,77.070678
+Poovar,Chowara Beach,Beach,4.4,0.5,1.0,Oct-Mar,Quiet beach nearby,8.389336,76.977351
+Poovar,Neyyar Wildlife Sanctuary,Wildlife,4.2,0.4,2.0,Oct-Mar,Sanctuary and dam,8.48875,77.24725
+Thenmala,Thenmala Eco-Tourism,Nature,4.3,0.95,3.0,Oct-Mar,India's first planned eco-tourism project,8.959691,77.062079
+Thenmala,Palaruvi Falls,Nature,4.4,0.8,1.5,Jul-Dec,Tall waterfall near the Tamil Nadu border,8.965265,77.069964
+Thenmala,Thenmala Dam,Nature,4.3,0.7,1.5,Jul-Mar,Dam with boating,8.957089,77.071613
+Thenmala,Shendurney Wildlife Sanctuary,Wildlife,4.4,0.5,2.0,Oct-Mar,Forest sanctuary beside the reservoir,8.961005,77.060753
+Thenmala,Thenmala Butterfly Safari,Nature,4.2,0.5,1.0,All Year,Butterfly park in the forest,8.967179,77.070529
+Karaikudi,Chettinad Palace Kanadukathan,Heritage,4.4,0.8,1.0,All Year,Grand Chettiar mansion,10.161108,78.776945
+Karaikudi,Athangudi Palace,Heritage,4.5,0.8,1.0,All Year,Mansion with tiles from the village,10.072844,78.779519
+Karaikudi,Athangudi Tile Factory,Culture,4.5,0.7,1.0,All Year,Handmade floor tile workshop,10.072844,78.779519
+Karaikudi,Pillayarpatti Vinayagar Temple,Spiritual,4.7,0.7,1.0,All Year,Rock-cut Ganesh temple,10.081606,78.779346
+Karaikudi,Chettinad Antique Market,Culture,4.2,0.4,1.0,All Year,Old furniture and temple items,10.072844,78.779519
+Chettinad,Chettinad Mansion Heritage Walk,Heritage,4.6,0.9,2.0,Oct-Mar,Walk through ornate Chettiar mansions,10.196092,78.808509
+Chettinad,Kanadukathan Chettinad Palace,Heritage,4.4,0.8,1.0,All Year,Large mansion with courtyards,10.168887,78.78294
+Chettinad,Athangudi Tile Making,Culture,4.5,0.7,1.0,All Year,Traditional tile workshops,10.153897,78.726857
+Chettinad,Chettinad Food Trail,Food,4.6,0.8,2.0,All Year,Spicy regional cuisine,,
+Chettinad,Kundrakudi Murugan Temple,Spiritual,4.6,0.5,1.0,All Year,Hilltop Murugan temple,10.115182,78.698772
+Kumbakonam,Adi Kumbeswarar Temple,Spiritual,4.7,0.9,1.0,All Year,Large Shiva temple in the town,10.960411,79.382086
+Kumbakonam,Sarangapani Temple,Spiritual,4.7,0.7,1.0,All Year,Vishnu temple with a tall gopuram,10.95926,79.374801
+Kumbakonam,Nageswaran Temple,Spiritual,4.7,0.7,1.0,All Year,Chola temple known for the sun's rays,10.958528,79.378104
+Kumbakonam,Airavatesvara Temple Darasuram,Heritage,4.7,0.7,1.5,Oct-Mar,UNESCO Chola temple nearby,10.960411,79.382086
+Kumbakonam,Mahamaham Tank,Spiritual,4.5,0.8,0.5,Feb-Mar,Holy tank known for the Mahamaham festival,10.955817,79.381914
+Kolli Hills,Agaya Gangai Falls,Nature,4.4,0.95,3.0,Jul-Dec,Waterfall reached by about 1000 steps,11.33333,78.33333
+Kolli Hills,Arapaleeswarar Temple,Spiritual,4.6,0.7,1.0,All Year,Old Shiva temple in the hills,11.176236,78.313781
+Kolli Hills,Masila Falls,Nature,4.3,0.6,1.5,Jul-Dec,Smaller waterfall on the trek,11.33333,78.33333
+Kolli Hills,Seekuparai View Point,Sightseeing,4.4,0.6,1.0,Oct-Mar,Viewpoint over the plains,11.33333,78.33333
+Kolli Hills,Kolli Hills Botanical Garden,Nature,4.2,0.5,1.0,All Year,Garden with local plants,,
+Hassan,Shravanabelagola,Spiritual,4.7,0.95,2.0,Oct-Mar,Giant Jain statue of Gommateshwara on a hilltop,12.858127,76.487011
+Hassan,Hoysaleswara Temple,Heritage,4.7,0.95,1.5,Oct-Mar,Hoysala temple at Halebidu,13.00607,76.096724
+Hassan,Chennakeshava Temple Belur,Heritage,4.7,0.95,1.5,Oct-Mar,Hoysala temple with fine sculptures,13.002762,76.096298
+Hassan,Manjarabad Fort,Heritage,4.5,0.6,1.0,Oct-Mar,Star-shaped fort near Sakleshpur,13.007082,76.09927
+Hassan,Hemavathi Dam,Nature,4.3,0.5,1.0,Jul-Dec,Reservoir on the Hemavathi river,13.010668,76.097006
+Gandhinagar,Akshardham Temple,Spiritual,4.8,0.99,3.0,All Year,Large temple complex with a light show,23.230754,72.673832
+Gandhinagar,Adalaj Stepwell,Heritage,4.5,0.8,1.5,All Year,Carved 15th-century stepwell,23.223288,72.649227
+Gandhinagar,Indroda Nature Park,Wildlife,4.3,0.7,2.0,Oct-Mar,Park with a dinosaur fossil museum,23.193151,72.650334
+Gandhinagar,Mahatma Mandir,Culture,4.5,0.6,1.0,All Year,Convention centre and museum,23.233941,72.633871
+Gandhinagar,Sarita Udyan,Nature,4.3,0.5,1.0,All Year,Riverside park on the Sabarmati,23.202628,72.659816
+Patan,Rani Ki Vav,Heritage,4.6,0.99,1.5,Oct-Mar,UNESCO stepwell with rich carvings,23.858394,72.102352
+Patan,Modhera Sun Temple,Heritage,4.6,0.85,1.5,Oct-Mar,11th-century Sun temple 35 km away,23.850503,72.11334
+Patan,Patan Patola Heritage Museum,Culture,4.4,0.7,1.0,All Year,Workshop of the double ikat patola silk,23.855813,72.107407
+Patan,Sahastralinga Talav,Heritage,4.0,0.4,0.5,All Year,Ruins of a medieval water tank,23.850503,72.11334
+Patan,Panchasara Parshwanath Jain Temple,Spiritual,4.5,0.4,0.5,All Year,Marble Jain temple in the old city,23.850503,72.11334
+Champaner,Champaner-Pavagadh Archaeological Park,Heritage,4.5,0.9,3.0,Oct-Mar,UNESCO site with mosques and forts,22.483285,73.533075
+Champaner,Kalika Mata Temple Pavagadh,Spiritual,4.6,0.9,2.0,All Year,Hilltop temple with a ropeway,22.484806,73.534368
+Champaner,Jami Masjid Champaner,Heritage,4.6,0.7,1.0,Oct-Mar,15th-century mosque with carved pillars,22.485973,73.537483
+Champaner,Sahar Ki Masjid,Heritage,4.5,0.5,0.5,Oct-Mar,Mosque of the Sultanate royals,22.483638,73.531558
+Champaner,Helical Stepwell,Heritage,4.4,0.4,0.5,All Year,Spiral stepwell in the park,22.486449,73.537607
+Dholavira,Dholavira Harappan Site,Heritage,4.7,0.99,2.0,Nov-Feb,UNESCO Indus Valley city ruins,23.886592,70.213528
+Dholavira,Dholavira Archaeological Museum,Heritage,4.3,0.5,1.0,Nov-Feb,Museum of finds from the site,23.885472,70.21673
+Dholavira,Dholavira Fossil Park,Nature,4.4,0.5,1.0,Nov-Feb,Jurassic-era wood fossils,23.875011,70.217959
+Dholavira,Great Rann Sunset View,Nature,4.6,0.7,2.0,Nov-Feb,White salt desert at the edge of Khadir,23.875011,70.217959
+Dholavira,Kadir Bet Viewpoint,Sightseeing,4.4,0.4,1.0,Nov-Feb,Viewpoint on Khadir island,23.875011,70.217959
+Mandvi,Mandvi Beach,Beach,4.4,0.95,2.0,Oct-Mar,Wide beach with camel rides,22.825606,69.338069
+Mandvi,Vijay Vilas Palace,Heritage,4.4,0.85,1.5,Oct-Mar,Royal summer palace near the beach,22.831448,69.35081
+Mandvi,Mandvi Shipbuilding Yard,Culture,4.4,0.7,1.0,Oct-Mar,Traditional wooden ship-building yard,22.835829,69.347082
+Mandvi,72 Jinalaya Jain Temple,Spiritual,4.6,0.5,1.0,All Year,Large Jain temple complex at Koday,22.831448,69.35081
+Mandvi,Mandvi Windmill Farm,Sightseeing,4.3,0.4,1.0,All Year,Windmills on the coast,22.831448,69.35081
+Junagadh,Girnar Hill,Spiritual,4.7,0.95,6.0,Oct-Mar,10000-step climb to temples,21.519407,70.455467
+Junagadh,Uparkot Fort,Heritage,4.4,0.85,2.0,Oct-Mar,Ancient fort with caves and stepwells,21.524189,70.470799
+Junagadh,Mahabat Maqbara,Heritage,4.5,0.8,1.0,Oct-Mar,Ornate mausoleum with spiral minarets,21.527209,70.460165
+Junagadh,Gir National Park,Wildlife,4.4,0.9,4.0,Dec-Jun,Home of the Asiatic lion; about 60 km away,21.169589,70.65042
+Junagadh,Ashoka Rock Edicts,Heritage,4.2,0.5,0.5,All Year,Ancient edicts carved on a boulder,21.522042,70.458246
+Palitana,Shatrunjaya Hill Jain Temples,Spiritual,4.8,0.99,5.0,Oct-Mar,Hill of more than 800 Jain temples,21.52361,71.82196
+Palitana,Adinath Temple Shatrunjaya,Spiritual,4.8,0.7,1.0,Oct-Mar,Main temple at the hilltop,21.52361,71.82196
+Palitana,Takhteshwar Temple Bhavnagar,Spiritual,4.6,0.5,1.0,All Year,Shiva temple with city views,21.52361,71.82196
+Palitana,Gopnath Beach,Beach,4.4,0.4,1.5,Oct-Mar,Quiet beach 80 km away,21.52361,71.82196
+Palitana,Shetrunji Dam,Nature,4.3,0.4,1.0,Jul-Dec,Reservoir near the hill,21.52361,71.82196
+Kolhapur,Mahalaxmi Temple Kolhapur,Spiritual,4.7,0.99,1.5,All Year,Shakti peeth and the city's main temple,16.694621,74.224307
+Kolhapur,New Palace Museum,Heritage,4.4,0.8,1.5,All Year,Palace museum of the Chhatrapati family,16.719479,74.231683
+Kolhapur,Rankala Lake,Nature,4.4,0.7,1.0,All Year,Lake with a food street,16.688622,74.211126
+Kolhapur,Jyotiba Temple,Spiritual,4.7,0.7,1.5,All Year,Hilltop temple 18 km away,16.712939,74.235384
+Kolhapur,Panhala Fort,Heritage,4.4,0.7,2.0,Oct-Mar,Large hill fort 20 km away,16.804011,74.127402
+Tadoba,Moharli Gate Safari,Wildlife,4.6,0.99,4.0,Nov-Jun,Main entry gate and best sighting chance,20.208508,79.318136
+Tadoba,Kolara Gate Safari,Wildlife,4.5,0.8,4.0,Nov-Jun,Safari with varied terrain,20.192048,79.335003
+Tadoba,Navegaon Gate Safari,Wildlife,4.4,0.6,4.0,Nov-Jun,Quieter gate on the lake side,20.533361,79.392096
+Tadoba,Tadoba Lake,Nature,4.5,0.6,1.0,Nov-Jun,Lake in the park with animals,20.233845,79.348369
+Tadoba,Zari-Peth Gate Safari,Wildlife,4.4,0.5,4.0,Nov-Jun,Less crowded safari entry,,
+Bhandardara,Wilson Dam,Nature,4.4,0.9,1.0,Jul-Dec,Old dam with a lake,19.548015,73.756793
+Bhandardara,Arthur Lake,Nature,4.5,0.85,1.5,Jul-Mar,Large lake with boat rides and camping,19.52656,73.75153
+Bhandardara,Randha Falls,Nature,4.4,0.8,1.0,Jul-Oct,Falls on the Pravara river,,
+Bhandardara,Kalsubai Peak,Trekking,4.6,0.85,6.0,Oct-Feb,Highest peak in Maharashtra,19.600312,73.710954
+Bhandardara,Amruteshwar Temple,Spiritual,4.6,0.7,1.0,All Year,Ancient stone Shiva temple,19.517746,73.722981
+Matheran,Panorama Point,Sightseeing,4.4,0.9,1.5,Oct-May,Sunrise and sunset viewpoint,19.018667,73.279558
+Matheran,Echo Point,Sightseeing,4.3,0.8,1.0,Oct-May,Viewpoint with echoing valley,18.98622,73.261138
+Matheran,Charlotte Lake,Nature,4.3,0.75,1.0,Jul-Dec,Lake and main water source,18.980327,73.26239
+Matheran,Neral-Matheran Toy Train,Sightseeing,4.4,0.85,2.0,Oct-May,Heritage hill train ride,18.990154,73.270019
+Matheran,One Tree Hill Point,Sightseeing,4.3,0.6,1.0,Oct-May,Viewpoint with a lone tree,18.963376,73.263013
+Delhi,India Gate,Heritage,4.7,0.99,1.5,Oct-Mar,War memorial and a lawn at night,28.612933,77.229493
+Delhi,Red Fort,Heritage,4.5,0.95,2.5,Oct-Mar,17th-century Mughal fort and UNESCO site,28.656081,77.240796
+Delhi,Qutub Minar,Heritage,4.5,0.9,1.5,Oct-Mar,UNESCO tall minaret and ruins,28.52657,77.185967
+Delhi,Humayun's Tomb,Heritage,4.6,0.85,1.5,Oct-Mar,Garden tomb that inspired the Taj,28.593286,77.250647
+Delhi,Lotus Temple,Spiritual,4.6,0.8,1.0,All Year,Bahai House of Worship shaped like a lotus,28.553359,77.258601
+Sambhar Lake,Sambhar Salt Lake,Nature,4.4,0.9,2.0,Oct-Mar,India's largest inland salt lake,26.966754,75.034045
+Sambhar Lake,Sakambhari Mata Temple,Spiritual,4.7,0.7,1.0,All Year,Famous temple of the goddess,26.567156,74.615637
+Sambhar Lake,Devyani Sarovar,Spiritual,4.4,0.5,1.0,All Year,Sacred pond near the lake,,
+Sambhar Lake,Sambhar Salt Works Tour,Culture,4.2,0.5,1.5,Oct-Mar,Visit to the salt-making pans,,
+Sambhar Lake,Naliasar Archaeological Site,Heritage,4.1,0.4,1.0,Oct-Mar,Ancient ruins near the lake,,
+Osian,Osian Sand Dunes,Adventure,4.4,0.9,3.0,Oct-Mar,Desert dunes for camel and jeep rides,26.73014,72.904214
+Osian,Sachiya Mata Temple,Spiritual,4.6,0.9,1.0,All Year,Famous hilltop temple,26.354272,73.03214
+Osian,Mahavira Jain Temple Osian,Spiritual,4.6,0.8,1.0,All Year,Ancient Jain temple with carved pillars,,
+Osian,Osian Camel Safari,Adventure,4.5,0.8,2.0,Oct-Mar,Sunset camel safari,26.73014,72.904214
+Osian,Harihar Temples Osian,Heritage,4.4,0.5,1.0,All Year,Group of early medieval temples,,
+Bharatpur,Keoladeo National Park,Wildlife,4.6,0.99,4.0,Oct-Mar,UNESCO bird sanctuary,27.15889,77.50861
+Bharatpur,Lohagarh Fort,Heritage,4.3,0.8,1.5,Oct-Mar,Iron Fort that withstood sieges,27.220686,77.49539
+Bharatpur,Deeg Palace,Heritage,4.4,0.6,1.5,Jul-Mar,Palace with gardens 35 km away,27.227759,77.471313
+Bharatpur,Bharatpur Government Museum,Heritage,4.2,0.5,1.0,All Year,Museum inside the fort,27.221886,77.49401
+Bharatpur,Ganga Mandir,Spiritual,4.4,0.5,0.5,All Year,Temple built by the Jat rulers,27.220292,77.495089
+Shekhawati,Mandawa Fort,Heritage,4.4,0.9,1.5,Oct-Mar,Fort-hotel with painted havelis nearby,28.053844,75.149401
+Shekhawati,Nawalgarh Havelis,Heritage,4.4,0.85,2.0,Oct-Mar,Painted havelis such as Morarka Haveli,27.862363,75.262426
+Shekhawati,Rani Sati Temple,Spiritual,4.7,0.7,1.0,All Year,Large temple in Jhunjhunu,28.130541,75.415261
+Shekhawati,Fatehpur Havelis,Heritage,4.3,0.6,1.5,Oct-Mar,Frescoed havelis in Fatehpur,28.000065,74.970619
+Shekhawati,Surana Double Haveli Churu,Heritage,4.3,0.5,1.0,Oct-Mar,Mansion with painted rooms,28.051928,75.148005
+Dhar,Dhar Fort,Heritage,4.1,0.8,1.0,Oct-Mar,Red sandstone fort in the town,22.600994,75.304225
+Dhar,Bagh Caves,Heritage,4.4,0.7,1.5,Oct-Mar,Buddhist caves with murals about 97 km away,22.603059,75.310537
+Dhar,Bhojshala,Heritage,4.5,0.7,1.0,Oct-Mar,Medieval monument and mosque complex,,
+Dhar,Lat Masjid Dhar,Heritage,4.4,0.5,0.5,All Year,Mosque with an iron pillar,,
+Dhar,Kamal Maula Mosque,Heritage,4.4,0.4,0.5,All Year,Mosque and tomb of a Sufi saint,22.880349,74.929997
+Amarkantak,Narmada Udgam Mandir,Spiritual,4.7,0.99,1.5,All Year,Source of the Narmada river,22.672483,81.759573
+Amarkantak,Kapildhara Falls,Nature,4.5,0.9,1.5,Jul-Dec,First waterfall on the Narmada,22.6529,81.79073
+Amarkantak,Dudhdhara Falls,Nature,4.4,0.7,1.0,Jul-Dec,Falls resembling a stream of milk,22.6529,81.79073
+Amarkantak,Sonmuda,Sightseeing,4.5,0.7,1.0,Oct-Mar,Source of the Son river with a viewpoint,,
+Amarkantak,Mai Ki Bagiya,Nature,4.4,0.6,1.0,All Year,Garden linked to the legend of Narmada,,
+Lonar,Lonar Crater Lake,Nature,4.5,0.99,3.0,Oct-Mar,Meteor crater lake with temples,19.981442,76.5211
+Lonar,Daityasudan Temple,Heritage,4.5,0.7,1.0,All Year,12th-century temple of Vishnu,19.984328,76.513788
+Lonar,Lonar Wildlife Sanctuary,Wildlife,4.4,0.6,2.0,Oct-Mar,Sanctuary around the crater,,
+Lonar,Kamalja Devi Temple,Spiritual,4.5,0.5,0.5,All Year,Temple on the crater rim,,
+Lonar,Gomukh Temple,Spiritual,4.5,0.5,0.5,All Year,Spring-fed temple inside the crater,19.984328,76.513788
+Ganpatipule,Ganpatipule Beach,Beach,4.5,0.98,2.0,Oct-Mar,Clean beach next to the temple,17.146931,73.265304
+Ganpatipule,Swayambhu Ganpati Temple,Spiritual,4.7,0.95,1.0,All Year,Seaside temple with a natural idol,17.146695,73.269752
+Ganpatipule,Prachin Konkan Museum,Culture,4.4,0.6,1.5,All Year,Open-air museum of village life,17.146695,73.269752
+Ganpatipule,Aare Ware Beach,Beach,4.5,0.6,1.0,Oct-Mar,Scenic coastal road and beach,17.146695,73.269752
+Ganpatipule,Malgund Keshavsut Smarak,Culture,4.4,0.4,0.5,All Year,Memorial of the poet Keshavsut,17.146695,73.269752
+Panhala,Panhala Fort,Heritage,4.4,0.99,2.0,Oct-Mar,Large hill fort linked to Shivaji,16.808896,74.108228
+Panhala,Teen Darwaza,Heritage,4.4,0.6,0.5,Oct-Mar,Triple gate of the fort,16.80736,74.106803
+Panhala,Sajja Kothi,Heritage,4.3,0.5,0.5,Oct-Mar,Old building with fort views,16.813707,74.112891
+Panhala,Andhar Bavdi,Heritage,4.4,0.6,0.5,Oct-Mar,Three-storey stepwell in the fort,,
+Panhala,Pawankhind Battle Site,Heritage,4.5,0.4,1.0,All Year,Place of a famous battle near Vishalgad,,
+Yelagiri,Punganoor Lake,Nature,4.2,0.8,1.5,All Year,Boating lake and park,12.944067,78.866788
+Yelagiri,Swamimalai Hills Trek,Trekking,4.4,0.7,4.0,Oct-Mar,Highest peak in Yelagiri,12.58102,78.6435
+Yelagiri,Jalagamparai Waterfalls,Nature,4.4,0.6,2.0,Jul-Dec,Waterfall reached by a short trek,,
+Yelagiri,Yelagiri Nature Park,Nature,4.1,0.5,1.0,All Year,Garden and children's park,,
+Yelagiri,Velavan Temple,Spiritual,4.4,0.5,0.5,All Year,Hilltop Murugan temple,12.588139,78.639873
+Ranikhet,Jhula Devi Temple,Spiritual,4.7,0.8,1.0,All Year,Temple with thousands of bells,29.617914,79.443852
+Ranikhet,Chaubatia Gardens,Nature,4.4,0.8,1.5,Apr-Jun,Apple and fruit orchards,29.644266,79.433182
+Ranikhet,Haidakhan Babaji Temple,Spiritual,4.7,0.7,1.0,All Year,Temple with Himalayan views,29.64374,79.428121
+Ranikhet,Upat Golf Course,Sightseeing,4.4,0.8,1.5,Mar-Nov,Hill golf course with scenic views,29.64374,79.428121
+Ranikhet,Rani Jheel,Nature,4.1,0.7,0.5,All Year,Small lake in the town,29.64374,79.428121
+Dhanbad,Maithon Dam,Nature,4.3,0.9,2.0,Oct-Mar,Dam and reservoir with boating,23.821303,86.751741
+Dhanbad,Topchanchi Lake,Nature,4.3,0.8,1.5,Oct-Mar,Lake and wildlife sanctuary,23.904419,86.192879
+Dhanbad,Panchet Dam,Nature,4.3,0.6,1.5,Oct-Mar,Dam on the Damodar river,23.680554,86.747509
+Dhanbad,Kalyaneshwari Temple,Spiritual,4.6,0.5,1.0,All Year,Temple on the Barakar river at Maithon,23.800702,86.427215
+Dhanbad,Bhatinda Falls,Nature,4.2,0.5,1.0,Jul-Dec,Small waterfall near the town,23.808815,86.431614

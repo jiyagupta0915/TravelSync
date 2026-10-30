@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { MapPin, Sparkles, Search, Bell, CalendarDays, WalletCards, HeartPulse } from "lucide-react";
-import Sidebar from "../../components/Sidebar/Sidebar";
+import { MapPin, Sparkles, CalendarDays, WalletCards } from "lucide-react";
 import TripPathCard from "../../components/TripPathCard/TripPathCard";
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../context/useAuth";
+import { getFirstName } from "../../utils/userDisplay";
 import { getTrips } from "../../services/tripApi";
 import "./Home.css";
+
+const HOME_TRIP_LIMIT = 4;
 
 function formatCreatedAt(value) {
   if (!value) return "";
@@ -29,22 +31,11 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="dashboard">
-      <Sidebar />
-      <div className="dashboard__main">
-        <header className="dashboard__topbar">
-          <div className="dashboard__search"><Search size={17} /><span>Search destinations, trips...</span></div>
-          <div className="dashboard__topbar-right">
-            <button className="dashboard__icon-btn" aria-label="Notifications"><Bell size={19} /></button>
-            <div className="dashboard__avatar" title={user?.name}>{user?.name?.charAt(0).toUpperCase()}</div>
-          </div>
-        </header>
-
-        <main className="dashboard__content">
+    <main className="dashboard__content">
           <div className="dashboard__welcome">
             <div>
               <span className="dashboard__eyebrow">YOUR TRAVEL SPACE</span>
-              <h1 className="dashboard__greeting">Where are we going next, {user?.name?.split(" ")[0]}? ✈️</h1>
+              <h1 className="dashboard__greeting">Where are we going next, {getFirstName(user)}? ✈️</h1>
               <p className="dashboard__subgreeting">Start with a destination or let TravelSync help you discover one.</p>
             </div>
           </div>
@@ -73,24 +64,23 @@ export default function Home() {
               </div>
             ) : (
               <div className="dashboard__trips-grid">
-                                {trips.map((trip) => (
+                {trips.slice(0, HOME_TRIP_LIMIT).map((trip) => (
                   <div key={trip.id} className="trip-card">
-                    <button className="trip-chip" onClick={() => navigate(`/home?trip=${trip.id}`)}>
+                    <button className="trip-chip" onClick={() => navigate(`/trip/${trip.id}`)}>
                       <span className="trip-chip__destination">{trip.destination}</span>
                       <span className="trip-chip__meta">{trip.state} · {trip.duration ? `${trip.duration}-day plan` : "Destination selected"}</span>
                       {trip.budget && <span className="trip-chip__budget"><WalletCards size={14} /> ₹{Number(trip.budget).toLocaleString("en-IN")}</span>}
                       <span className="trip-chip__dates">Created {formatCreatedAt(trip.created_at)}</span>
                     </button>
-                    <button className="trip-card__health" onClick={() => navigate(`/health?destination=${encodeURIComponent(trip.destination)}`)}>
-                      <HeartPulse size={14} /> Health &amp; safety
-                    </button>
                   </div>
                 ))}
               </div>
             )}
+
+            {trips.length > HOME_TRIP_LIMIT && (
+              <button type="button" className="dashboard__view-all" onClick={() => navigate("/trips")}>View all {trips.length} trips →</button>
+            )}
           </section>
         </main>
-      </div>
-    </div>
   );
 }

@@ -1,0 +1,53 @@
+/* Shared building blocks for Profile, Settings, Groups, Bookings and 404 (uses the existing TravelSync tokens). */
+.ts-page-head { margin-bottom: var(--space-6); }
+.ts-page-head h1 { font-size: 2rem; margin-top: 6px; }
+.ts-page-head p { color: var(--text-secondary); margin-top: 8px; max-width: 60ch; }
+
+.ts-card { background: var(--surface-cream); border: 1px solid rgba(39, 35, 66, 0.07); border-radius: var(--radius-lg); padding: var(--space-6); margin-bottom: var(--space-5); box-shadow: var(--shadow-sm); }
+.ts-card h2 { font-size: 1.2rem; margin-bottom: var(--space-1); }
+.ts-card > p.ts-muted { margin-bottom: var(--space-4); }
+.ts-muted { color: var(--text-secondary); font-size: 0.86rem; }
+.ts-small { font-size: 0.78rem; }
+
+.ts-form { display: grid; gap: var(--space-4); max-width: 520px; }
+.ts-form--wide { max-width: none; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); align-items: start; }
+.ts-field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.ts-field > label, .ts-field > .ts-label { font-size: 0.8rem; font-weight: 800; }
+.ts-field input, .ts-field select, .ts-field textarea { width: 100%; padding: 11px 14px; border-radius: var(--radius-sm); border: 1px solid rgba(39, 35, 66, 0.18); background: var(--surface-white); font: inherit; color: var(--text-primary); }
+.ts-field textarea { resize: vertical; min-height: 84px; }
+.ts-field input[readonly] { background: rgba(39, 35, 66, 0.04); color: var(--text-secondary); }
+.ts-field input[aria-invalid="true"], .ts-field select[aria-invalid="true"], .ts-field textarea[aria-invalid="true"] { border-color: #b94a4a; outline: 1px solid #b94a4a; }
+.ts-hint { color: var(--text-secondary); font-size: 0.76rem; }
+.ts-error { color: #8a2f2f; font-size: 0.78rem; font-weight: 700; }
+.ts-input-unit { display: flex; align-items: center; gap: 8px; }
+.ts-input-unit b { color: var(--text-secondary); }
+
+.ts-alert { padding: var(--space-3) var(--space-4); border-radius: var(--radius-md); font-size: 0.86rem; margin-bottom: var(--space-4); }
+.ts-alert--error { background: var(--pastel-pink); color: #6f2f2f; }
+.ts-alert--success { background: var(--pastel-aqua); color: var(--text-primary); }
+.ts-alert--info { background: var(--pastel-blue); color: var(--text-primary); }
+
+.ts-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; }
+.ts-btn-secondary { padding: 10px 18px; border-radius: var(--radius-pill); border: 1px solid rgba(39, 35, 66, 0.2); font-weight: 700; font-size: 0.85rem; background: var(--surface-white); }
+.ts-btn-secondary:hover { background: var(--pastel-lavender); }
+.ts-btn-danger { color: #8a2f2f; border-color: rgba(138, 47, 47, 0.35); }
+.ts-btn-danger:hover { background: var(--pastel-pink); }
+.btn:disabled, .ts-btn-secondary:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.ts-identity { display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-5); }
+.ts-identity__avatar { width: 64px; height: 64px; border-radius: 50%; background: var(--pastel-lavender); display: grid; place-items: center; font-weight: 800; font-size: 1.3rem; }
+.ts-identity strong { font-size: 1.15rem; display: block; }
+
+.ts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: var(--space-4); }
+.ts-chip { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: var(--radius-pill); background: var(--pastel-blue); font-size: 0.74rem; font-weight: 800; }
+.ts-chip--peach { background: var(--pastel-peach); }
+.ts-chip--aqua { background: var(--pastel-aqua); }
+.ts-empty { border: 1px dashed rgba(39, 35, 66, 0.18); border-radius: var(--radius-lg); padding: var(--space-8) var(--space-5); text-align: center; color: var(--text-secondary); background: var(--surface-cream); }
+.ts-empty h3 { color: var(--text-primary); margin-bottom: var(--space-2); }
+
+.ts-notfound { min-height: 60vh; display: grid; place-content: center; text-align: center; gap: var(--space-3); padding: var(--space-8) var(--space-5); }
+.ts-notfound h1 { font-size: 3rem; }
+.ts-notfound p { color: var(--text-secondary); }
+.ts-notfound .ts-actions { justify-content: center; margin-top: var(--space-3); }
+
+@media (max-width: 600px) { .ts-card { padding: var(--space-4); } .ts-page-head h1 { font-size: 1.6rem; } }

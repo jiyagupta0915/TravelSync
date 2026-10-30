@@ -143,3 +143,12 @@
     display: none;
   }
 }
+/* ---- Validation, hints, success ---- */
+.form-field input[aria-invalid="true"],
+.password-input__control[aria-invalid="true"] { border-color: #b94a4a; }
+.field-error { color: #8a2f2f; font-size: 0.8rem; font-weight: 600; margin-top: -2px; }
+.field-hint { color: var(--text-secondary); font-size: 0.78rem; }
+.auth-form__success { background-color: var(--pastel-aqua); color: var(--text-primary); padding: var(--space-3) var(--space-4); border-radius: var(--radius-md); font-size: 0.85rem; }
+.auth-form__notice { background-color: var(--pastel-peach); color: var(--text-primary); padding: var(--space-3) var(--space-4); border-radius: var(--radius-md); font-size: 0.85rem; }
+.auth__panel-visual { max-width: 100%; }
+@media (max-width: 860px) { .auth__form-side { align-items: flex-start; padding-top: var(--space-8); } }
