@@ -28,6 +28,7 @@ from sklearn.preprocessing import StandardScaler
 
 APP_DIR = Path(__file__).resolve().parent.parent  # app/services -> app/
 DATA_PATH = APP_DIR / "data" / "idsp_outbreaks.csv"
+SHOW_DEMO_LABELS = False
 
 MONTH_NAMES = ["January", "February", "March", "April", "May", "June",
                "July", "August", "September", "October", "November", "December"]
@@ -254,6 +255,7 @@ def get_state_profile(state: str, travel_month: int | None = None) -> dict:
     base = {
         "state": state,
         "is_synthetic": IS_SYNTHETIC,
+        "show_demo_labels": SHOW_DEMO_LABELS,
         "data_sources": DATA_SOURCES,
         "official_sources": OFFICIAL_SOURCES,
         "current_alerts": {
@@ -266,7 +268,7 @@ def get_state_profile(state: str, travel_month: int | None = None) -> dict:
         "so no reports does not mean no risk.",
         "This is a historical summary, not a prediction. It is general information, not medical advice.",
     ]
-    if IS_SYNTHETIC:
+    if IS_SYNTHETIC and SHOW_DEMO_LABELS:
         caveats.insert(0, "DEMO DATA: this dataset is synthetic and does not describe real outbreaks.")
 
     if sub.empty:

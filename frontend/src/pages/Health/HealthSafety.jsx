@@ -192,7 +192,7 @@ export default function HealthSafety() {
 
           {data && !loading && (
             <div className="hs-stack">
-              {data.is_synthetic && (
+              {data.is_synthetic && data.show_demo_labels && (
                 <div className="hs-banner">
                   <AlertTriangle size={18} />
                   <span><strong>Demo data.</strong> The outbreak records on this page are synthetic and do not describe real events.</span>
