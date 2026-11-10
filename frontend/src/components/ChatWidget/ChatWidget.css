@@ -1,0 +1,57 @@
+/* Floating assistant: a round launcher in the bottom-right corner and the panel that opens above it.
+   Sits below modals (z-index 1200) so dialogs always cover it. */
+.chat-widget { position: fixed; right: var(--space-5); bottom: var(--space-5); z-index: 1100; display: flex; flex-direction: column; align-items: flex-end; gap: var(--space-3); }
+
+.chat-widget__launcher {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--ink); color: var(--text-on-dark);
+  box-shadow: var(--shadow-lg);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+.chat-widget__launcher:hover { background: var(--ink-hover); transform: translateY(-2px); }
+
+.chat-widget__panel {
+  width: min(380px, calc(100vw - 2 * var(--space-4)));
+  height: min(540px, calc(100dvh - 120px));
+  display: flex; flex-direction: column;
+  background: var(--surface-white);
+  border: 1px solid rgba(39, 35, 66, 0.1);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+.chat-widget__header { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); padding: 14px 16px; background: var(--pastel-lavender); }
+.chat-widget__header strong { display: block; font-family: var(--font-display); font-size: 1.05rem; }
+.chat-widget__header small { color: var(--text-secondary); font-size: 0.72rem; }
+.chat-widget__header button { padding: 6px; border-radius: 10px; line-height: 0; color: var(--ink-soft); }
+.chat-widget__header button:hover { background: rgba(39, 35, 66, 0.08); }
+
+.chat-widget__log { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-3); margin: 0; list-style: none; background: var(--surface-cream); }
+.chat-widget__msg { max-width: 90%; padding: 9px 12px; border-radius: 14px; font-size: 0.85rem; line-height: 1.5; overflow-wrap: anywhere; }
+.chat-widget__msg--bot { align-self: flex-start; background: var(--surface-white); border: 1px solid rgba(39, 35, 66, 0.08); }
+.chat-widget__msg--user { align-self: flex-end; background: var(--pastel-blue); }
+.chat-widget__msg.is-error { background: var(--pastel-pink); border-color: transparent; }
+.chat-widget__msg ul { margin: 6px 0 0; padding-left: 16px; display: grid; gap: 3px; font-size: 0.8rem; }
+.chat-widget__ai-note { display: block; margin-top: 6px; color: var(--text-secondary); font-size: 0.68rem; font-style: italic; }
+.chat-widget__typing { color: var(--text-secondary); font-style: italic; }
+
+.chat-widget__links { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.chat-widget__links a { padding: 5px 11px; border-radius: var(--radius-pill); background: var(--ink); color: var(--text-on-dark); font-size: 0.74rem; font-weight: 800; text-decoration: none; }
+.chat-widget__links a:hover { background: var(--ink-hover); }
+
+.chat-widget__suggestions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.chat-widget__suggestions button { padding: 5px 10px; border-radius: var(--radius-pill); border: 1px solid rgba(39, 35, 66, 0.18); background: var(--surface-white); font-size: 0.74rem; font-weight: 700; color: var(--ink-soft); text-align: left; }
+.chat-widget__suggestions button:hover:not(:disabled) { background: var(--pastel-lavender); }
+.chat-widget__suggestions button:disabled { opacity: 0.6; cursor: default; }
+
+.chat-widget__form { display: flex; gap: var(--space-2); padding: var(--space-3); border-top: 1px solid rgba(39, 35, 66, 0.08); }
+.chat-widget__form input { flex: 1; min-width: 0; padding: 10px 14px; border-radius: var(--radius-pill); border: 1px solid rgba(39, 35, 66, 0.2); font: inherit; font-size: 0.85rem; }
+.chat-widget__form button { width: 40px; height: 40px; flex-shrink: 0; border-radius: 50%; display: grid; place-items: center; background: var(--ink); color: var(--text-on-dark); }
+.chat-widget__form button:disabled { opacity: 0.5; cursor: default; }
+
+@media (max-width: 520px) {
+  .chat-widget { right: var(--space-3); bottom: var(--space-3); }
+}

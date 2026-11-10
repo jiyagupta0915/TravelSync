@@ -15,7 +15,7 @@ from app.core.csrf import csrf_origin_middleware
 from app.core.error_handlers import register_error_handlers
 from app.database import close_mongo_connection, connect_to_mongo
 from app.routers import (
-    auth, bookings, destinations, groups, meta, notifications, packing, places, recommend, stays,
+    auth, bookings, chat, destinations, groups, meta, notifications, packing, places, recommend, stays,
     travel_health, trip_manage, trips, users,
 )
 
@@ -76,3 +76,4 @@ app.include_router(stays.router)
 app.include_router(groups.router)
 app.include_router(bookings.router)
 app.include_router(notifications.router)
+app.include_router(chat.router)

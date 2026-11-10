@@ -37,6 +37,13 @@ async def fake_db():
     db_module.database.client = None
 
 
+@pytest.fixture(autouse=True)
+def no_real_assistant_model(monkeypatch):
+    """Tests must never call a real AI provider (it would spend the developer's quota and make tests flaky), even
+    when backend/.env has a key. Tests that exercise the model install a fake one on top of this."""
+    monkeypatch.setattr(settings, "assistant_api_key", "")
+
+
 def make_client() -> httpx.AsyncClient:
     transport = httpx.ASGITransport(app=app, raise_app_exceptions=False)
     return httpx.AsyncClient(transport=transport, base_url="http://testserver", headers={"Origin": ORIGIN})

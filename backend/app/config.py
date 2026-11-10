@@ -70,6 +70,13 @@ class Settings:
     # Smart Stay Recommendations (Geoapify Places API). The key stays on the server only.
     geoapify_api_key: str = os.getenv("GEOAPIFY_API_KEY", "")
 
+    # Assistant: optional AI model for questions the built-in answers don't cover. Any OpenAI-compatible
+    # chat API works. Leave the key empty to keep the assistant on TravelSync's own data only.
+    assistant_api_key: str = os.getenv("ASSISTANT_API_KEY", "").strip()
+    assistant_base_url: str = os.getenv("ASSISTANT_BASE_URL", "").strip().rstrip("/")
+    assistant_model: str = os.getenv("ASSISTANT_MODEL", "").strip()
+    assistant_timeout_seconds: int = _int_env("ASSISTANT_TIMEOUT_SECONDS", 8)
+
     # Password recovery. Recovery is only offered when an SMTP server is configured.
     smtp_host: str = os.getenv("SMTP_HOST", "")
     smtp_port: int = _int_env("SMTP_PORT", 587)
