@@ -3,6 +3,7 @@ import { ArrowRight, Check, Compass, MapPin, RotateCcw, Search, Sparkles, Users,
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import TopPlacesModal from "../../components/TopPlaces/TopPlacesModal";
+import ShareToGroupDialog from "../../components/ShareToGroupDialog/ShareToGroupDialog";
 import { getFeatures, recommendDestinations, searchStartingLocations } from "../../services/recommendationApi";
 import NumberField from "../../components/NumberField/NumberField";
 import { createTrip } from "../../services/tripApi";
@@ -54,6 +55,8 @@ export default function RecommendDestination() {
   const [error, setError] = useState("");
   const [searched, setSearched] = useState(false);
   const [placesFor, setPlacesFor] = useState(null);
+  const [shareFor, setShareFor] = useState(null);                 // the result being shared with a group
+  const [searchCriteria, setSearchCriteria] = useState(null);     // what the shown results were searched with
   const [fieldErrors, setFieldErrors] = useState({});
   const [resultsVersion, setResultsVersion] = useState(0);   // bumps after each successful response that has results
   const [announcement, setAnnouncement] = useState("");
@@ -116,7 +119,7 @@ export default function RecommendDestination() {
     requestRef.current = { id: requestRef.current.id + 1, controller: null };
     setTravellerType(defaults.traveller); setSelectedFeatures(["Mountain","Nature","Adventure"]); setImportance({ Mountain:"Must have", Nature:"Nice to have", Adventure:"Must have" });
     setDuration(defaults.duration); setBudget(defaults.budget); setStartQuery(""); setStartLocation(null); setMaxDistance(defaults.distance);
-    setResults([]); setRules(null); setError(""); setSearched(false); setFieldErrors({}); setResultsError(""); setAnnouncement(""); setLoading(false);
+    setResults([]); setRules(null); setShareFor(null); setSearchCriteria(null); setError(""); setSearched(false); setFieldErrors({}); setResultsError(""); setAnnouncement(""); setLoading(false);
   }
 
   // Scroll to the results once they are on screen (runs after React has rendered them - no timers involved).
@@ -174,6 +177,7 @@ export default function RecommendDestination() {
       if (requestRef.current.id !== requestId) return;
       const list = data.recommendations || [];
       setResults(list); setRules(data.rules || null);
+      setSearchCriteria({ duration: values.days, budget: values.budget, preferences: selectedFeatures });
       if (list.length) {
         setAnnouncement(`Found ${list.length} matching ${list.length === 1 ? "destination" : "destinations"}.`);
         setResultsVersion((version) => version + 1);
@@ -261,7 +265,7 @@ export default function RecommendDestination() {
           {loading && <div className="results-loading" role="status"><span className="spinner spinner--dark" /> Finding the best matches for you…</div>}
           {!loading && results.length > 0 && <div className="results-success"><Check size={16} /> Found {results.length} {results.length === 1 ? "destination" : "destinations"} for your trip.</div>}
           {resultsError && <div className="form-error form-error--inline" role="alert">{resultsError}</div>}
-          {results.length > 0 && <div className="result-grid">{results.map((result, index) => <article className="result-card" key={`${result.Destination}-${result.State}`}><div className="result-card__top"><span className="rank">0{index + 1}</span><span className="match-badge">{Math.round(result.final_score * 100)}% match</span></div><h3>{result.Destination}</h3><p className="result-location">{result.State} · {result.Region}</p><div className="result-stats"><div><span>Estimated budget</span><strong>₹{Number(result.estimated_trip_budget_inr).toLocaleString("en-IN")}</strong></div><div><span>Ideal stay</span><strong>{result.Ideal_Days} days</strong></div><div><span>From you</span><strong>{result.distance_km} km</strong></div></div><div className="result-checks"><span className={result.duration_score >= .8 ? "ok" : "soft"}><Check size={14}/> Duration</span><span className={result.budget_score >= .85 ? "ok" : "soft"}><Check size={14}/> Budget</span><span className={result.distance_score >= .75 ? "ok" : "soft"}><Check size={14}/> Distance</span></div><button type="button" className="places-button" onClick={() => setPlacesFor(result.Destination)}><MapPin size={15}/> View top 5 places</button><button type="button" className="choose-button" disabled={savingDestination === result.Destination} onClick={() => chooseDestination(result)}>{savingDestination === result.Destination ? "Saving…" : "Choose this destination"}<ArrowRight size={16}/></button></article>)}</div>}
+          {results.length > 0 && <div className="result-grid">{results.map((result, index) => <article className="result-card" key={`${result.Destination}-${result.State}`}><div className="result-card__top"><span className="rank">0{index + 1}</span><span className="match-badge">{Math.round(result.final_score * 100)}% match</span></div><h3>{result.Destination}</h3><p className="result-location">{result.State} · {result.Region}</p><div className="result-stats"><div><span>Estimated budget</span><strong>₹{Number(result.estimated_trip_budget_inr).toLocaleString("en-IN")}</strong></div><div><span>Ideal stay</span><strong>{result.Ideal_Days} days</strong></div><div><span>From you</span><strong>{result.distance_km} km</strong></div></div><div className="result-checks"><span className={result.duration_score >= .8 ? "ok" : "soft"}><Check size={14}/> Duration</span><span className={result.budget_score >= .85 ? "ok" : "soft"}><Check size={14}/> Budget</span><span className={result.distance_score >= .75 ? "ok" : "soft"}><Check size={14}/> Distance</span></div><button type="button" className="places-button" onClick={() => setPlacesFor(result.Destination)}><MapPin size={15}/> View top 5 places</button><button type="button" className="places-button" onClick={() => setShareFor(result)}><Users size={15}/> Share with a group</button><button type="button" className="choose-button" disabled={savingDestination === result.Destination} onClick={() => chooseDestination(result)}>{savingDestination === result.Destination ? "Saving…" : "Choose this destination"}<ArrowRight size={16}/></button></article>)}</div>}
           {!results.length && searched && !loading && <div className="empty-results"><Compass size={25}/><h3>No destination matched those constraints.</h3><p>The recommendation engine did not find an eligible candidate inside the practical limits you selected.</p></div>}
           {rules && <p className="results-footnote">{rules.duration}. {rules.budget}. {rules.distance}.</p>}
         </section>
@@ -272,6 +276,9 @@ export default function RecommendDestination() {
         choosing={savingDestination === placesFor}
         onChoose={() => { const name = placesFor; setPlacesFor(null); chooseDestination({ Destination: name }); }}
       />
+      {shareFor && searchCriteria && (
+        <ShareToGroupDialog key={shareFor.Destination} destination={shareFor.Destination} state={shareFor.State} criteria={searchCriteria} onClose={() => setShareFor(null)} />
+      )}
       <Footer />
     </div>
   );

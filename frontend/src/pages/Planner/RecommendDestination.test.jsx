@@ -13,8 +13,10 @@ vi.mock("../../services/recommendationApi", () => ({
 }));
 vi.mock("../../services/tripApi", () => ({ createTrip: vi.fn() }));
 vi.mock("../../services/placesApi", () => ({ getTopPlaces: vi.fn(async () => ({ places: [] })) }));
+vi.mock("../../services/groupApi", () => ({ listGroups: vi.fn(), addSuggestion: vi.fn() }));
 
 import { recommendDestinations } from "../../services/recommendationApi";
+import { addSuggestion, listGroups } from "../../services/groupApi";
 
 const result = (name, score) => ({
   Destination: name, State: "Goa", Region: "West", final_score: score, distance_km: 900, estimated_trip_budget_inr: 18000,
@@ -140,5 +142,60 @@ describe("Find Destination feedback", () => {
     resolvers[1]({ recommendations: [result("NEW-RESULT", 0.9)], rules: null });
     expect(await screen.findAllByText("NEW-RESULT")).not.toHaveLength(0);
     expect(screen.queryByText("OLD-RESULT")).not.toBeInTheDocument();
+  });
+});
+
+describe("Share a recommendation with a group", () => {
+  const group = (id, name) => ({ id, name, member_count: 3 });
+
+  async function searchAndOpenShare(user) {
+    recommendDestinations.mockResolvedValue({ recommendations: [result("Goa", 0.9), result("Manali", 0.8)], rules: null });
+    await fillValidForm(user);
+    await user.click(submit());
+    await screen.findByText(/found 2 destinations/i);
+    await user.click(screen.getAllByRole("button", { name: /share with a group/i })[0]);
+    return screen.findByRole("dialog");
+  }
+
+  it("sends the destination with the searched duration, budget and interests to the chosen group", async () => {
+    listGroups.mockResolvedValue({ groups: [group("g1", "Goa gang"), group("g2", "College trip")] });
+    addSuggestion.mockResolvedValue({ suggestion: { id: "s1" } });
+    const user = setup();
+    await searchAndOpenShare(user);
+
+    await user.click(await screen.findByRole("radio", { name: /College trip/ }));
+    await user.type(screen.getByLabelText(/why this place/i), "Beaches!");
+    await user.click(screen.getByRole("button", { name: "Share with group" }));
+
+    await waitFor(() => expect(addSuggestion).toHaveBeenCalledTimes(1));
+    expect(addSuggestion).toHaveBeenCalledWith("g2", {
+      destination: "Goa", note: "Beaches!", duration: 5, budget: 20000, preferences: ["Mountain", "Nature", "Adventure"],
+    });
+    expect(await screen.findByText(/Shared with College trip/)).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Open group" })).toHaveAttribute("href", "/groups/g2");
+  });
+
+  it("requires a group to be chosen and shows the server's error (e.g. already suggested)", async () => {
+    listGroups.mockResolvedValue({ groups: [group("g1", "Goa gang"), group("g2", "College trip")] });
+    addSuggestion.mockRejectedValue(new ApiError("Goa has already been suggested to this group.", { status: 409 }));
+    const user = setup();
+    await searchAndOpenShare(user);
+
+    await user.click(await screen.findByRole("button", { name: "Share with group" }));
+    expect(await screen.findByText(/choose which group/i)).toBeInTheDocument();
+    expect(addSuggestion).not.toHaveBeenCalled();
+
+    await user.click(screen.getByRole("radio", { name: /Goa gang/ }));
+    await user.click(screen.getByRole("button", { name: "Share with group" }));
+    expect(await screen.findByText(/already been suggested/i)).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Share with group" })).toBeEnabled();
+  });
+
+  it("points to the Groups page when the user is not in any group", async () => {
+    listGroups.mockResolvedValue({ groups: [] });
+    const user = setup();
+    await searchAndOpenShare(user);
+    expect(await screen.findByRole("link", { name: /create or join a group/i })).toHaveAttribute("href", "/groups");
+    expect(screen.queryByRole("button", { name: "Share with group" })).not.toBeInTheDocument();
   });
 });

@@ -1,0 +1,114 @@
+.share-dialog {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  background: rgba(39, 35, 66, 0.45);
+}
+
+.share-dialog__panel {
+  width: min(460px, 100%);
+  max-height: calc(100vh - 2 * var(--space-4));
+  overflow-y: auto;
+  background: var(--surface-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-6);
+  text-align: left;
+}
+
+.share-dialog__icon {
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radius-md);
+  background: var(--pastel-lavender);
+  color: var(--ink-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-4);
+}
+
+.share-dialog__panel h3 { font-size: 1.2rem; margin-bottom: var(--space-2); }
+.share-dialog__panel p { color: var(--text-secondary); font-size: 0.85rem; line-height: 1.6; }
+.share-dialog__panel a:not(.share-dialog__confirm) { color: var(--ink-soft); font-weight: 800; text-decoration: underline; }
+.share-dialog__panel .share-dialog__muted { margin-top: var(--space-4); }
+
+.share-dialog__criteria { display: flex; flex-wrap: wrap; gap: 6px; margin-top: var(--space-3); }
+.share-dialog__criteria span {
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  background: var(--pastel-blue);
+  color: var(--ink);
+  font-size: 0.74rem;
+  font-weight: 700;
+}
+.share-dialog__criteria span.is-interest { background: var(--pastel-peach); }
+
+.share-dialog__groups { border: 0; padding: 0; margin: var(--space-4) 0 0; display: grid; gap: 8px; }
+.share-dialog__groups legend,
+.share-dialog__note { font-size: 0.78rem; font-weight: 800; color: var(--ink-soft); margin-bottom: 6px; }
+.share-dialog__note { display: block; margin-top: var(--space-4); }
+.share-dialog__note small { font-weight: 600; color: var(--text-secondary); }
+.share-dialog__groups label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid rgba(39, 35, 66, 0.15);
+  border-radius: 12px;
+  cursor: pointer;
+}
+.share-dialog__groups label.is-selected { border-color: var(--ink-soft); background: var(--surface-cream); }
+.share-dialog__groups label span { display: grid; }
+.share-dialog__groups label strong { font-size: 0.88rem; }
+.share-dialog__groups label small { color: var(--text-secondary); font-size: 0.74rem; }
+
+.share-dialog__panel textarea {
+  width: 100%;
+  min-height: 70px;
+  padding: 10px 12px;
+  border: 1px solid rgba(39, 35, 66, 0.15);
+  border-radius: 12px;
+  font: inherit;
+  font-size: 0.85rem;
+  resize: vertical;
+}
+
+.share-dialog__panel .share-dialog__error {
+  margin-top: var(--space-3);
+  padding: 9px 12px;
+  border-radius: 11px;
+  background: var(--pastel-pink);
+  color: #7c3c3c;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.share-dialog__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+  flex-wrap: wrap;
+}
+
+.share-dialog__cancel,
+.share-dialog__confirm {
+  padding: 11px 18px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+.share-dialog__cancel { border: 1px solid rgba(39, 35, 66, 0.15); color: var(--ink-soft); }
+.share-dialog__cancel:hover:not(:disabled) { background: var(--surface-cream); }
+.share-dialog__confirm { background: var(--ink); color: var(--text-on-dark); text-decoration: none; }
+.share-dialog__confirm:hover:not(:disabled) { background: var(--ink-hover); }
+.share-dialog__cancel:disabled,
+.share-dialog__confirm:disabled { opacity: 0.6; cursor: default; }
+
+/* The "Share with a group" button on a result card reuses the look of "View top 5 places". */
+.result-card .places-button + .places-button { margin-top: 8px; }
