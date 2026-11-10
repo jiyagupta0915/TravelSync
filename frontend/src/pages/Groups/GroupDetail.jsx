@@ -3,8 +3,8 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { ArrowLeft, Check, Copy, Crown, Send, ThumbsUp, Trash2, Users } from "lucide-react";
 import NumberField from "../../components/NumberField/NumberField";
 import {
-  addSuggestion, decide, deleteGroup, deleteSuggestion, getGroup, leaveGroup, listMessages, listSuggestions,
-  removeVote, reopenVoting, sendMessage, vote,
+  addSuggestion, decide, deleteGroup, deleteMessage, deleteSuggestion, getGroup, leaveGroup, listMessages, listSuggestions,
+  removeVote, reopenVoting, sendMessage, vote, chatSocketUrl,
 } from "../../services/groupApi";
 import { getFeatures, searchDestinations } from "../../services/recommendationApi";
 import { createTrip } from "../../services/tripApi";
@@ -27,34 +27,139 @@ function Chat({ groupId }) {
   const [error, setError] = useState("");
   const [text, setText] = useState("");
   const [sending, setSending] = useState(false);
+  const [hasMore, setHasMore] = useState(false);
+  const [loadingOlder, setLoadingOlder] = useState(false);
+  const olderAnchor = useRef(null);
   const lastTimestamp = useRef(null);
+  const socketOpen = useRef(false);
   const logRef = useRef(null);
 
-  // New messages are fetched every few seconds while this tab is visible. (Polling - not a live socket.)
+  // Messages arrive live over a WebSocket. Polling stays as a fallback: it loads the history, catches up after a
+  // reconnect, and keeps the chat working whenever the socket is down.
   const mergeIncoming = useCallback((incoming) => {
     if (!incoming.length) return;
     setMessages((previous) => {
-      const known = new Set(previous.map((m) => m.id));
-      const fresh = incoming.filter((m) => !known.has(m.id));
-      return fresh.length ? [...previous, ...fresh] : previous;
+      const byId = new Map(previous.map((m) => [m.id, m]));
+      let changed = false;
+      for (const m of incoming) {
+        const existing = byId.get(m.id);
+        if (!existing || (m.deleted && !existing.deleted)) {   // new message, or one we hold that has since been deleted
+          byId.set(m.id, m);
+          changed = true;
+        }
+      }
+      if (!changed) return previous;
+      return [...byId.values()].sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
     });
-    lastTimestamp.current = incoming[incoming.length - 1].created_at;
+    const newest = incoming[incoming.length - 1].created_at;
+    if (!lastTimestamp.current || new Date(newest) > new Date(lastTimestamp.current)) lastTimestamp.current = newest;
   }, []);
 
-  useEffect(() => {
-    const controller = new AbortController();
-    const poll = () => listMessages(groupId, lastTimestamp.current, controller.signal)
-      .then((data) => { mergeIncoming(data.messages || []); setError(""); setLoaded(true); })
+  const markDeleted = useCallback((id) => {
+    setMessages((previous) => previous.map((m) => (m.id === id && !m.deleted ? { ...m, text: "", deleted: true } : m)));
+  }, []);
+
+  const fetchNew = useCallback((signal) => {
+    const firstLoad = lastTimestamp.current === null;
+    return listMessages(groupId, lastTimestamp.current, signal)
+      .then((data) => {
+        if (firstLoad) setHasMore(Boolean(data.has_more));   // only the first page says whether older messages exist
+        mergeIncoming(data.messages || []); setError(""); setLoaded(true);
+      })
       .catch((err) => { if (!isAbort(err)) { setError(err.message); setLoaded(true); } });
-    poll();
-    const timer = setInterval(() => { if (document.visibilityState === "visible") poll(); }, CHAT_POLL_MS);
-    return () => { controller.abort(); clearInterval(timer); };
   }, [groupId, mergeIncoming]);
 
   useEffect(() => {
+    const controller = new AbortController();
+    fetchNew(controller.signal);
+    const timer = setInterval(() => {
+      if (document.visibilityState === "visible" && !socketOpen.current) fetchNew(controller.signal);
+    }, CHAT_POLL_MS);
+    return () => { controller.abort(); clearInterval(timer); };
+  }, [fetchNew]);
+
+  useEffect(() => {
+    let socket = null;
+    let retryTimer = null;
+    let attempts = 0;
+    let stopped = false;
+
+    const connect = () => {
+      socket = new WebSocket(chatSocketUrl(groupId));
+      socket.onopen = () => {
+        attempts = 0;
+        socketOpen.current = true;
+        fetchNew();                       // pick up anything sent while we were disconnected
+      };
+      socket.onmessage = (event) => {
+        try {
+          const data = JSON.parse(event.data);
+          if (data.type === "message" && data.message) mergeIncoming([data.message]);
+          else if (data.type === "message_deleted" && data.id) markDeleted(data.id);
+        } catch { /* ignore a malformed frame */ }
+      };
+      socket.onclose = () => {
+        socketOpen.current = false;
+        if (stopped) return;
+        attempts += 1;
+        retryTimer = setTimeout(connect, Math.min(1000 * 2 ** attempts, 30000));   // 2s, 4s, 8s ... max 30s
+      };
+    };
+
+    connect();
+    const keepAlive = setInterval(() => {
+      if (socket && socket.readyState === WebSocket.OPEN) socket.send("ping");
+    }, 25000);
+    return () => {
+      stopped = true;
+      clearTimeout(retryTimer);
+      clearInterval(keepAlive);
+      socketOpen.current = false;
+      if (socket && socket.readyState === WebSocket.CONNECTING) {
+        socket.onopen = () => socket.close();   // closing mid-handshake makes the browser log a console error
+      } else if (socket) {
+        socket.close();
+      }
+    };
+  }, [groupId, fetchNew, mergeIncoming, markDeleted]);
+
+  useEffect(() => {
     const log = logRef.current;
-    if (log) log.scrollTop = log.scrollHeight;
+    if (!log) return;
+    if (olderAnchor.current !== null) {          // older messages were added on top: keep the reader where they were
+      log.scrollTop = log.scrollHeight - olderAnchor.current;
+      olderAnchor.current = null;
+      return;
+    }
+    log.scrollTop = log.scrollHeight;
   }, [messages.length]);
+
+  async function handleLoadOlder() {
+    if (!messages.length || loadingOlder) return;
+    setLoadingOlder(true);
+    try {
+      const data = await listMessages(groupId, null, undefined, messages[0].id);
+      olderAnchor.current = logRef.current ? logRef.current.scrollHeight : null;
+      mergeIncoming(data.messages || []);
+      setHasMore(Boolean(data.has_more));
+      setError("");
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoadingOlder(false);
+    }
+  }
+
+  async function handleDelete(message) {
+    if (!window.confirm("Delete this message for everyone? This can't be undone.")) return;
+    try {
+      await deleteMessage(groupId, message.id);
+      markDeleted(message.id);
+      setError("");
+    } catch (err) {
+      setError(err.message);
+    }
+  }
 
   async function handleSend(event) {
     event.preventDefault();
@@ -76,16 +181,32 @@ function Chat({ groupId }) {
   return (
     <section className="ts-card chat" aria-labelledby="chat-heading">
       <h2 id="chat-heading">Group chat</h2>
-      <p className="ts-muted ts-small">Updates every few seconds while this page is open.</p>
+      <p className="ts-muted ts-small">New messages appear instantly while this page is open.</p>
       <ul className="chat__log" ref={logRef} role="log" aria-live="polite" aria-label="Chat messages">
+        {hasMore && (
+          <li className="chat__older">
+            <button type="button" className="btn btn--ghost" onClick={handleLoadOlder} disabled={loadingOlder}>
+              {loadingOlder ? "Loading…" : "Load older messages"}
+            </button>
+          </li>
+        )}
         {!loaded && <li className="ts-muted">Loading messages…</li>}
         {loaded && messages.length === 0 && <li className="ts-muted">No messages yet. Say hello 👋</li>}
-        {messages.map((m) => (
+        {messages.map((m) => (m.deleted ? (
+          <li key={m.id} className={`chat__msg chat__msg--deleted${m.is_me ? " is-me" : ""}`}>
+            {m.is_me ? "You deleted this message" : "This message was deleted"}
+          </li>
+        ) : (
           <li key={m.id} className={`chat__msg${m.is_me ? " is-me" : ""}`}>
             <small>{m.is_me ? "You" : m.author} · {clock(m.created_at)}</small>
             {m.text}
+            {m.is_me && (
+              <button type="button" className="chat__delete" onClick={() => handleDelete(m)} aria-label="Delete message" title="Delete message">
+                <Trash2 size={13} />
+              </button>
+            )}
           </li>
-        ))}
+        )))}
       </ul>
       {error && <div className="ts-alert ts-alert--error" role="alert">{error}</div>}
       <form className="chat__form" onSubmit={handleSend}>

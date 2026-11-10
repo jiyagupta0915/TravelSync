@@ -25,6 +25,12 @@
 .chat__msg { max-width: 85%; padding: 8px 12px; border-radius: 14px; background: var(--pastel-lavender); font-size: 0.88rem; overflow-wrap: anywhere; }
 .chat__msg.is-me { align-self: flex-end; background: var(--pastel-blue); }
 .chat__msg small { display: block; color: var(--text-secondary); font-size: 0.7rem; margin-bottom: 2px; font-weight: 700; }
+.chat__msg { position: relative; }
+.chat__msg.is-me:not(.chat__msg--deleted) { padding-right: 32px; }
+.chat__msg.chat__msg--deleted { background: transparent; border: 1px dashed rgba(39, 35, 66, 0.25); color: var(--text-secondary); font-style: italic; font-size: 0.8rem; }
+.chat__delete { position: absolute; top: 7px; right: 9px; padding: 2px; border: 0; background: transparent; color: var(--text-secondary); line-height: 0; cursor: pointer; opacity: 0.55; }
+.chat__delete:hover, .chat__delete:focus-visible { opacity: 1; }
+.chat__older { align-self: center; list-style: none; }
 .chat__form { display: flex; gap: var(--space-2); }
 .chat__form input { flex: 1; min-width: 0; padding: 10px 14px; border-radius: var(--radius-pill); border: 1px solid rgba(39, 35, 66, 0.2); font: inherit; }
 .interest-picker { display: flex; flex-wrap: wrap; gap: 6px; }

@@ -9,8 +9,22 @@ export const getGroup = (id) => apiRequest(g(id), { fallbackMessage: "This group
 export const deleteGroup = (id) => apiRequest(g(id), { method: "DELETE" });
 export const leaveGroup = (id) => apiRequest(`${g(id)}/members/me`, { method: "DELETE" });
 
-export const listMessages = (id, after, signal) =>
-  apiRequest(`${g(id)}/messages${after ? `?after=${encodeURIComponent(after)}` : ""}`, { signal });
+// Soft delete: the message stays in the history as "This message was deleted". Only its author can do this.
+export const deleteMessage = (id, messageId) => apiRequest(`${g(id)}/messages/${encodeURIComponent(messageId)}`, { method: "DELETE" });
+
+// `after` = only newer than this timestamp (polling). `before` = a message id: the page of older messages.
+export function listMessages(id, after, signal, before) {
+  const params = new URLSearchParams();
+  if (after) params.set("after", after);
+  if (before) params.set("before", before);
+  const query = params.toString();
+  return apiRequest(`${g(id)}/messages${query ? `?${query}` : ""}`, { signal });
+}
+// Live chat socket (receive-only; messages are still sent with sendMessage). Works through the Vite proxy in dev.
+export function chatSocketUrl(id) {
+  const base = import.meta.env.VITE_API_BASE_URL || window.location.origin;
+  return `${base.replace(/^http/, "ws")}${g(id)}/ws`;
+}
 export const sendMessage = (id, text) => apiRequest(`${g(id)}/messages`, { method: "POST", body: { text } });
 
 export const listSuggestions = (id) => apiRequest(`${g(id)}/suggestions`, { fallbackMessage: "Suggestions could not be loaded." });

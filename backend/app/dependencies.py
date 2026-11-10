@@ -52,3 +52,23 @@ async def require_current_user(user: dict | None = Depends(get_current_user)) ->
     if user is None:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="You must be logged in to continue.")
     return user
+
+
+async def user_from_token(token: str | None) -> dict | None:
+    """Same checks as get_current_user, for places without a Request (WebSockets). None = not logged in."""
+    if not token:
+        return None
+    claims = decode_token_claims(token)
+    if not claims:
+        return None
+    try:
+        object_id = ObjectId(claims["sub"])
+    except (InvalidId, TypeError):
+        return None
+    try:
+        user = await get_db().users.find_one({"_id": object_id})
+    except PyMongoError:
+        return None
+    if user is None or int(claims.get("tv", 0)) != int(user.get("token_version", 0)):
+        return None
+    return user

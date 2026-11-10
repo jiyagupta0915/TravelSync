@@ -7,22 +7,24 @@ Nested records (messages, suggestions, votes) are always looked up together with
 id from another group can never be used through this group. Owner-only actions: decide, delete group, remove
 someone else's suggestion. Emails are never shown to other members - only display names.
 
-Chat is persisted and fetched by polling (the frontend asks for new messages every few seconds); it is not a
-websocket connection.
+Chat is persisted in MongoDB. New messages are pushed live over a WebSocket (/{group_id}/ws, receive-only, see
+app/services/chat_hub.py); the frontend falls back to polling GET /messages whenever the socket is not connected.
 """
 
 import secrets
 from datetime import datetime, timezone
 
-from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi import APIRouter, Depends, HTTPException, Query, WebSocket, WebSocketDisconnect
 from pymongo.errors import DuplicateKeyError
 
+from app.config import settings
 from app.database import get_db
-from app.dependencies import require_current_user
+from app.dependencies import require_current_user, user_from_token
 from app.models.group import DecideRequest, GroupCreate, JoinGroup, MessageCreate, SuggestionCreate
 from app.services.notifications import notify, object_id_or_none
 from app.services.places_service import get_top_places
 from app.services.recommendation_engine import DF
+from app.services.chat_hub import hub
 
 router = APIRouter(prefix="/api/groups", tags=["groups"])
 
@@ -135,6 +137,7 @@ async def delete_group(group_id: str, user: dict = Depends(require_current_user)
     for name in ("group_messages", "group_suggestions", "group_votes"):
         await db[name].delete_many({"group_id": group["_id"]})
     await db.groups.delete_one({"_id": group["_id"], "owner_id": user["_id"]})
+    await hub.close_group(str(group["_id"]))                       # in delete_group
     return {"deleted": True}
 
 
@@ -146,12 +149,24 @@ async def leave_group(group_id: str, user: dict = Depends(require_current_user))
         raise HTTPException(status_code=409, detail="The owner can't leave the group. Delete the group instead.")
     await db.groups.update_one({"_id": group["_id"]}, {"$pull": {"member_ids": user["_id"]}})
     await db.group_votes.delete_many({"group_id": group["_id"], "user_id": user["_id"]})
+    await hub.close_user(str(group["_id"]), str(user["_id"]))      # in leave_group
     return {"left": True}
 
 
 # ------------------------------------------------------------------ chat (polling)
+CHAT_PAGE_SIZE = 50
+
+
 @router.get("/{group_id}/messages")
-async def list_messages(group_id: str, after: str | None = Query(None, max_length=40), user: dict = Depends(require_current_user)):
+async def list_messages(
+    group_id: str,
+    after: str | None = Query(None, max_length=40),
+    before: str | None = Query(None, max_length=40),
+    user: dict = Depends(require_current_user),
+):
+    """Newest page by default. `after` = only messages newer than that timestamp (polling / catch-up).
+    `before` = a message id: the page of messages older than it ("Load older messages"). `has_more` says
+    whether even older messages exist."""
     db = get_db()
     group = await get_member_group(group_id, user)
     query: dict = {"group_id": group["_id"]}
@@ -160,23 +175,80 @@ async def list_messages(group_id: str, after: str | None = Query(None, max_lengt
             query["created_at"] = {"$gt": datetime.fromisoformat(after).replace(tzinfo=None)}
         except ValueError:
             raise HTTPException(status_code=422, detail="'after' must be an ISO timestamp.")
-    docs = [d async for d in db.group_messages.find(query).sort("created_at", -1).limit(100)]
+    if before:
+        before_id = object_id_or_none(before)
+        if before_id is None:
+            raise HTTPException(status_code=422, detail="'before' must be a message id.")
+        query["_id"] = {"$lt": before_id}
+    # Newest first by _id, not created_at: MongoDB timestamps only have millisecond precision, so messages sent in the
+    # same millisecond would tie and could come back in the wrong order or be skipped at a page boundary.
+    docs = [d async for d in db.group_messages.find(query).sort("_id", -1).limit(CHAT_PAGE_SIZE + 1)]
+    has_more = len(docs) > CHAT_PAGE_SIZE
+    docs = docs[:CHAT_PAGE_SIZE]
     docs.reverse()
     names = await _names(db, {d["user_id"] for d in docs})
-    return {"messages": [
-        {"id": str(d["_id"]), "text": d["text"], "created_at": d["created_at"].replace(tzinfo=timezone.utc).isoformat(),
-         "author": names.get(d["user_id"], "Former member"), "is_me": d["user_id"] == user["_id"]}
+    return {"has_more": has_more, "messages": [
+        {"id": str(d["_id"]), "text": "" if d.get("deleted_at") else d["text"],
+         "created_at": d["created_at"].replace(tzinfo=timezone.utc).isoformat(),
+         "author": names.get(d["user_id"], "Former member"), "is_me": d["user_id"] == user["_id"],
+         "deleted": bool(d.get("deleted_at"))}
         for d in docs
     ]}
-
 
 @router.post("/{group_id}/messages", status_code=201)
 async def post_message(group_id: str, payload: MessageCreate, user: dict = Depends(require_current_user)):
     group = await get_member_group(group_id, user)
     doc = {"group_id": group["_id"], "user_id": user["_id"], "text": payload.text, "created_at": datetime.now(timezone.utc)}
     result = await get_db().group_messages.insert_one(doc)
-    return {"message": {"id": str(result.inserted_id), "text": doc["text"], "created_at": doc["created_at"].isoformat(),
-                        "author": user["name"], "is_me": True}}
+    message = {"id": str(result.inserted_id), "text": doc["text"], "created_at": doc["created_at"].isoformat(),
+               "author": user["name"], "deleted": False}
+    await hub.broadcast_message(str(group["_id"]), message, str(user["_id"]))   # saved first, then pushed
+    return {"message": {**message, "is_me": True}}
+
+@router.delete("/{group_id}/messages/{message_id}")
+async def delete_message(group_id: str, message_id: str, user: dict = Depends(require_current_user)):
+    """Soft delete: the row stays (so history and ordering are unchanged) but its text is wiped and it is marked
+    deleted. Only the author can do it. Deleting twice is harmless."""
+    db = get_db()
+    group = await get_member_group(group_id, user)
+    oid = object_id_or_none(message_id)
+    message = await db.group_messages.find_one({"_id": oid, "group_id": group["_id"]}) if oid else None
+    if message is None:
+        raise HTTPException(status_code=404, detail="Message not found.")
+    if message["user_id"] != user["_id"]:
+        raise HTTPException(status_code=403, detail="You can only delete your own messages.")
+    if not message.get("deleted_at"):
+        await db.group_messages.update_one(
+            {"_id": oid}, {"$set": {"deleted_at": datetime.now(timezone.utc), "text": ""}})
+        await hub.broadcast_deleted(str(group["_id"]), str(oid))
+    return {"deleted": True}
+
+@router.websocket("/{group_id}/ws")
+async def chat_socket(ws: WebSocket, group_id: str):
+    """Live push of new chat messages. Same rules as the HTTP routes: logged in + member of the group."""
+    # Browsers always send Origin on a WebSocket handshake, and the CSRF middleware only covers HTTP, so check it here.
+    if ws.headers.get("origin") not in settings.cors_origins:
+        await ws.close(code=1008)
+        return
+    user = await user_from_token(ws.cookies.get(settings.cookie_name))
+    if user is None:
+        await ws.close(code=1008)
+        return
+    try:
+        group = await get_member_group(group_id, user)
+    except HTTPException:
+        await ws.close(code=1008)
+        return
+    key = str(group["_id"])
+    await ws.accept()
+    hub.add(key, ws, str(user["_id"]))
+    try:
+        while True:
+            await ws.receive_text()   # content is ignored (the client sends "ping" to keep the connection alive)
+    except WebSocketDisconnect:
+        pass
+    finally:
+        hub.remove(key, ws)
 
 
 # ------------------------------------------------------------------ destination suggestions + voting
