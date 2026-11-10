@@ -14,6 +14,11 @@ export function searchDestinations(query = "", signal) {
   return apiRequest(`/api/destinations/search?${params.toString()}`, { signal });
 }
 
+// Overview of one destination (region, ideal stay, average daily budget, what it is known for, who it suits).
+export function getDestinationProfile(name, signal) {
+  return apiRequest(`/api/destinations/${encodeURIComponent(name)}`, { signal, fallbackMessage: "Destination details could not be loaded." });
+}
+
 export function recommendDestinations(payload, signal) {
   return apiRequest("/api/recommend", { method: "POST", body: payload, signal, fallbackMessage: "The recommendation request could not be completed." });
 }

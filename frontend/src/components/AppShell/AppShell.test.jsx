@@ -10,6 +10,8 @@ vi.mock("../../services/notificationApi", () => ({
   markAllRead: vi.fn(), markRead: vi.fn(),
 }));
 
+vi.mock("../../services/groupApi", () => ({ getUnreadChats: vi.fn(async () => ({ total: 3, groups: {} })) }));
+
 function Where() {
   return <p data-testid="where">{useLocation().pathname}</p>;
 }
@@ -26,6 +28,14 @@ function renderShell(width, route = "/home") {
     { route },
   ));
 }
+
+describe("unread chat badge", () => {
+  it("shows the number of unread group messages on the Groups link", async () => {
+    renderShell(1280);
+    const groups = await screen.findByRole("link", { name: /Groups/ });
+    expect(await within(groups).findByLabelText("3 unread messages")).toHaveTextContent("3");
+  });
+});
 
 describe("desktop sidebar", () => {
   it("is open by default with visible labels and a collapse toggle", () => {

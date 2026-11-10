@@ -113,6 +113,7 @@ export default function Groups() {
                 {group.description && <span className="ts-muted">{group.description}</span>}
                 <span className="ts-chip"><Users size={13} aria-hidden="true" /> {group.member_count} {group.member_count === 1 ? "member" : "members"}</span>
                 {group.is_owner && <span className="ts-chip ts-chip--peach">Owner</span>}
+                {group.unread_count > 0 && <span className="ts-chip group-card__unread">{group.unread_count > 99 ? "99+" : group.unread_count} new {group.unread_count === 1 ? "message" : "messages"}</span>}
               </Link>
             </li>
           ))}

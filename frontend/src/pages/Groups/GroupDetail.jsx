@@ -1,14 +1,17 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { ArrowLeft, Check, Copy, Crown, Send, ThumbsUp, Trash2, Users } from "lucide-react";
+import { ArrowLeft, Check, ChevronRight, Copy, Crown, MapPin, Send, ThumbsUp, Trash2, Users } from "lucide-react";
 import NumberField from "../../components/NumberField/NumberField";
+import TopPlacesModal from "../../components/TopPlaces/TopPlacesModal";
+import DestinationOverview from "../../components/TopPlaces/DestinationOverview";
 import {
   addSuggestion, decide, deleteGroup, deleteMessage, deleteSuggestion, getGroup, leaveGroup, listMessages, listSuggestions,
-  removeVote, reopenVoting, sendMessage, vote, chatSocketUrl,
+  removeVote, reopenVoting, sendMessage, vote, chatSocketUrl, markChatRead, listReads,
 } from "../../services/groupApi";
 import { getFeatures, searchDestinations } from "../../services/recommendationApi";
 import { createTrip } from "../../services/tripApi";
 import { isAbort } from "../../services/apiClient";
+import { CHATS_READ_EVENT } from "../../hooks/useUnreadChats";
 import { MAX_BUDGET_INR, MAX_DURATION_DAYS } from "../../utils/limits";
 import { parsePositiveInteger } from "../../utils/numberField";
 import "../Packing/Packing.css";
@@ -21,7 +24,58 @@ const SUGGESTION_POLL_MS = 10000;
 const inr = (value) => `₹${Number(value).toLocaleString("en-IN")}`;
 const clock = (iso) => new Intl.DateTimeFormat("en-IN", { hour: "numeric", minute: "2-digit", day: "numeric", month: "short" }).format(new Date(iso));
 
-function Chat({ groupId }) {
+// "Seen by ..." under one of your own messages. `reads` is every other member with the newest message id they have
+// seen (ids are MongoDB ObjectIds as hex, which sort in the order the messages were created).
+function ReadReceipt({ message, reads }) {
+  const [open, setOpen] = useState(false);
+  if (!reads.length) return null;                        // nobody else is in the group
+  const seen = reads.filter((r) => r.seen_id && r.seen_id >= message.id);
+  const waiting = reads.filter((r) => !seen.includes(r));
+  const names = (list) => list.map((r) => r.name).join(", ");
+  let summary;
+  if (seen.length === 0) summary = "Not seen yet";
+  else if (reads.length > 1 && waiting.length === 0) summary = "Seen by everyone";
+  else if (seen.length <= 3) summary = `Seen by ${names(seen)}`;
+  else summary = `Seen by ${seen.length} of ${reads.length}`;
+
+  if (reads.length === 1) return <span className="chat__receipt">{summary}</span>;
+  return (
+    <span className="chat__receipt">
+      <button type="button" onClick={() => setOpen((value) => !value)} aria-expanded={open}>{summary}</button>
+      {open && (
+        <span className="chat__receipt-detail">
+          {seen.length > 0 && <span>Seen: {names(seen)}</span>}
+          {waiting.length > 0 && <span>Not yet: {names(waiting)}</span>}
+        </span>
+      )}
+    </span>
+  );
+}
+
+// A destination someone shared with the group, shown inside the conversation.
+function SuggestionCard({ message, reads }) {
+  const s = message.suggestion || {};
+  return (
+    <li className={`chat__msg chat__msg--suggestion${message.is_me ? " is-me" : ""}`}>
+      <small>{message.is_me ? "You" : message.author} suggested a destination · {clock(message.created_at)}</small>
+      <strong className="chat__suggestion-title"><MapPin size={14} aria-hidden="true" /> {s.destination}</strong>
+      {s.state && <span className="ts-muted ts-small">{s.state}</span>}
+      {(s.budget || s.duration || s.preferences?.length > 0) && (
+        <div className="suggestion__chips">
+          {s.duration && <span className="ts-chip">{s.duration} days</span>}
+          {s.budget && <span className="ts-chip">{inr(s.budget)}</span>}
+          {(s.preferences || []).map((p) => <span key={p} className="ts-chip ts-chip--peach">{p}</span>)}
+        </div>
+      )}
+      {s.places?.length > 0 && <span className="suggestion__places">Top places: {s.places.join(" · ")}</span>}
+      {s.note && <span className="chat__suggestion-note">“{s.note}”</span>}
+      <span className="ts-muted ts-small">Vote for it under “Destination ideas &amp; votes”.</span>
+      {message.is_me && <ReadReceipt message={message} reads={reads} />}
+    </li>
+  );
+}
+
+function Chat({ groupId, onSuggestionsChanged }) {
   const [messages, setMessages] = useState([]);
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState("");
@@ -29,10 +83,13 @@ function Chat({ groupId }) {
   const [sending, setSending] = useState(false);
   const [hasMore, setHasMore] = useState(false);
   const [loadingOlder, setLoadingOlder] = useState(false);
+  const [reads, setReads] = useState([]);                 // read receipts: the other members and what they have seen
   const olderAnchor = useRef(null);
   const lastTimestamp = useRef(null);
   const socketOpen = useRef(false);
   const logRef = useRef(null);
+  const suggestionsChangedRef = useRef(onSuggestionsChanged);
+  useEffect(() => { suggestionsChangedRef.current = onSuggestionsChanged; }, [onSuggestionsChanged]);
 
   // Messages arrive live over a WebSocket. Polling stays as a fallback: it loads the history, catches up after a
   // reconnect, and keeps the chat working whenever the socket is down.
@@ -69,14 +126,19 @@ function Chat({ groupId }) {
       .catch((err) => { if (!isAbort(err)) { setError(err.message); setLoaded(true); } });
   }, [groupId, mergeIncoming]);
 
+  const fetchReads = useCallback((signal) => (
+    listReads(groupId, signal).then((data) => setReads(data.reads || [])).catch(() => {})   // receipts are a nicety: fail quietly
+  ), [groupId]);
+
   useEffect(() => {
     const controller = new AbortController();
     fetchNew(controller.signal);
+    fetchReads(controller.signal);
     const timer = setInterval(() => {
-      if (document.visibilityState === "visible" && !socketOpen.current) fetchNew(controller.signal);
+      if (document.visibilityState === "visible" && !socketOpen.current) { fetchNew(controller.signal); fetchReads(controller.signal); }
     }, CHAT_POLL_MS);
     return () => { controller.abort(); clearInterval(timer); };
-  }, [fetchNew]);
+  }, [fetchNew, fetchReads]);
 
   useEffect(() => {
     let socket = null;
@@ -90,12 +152,17 @@ function Chat({ groupId }) {
         attempts = 0;
         socketOpen.current = true;
         fetchNew();                       // pick up anything sent while we were disconnected
+        fetchReads();
       };
       socket.onmessage = (event) => {
         try {
           const data = JSON.parse(event.data);
           if (data.type === "message" && data.message) mergeIncoming([data.message]);
           else if (data.type === "message_deleted" && data.id) markDeleted(data.id);
+          else if (data.type === "suggestions_changed") { suggestionsChangedRef.current?.(); fetchReads(); }   // someone suggested, voted, decided, joined or left
+          else if (data.type === "read" && data.user_id) {     // another member opened the chat
+            setReads((previous) => previous.map((r) => (r.id === data.user_id ? { ...r, seen_id: data.seen_id } : r)));
+          }
         } catch { /* ignore a malformed frame */ }
       };
       socket.onclose = () => {
@@ -121,7 +188,7 @@ function Chat({ groupId }) {
         socket.close();
       }
     };
-  }, [groupId, fetchNew, mergeIncoming, markDeleted]);
+  }, [groupId, fetchNew, fetchReads, mergeIncoming, markDeleted]);
 
   useEffect(() => {
     const log = logRef.current;
@@ -133,6 +200,23 @@ function Chat({ groupId }) {
     }
     log.scrollTop = log.scrollHeight;
   }, [messages.length]);
+
+  // While the chat is open and the tab is visible, whatever is on screen counts as read. The server is told once
+  // per new newest message (and again when the user comes back to the tab), then the sidebar badge is refreshed.
+  const newestId = messages.length ? messages[messages.length - 1].id : null;
+  const lastMarked = useRef(null);
+  useEffect(() => {
+    const markRead = () => {
+      if (!newestId || lastMarked.current === newestId || document.visibilityState !== "visible") return;
+      lastMarked.current = newestId;
+      markChatRead(groupId)
+        .then(() => window.dispatchEvent(new Event(CHATS_READ_EVENT)))
+        .catch(() => { lastMarked.current = null; });       // try again with the next message
+    };
+    markRead();
+    document.addEventListener("visibilitychange", markRead);
+    return () => document.removeEventListener("visibilitychange", markRead);
+  }, [groupId, newestId]);
 
   async function handleLoadOlder() {
     if (!messages.length || loadingOlder) return;
@@ -181,7 +265,7 @@ function Chat({ groupId }) {
   return (
     <section className="ts-card chat" aria-labelledby="chat-heading">
       <h2 id="chat-heading">Group chat</h2>
-      <p className="ts-muted ts-small">New messages appear instantly while this page is open.</p>
+      <p className="ts-muted ts-small">New messages and shared destinations appear instantly while this page is open.</p>
       <ul className="chat__log" ref={logRef} role="log" aria-live="polite" aria-label="Chat messages">
         {hasMore && (
           <li className="chat__older">
@@ -194,8 +278,10 @@ function Chat({ groupId }) {
         {loaded && messages.length === 0 && <li className="ts-muted">No messages yet. Say hello 👋</li>}
         {messages.map((m) => (m.deleted ? (
           <li key={m.id} className={`chat__msg chat__msg--deleted${m.is_me ? " is-me" : ""}`}>
-            {m.is_me ? "You deleted this message" : "This message was deleted"}
+            {m.kind === "suggestion" ? "This suggestion was removed" : m.is_me ? "You deleted this message" : "This message was deleted"}
           </li>
+        ) : m.kind === "suggestion" ? (
+          <SuggestionCard key={m.id} message={m} reads={reads} />
         ) : (
           <li key={m.id} className={`chat__msg${m.is_me ? " is-me" : ""}`}>
             <small>{m.is_me ? "You" : m.author} · {clock(m.created_at)}</small>
@@ -205,6 +291,7 @@ function Chat({ groupId }) {
                 <Trash2 size={13} />
               </button>
             )}
+            {m.is_me && <ReadReceipt message={m} reads={reads} />}
           </li>
         )))}
       </ul>
@@ -327,6 +414,8 @@ export default function GroupDetail() {
   const [actionError, setActionError] = useState("");
   const [busy, setBusy] = useState("");
   const [copied, setCopied] = useState(false);
+  const [detailsId, setDetailsId] = useState(null);      // the suggestion whose destination details are open
+  const closeDetails = useCallback(() => setDetailsId(null), []);
 
   useEffect(() => {
     let active = true;
@@ -336,16 +425,18 @@ export default function GroupDetail() {
     return () => { active = false; };
   }, [groupId, reloadKey]);
 
-  // Keep votes/suggestions current for everyone while the page is open.
-  useEffect(() => {
-    const timer = setInterval(() => {
-      if (document.visibilityState !== "visible") return;
-      Promise.all([getGroup(groupId), listSuggestions(groupId)])
-        .then(([g, s]) => setState((prev) => (prev.groupId === groupId && prev.status === "ready" ? { ...prev, group: g.group, suggestions: s.suggestions || [] } : prev)))
-        .catch(() => {});
-    }, SUGGESTION_POLL_MS);
-    return () => clearInterval(timer);
+  // The chat socket says when anyone suggests, votes or decides, so the list updates without waiting for the next poll.
+  const refreshQuietly = useCallback(() => {
+    Promise.all([getGroup(groupId), listSuggestions(groupId)])
+      .then(([g, s]) => setState((prev) => (prev.groupId === groupId && prev.status === "ready" ? { ...prev, group: g.group, suggestions: s.suggestions || [] } : prev)))
+      .catch(() => {});   // the regular poll will catch up
   }, [groupId]);
+
+  // Fallback for when the live socket is down: keep votes/suggestions current by polling while the page is open.
+  useEffect(() => {
+    const timer = setInterval(() => { if (document.visibilityState === "visible") refreshQuietly(); }, SUGGESTION_POLL_MS);
+    return () => clearInterval(timer);
+  }, [refreshQuietly]);
 
   const current = state.groupId === groupId ? state : { status: "loading" };
   const { group, suggestions } = current;
@@ -402,6 +493,7 @@ export default function GroupDetail() {
   }
 
   const decided = suggestions.find((s) => s.is_decision);
+  const details = suggestions.find((s) => s.id === detailsId);   // looked up live, so votes shown in the dialog stay current
 
   return (
     <main className="dashboard__content">
@@ -458,7 +550,7 @@ export default function GroupDetail() {
                 {suggestions.map((s) => (
                   <li key={s.id} className={`suggestion${s.is_decision ? " is-decision" : ""}`}>
                     <div className="suggestion__head">
-                      <div><h3>{s.destination}</h3><span className="ts-muted ts-small">{s.state} · suggested by {s.proposed_by_me ? "you" : s.proposed_by}</span></div>
+                      <div><h3><button type="button" className="suggestion__open" onClick={() => setDetailsId(s.id)} aria-label={`View details for ${s.destination}`}>{s.destination} <ChevronRight size={16} aria-hidden="true" /></button></h3><span className="ts-muted ts-small">{s.state} · suggested by {s.proposed_by_me ? "you" : s.proposed_by}</span></div>
                       {s.is_decision && <span className="ts-chip ts-chip--aqua"><Check size={12} aria-hidden="true" /> Chosen</span>}
                     </div>
                     {s.note && <p>{s.note}</p>}
@@ -486,8 +578,30 @@ export default function GroupDetail() {
           </section>
         </div>
 
-        <Chat groupId={groupId} />
+        <Chat groupId={groupId} onSuggestionsChanged={refreshQuietly} />
       </div>
+
+      <TopPlacesModal destination={details ? details.destination : null} onClose={closeDetails} label={details ? `About ${details.destination}` : undefined}>
+        {details && (
+          <DestinationOverview destination={details.destination}>
+            <div className="destination-overview__shared">
+              <span className="section-kicker">SHARED IN THIS GROUP</span>
+              <p>
+                Suggested by {details.proposed_by_me ? "you" : details.proposed_by} · {details.votes} {details.votes === 1 ? "vote" : "votes"}
+                {details.is_decision ? " · chosen by the group" : ""}
+              </p>
+              {details.note && <p className="destination-overview__note">“{details.note}”</p>}
+              {(details.duration || details.budget || details.preferences.length > 0) && (
+                <div className="suggestion__chips">
+                  {details.duration && <span className="ts-chip">{details.duration} days</span>}
+                  {details.budget && <span className="ts-chip">{inr(details.budget)}</span>}
+                  {details.preferences.map((p) => <span key={p} className="ts-chip ts-chip--peach">{p}</span>)}
+                </div>
+              )}
+            </div>
+          </DestinationOverview>
+        )}
+      </TopPlacesModal>
     </main>
   );
 }

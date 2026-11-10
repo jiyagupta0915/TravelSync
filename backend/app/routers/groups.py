@@ -9,6 +9,16 @@ someone else's suggestion. Emails are never shown to other members - only displa
 
 Chat is persisted in MongoDB. New messages are pushed live over a WebSocket (/{group_id}/ws, receive-only, see
 app/services/chat_hub.py); the frontend falls back to polling GET /messages whenever the socket is not connected.
+A new destination suggestion is also posted into the chat as a "suggestion" message (a card), and every change to
+suggestions, votes or the decision sends a small "suggestions_changed" event so open pages refresh straight away.
+
+Unread messages: group_reads holds, per member and group, the newest message they have seen (set when they open the
+chat). Everything newer that someone else wrote and that is not deleted counts as unread.
+
+Read receipts: the same record also holds `seen_id`, the newest message that existed when the member last had the
+chat open (joining a group sets last_read_id but not seen_id, because joining is not opening the chat). A message
+counts as seen by a member when their seen_id is at or after it. GET /{group_id}/reads lists this for the other
+members, and a "read" socket event keeps open chats up to date.
 """
 
 import secrets
@@ -52,6 +62,51 @@ async def get_member_group(group_id: str, user: dict) -> dict:
     return group
 
 
+def _message_out(doc: dict, author: str) -> dict:
+    """A chat message as the API returns it (without `is_me`, which depends on who is looking)."""
+    deleted = bool(doc.get("deleted_at"))
+    kind = doc.get("kind", "text")
+    out = {"id": str(doc["_id"]), "text": "" if deleted else doc["text"], "kind": kind,
+           "created_at": doc["created_at"].replace(tzinfo=timezone.utc).isoformat(), "author": author, "deleted": deleted}
+    if kind == "suggestion" and not deleted:
+        out["suggestion"] = doc.get("suggestion")
+    return out
+
+
+async def _suggestions_changed(group: dict) -> None:
+    """Tells everyone with the group page open to reload suggestions, votes and the decision."""
+    await hub.broadcast_event(str(group["_id"]), {"type": "suggestions_changed"})
+
+
+async def _unread_counts(db, user: dict, group_ids: list) -> dict:
+    """{group _id: number of messages from other members that this user has not seen yet}."""
+    reads = {r["group_id"]: r.get("last_read_id")
+             async for r in db.group_reads.find({"user_id": user["_id"], "group_id": {"$in": group_ids}})}
+    counts = {}
+    for gid in group_ids:
+        query = {"group_id": gid, "user_id": {"$ne": user["_id"]}, "deleted_at": {"$exists": False}}
+        if reads.get(gid) is not None:
+            query["_id"] = {"$gt": reads[gid]}
+        counts[gid] = await db.group_messages.count_documents(query)
+    return counts
+
+
+async def _mark_read(db, group: dict, user: dict, opened: bool = True) -> None:
+    """Remembers that this member is up to date with the group's newest message. `opened=True` (they have the chat
+    open) also records it as seen, for read receipts, and tells the other members' open chats."""
+    newest = [d async for d in db.group_messages.find({"group_id": group["_id"]}, {"_id": 1}).sort("_id", -1).limit(1)]
+    newest_id = newest[0]["_id"] if newest else None
+    key = {"group_id": group["_id"], "user_id": user["_id"]}
+    before = await db.group_reads.find_one(key) if opened else None
+    fields = {"last_read_id": newest_id, "read_at": datetime.now(timezone.utc)}
+    if opened:
+        fields["seen_id"] = newest_id
+    await db.group_reads.update_one(key, {"$set": fields}, upsert=True)
+    if opened and newest_id is not None and (before or {}).get("seen_id") != newest_id:
+        await hub.broadcast_event(str(group["_id"]), {"type": "read", "user_id": str(user["_id"]), "seen_id": str(newest_id)},
+                                  exclude_user=str(user["_id"]))
+
+
 def _require_owner(group: dict, user: dict) -> None:
     if group["owner_id"] != user["_id"]:
         raise HTTPException(status_code=403, detail="Only the group owner can do that.")
@@ -75,12 +130,22 @@ async def _serialize_group(db, group: dict, user: dict) -> dict:
 @router.get("")
 async def list_groups(user: dict = Depends(require_current_user)):
     db = get_db()
-    cursor = db.groups.find({"member_ids": user["_id"]}).sort("created_at", -1)
+    groups = [g async for g in db.groups.find({"member_ids": user["_id"]}).sort("created_at", -1)]
+    unread = await _unread_counts(db, user, [g["_id"] for g in groups])
     return {"groups": [
         {"id": str(g["_id"]), "name": g["name"], "description": g.get("description", ""), "member_count": len(g["member_ids"]),
-         "is_owner": g["owner_id"] == user["_id"], "created_at": _iso(g.get("created_at"))}
-        async for g in cursor
+         "is_owner": g["owner_id"] == user["_id"], "created_at": _iso(g.get("created_at")), "unread_count": unread[g["_id"]]}
+        for g in groups
     ]}
+
+
+@router.get("/unread")
+async def unread_messages(user: dict = Depends(require_current_user)):
+    """Unread chat messages across all of the user's groups (for the sidebar badge). Declared before /{group_id}."""
+    db = get_db()
+    group_ids = [g["_id"] async for g in db.groups.find({"member_ids": user["_id"]}, {"_id": 1})]
+    counts = await _unread_counts(db, user, group_ids)
+    return {"total": sum(counts.values()), "groups": {str(gid): n for gid, n in counts.items() if n}}
 
 
 @router.post("", status_code=201)
@@ -118,6 +183,8 @@ async def join_group(payload: JoinGroup, user: dict = Depends(require_current_us
     )
     if updated is None:
         raise HTTPException(status_code=409, detail=f"This group is full ({MAX_MEMBERS} members).")
+    await _mark_read(db, updated, user, opened=False)   # messages sent before they joined are history, not "unread"
+    await _suggestions_changed(updated)                 # open group pages show the new member straight away
     others = [m for m in updated["member_ids"] if m != user["_id"]]
     await notify(db, others, "member_joined", f"{user['name']} joined {updated['name']}.", f"/groups/{updated['_id']}")
     return {"group": await _serialize_group(db, updated, user), "already_member": False}
@@ -134,7 +201,7 @@ async def delete_group(group_id: str, user: dict = Depends(require_current_user)
     db = get_db()
     group = await get_member_group(group_id, user)
     _require_owner(group, user)
-    for name in ("group_messages", "group_suggestions", "group_votes"):
+    for name in ("group_messages", "group_suggestions", "group_votes", "group_reads"):
         await db[name].delete_many({"group_id": group["_id"]})
     await db.groups.delete_one({"_id": group["_id"], "owner_id": user["_id"]})
     await hub.close_group(str(group["_id"]))                       # in delete_group
@@ -149,11 +216,13 @@ async def leave_group(group_id: str, user: dict = Depends(require_current_user))
         raise HTTPException(status_code=409, detail="The owner can't leave the group. Delete the group instead.")
     await db.groups.update_one({"_id": group["_id"]}, {"$pull": {"member_ids": user["_id"]}})
     await db.group_votes.delete_many({"group_id": group["_id"], "user_id": user["_id"]})
+    await db.group_reads.delete_many({"group_id": group["_id"], "user_id": user["_id"]})
     await hub.close_user(str(group["_id"]), str(user["_id"]))      # in leave_group
+    await _suggestions_changed(group)                              # their vote is gone and the member list changed
     return {"left": True}
 
 
-# ------------------------------------------------------------------ chat (polling)
+# ------------------------------------------------------------------ chat
 CHAT_PAGE_SIZE = 50
 
 
@@ -188,20 +257,35 @@ async def list_messages(
     docs.reverse()
     names = await _names(db, {d["user_id"] for d in docs})
     return {"has_more": has_more, "messages": [
-        {"id": str(d["_id"]), "text": "" if d.get("deleted_at") else d["text"],
-         "created_at": d["created_at"].replace(tzinfo=timezone.utc).isoformat(),
-         "author": names.get(d["user_id"], "Former member"), "is_me": d["user_id"] == user["_id"],
-         "deleted": bool(d.get("deleted_at"))}
-        for d in docs
+        {**_message_out(d, names.get(d["user_id"], "Former member")), "is_me": d["user_id"] == user["_id"]} for d in docs
     ]}
+
+@router.post("/{group_id}/read")
+async def mark_chat_read(group_id: str, user: dict = Depends(require_current_user)):
+    """Called by the chat while it is open and visible: everything sent so far counts as seen by this member."""
+    group = await get_member_group(group_id, user)
+    await _mark_read(get_db(), group, user)
+    return {"read": True}
+
+
+@router.get("/{group_id}/reads")
+async def list_reads(group_id: str, user: dict = Depends(require_current_user)):
+    """Read receipts: for every OTHER current member, the newest message they have seen (`seen_id`, or null if they
+    have never opened the chat). A message with id <= seen_id has been seen by that member."""
+    db = get_db()
+    group = await get_member_group(group_id, user)
+    others = [m for m in group["member_ids"] if m != user["_id"]]
+    names = await _names(db, others)
+    seen = {r["user_id"]: r.get("seen_id") async for r in db.group_reads.find({"group_id": group["_id"], "user_id": {"$in": others}})}
+    return {"reads": [{"id": str(m), "name": names.get(m, "Traveller"), "seen_id": str(seen[m]) if seen.get(m) else None} for m in others]}
+
 
 @router.post("/{group_id}/messages", status_code=201)
 async def post_message(group_id: str, payload: MessageCreate, user: dict = Depends(require_current_user)):
     group = await get_member_group(group_id, user)
     doc = {"group_id": group["_id"], "user_id": user["_id"], "text": payload.text, "created_at": datetime.now(timezone.utc)}
     result = await get_db().group_messages.insert_one(doc)
-    message = {"id": str(result.inserted_id), "text": doc["text"], "created_at": doc["created_at"].isoformat(),
-               "author": user["name"], "deleted": False}
+    message = _message_out({**doc, "_id": result.inserted_id}, user["name"])
     await hub.broadcast_message(str(group["_id"]), message, str(user["_id"]))   # saved first, then pushed
     return {"message": {**message, "is_me": True}}
 
@@ -217,6 +301,8 @@ async def delete_message(group_id: str, message_id: str, user: dict = Depends(re
         raise HTTPException(status_code=404, detail="Message not found.")
     if message["user_id"] != user["_id"]:
         raise HTTPException(status_code=403, detail="You can only delete your own messages.")
+    if message.get("kind") == "suggestion":
+        raise HTTPException(status_code=409, detail="This is a destination suggestion. Remove it from the ideas list instead.")
     if not message.get("deleted_at"):
         await db.group_messages.update_one(
             {"_id": oid}, {"$set": {"deleted_at": datetime.now(timezone.utc), "text": ""}})
@@ -301,6 +387,16 @@ async def add_suggestion(group_id: str, payload: SuggestionCreate, user: dict = 
     others = [m for m in group["member_ids"] if m != user["_id"]]
     await notify(db, others, "suggestion_added", f"{user['name']} suggested {destination} in {group['name']}.", f"/groups/{group['_id']}")
     doc["_id"] = result.inserted_id
+    # The suggestion also shows up in the chat as a card, so the group can talk about it right where it was shared.
+    card = {
+        "group_id": group["_id"], "user_id": user["_id"], "kind": "suggestion", "text": f"Suggested {destination}",
+        "suggestion_id": result.inserted_id, "created_at": datetime.now(timezone.utc),
+        "suggestion": {"id": str(result.inserted_id), "destination": destination, "state": doc["state"], "note": doc["note"],
+                       "budget": doc["budget"], "duration": doc["duration"], "preferences": doc["preferences"], "places": doc["places"]},
+    }
+    card["_id"] = (await db.group_messages.insert_one(card)).inserted_id
+    await hub.broadcast_message(str(group["_id"]), _message_out(card, user["name"]), str(user["_id"]))
+    await _suggestions_changed(group)
     return {"suggestion": next(s for s in await _serialize_suggestions(db, group, user) if s["id"] == str(result.inserted_id))}
 
 
@@ -324,6 +420,7 @@ async def cast_vote(group_id: str, suggestion_id: str, user: dict = Depends(requ
         {"group_id": group["_id"], "user_id": user["_id"]},
         {"$set": {"suggestion_id": suggestion["_id"], "created_at": datetime.now(timezone.utc)}}, upsert=True,
     )
+    await _suggestions_changed(group)
     return {"suggestions": await _serialize_suggestions(db, group, user)}
 
 
@@ -335,6 +432,7 @@ async def remove_vote(group_id: str, suggestion_id: str, user: dict = Depends(re
     if group.get("decided_suggestion_id"):
         raise HTTPException(status_code=409, detail="The group has already decided; voting is closed.")
     await db.group_votes.delete_one({"group_id": group["_id"], "user_id": user["_id"], "suggestion_id": suggestion["_id"]})
+    await _suggestions_changed(group)
     return {"suggestions": await _serialize_suggestions(db, group, user)}
 
 
@@ -349,6 +447,12 @@ async def delete_suggestion(group_id: str, suggestion_id: str, user: dict = Depe
         raise HTTPException(status_code=409, detail="This is the group's chosen destination and can't be removed.")
     await db.group_votes.delete_many({"group_id": group["_id"], "suggestion_id": suggestion["_id"]})
     await db.group_suggestions.delete_one({"_id": suggestion["_id"], "group_id": group["_id"]})
+    # Its card in the chat is withdrawn too (soft delete, like any other message).
+    card = await db.group_messages.find_one({"group_id": group["_id"], "suggestion_id": suggestion["_id"], "deleted_at": {"$exists": False}})
+    if card is not None:
+        await db.group_messages.update_one({"_id": card["_id"]}, {"$set": {"deleted_at": datetime.now(timezone.utc), "text": ""}})
+        await hub.broadcast_deleted(str(group["_id"]), str(card["_id"]))
+    await _suggestions_changed(group)
     return {"deleted": True}
 
 
@@ -363,6 +467,7 @@ async def decide(group_id: str, payload: DecideRequest, user: dict = Depends(req
     group["decided_suggestion_id"] = suggestion["_id"]
     others = [m for m in group["member_ids"] if m != user["_id"]]
     await notify(db, others, "destination_decided", f"{group['name']} chose {suggestion['destination']}!", f"/groups/{group['_id']}")
+    await _suggestions_changed(group)
     return {"group": await _serialize_group(db, group, user), "suggestions": await _serialize_suggestions(db, group, user)}
 
 
@@ -373,6 +478,7 @@ async def reopen_voting(group_id: str, user: dict = Depends(require_current_user
     _require_owner(group, user)
     await db.groups.update_one({"_id": group["_id"], "owner_id": user["_id"]}, {"$unset": {"decided_suggestion_id": ""}})
     group.pop("decided_suggestion_id", None)
+    await _suggestions_changed(group)
     return {"group": await _serialize_group(db, group, user)}
 
 

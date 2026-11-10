@@ -1,6 +1,7 @@
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { Home, Compass, Briefcase, Users, Ticket, Backpack, BedDouble, HeartPulse, User, Settings, LogOut, PanelLeftClose, PanelLeftOpen, X } from "lucide-react";
 import { useAuth } from "../../context/useAuth";
+import { useUnreadChats } from "../../hooks/useUnreadChats";
 import "./Sidebar.css";
 
 // The single sidebar for the whole logged-in area. It is rendered once, by AppShell, so its open/collapsed
@@ -23,6 +24,7 @@ export default function Sidebar({ isDesktop, collapsed, drawerOpen, onToggleColl
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const rail = isDesktop && collapsed;
+  const unreadChats = useUnreadChats();      // unread group chat messages, shown as a badge on "Groups"
 
   async function handleLogout() {
     onNavigate?.();
@@ -69,6 +71,9 @@ export default function Sidebar({ isDesktop, collapsed, drawerOpen, onToggleColl
             aria-label={rail ? item.label : undefined} title={rail ? item.label : undefined}>
             <item.icon size={19} strokeWidth={1.8} aria-hidden="true" />
             <span>{item.label}</span>
+            {item.to === "/groups" && unreadChats > 0 && (
+              <b className="sidebar__badge" aria-label={`${unreadChats} unread ${unreadChats === 1 ? "message" : "messages"}`}>{unreadChats > 99 ? "99+" : unreadChats}</b>
+            )}
           </NavLink>
         ))}
       </nav>

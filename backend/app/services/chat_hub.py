@@ -48,6 +48,17 @@ class ChatHub:
             except Exception:
                 self.remove(group_id, ws)
 
+    async def broadcast_event(self, group_id: str, event: dict, exclude_user: str | None = None) -> None:
+        """Sends the same small event (e.g. {"type": "suggestions_changed"}) to everyone in the group, optionally
+        skipping one user's own connections."""
+        for ws, user_id in list(self._rooms.get(group_id, {}).items()):
+            if user_id == exclude_user:
+                continue
+            try:
+                await ws.send_json(event)
+            except Exception:
+                self.remove(group_id, ws)
+
     async def close_user(self, group_id: str, user_id: str) -> None:
         """Disconnects one user from a group (used when they leave it)."""
         for ws, uid in list(self._rooms.get(group_id, {}).items()):

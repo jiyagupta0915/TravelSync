@@ -61,3 +61,19 @@
 @media (prefers-reduced-motion: reduce) {
   .sidebar, .sidebar--drawer, .sidebar--drawer.is-open { transition: none; }
 }
+
+/* Unread count on a nav item (group chat messages). A <b>, so the rail's "hide the label span" rule leaves it alone. */
+.sidebar__badge {
+  margin-left: auto;
+  min-width: 20px;
+  padding: 2px 6px;
+  border-radius: var(--radius-pill);
+  background: var(--ink);
+  color: var(--text-on-dark);
+  font-size: 0.68rem;
+  font-weight: 800;
+  line-height: 1.4;
+  text-align: center;
+}
+.sidebar--rail .sidebar__nav-item { position: relative; }
+.sidebar--rail .sidebar__badge { position: absolute; top: 2px; right: 6px; margin: 0; min-width: 16px; padding: 0 4px; font-size: 0.6rem; }

@@ -142,3 +142,15 @@ async def test_travel_health_internal_error_not_leaked(client, monkeypatch):
     monkeypatch.setattr(th, "get_state_profile", lambda *a, **k: (_ for _ in ()).throw(KeyError("/data/idsp.csv")))
     r = await client.get("/api/travel-health/Goa")
     assert r.status_code == 500 and "idsp" not in r.text
+
+
+async def test_destination_profile_from_dataset(client):
+    r = await client.get("/api/destinations/manali")                      # case-insensitive
+    assert r.status_code == 200, r.text
+    d = r.json()["destination"]
+    assert d["name"] == "Manali" and d["state"] == "Himachal Pradesh" and d["region"] == "North"
+    assert d["ideal_days"] == 5 and d["avg_daily_budget_inr"] == 2306
+    assert d["known_for"][:2] == ["Trekking", "Mountain"] and len(d["known_for"]) <= 5 and "Beach" not in d["known_for"]
+    assert d["best_for"][0] == "Friends" and "Solo" not in d["best_for"]
+    assert (await client.get("/api/destinations/Atlantis")).status_code == 404
+    assert (await client.get("/api/destinations/search", params={"q": "goa"})).status_code == 200   # search still reachable

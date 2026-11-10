@@ -125,3 +125,64 @@ def test_deleting_a_message_is_pushed_live(api):
         assert ws_bob.receive_json()["message"]["id"] == msg["id"]
         assert api.delete(f"/api/groups/{group['id']}/messages/{msg['id']}", headers=alice).status_code == 200
         assert ws_bob.receive_json() == {"type": "message_deleted", "id": msg["id"]}
+
+def test_suggestions_votes_and_decisions_are_pushed_live(api):
+    alice = login_as(api, "alice@example.com", "Alice Traveller")
+    bob = login_as(api, "bob@example.com", "Bob Wanderer")
+    group = api.post("/api/groups", json={"name": "Goa Gang"}, headers=alice).json()["group"]
+    gid = group["id"]
+    api.post("/api/groups/join", json={"invite_code": group["invite_code"]}, headers=bob)
+    changed = {"type": "suggestions_changed"}
+    with api.websocket_connect(f"/api/groups/{gid}/ws", headers={**bob, "origin": ORIGIN}) as ws_bob:
+        s = api.post(f"/api/groups/{gid}/suggestions", json={"destination": "Goa", "duration": 4}, headers=alice).json()["suggestion"]
+        card = ws_bob.receive_json()
+        assert card["type"] == "message" and card["message"]["kind"] == "suggestion" and card["message"]["is_me"] is False
+        assert card["message"]["suggestion"]["destination"] == "Goa" and card["message"]["suggestion"]["duration"] == 4
+        assert ws_bob.receive_json() == changed
+
+        assert api.put(f"/api/groups/{gid}/suggestions/{s['id']}/vote", headers=alice).status_code == 200
+        assert ws_bob.receive_json() == changed
+        assert api.post(f"/api/groups/{gid}/decide", json={"suggestion_id": s["id"]}, headers=alice).status_code == 200
+        assert ws_bob.receive_json() == changed
+        assert api.delete(f"/api/groups/{gid}/decision", headers=alice).status_code == 200
+        assert ws_bob.receive_json() == changed
+
+        assert api.delete(f"/api/groups/{gid}/suggestions/{s['id']}", headers=alice).status_code == 200
+        assert ws_bob.receive_json() == {"type": "message_deleted", "id": card["message"]["id"]}
+        assert ws_bob.receive_json() == changed
+
+
+def test_read_receipts_show_who_opened_the_chat_and_are_pushed_live(api):
+    alice = login_as(api, "alice@example.com", "Alice Traveller")
+    bob = login_as(api, "bob@example.com", "Bob Wanderer")
+    group = api.post("/api/groups", json={"name": "Goa Gang"}, headers=alice).json()["group"]
+    gid = group["id"]
+    first = api.post(f"/api/groups/{gid}/messages", json={"text": "one"}, headers=alice).json()["message"]
+    api.post("/api/groups/join", json={"invite_code": group["invite_code"]}, headers=bob)
+
+    def reads(headers):
+        return api.get(f"/api/groups/{gid}/reads", headers=headers).json()["reads"]
+
+    # joining is not opening the chat: Bob has seen nothing yet, and the list never includes yourself
+    assert [(r["name"], r["seen_id"]) for r in reads(alice)] == [("Bob Wanderer", None)]
+    assert [r["name"] for r in reads(bob)] == ["Alice Traveller"]
+
+    with api.websocket_connect(f"/api/groups/{gid}/ws", headers={**alice, "origin": ORIGIN}) as ws_alice:
+        assert api.post(f"/api/groups/{gid}/read", headers=bob).status_code == 200
+        event = ws_alice.receive_json()
+        assert event["type"] == "read" and event["seen_id"] == first["id"]
+        assert reads(alice) == [{"id": event["user_id"], "name": "Bob Wanderer", "seen_id": first["id"]}]
+
+        # a second message is not seen until Bob opens the chat again; re-reading the same state is not re-announced
+        second = api.post(f"/api/groups/{gid}/messages", json={"text": "two"}, headers=alice).json()["message"]
+        assert ws_alice.receive_json()["message"]["id"] == second["id"]
+        assert reads(alice)[0]["seen_id"] == first["id"] and first["id"] < second["id"]
+        api.post(f"/api/groups/{gid}/read", headers=bob)
+        assert ws_alice.receive_json() == {"type": "read", "user_id": event["user_id"], "seen_id": second["id"]}
+        api.post(f"/api/groups/{gid}/read", headers=bob)                  # nothing new: no event
+        api.post(f"/api/groups/{gid}/read", headers=alice)                # your own read is not sent back to you
+        third = api.post(f"/api/groups/{gid}/messages", json={"text": "three"}, headers=alice).json()["message"]
+        assert ws_alice.receive_json()["message"]["id"] == third["id"]   # the next thing Alice hears is the message
+
+    carol = login_as(api, "carol@example.com", "Carol Outsider")
+    assert api.get(f"/api/groups/{gid}/reads", headers=carol).status_code == 404

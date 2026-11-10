@@ -51,6 +51,7 @@ INDEXES: list[tuple[str, list[tuple[str, int]], dict]] = [
     ("group_suggestions", [("group_id", 1), ("destination_key", 1)], {"unique": True}),
     ("group_messages", [("group_id", 1), ("created_at", 1)], {}),
     ("group_votes", [("group_id", 1), ("user_id", 1)], {"unique": True}),
+    ("group_reads", [("group_id", 1), ("user_id", 1)], {"unique": True}),
     ("bookings", [("user_id", 1), ("trip_id", 1), ("created_at", -1)], {}),
     ("notifications", [("user_id", 1), ("created_at", -1)], {}),
 ]

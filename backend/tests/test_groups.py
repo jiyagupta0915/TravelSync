@@ -180,3 +180,67 @@ async def test_notifications_are_real_events_and_private(client, client_b, alice
     assert (await client.get("/api/notifications")).json()["unread_count"] == 1
     assert (await client.post("/api/notifications/read-all")).json()["unread_count"] == 0
     assert (await client.post("/api/notifications/zzz/read")).status_code == 400
+
+
+async def test_suggestion_appears_in_chat_as_a_card_and_is_withdrawn_with_it(client, client_b, alice, bob):
+    g = await make_group(client)
+    gid = g["id"]
+    await client_b.post("/api/groups/join", json={"invite_code": g["invite_code"]})
+    s = (await client.post(f"/api/groups/{gid}/suggestions", json={
+        "destination": "goa", "note": "Beaches", "budget": 20000, "duration": 4, "preferences": ["Beach"]})).json()["suggestion"]
+
+    msgs = (await client_b.get(f"/api/groups/{gid}/messages")).json()["messages"]
+    assert len(msgs) == 1
+    card = msgs[0]
+    assert card["kind"] == "suggestion" and card["author"] == "Alice Traveller" and card["is_me"] is False and card["deleted"] is False
+    assert card["suggestion"] == {"id": s["id"], "destination": "Goa", "state": s["state"], "note": "Beaches", "budget": 20000,
+                                  "duration": 4, "preferences": ["Beach"], "places": s["places"]}
+
+    # an ordinary message is still kind "text"; a card can't be deleted as a chat message
+    plain = (await client.post(f"/api/groups/{gid}/messages", json={"text": "thoughts?"})).json()["message"]
+    assert plain["kind"] == "text" and "suggestion" not in plain
+    assert (await client.delete(f"/api/groups/{gid}/messages/{card['id']}")).status_code == 409
+
+    # removing the suggestion withdraws its card
+    assert (await client.delete(f"/api/groups/{gid}/suggestions/{s['id']}")).status_code == 200
+    after = (await client_b.get(f"/api/groups/{gid}/messages")).json()["messages"]
+    assert after[0]["id"] == card["id"] and after[0]["deleted"] is True and after[0]["kind"] == "suggestion"
+    assert after[0]["text"] == "" and "suggestion" not in after[0]
+
+
+async def test_unread_counts_and_marking_the_chat_read(client, client_b, alice, bob):
+    g = await make_group(client)
+    gid = g["id"]
+    await client.post(f"/api/groups/{gid}/messages", json={"text": "before bob joined"})
+    await client_b.post("/api/groups/join", json={"invite_code": g["invite_code"]})
+
+    async def unread(c):
+        listing = (await c.get("/api/groups")).json()["groups"][0]["unread_count"]
+        summary = (await c.get("/api/groups/unread")).json()
+        assert summary["total"] == listing and summary["groups"] == ({gid: listing} if listing else {})
+        return listing
+
+    assert await unread(client_b) == 0                                   # history from before joining is not "unread"
+    await client.post(f"/api/groups/{gid}/messages", json={"text": "one"})
+    doomed = (await client.post(f"/api/groups/{gid}/messages", json={"text": "two"})).json()["message"]
+    await client.post(f"/api/groups/{gid}/suggestions", json={"destination": "Goa"})          # its chat card counts too
+    assert await unread(client_b) == 3
+    assert await unread(client) == 0                                     # your own messages are never unread
+
+    await client.delete(f"/api/groups/{gid}/messages/{doomed['id']}")    # deleted messages stop counting
+    assert await unread(client_b) == 2
+
+    assert (await client_b.post(f"/api/groups/{gid}/read")).json() == {"read": True}
+    assert await unread(client_b) == 0
+    await client_b.post(f"/api/groups/{gid}/messages", json={"text": "reply"})
+    assert await unread(client_b) == 0 and await unread(client) == 1
+
+    # members only, and login required
+    carol = await third_user()
+    try:
+        assert (await carol.post(f"/api/groups/{gid}/read")).status_code == 404
+        assert (await carol.get("/api/groups/unread")).json() == {"total": 0, "groups": {}}
+    finally:
+        await carol.aclose()
+    async with make_client() as anon:
+        assert (await anon.get("/api/groups/unread")).status_code == 401

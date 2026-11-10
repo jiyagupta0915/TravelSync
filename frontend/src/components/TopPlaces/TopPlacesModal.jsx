@@ -4,7 +4,8 @@ import TopPlaces from "./TopPlaces";
 import "./TopPlaces.css";
 
 // onChoose is optional: leave it out (e.g. for already-saved trips) and the modal just shows a Close button.
-export default function TopPlacesModal({ destination, onClose, onChoose, choosing = false, closeLabel = onChoose ? "Back to matches" : "Close" }) {
+// `children` (optional) is shown above the places list, e.g. a destination overview; `label` names the dialog then.
+export default function TopPlacesModal({ destination, onClose, onChoose, choosing = false, closeLabel = onChoose ? "Back to matches" : "Close", children, label }) {
   useEffect(() => {
     if (!destination) return undefined;
     const onKeyDown = (event) => { if (event.key === "Escape") onClose(); };
@@ -25,13 +26,14 @@ export default function TopPlacesModal({ destination, onClose, onChoose, choosin
         className="places-modal__panel"
         role="dialog"
         aria-modal="true"
-        aria-label={`Top places in ${destination}`}
+        aria-label={label || `Top places in ${destination}`}
         onClick={(event) => event.stopPropagation()}
       >
         <button type="button" className="places-modal__close" onClick={onClose} aria-label="Close">
           <X size={18} />
         </button>
         <div className="places-modal__scroll">
+          {children}
           <TopPlaces destination={destination} />
         </div>
         <div className="places-modal__footer">

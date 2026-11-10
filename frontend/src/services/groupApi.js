@@ -25,6 +25,11 @@ export function chatSocketUrl(id) {
   const base = import.meta.env.VITE_API_BASE_URL || window.location.origin;
   return `${base.replace(/^http/, "ws")}${g(id)}/ws`;
 }
+// Unread chat messages: { total, groups: { [groupId]: count } } across the user's groups, and "I've seen this chat".
+export const getUnreadChats = (signal) => apiRequest("/api/groups/unread", { signal });
+export const markChatRead = (id) => apiRequest(`${g(id)}/read`, { method: "POST" });
+// Read receipts: [{ id, name, seen_id }] for the other members. A message with id <= seen_id was seen by that member.
+export const listReads = (id, signal) => apiRequest(`${g(id)}/reads`, { signal });
 export const sendMessage = (id, text) => apiRequest(`${g(id)}/messages`, { method: "POST", body: { text } });
 
 export const listSuggestions = (id) => apiRequest(`${g(id)}/suggestions`, { fallbackMessage: "Suggestions could not be loaded." });
