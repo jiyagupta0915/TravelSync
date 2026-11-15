@@ -43,6 +43,7 @@ INDEXES: list[tuple[str, list[tuple[str, int]], dict]] = [
     ("packing_lists", [("trip_id", 1)], {"unique": True}),
     ("stay_cache", [("fetched_at", 1)], {"expireAfterSeconds": 7 * 24 * 60 * 60}),
     ("saved_stays", [("trip_id", 1), ("stay_key", 1)], {"unique": True}),
+    ("map_distance_cache", [("fetched_at", 1)], {"expireAfterSeconds": 24 * 60 * 60}),
     ("password_resets", [("token_hash", 1)], {"unique": True}),
     ("password_resets", [("expires_at", 1)], {"expireAfterSeconds": 0}),
     ("groups", [("invite_code", 1)], {"unique": True}),

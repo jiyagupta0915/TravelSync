@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import Landing from "../pages/Landing/Landing";
 import Login from "../pages/Auth/Login";
@@ -22,6 +23,8 @@ import Settings from "../pages/Account/Settings";
 import NotFound from "../pages/NotFound/NotFound";
 import ProtectedRoute from "./ProtectedRoute";
 import AppShell from "../components/AppShell/AppShell";
+// The map page (and the Leaflet library) is loaded only when someone opens a trip map.
+const TripMapPage = lazy(() => import("../pages/Trips/TripMapPage"));
 
 // All routes live here.
 //  * Public pages: landing, auth, password recovery.
@@ -44,6 +47,7 @@ export default function AppRoutes() {
           <Route path="/home" element={<Home />} />
           <Route path="/trips" element={<MyTrips />} />
           <Route path="/trip/:tripId" element={<TripHub />} />
+          <Route path="/trip/:tripId/map" element={<Suspense fallback={<div className="dashboard__empty">Loading the map…</div>}><TripMapPage /></Suspense>} />
           <Route path="/packing" element={<PackingHome />} />
           <Route path="/trip/:tripId/packing" element={<PackingAssistant />} />
           <Route path="/stays" element={<StaysHome />} />

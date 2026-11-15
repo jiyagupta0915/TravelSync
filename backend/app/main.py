@@ -16,7 +16,7 @@ from app.core.error_handlers import register_error_handlers
 from app.database import close_mongo_connection, connect_to_mongo
 from app.routers import (
     auth, bookings, chat, destinations, groups, meta, notifications, packing, places, recommend, stays,
-    travel_health, trip_manage, trips, users,
+    travel_health, trip_manage, trips, trip_map, users,
 )
 
 logging.basicConfig(level=logging.INFO)
@@ -69,6 +69,7 @@ app.include_router(destinations.router)
 app.include_router(recommend.router)
 app.include_router(trips.router)
 app.include_router(trip_manage.router)
+app.include_router(trip_map.router)
 app.include_router(packing.router)
 app.include_router(travel_health.router)
 app.include_router(places.router)

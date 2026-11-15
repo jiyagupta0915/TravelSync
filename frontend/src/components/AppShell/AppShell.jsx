@@ -3,6 +3,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import Sidebar from "../Sidebar/Sidebar";
 import AppTopbar from "./AppTopbar";
 import ChatWidget from "../ChatWidget/ChatWidget";
+import FloatingMap from "../FloatingMap/FloatingMap";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import "./AppShell.css";
 
@@ -82,7 +83,7 @@ export default function AppShell() {
           <Outlet />
         </div>
       </div>
-
+      <FloatingMap />
       <ChatWidget />
     </div>
   );

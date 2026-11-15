@@ -1,0 +1,93 @@
+/* Floating map: a round launcher sitting just left of the assistant's launcher, and the panel that opens above.
+   It uses the same layer as the assistant (below modals at 1200). The panel is one step higher, so if both panels are
+   open the map is on top. Closing it shows the assistant again. */
+.floating-map {
+  position: fixed;
+  right: var(--space-5);
+  bottom: calc(var(--space-5) + 56px + var(--space-3));
+  z-index: 1100;
+}
+/* While open, rise one step above the assistant. The panel lives inside this element, so its own z-index only
+   counts inside it: this is what puts the whole panel (and the phone bottom sheet) above the assistant's button. */
+.floating-map.is-open { z-index: 1101; }
+
+.floating-map__launcher {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--surface-white);
+  color: var(--ink);
+  border: 1px solid rgba(39, 35, 66, 0.15);
+  box-shadow: var(--shadow-lg);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+.floating-map__launcher:hover { background: var(--pastel-lavender); transform: translateY(-2px); }
+.floating-map__launcher[aria-expanded="true"] { background: var(--pastel-lavender); }
+
+.floating-map__panel {
+  position: fixed;
+  right: var(--space-5);
+  bottom: calc(var(--space-5) + 2*(56px + var(--space-3)));
+  z-index: 1101;
+  width: min(460px, calc(100vw - 2 * var(--space-4)));
+  height: min(700px, calc(100dvh - 190px));
+  display: flex;
+  flex-direction: column;
+  background: var(--surface-white);
+  border: 1px solid rgba(39, 35, 66, 0.1);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+.floating-map__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: 12px 14px;
+  background: var(--pastel-lavender);
+}
+.floating-map__title { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.floating-map__title strong { font-family: var(--font-display); font-size: 1.05rem; white-space: nowrap; }
+.floating-map__title select {
+  min-width: 0;
+  max-width: 190px;
+  padding: 6px 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(39, 35, 66, 0.18);
+  background: var(--surface-white);
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--ink);
+}
+.floating-map__actions { display: flex; align-items: center; gap: 2px; flex-shrink: 0; }
+.floating-map__actions a,
+.floating-map__actions button { padding: 7px; border-radius: 10px; line-height: 0; color: var(--ink-soft); }
+.floating-map__actions a:hover,
+.floating-map__actions button:hover { background: rgba(39, 35, 66, 0.08); }
+
+.floating-map__body { flex: 1; overflow-y: auto; padding: var(--space-3) 14px var(--space-4); }
+.floating-map__status { margin-bottom: var(--space-3); color: var(--text-secondary); font-size: 0.8rem; line-height: 1.55; }
+.floating-map__status a { font-weight: 800; color: var(--ink); text-decoration: underline; }
+.floating-map__status--error { padding: 8px 12px; border-radius: 10px; background: var(--pastel-pink); color: #7c3c3c; font-weight: 800; }
+
+/* Phones: the panel becomes a bottom sheet. */
+@media (max-width: 520px) {
+  .floating-map { right: var(--space-3); bottom: calc(var(--space-3) + 56px + var(--space-3)); }
+  .floating-map__panel {
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 86dvh;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  }
+}
+.floating-map ~ .chat-widget .chat-widget__panel {
+  margin-bottom: calc(56px + var(--space-3));
+  height: min(540px, calc(100dvh - 188px));
+}

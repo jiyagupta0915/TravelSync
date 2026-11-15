@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import {
-  ArrowLeft, Backpack, BedDouble, CalendarDays, HeartPulse, MapPin, Star, Ticket, Trash2, Users, WalletCards,
+  ArrowLeft, Backpack, BedDouble, CalendarDays, HeartPulse,Map as MapIcon, MapPin, Star, Ticket, Trash2, Users, WalletCards,
 } from "lucide-react";
 import DeleteTripDialog from "../../components/DeleteTripDialog/DeleteTripDialog";
 import TopPlacesModal from "../../components/TopPlaces/TopPlacesModal";
@@ -245,6 +245,7 @@ export default function TripHub() {
             )}
           </div>
           <div className="hub-header__actions">
+            <button type="button" className="hub-button" onClick={() => navigate(`/trip/${trip.id}/map`)}><MapIcon size={15} /> View map</button>            
             <button type="button" className="hub-button" onClick={() => setShowPlaces(true)}>Top 5 places</button>
             <button type="button" className="hub-button hub-button--danger" onClick={() => setShowDelete(true)}>
               <Trash2 size={15} /> Delete trip
