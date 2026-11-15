@@ -1,3 +1,4 @@
+import asyncio
 import httpx
 import pytest
 
@@ -110,3 +111,11 @@ async def test_forecast_tier_used_when_provider_answers(client, alice, monkeypat
     r = await client.post(f"/api/trips/{trip['id']}/packing-list", json={})
     pl = r.json()["packing_list"]
     assert pl["tier"] == "forecast" and any(i["name"] == "Umbrella" for i in pl["items"])
+
+async def test_concurrent_first_generate_creates_exactly_one_list(client, alice):
+    trip = await create_trip(client)
+    url = f"/api/trips/{trip['id']}/packing-list"
+    results = await asyncio.gather(*[client.post(url, json={}) for _ in range(5)])
+    statuses = sorted(r.status_code for r in results)
+    assert statuses == [201, 409, 409, 409, 409]
+    assert (await client.get(url)).status_code == 200

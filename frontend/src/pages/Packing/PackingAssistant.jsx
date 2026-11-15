@@ -60,13 +60,20 @@ export default function PackingAssistant() {
     async function load() {
       try {
         const { trip } = await getTrip(tripId);
-        let list;
+                let list;
         try {
           ({ packing_list: list } = await getPackingList(tripId));
         } catch (err) {
           // Only "there is no list yet" means generate one. Network/auth/server problems must NOT silently create data.
           if (err.status !== 404) throw err;
-          ({ packing_list: list } = await generatePackingList(tripId));
+          try {
+            ({ packing_list: list } = await generatePackingList(tripId));
+          } catch (generateErr) {
+            // 409 means another request created the list first (StrictMode's double effect, a double click,
+            // a second tab). That list is the one we want, so load it. Any other error is a real error.
+            if (generateErr.status !== 409) throw generateErr;
+            ({ packing_list: list } = await getPackingList(tripId));
+          }
         }
         if (!active) return;
         confirmedItems.current = list.items;

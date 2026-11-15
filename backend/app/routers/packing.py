@@ -1,3 +1,4 @@
+from pymongo.errors import DuplicateKeyError
 from datetime import date, datetime, timedelta, timezone
 
 from bson import ObjectId
@@ -11,6 +12,7 @@ from app.routers.trips import get_owned_trip as _get_owned_trip
 from app.services.packing_engine import REGION_CLIMATE, build_checklist, fetch_weather_summary
 
 router = APIRouter(prefix="/api/trips/{trip_id}/packing-list", tags=["packing"])
+ALREADY_EXISTS = "A packing list already exists for this trip. Pass regenerate=true to overwrite."
 
 
 def _serialize(doc: dict) -> dict:
@@ -46,7 +48,7 @@ async def generate_packing_list(
     if existing is not None and not payload.regenerate:
         raise HTTPException(
             status_code=409,
-            detail="A packing list already exists for this trip. Pass regenerate=true to overwrite.",
+            detail=ALREADY_EXISTS,
         )
 
     tier, condition, weather_summary = "climate", None, None
@@ -67,24 +69,38 @@ async def generate_packing_list(
 
     new_items = build_checklist(trip.get("duration"), condition, payload.activities)
 
-    if existing is not None:
-        # Merge: keep packed state and any custom items, replace rule-suggested ones.
-        kept = [item for item in existing["items"] if item.get("packed") or item.get("source") == "custom"]
-        kept_names = {item["name"] for item in kept}
-        merged = kept + [item for item in new_items if item["name"] not in kept_names]
-    else:
-        merged = new_items
-
     now = datetime.now(timezone.utc)
+
+    if existing is None:
+        doc = {
+            "trip_id": object_id,
+            "tier": tier,
+            "weather_summary": weather_summary,
+            "items": new_items,
+            "generated_at": now,
+            "updated_at": now,
+        }
+        try:
+            # insert_one plus the unique index on trip_id makes creation atomic: if two requests race,
+            # exactly one inserts and the other gets DuplicateKeyError.
+            await db.packing_lists.insert_one(doc)
+        except DuplicateKeyError:
+            raise HTTPException(status_code=409, detail=ALREADY_EXISTS)
+        return {"packing_list": _serialize(doc)}
+
+    # Regenerate: keep packed state and any custom items, replace rule-suggested ones.
+    kept = [item for item in existing["items"] if item.get("packed") or item.get("source") == "custom"]
+    kept_names = {item["name"] for item in kept}
+    merged = kept + [item for item in new_items if item["name"] not in kept_names]
+
     doc = {
         "trip_id": object_id,
         "tier": tier,
         "weather_summary": weather_summary,
         "items": merged,
-        "generated_at": existing["generated_at"] if existing else now,
+        "generated_at": existing["generated_at"],
         "updated_at": now,
     }
-
     await db.packing_lists.update_one({"trip_id": object_id}, {"$set": doc}, upsert=True)
     return {"packing_list": _serialize(doc)}
 
