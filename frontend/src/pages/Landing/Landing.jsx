@@ -18,16 +18,16 @@ import Footer from "../../components/Footer/Footer";
 import "./Landing.css";
 
 const features = [
-  { icon: Compass, title: "Smart Trip Planner", description: "Personalized destination discovery based on travel preferences.", accent: "var(--pastel-blue)" },
-  { icon: MapPin, title: "Explore Places & Hotels", description: "Discover attractions, places and recommended stays.", accent: "var(--pastel-aqua)" },
-  { icon: CloudSun, title: "Weather Updates", description: "Destination-specific weather information for better planning.", accent: "var(--pastel-peach)" },
-  { icon: Package, title: "Smart Packing Assistant", description: "Personalized packing suggestions based on destination, weather and duration.", accent: "var(--pastel-peach)" },
-  { icon: ShieldCheck, title: "Travel Health & Safety", description: "Destination-specific health information, alerts and historical insights.", accent: "var(--pastel-aqua)" },
-  { icon: Users, title: "Collaborative Travel Hub", description: "Create groups, communicate and plan together.", accent: "var(--pastel-pink)" },
-  { icon: Vote, title: "Destination Voting", description: "Share destination options and decide together as a group.", accent: "var(--pastel-pink)" },
-  { icon: Ticket, title: "Bookings & Tickets", description: "Keep travel-related booking information organized.", accent: "var(--pastel-blue)" },
-  { icon: History, title: "Travel History", description: "Access previous trips and travel information.", accent: "var(--pastel-lavender)" },
-  { icon: Sparkles, title: "AI Travel Assistant", description: "Conversational assistance for travel-related questions.", accent: "var(--pastel-lavender)" },
+  { icon: Compass, title: "Smart Trip Planner", description: "Personalized destination discovery based on travel preferences.", accent: "var(--pastel-blue)", to: "/planner/recommend" },
+  { icon: MapPin, title: "Explore Places & Hotels", description: "Discover attractions, places and recommended stays.", accent: "var(--pastel-aqua)", to: "/stays" },
+  { icon: CloudSun, title: "Weather Updates", description: "Destination-specific weather information for better planning.", accent: "var(--pastel-peach)", to: "/packing" },
+  { icon: Package, title: "Smart Packing Assistant", description: "Personalized packing suggestions based on destination, weather and duration.", accent: "var(--pastel-peach)", to: "/packing" },
+  { icon: ShieldCheck, title: "Travel Health & Safety", description: "Destination-specific health information, alerts and historical insights.", accent: "var(--pastel-aqua)", to: "/health" },
+  { icon: Users, title: "Collaborative Travel Hub", description: "Create groups, communicate and plan together.", accent: "var(--pastel-pink)", to: "/groups" },
+  { icon: Vote, title: "Destination Voting", description: "Share destination options and decide together as a group.", accent: "var(--pastel-pink)", to: "/groups" },
+  { icon: Ticket, title: "Bookings & Tickets", description: "Keep travel-related booking information organized.", accent: "var(--pastel-blue)", to: "/bookings" },
+  { icon: History, title: "Travel History", description: "Access previous trips and travel information.", accent: "var(--pastel-lavender)", to: "/trips" },
+  { icon: Sparkles, title: "AI Travel Assistant", description: "Conversational assistance for travel-related questions.", accent: "var(--pastel-lavender)", to: "/home", state: { openAssistant: true } },
 ];
 
 const preferenceChips = [
@@ -158,6 +158,8 @@ export default function Landing() {
                 title={feature.title}
                 description={feature.description}
                 accentColor={feature.accent}
+                to={feature.to}
+                state={feature.state}
               />
             ))}
           </div>

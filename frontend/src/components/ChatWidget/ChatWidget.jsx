@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { MessageCircle, Send, X } from "lucide-react";
 import { askAssistant } from "../../services/chatApi";
 import "./ChatWidget.css";
@@ -15,7 +15,9 @@ const WELCOME = {
 // conversation survives moving between pages and is discarded on logout. Answers come from POST /api/chat, which
 // is built on TravelSync's own data; if the server used its optional AI model instead, the answer is labelled.
 export default function ChatWidget() {
-  const [open, setOpen] = useState(false);
+  const location = useLocation();
+  // The landing page's "AI Travel Assistant" card sends you to /home with this flag, so the chat starts open.
+  const [open, setOpen] = useState(() => Boolean(location.state?.openAssistant));
   const [messages, setMessages] = useState([WELCOME]);
   const [text, setText] = useState("");
   const [busy, setBusy] = useState(false);
