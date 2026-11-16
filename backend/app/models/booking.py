@@ -36,7 +36,18 @@ class BookingBase(BaseModel):
 
 
 class BookingCreate(BookingBase):
-    trip_id: str = Field(min_length=24, max_length=24)
+    """A booking belongs to EITHER one of the user's own trips (personal) OR a group they are in (shared)."""
+    trip_id: Optional[str] = Field(default=None, min_length=24, max_length=24)
+    group_id: Optional[str] = Field(default=None, min_length=24, max_length=24)
+    share_to_chat: bool = False        # group bookings only: also post a card into the group chat
+
+    @model_validator(mode="after")
+    def _one_scope(self):
+        if bool(self.trip_id) == bool(self.group_id):
+            raise ValueError("Attach the booking to either a trip or a group.")
+        if self.share_to_chat and not self.group_id:
+            raise ValueError("Only group bookings can be shared to a group chat.")
+        return self
 
 
 class BookingUpdate(BookingBase):

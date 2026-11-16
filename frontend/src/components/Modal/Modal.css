@@ -1,0 +1,22 @@
+.modal { position: fixed; inset: 0; z-index: 1200; display: flex; align-items: center; justify-content: center; padding: var(--space-4); background: rgba(39, 35, 66, 0.45); }
+.modal--top { z-index: 1300; }
+.modal__panel { width: min(640px, 100%); max-height: calc(100vh - 2 * var(--space-4)); display: flex; flex-direction: column; background: var(--surface-white); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); outline: none; }
+.modal__panel--sm { width: min(440px, 100%); }
+.modal__panel--lg { width: min(780px, 100%); }
+.modal__head { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-5) var(--space-6) var(--space-3); }
+.modal__icon { width: 42px; height: 42px; border-radius: var(--radius-md); background: var(--pastel-lavender); color: var(--ink-soft); display: grid; place-items: center; flex-shrink: 0; }
+.modal__title { flex: 1; min-width: 0; margin: 0; font-size: 1.2rem; overflow-wrap: anywhere; }
+.modal__close { width: 34px; height: 34px; border: 0; border-radius: 50%; background: transparent; color: var(--ink-soft); display: grid; place-items: center; cursor: pointer; flex-shrink: 0; }
+.modal__close:hover:not(:disabled) { background: var(--pastel-lavender); }
+.modal__body { padding: 0 var(--space-6) var(--space-6); overflow-y: auto; }
+.modal__text { color: var(--text-secondary); font-size: 0.88rem; line-height: 1.6; margin-bottom: var(--space-4); }
+.modal__text p { margin: 0 0 var(--space-2); }
+.modal__actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: var(--space-3); margin-top: var(--space-5); }
+.modal__danger { padding: 10px 20px; border: 0; border-radius: var(--radius-pill); background: #8a2f2f; color: #fff; font: inherit; font-weight: 800; cursor: pointer; }
+.modal__danger:hover:not(:disabled) { background: #6f2424; }
+.modal__danger:disabled { opacity: 0.6; cursor: not-allowed; }
+@media (max-width: 560px) {
+  .modal { padding: var(--space-2); align-items: flex-end; }
+  .modal__head { padding: var(--space-4) var(--space-4) var(--space-2); }
+  .modal__body { padding: 0 var(--space-4) var(--space-4); }
+}

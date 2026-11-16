@@ -84,8 +84,9 @@ export async function apiRequest(path, { method = "GET", body, signal, fallbackM
     response = await fetch(`${API_BASE_URL}${path}`, {
       method,
       credentials: "include",
-      headers: body !== undefined ? { "Content-Type": "application/json", Accept: "application/json" } : { Accept: "application/json" },
-      body: body !== undefined ? JSON.stringify(body) : undefined,
+      // A FormData body (file upload) must NOT get a Content-Type from us: the browser adds the multipart boundary.
+      headers: body === undefined || body instanceof FormData ? { Accept: "application/json" } : { "Content-Type": "application/json", Accept: "application/json" },
+      body: body === undefined ? undefined : body instanceof FormData ? body : JSON.stringify(body),
       signal,
     });
   } catch (error) {

@@ -29,6 +29,7 @@ from pymongo.errors import DuplicateKeyError
 
 from app.config import settings
 from app.database import get_db
+from app.services.booking_files import delete_bookings_cascade
 from app.dependencies import require_current_user, user_from_token
 from app.models.group import DecideRequest, GroupCreate, JoinGroup, MessageCreate, SuggestionCreate
 from app.services.notifications import notify, object_id_or_none
@@ -70,6 +71,8 @@ def _message_out(doc: dict, author: str) -> dict:
            "created_at": doc["created_at"].replace(tzinfo=timezone.utc).isoformat(), "author": author, "deleted": deleted}
     if kind == "suggestion" and not deleted:
         out["suggestion"] = doc.get("suggestion")
+    if kind == "booking" and not deleted:
+        out["booking"] = doc.get("booking")
     return out
 
 
@@ -201,6 +204,7 @@ async def delete_group(group_id: str, user: dict = Depends(require_current_user)
     db = get_db()
     group = await get_member_group(group_id, user)
     _require_owner(group, user)
+    await delete_bookings_cascade(db, {"group_id": group["_id"]})   # shared bookings + their uploaded files
     for name in ("group_messages", "group_suggestions", "group_votes", "group_reads"):
         await db[name].delete_many({"group_id": group["_id"]})
     await db.groups.delete_one({"_id": group["_id"], "owner_id": user["_id"]})
