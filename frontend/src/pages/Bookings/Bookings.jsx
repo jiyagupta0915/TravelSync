@@ -1,212 +1,171 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { Bed, Bus, Plane, Plus, Ticket, Trash2, Train, Pencil, Sparkles } from "lucide-react";
-import NumberField from "../../components/NumberField/NumberField";
+import { ChevronRight, ExternalLink, FileText, Pencil, Plus, Ticket, Trash2, Users } from "lucide-react";
+import Modal from "../../components/Modal/Modal";
+import ConfirmDialog from "../../components/Modal/ConfirmDialog";
 import { getTrips } from "../../services/tripApi";
-import { createBooking, deleteBooking, listBookings, updateBooking } from "../../services/bookingApi";
-import { parsePositiveInteger } from "../../utils/numberField";
+import { listGroups } from "../../services/groupApi";
+import { bookingFileUrl, deleteBooking, deleteBookingFile, listBookings, shareBookingToChat } from "../../services/bookingApi";
+import { normalizeBooking } from "../../utils/bookingFiles";
+import BookingDetails from "./BookingDetails";
+import BookingForm from "./BookingForm";
+import { EMPTY_BOOKING, formatRange, kindOf } from "./bookingKinds";
 import "../../styles/appPages.css";
 import "./Bookings.css";
 
-const KINDS = [
-  { id: "hotel", label: "Hotel / stay", icon: Bed },
-  { id: "flight", label: "Flight", icon: Plane },
-  { id: "train", label: "Train", icon: Train },
-  { id: "bus", label: "Bus", icon: Bus },
-  { id: "activity", label: "Activity / ticket", icon: Sparkles },
-  { id: "other", label: "Other", icon: Ticket },
-];
-const KIND = Object.fromEntries(KINDS.map((k) => [k.id, k]));
-const EMPTY = { trip_id: "", kind: "hotel", title: "", provider: "", reference: "", start_date: "", end_date: "", amount: "", notes: "" };
-
-const formatDate = (iso) => (iso ? new Intl.DateTimeFormat("en-IN", { day: "numeric", month: "short", year: "numeric" }).format(new Date(`${iso}T00:00:00`)) : "");
-
-function BookingForm({ trips, initial, editingId, onSaved, onCancel }) {
-  const [form, setForm] = useState(initial);
-  const [errors, setErrors] = useState({});
-  const [formError, setFormError] = useState("");
-  const [saving, setSaving] = useState(false);
-  const set = (key) => (e) => { setForm((f) => ({ ...f, [key]: e.target.value })); setErrors((er) => ({ ...er, [key]: undefined })); };
-
-  async function handleSubmit(event) {
-    event.preventDefault();
-    if (saving) return;
-    const next = {};
-    if (!form.trip_id) next.trip_id = "Choose which trip this belongs to.";
-    if (!form.title.trim()) next.title = "Give this booking a title.";
-    if (form.start_date && form.end_date && form.end_date < form.start_date) next.end_date = "The end date can't be earlier than the start date.";
-    let amount = null;
-    if (form.amount !== "") {
-      const parsed = parsePositiveInteger(form.amount, { label: "the amount", min: 0, max: 100_000_000 });
-      if (parsed.ok) amount = parsed.value; else next.amount = parsed.error;
-    }
-    setErrors(next); setFormError("");
-    if (Object.keys(next).length) return;
-
-    const body = {
-      kind: form.kind, title: form.title.trim(), provider: form.provider.trim(), reference: form.reference.trim(),
-      start_date: form.start_date || null, end_date: form.end_date || null, amount_inr: amount, notes: form.notes.trim(),
-    };
-    setSaving(true);
-    try {
-      const { booking } = editingId ? await updateBooking(editingId, body) : await createBooking({ ...body, trip_id: form.trip_id });
-      onSaved(booking);
-    } catch (err) {
-      setFormError(err.message);
-    } finally {
-      setSaving(false);
-    }
-  }
-
-  return (
-    <form className="ts-card" onSubmit={handleSubmit} noValidate aria-label={editingId ? "Edit booking" : "Add a booking"}>
-      <h2>{editingId ? "Edit booking" : "Add a booking"}</h2>
-      <p className="ts-muted">Record a reservation you made elsewhere. TravelSync keeps your details in one place; it doesn't book or confirm anything for you.</p>
-      <div className="ts-form ts-form--wide">
-        <div className="ts-field">
-          <label htmlFor="bk-trip">Trip</label>
-          <select id="bk-trip" value={form.trip_id} onChange={set("trip_id")} disabled={Boolean(editingId)} aria-invalid={Boolean(errors.trip_id) || undefined}>
-            <option value="">Select a trip…</option>
-            {trips.map((t) => <option key={t.id} value={t.id}>{t.destination}{t.duration ? ` · ${t.duration} days` : ""}</option>)}
-          </select>
-          {errors.trip_id && <span className="ts-error" role="alert">{errors.trip_id}</span>}
-        </div>
-        <div className="ts-field">
-          <label htmlFor="bk-kind">Type</label>
-          <select id="bk-kind" value={form.kind} onChange={set("kind")}>{KINDS.map((k) => <option key={k.id} value={k.id}>{k.label}</option>)}</select>
-        </div>
-        <div className="ts-field">
-          <label htmlFor="bk-title">Title</label>
-          <input id="bk-title" value={form.title} maxLength={100} onChange={set("title")} placeholder="e.g. Taj Resort, DEL → GOI" aria-invalid={Boolean(errors.title) || undefined} />
-          {errors.title && <span className="ts-error" role="alert">{errors.title}</span>}
-        </div>
-        <div className="ts-field">
-          <label htmlFor="bk-provider">Provider <span className="ts-hint">(optional)</span></label>
-          <input id="bk-provider" value={form.provider} maxLength={80} onChange={set("provider")} />
-        </div>
-        <div className="ts-field">
-          <label htmlFor="bk-ref">Confirmation / ticket number <span className="ts-hint">(optional)</span></label>
-          <input id="bk-ref" value={form.reference} maxLength={60} onChange={set("reference")} autoComplete="off" />
-        </div>
-        <div className="ts-field">
-          <label htmlFor="bk-amount">Amount paid <span className="ts-hint">(optional)</span></label>
-          <div className="ts-input-unit"><b>₹</b><NumberField id="bk-amount" value={form.amount} maxLength={9} onChange={(v) => { setForm((f) => ({ ...f, amount: v })); setErrors((er) => ({ ...er, amount: undefined })); }} invalid={Boolean(errors.amount)} /></div>
-          {errors.amount && <span className="ts-error" role="alert">{errors.amount}</span>}
-        </div>
-        <div className="ts-field">
-          <label htmlFor="bk-start">Start date</label>
-          <input id="bk-start" type="date" value={form.start_date} onChange={set("start_date")} />
-        </div>
-        <div className="ts-field">
-          <label htmlFor="bk-end">End date</label>
-          <input id="bk-end" type="date" value={form.end_date} min={form.start_date || undefined} onChange={set("end_date")} aria-invalid={Boolean(errors.end_date) || undefined} />
-          {errors.end_date && <span className="ts-error" role="alert">{errors.end_date}</span>}
-        </div>
-        <div className="ts-field" style={{ gridColumn: "1 / -1" }}>
-          <label htmlFor="bk-notes">Notes <span className="ts-hint">(optional)</span></label>
-          <textarea id="bk-notes" value={form.notes} maxLength={500} onChange={set("notes")} />
-        </div>
-      </div>
-      {formError && <div className="ts-alert ts-alert--error" role="alert">{formError}</div>}
-      <div className="ts-actions">
-        <button type="submit" className="btn btn--primary" disabled={saving}>{saving ? "Saving…" : editingId ? "Save changes" : "Add booking"}</button>
-        <button type="button" className="ts-btn-secondary" onClick={onCancel} disabled={saving}>Cancel</button>
-      </div>
-    </form>
-  );
-}
-
 export default function Bookings() {
   const [params, setParams] = useSearchParams();
-  const tripFilter = params.get("trip") || "";
-  const [state, setState] = useState({ status: "loading", trips: [], bookings: [], error: "" });
+  const filter = params.get("group") ? `group:${params.get("group")}` : params.get("trip") ? `trip:${params.get("trip")}` : "";
+  const [state, setState] = useState({ status: "loading", trips: [], groups: [], bookings: [], error: "" });
   const [reloadKey, setReloadKey] = useState(0);
-  const [formState, setFormState] = useState(null);   // null | {initial, editingId}
+  const [modal, setModal] = useState(null);       // null | { mode: "add", initial } | { mode: "view" | "edit", id }
+  const [confirm, setConfirm] = useState(null);   // null | { booking } (delete booking) | { booking, file } (remove file)
+  const [confirmBusy, setConfirmBusy] = useState(false);
+  const [confirmError, setConfirmError] = useState("");
   const [actionError, setActionError] = useState("");
-  const [deleting, setDeleting] = useState("");
+  const [notice, setNotice] = useState("");
 
   useEffect(() => {
     let active = true;
-    Promise.all([getTrips(), listBookings()])
-      .then(([t, b]) => active && setState({ status: "ready", trips: t.trips || [], bookings: b.bookings || [], error: "" }))
-      .catch((err) => active && setState({ status: "error", trips: [], bookings: [], error: err.message }));
+    Promise.all([getTrips(), listGroups(), listBookings()])
+      .then(([t, g, b]) => active && setState({ status: "ready", trips: t.trips || [], groups: g.groups || [], bookings: (b.bookings || []).map(normalizeBooking), error: "" }))
+      .catch((err) => active && setState({ status: "error", trips: [], groups: [], bookings: [], error: err.message }));
     return () => { active = false; };
   }, [reloadKey]);
 
   const tripName = useMemo(() => Object.fromEntries(state.trips.map((t) => [t.id, t.destination])), [state.trips]);
-  const visible = tripFilter ? state.bookings.filter((b) => b.trip_id === tripFilter) : state.bookings;
+  const whereOf = (b) => (b.scope === "group" ? b.group_name || "Group" : tripName[b.trip_id] || "Trip");
+  const visible = state.bookings.filter((b) => {
+    if (filter.startsWith("trip:")) return b.trip_id === filter.slice(5);
+    if (filter.startsWith("group:")) return b.group_id === filter.slice(6);
+    return true;
+  });
   const total = visible.reduce((sum, b) => sum + (b.amount_inr || 0), 0);
+  const nothingToAttachTo = state.trips.length === 0 && state.groups.length === 0;
+  const open = modal && modal.mode !== "add" ? state.bookings.find((b) => b.id === modal.id) : null;
+
+  const replaceBooking = (booking) => setState((s) => ({ ...s, bookings: s.bookings.map((b) => (b.id === booking.id ? { ...b, ...booking } : b)) }));
+  const closeModal = () => { setModal(null); setActionError(""); };
 
   function openAdd() {
-    setFormState({ initial: { ...EMPTY, trip_id: state.trips.some((t) => t.id === tripFilter) ? tripFilter : "" }, editingId: null });
+    const initial = { ...EMPTY_BOOKING };
+    if (filter.startsWith("group:") && state.groups.some((g) => g.id === filter.slice(6))) { initial.scope = "group"; initial.group_id = filter.slice(6); }
+    else if (filter.startsWith("trip:") && state.trips.some((t) => t.id === filter.slice(5))) initial.trip_id = filter.slice(5);
+    else if (state.trips.length === 0) initial.scope = "group";
+    setNotice(""); setActionError(""); setModal({ mode: "add", initial });
   }
-  function openEdit(b) {
-    setFormState({ editingId: b.id, initial: { trip_id: b.trip_id, kind: b.kind, title: b.title, provider: b.provider, reference: b.reference, start_date: b.start_date || "", end_date: b.end_date || "", amount: b.amount_inr != null ? String(Math.round(b.amount_inr)) : "", notes: b.notes } });
+  const openView = (id) => { setNotice(""); setActionError(""); setModal({ mode: "view", id }); };
+
+  function editInitial(b) {
+    return { scope: b.scope === "group" ? "group" : "trip", trip_id: b.trip_id || "", group_id: b.group_id || "", share_to_chat: false, kind: b.kind, title: b.title, provider: b.provider, reference: b.reference, start_date: b.start_date || "", end_date: b.end_date || "", amount: b.amount_inr != null ? String(Math.round(b.amount_inr)) : "", notes: b.notes };
   }
-  function handleSaved(booking) {
-    setState((s) => ({ ...s, bookings: s.bookings.some((b) => b.id === booking.id) ? s.bookings.map((b) => (b.id === booking.id ? booking : b)) : [booking, ...s.bookings] }));
-    setFormState(null);
+
+  function handleSaved(saved, warning = "") {
+    setState((s) => ({ ...s, bookings: s.bookings.some((b) => b.id === saved.id) ? s.bookings.map((b) => (b.id === saved.id ? saved : b)) : [saved, ...s.bookings] }));
+    setNotice(warning);
+    setModal(modal.mode === "edit" ? { mode: "view", id: saved.id } : null);
   }
-  async function handleDelete(b) {
-    if (deleting || !window.confirm(`Delete "${b.title}"? This only removes it from TravelSync.`)) return;
-    setDeleting(b.id); setActionError("");
-    try { await deleteBooking(b.id); setState((s) => ({ ...s, bookings: s.bookings.filter((x) => x.id !== b.id) })); }
+
+  async function handleShare(b) {
+    setActionError(""); setNotice("");
+    try { await shareBookingToChat(b.id); setNotice(`"${b.title}" was posted in the ${b.group_name} chat.`); setModal(null); }
     catch (err) { setActionError(err.message); }
-    finally { setDeleting(""); }
   }
+
+  async function handleConfirm() {
+    setConfirmBusy(true); setConfirmError("");
+    try {
+      if (confirm.file) {
+        await deleteBookingFile(confirm.booking.id, confirm.file.id);
+        replaceBooking({ ...confirm.booking, attachments: confirm.booking.attachments.filter((a) => a.id !== confirm.file.id) });
+      } else {
+        await deleteBooking(confirm.booking.id);
+        setState((s) => ({ ...s, bookings: s.bookings.filter((x) => x.id !== confirm.booking.id) }));
+        if (modal && modal.id === confirm.booking.id) setModal(null);
+      }
+      setConfirm(null);
+    } catch (err) {
+      setConfirmError(err.message);
+    } finally {
+      setConfirmBusy(false);
+    }
+  }
+  const askDelete = (booking) => { setConfirmError(""); setConfirm({ booking }); };
+  const askRemoveFile = (booking, file) => { setConfirmError(""); setConfirm({ booking, file }); };
 
   return (
     <main className="dashboard__content">
       <div className="ts-page-head">
         <span className="dashboard__eyebrow">BOOKINGS &amp; TICKETS</span>
         <h1>Your bookings</h1>
-        <p>Keep hotel, flight, train, bus and activity details for each trip in one place. These are records you enter yourself — TravelSync doesn't make or confirm bookings.</p>
+        <p>Keep hotel, flight, train, bus and activity details, and the ticket PDFs, for each trip in one place. Keep them private, or share them with a travel group. These are records you enter yourself; TravelSync doesn't make or confirm bookings.</p>
       </div>
 
       {state.status === "loading" && <div className="ts-empty" role="status">Loading your bookings…</div>}
       {state.status === "error" && (
-        <div className="ts-alert ts-alert--error" role="alert">{state.error} <button type="button" className="notif__link" onClick={() => { setState({ status: "loading", trips: [], bookings: [], error: "" }); setReloadKey((k) => k + 1); }}>Try again</button></div>
+        <div className="ts-alert ts-alert--error" role="alert">{state.error} <button type="button" className="notif__link" onClick={() => { setState({ status: "loading", trips: [], groups: [], bookings: [], error: "" }); setReloadKey((k) => k + 1); }}>Try again</button></div>
       )}
 
-      {state.status === "ready" && state.trips.length === 0 && (
-        <div className="ts-empty"><h3>Create a trip first</h3><p>Bookings are attached to a trip.</p><Link className="btn btn--primary" to="/home">Plan a trip</Link></div>
+      {state.status === "ready" && nothingToAttachTo && (
+        <div className="ts-empty"><h3>Create a trip or join a group first</h3><p>Bookings are attached to one of your trips or to a travel group.</p><Link className="btn btn--primary" to="/home">Plan a trip</Link></div>
       )}
 
-      {state.status === "ready" && state.trips.length > 0 && (
+      {state.status === "ready" && !nothingToAttachTo && (
         <>
           <div className="bookings-toolbar">
             <div className="ts-field">
               <label htmlFor="bk-filter">Show</label>
-              <select id="bk-filter" value={tripFilter} onChange={(e) => (e.target.value ? setParams({ trip: e.target.value }) : setParams({}))}>
-                <option value="">All trips</option>
-                {state.trips.map((t) => <option key={t.id} value={t.id}>{t.destination}</option>)}
+              <select id="bk-filter" value={filter} onChange={(e) => {
+                const v = e.target.value;
+                if (!v) setParams({}); else if (v.startsWith("group:")) setParams({ group: v.slice(6) }); else setParams({ trip: v.slice(5) });
+              }}>
+                <option value="">Everything</option>
+                {state.trips.length > 0 && <optgroup label="My trips">{state.trips.map((t) => <option key={t.id} value={`trip:${t.id}`}>{t.destination}</option>)}</optgroup>}
+                {state.groups.length > 0 && <optgroup label="Groups">{state.groups.map((g) => <option key={g.id} value={`group:${g.id}`}>{g.name}</option>)}</optgroup>}
               </select>
             </div>
-            {!formState && <button type="button" className="btn btn--primary" onClick={openAdd}><Plus size={16} /> Add booking</button>}
+            <button type="button" className="btn btn--primary" onClick={openAdd}><Plus size={16} aria-hidden="true" /> Add booking</button>
           </div>
 
-          {actionError && <div className="ts-alert ts-alert--error" role="alert">{actionError}</div>}
-          {formState && <BookingForm key={formState.editingId || "new"} trips={state.trips} initial={formState.initial} editingId={formState.editingId} onSaved={handleSaved} onCancel={() => setFormState(null)} />}
+          {!modal && actionError && <div className="ts-alert ts-alert--error" role="alert">{actionError}</div>}
+          {notice && <div className="ts-alert ts-alert--info" role="status">{notice}</div>}
 
           {visible.length === 0 ? (
-            <div className="ts-empty"><Ticket size={26} /><h3>No bookings yet</h3><p>Add your first booking to keep its details handy.</p></div>
+            <div className="ts-empty"><Ticket size={26} aria-hidden="true" /><h3>No bookings yet</h3><p>Add your first booking to keep its details and tickets handy.</p></div>
           ) : (
             <>
               <ul className="ts-grid bookings-grid">
                 {visible.map((b) => {
-                  const Icon = (KIND[b.kind] || KIND.other).icon;
+                  const kind = kindOf(b.kind);
+                  const Icon = kind.icon;
+                  const dates = formatRange(b.start_date, b.end_date);
                   return (
-                    <li key={b.id} className="booking-card">
-                      <div className="booking-card__head"><span className="booking-card__icon"><Icon size={18} aria-hidden="true" /></span><div><strong>{b.title}</strong><span className="ts-muted ts-small">{(KIND[b.kind] || KIND.other).label} · {tripName[b.trip_id] || "Trip"}</span></div></div>
-                      {b.provider && <span className="ts-muted">{b.provider}</span>}
-                      {(b.start_date || b.end_date) && <span>{formatDate(b.start_date)}{b.end_date && b.end_date !== b.start_date ? ` → ${formatDate(b.end_date)}` : ""}</span>}
-                      {b.reference && <span>Ref: <code>{b.reference}</code></span>}
-                      {b.amount_inr != null && <span className="ts-chip ts-chip--aqua">₹{Number(b.amount_inr).toLocaleString("en-IN")}</span>}
-                      {b.notes && <p className="ts-muted">{b.notes}</p>}
-                      <div className="ts-actions">
-                        <button type="button" className="ts-btn-secondary" onClick={() => openEdit(b)} aria-label={`Edit ${b.title}`}><Pencil size={14} aria-hidden="true" /> Edit</button>
-                        <button type="button" className="ts-btn-secondary ts-btn-danger" onClick={() => handleDelete(b)} disabled={deleting === b.id} aria-label={`Delete ${b.title}`}><Trash2 size={14} aria-hidden="true" /></button>
+                    <li key={b.id} className="booking-card" onClick={() => openView(b.id)}>
+                      <div className="booking-card__head">
+                        <span className="booking-card__icon"><Icon size={18} aria-hidden="true" /></span>
+                        <div className="booking-card__titles">
+                          <button type="button" className="booking-card__title" onClick={(e) => { e.stopPropagation(); openView(b.id); }} aria-label={`View details of ${b.title}`}>{b.title}</button>
+                          <span className="ts-muted ts-small">{kind.label} · {whereOf(b)}</span>
+                        </div>
+                        {b.can_edit && (
+                          <button type="button" className="booking-card__delete" onClick={(e) => { e.stopPropagation(); askDelete(b); }} aria-label={`Delete ${b.title}`} title="Delete"><Trash2 size={16} aria-hidden="true" /></button>
+                        )}
                       </div>
+                      {b.scope === "group" && <span className="ts-chip ts-chip--peach booking-card__scope"><Users size={12} aria-hidden="true" /> Shared{b.created_by ? ` · added by ${b.created_by}` : ""}</span>}
+                      {dates && <span className="booking-card__dates">{dates}</span>}
+                      {b.amount_inr != null && <span className="ts-chip ts-chip--aqua booking-card__amount">₹{Number(b.amount_inr).toLocaleString("en-IN")}</span>}
+                      {b.attachments.length > 0 && (
+                        <ul className="booking-card__files" aria-label={`Files attached to ${b.title}`}>
+                          {b.attachments.map((f) => (
+                            <li key={f.id}>
+                              <a href={bookingFileUrl(b.id, f.id)} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()} title={`Open ${f.filename}`} aria-label={`Open ${f.filename}`}>
+                                <FileText size={14} aria-hidden="true" /><span>{f.filename}</span><ExternalLink size={12} aria-hidden="true" />
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                      <span className="booking-card__more">View details <ChevronRight size={14} aria-hidden="true" /></span>
                     </li>
                   );
                 })}
@@ -215,6 +174,41 @@ export default function Bookings() {
             </>
           )}
         </>
+      )}
+
+      {modal?.mode === "add" && (
+        <Modal title="Add a booking" icon={<Plus size={20} />} size="lg" onClose={closeModal}>
+          <BookingForm trips={state.trips} groups={state.groups} initial={modal.initial} editingId={null} onSaved={handleSaved} onCancel={closeModal} />
+        </Modal>
+      )}
+      {open && modal.mode === "edit" && (
+        <Modal title="Edit booking" icon={<Pencil size={20} />} size="lg" onClose={() => setModal({ mode: "view", id: open.id })}>
+          <BookingForm key={open.id} trips={state.trips} groups={state.groups} initial={editInitial(open)} editingId={open.id} onSaved={handleSaved} onCancel={() => setModal({ mode: "view", id: open.id })} />
+        </Modal>
+      )}
+      {open && modal.mode === "view" && (
+        <BookingDetails
+          booking={open} where={whereOf(open)} error={actionError}
+          onClose={closeModal} onEdit={() => { setActionError(""); setModal({ mode: "edit", id: open.id }); }}
+          onDelete={() => askDelete(open)} onShare={() => handleShare(open)}
+          onFilesChange={replaceBooking} onError={setActionError} onAskRemoveFile={(file) => askRemoveFile(open, file)}
+        />
+      )}
+      {confirm && (
+        <ConfirmDialog
+          title={confirm.file ? "Remove this file?" : "Delete this booking?"}
+          confirmLabel={confirm.file ? "Remove file" : "Delete booking"}
+          busy={confirmBusy} error={confirmError} onConfirm={handleConfirm} onCancel={() => setConfirm(null)}
+        >
+          {confirm.file ? (
+            <p><b>{confirm.file.filename}</b> will be removed from "{confirm.booking.title}".</p>
+          ) : (
+            <>
+              <p><b>{confirm.booking.title}</b> and all the files attached to it will be deleted.{confirm.booking.scope === "group" ? " It will disappear for everyone in the group." : ""}</p>
+              <p>This only removes it from TravelSync. Your real booking is not cancelled.</p>
+            </>
+          )}
+        </ConfirmDialog>
       )}
     </main>
   );

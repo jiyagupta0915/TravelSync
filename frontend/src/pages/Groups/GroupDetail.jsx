@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { ArrowLeft, Check, ChevronRight, Copy, Crown, MapPin, Send, ThumbsUp, Trash2, Users } from "lucide-react";
+import { ArrowLeft, Check, ChevronRight, Copy, Crown, MapPin, Send, ThumbsUp, Ticket, Trash2, Users } from "lucide-react";
 import NumberField from "../../components/NumberField/NumberField";
 import TopPlacesModal from "../../components/TopPlaces/TopPlacesModal";
 import DestinationOverview from "../../components/TopPlaces/DestinationOverview";
@@ -70,6 +70,21 @@ function SuggestionCard({ message, reads }) {
       {s.places?.length > 0 && <span className="suggestion__places">Top places: {s.places.join(" · ")}</span>}
       {s.note && <span className="chat__suggestion-note">“{s.note}”</span>}
       <span className="ts-muted ts-small">Vote for it under “Destination ideas &amp; votes”.</span>
+      {message.is_me && <ReadReceipt message={message} reads={reads} />}
+    </li>
+  );
+}
+
+// A booking someone posted into the group chat: title and dates only. Details and files are on the Bookings page.
+function BookingCard({ message, reads, groupId }) {
+  const b = message.booking || {};
+  const dates = b.start_date ? `${b.start_date}${b.end_date && b.end_date !== b.start_date ? ` → ${b.end_date}` : ""}` : "";
+  return (
+    <li className={`chat__msg chat__msg--suggestion${message.is_me ? " is-me" : ""}`}>
+      <small>{message.is_me ? "You" : message.author} shared a booking · {clock(message.created_at)}</small>
+      <strong className="chat__suggestion-title"><Ticket size={14} aria-hidden="true" /> {b.title}</strong>
+      {(b.provider || dates) && <span className="ts-muted ts-small">{[b.provider, dates].filter(Boolean).join(" · ")}</span>}
+      <Link to={`/bookings?group=${groupId}`} className="ts-small">Open in Bookings &amp; Tickets</Link>
       {message.is_me && <ReadReceipt message={message} reads={reads} />}
     </li>
   );
@@ -278,10 +293,12 @@ function Chat({ groupId, onSuggestionsChanged }) {
         {loaded && messages.length === 0 && <li className="ts-muted">No messages yet. Say hello 👋</li>}
         {messages.map((m) => (m.deleted ? (
           <li key={m.id} className={`chat__msg chat__msg--deleted${m.is_me ? " is-me" : ""}`}>
-            {m.kind === "suggestion" ? "This suggestion was removed" : m.is_me ? "You deleted this message" : "This message was deleted"}
+            {m.kind === "suggestion" ? "This suggestion was removed" : m.kind === "booking" ? "This booking was removed" : m.is_me ? "You deleted this message" : "This message was deleted"}
           </li>
         ) : m.kind === "suggestion" ? (
           <SuggestionCard key={m.id} message={m} reads={reads} />
+        ) : m.kind === "booking" ? (
+          <BookingCard key={m.id} message={m} reads={reads} groupId={groupId} />
         ) : (
           <li key={m.id} className={`chat__msg${m.is_me ? " is-me" : ""}`}>
             <small>{m.is_me ? "You" : m.author} · {clock(m.created_at)}</small>

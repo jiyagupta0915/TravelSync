@@ -69,3 +69,15 @@ describe("apiRequest", () => {
     expect(listener).toHaveBeenCalledTimes(1);
   });
 });
+
+describe("apiRequest with a file upload", () => {
+  it("sends FormData untouched and lets the browser set the multipart Content-Type", async () => {
+    mockFetch(201, { ok: true });
+    const body = new FormData();
+    body.append("file", new File(["x"], "t.pdf", { type: "application/pdf" }));
+    await apiRequest("/api/bookings/1/files", { method: "POST", body });
+    const init = fetch.mock.calls[0][1];
+    expect(init.body).toBe(body);
+    expect(init.headers).not.toHaveProperty("Content-Type");
+  });
+});
