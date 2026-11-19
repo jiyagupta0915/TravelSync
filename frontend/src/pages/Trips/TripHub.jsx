@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import {
-  ArrowLeft, Backpack, BedDouble, CalendarDays, HeartPulse,Map as MapIcon, MapPin, Star, Ticket, Trash2, Users, WalletCards,
+  ArrowLeft, Backpack, Pencil, BedDouble, CalendarDays, HeartPulse,Map as MapIcon, MapPin, Star, Ticket, Trash2, Users, WalletCards,
 } from "lucide-react";
 import DeleteTripDialog from "../../components/DeleteTripDialog/DeleteTripDialog";
 import TopPlacesModal from "../../components/TopPlaces/TopPlacesModal";
@@ -14,6 +14,7 @@ import { formatDate, formatTripDates } from "./tripFormat";
 import { useResource } from "./useResource";
 import "../Packing/Packing.css"; // reuses the "back" link style
 import "./Trips.css";
+import EditTripDialog from "../../components/EditTripDialog/EditTripDialog";
 
 function formatInr(value) {
   return `₹${Number(value).toLocaleString("en-IN")}`;
@@ -203,6 +204,7 @@ export default function TripHub() {
   const navigate = useNavigate();
   const [showPlaces, setShowPlaces] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
 
   // A 404 (deleted trip, or someone else's) becomes {trip: null} so the friendly "couldn't find this trip" screen shows.
   const tripsResource = useResource(`trip:${tripId}`, () => getTrip(tripId).catch((err) => {
@@ -240,11 +242,12 @@ export default function TripHub() {
             </div>
             {!(trip.start_date && trip.end_date) && (
               <p className="hub-muted hub-header__tip">
-                Add your exact dates in <Link to={`/trip/${trip.id}/packing`}>Packing</Link> to get a weather forecast for this trip.
+                Dates not decided yet? No problem. Use Edit trip to add them any time.
               </p>
             )}
           </div>
           <div className="hub-header__actions">
+            <button type="button" className="hub-button" onClick={() => setShowEdit(true)}><Pencil size={15} /> Edit trip</button>
             <button type="button" className="hub-button" onClick={() => navigate(`/trip/${trip.id}/map`)}><MapIcon size={15} /> View map</button>            
             <button type="button" className="hub-button" onClick={() => setShowPlaces(true)}>Top 5 places</button>
             <button type="button" className="hub-button hub-button--danger" onClick={() => setShowDelete(true)}>
@@ -254,7 +257,7 @@ export default function TripHub() {
         </div>
 
         <div className="hub-grid">
-          <PackingSummary tripId={trip.id} />
+          <PackingSummary key={`${trip.id}:${trip.start_date}:${trip.duration}`} tripId={trip.id} />
           <StaysSummary tripId={trip.id} />
           <HealthSummary trip={trip} />
           <BookingsSummary tripId={trip.id} />
@@ -263,6 +266,14 @@ export default function TripHub() {
         <TopPlacesModal destination={showPlaces ? trip.destination : null} onClose={() => setShowPlaces(false)} />
         {showDelete && (
           <DeleteTripDialog key={trip.id} trip={trip} onClose={() => setShowDelete(false)} onDeleted={() => navigate("/trips")} />
+        )}
+
+        {showEdit && (
+          <EditTripDialog
+            key={trip.id}
+            trip={trip}
+            onClose={() => setShowEdit(false)}
+            onSaved={(updated) => { tripsResource.update(() => ({ trip: updated })); setShowEdit(false); }}/>
         )}
       </>
     );

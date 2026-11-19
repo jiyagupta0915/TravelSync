@@ -11,3 +11,7 @@ export function getTrip(tripId) {
 export function createTrip(payload) {
   return apiRequest("/api/trips", { method: "POST", body: payload, fallbackMessage: "The trip could not be saved." });
 }
+
+export function updateTrip(tripId, payload) {
+  return apiRequest(`/api/trips/${encodeURIComponent(tripId)}`, { method: "PATCH", body: payload, fallbackMessage: "The trip could not be updated." });
+}

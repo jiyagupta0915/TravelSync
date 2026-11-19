@@ -46,6 +46,21 @@
 }
 .mytrip-card__delete:hover { background: #fff; color: #a84848; }
 
+.mytrip-card__edit {
+  position: absolute;
+  top: 12px;
+  right: 56px;
+  width: 36px;
+  height: 36px;
+  border-radius: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.6);
+  color: var(--ink-soft);
+}
+.mytrip-card__edit:hover { background: #fff; color: var(--text-primary); }
+
 /* ===== Trip hub ===== */
 .hub-header { display: flex; justify-content: space-between; align-items: flex-start; gap: var(--space-5); flex-wrap: wrap; margin-bottom: var(--space-6); }
 .hub-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: var(--space-3); }

@@ -14,6 +14,22 @@ export default function BookingForm({ trips, groups, initial, editingId, onSaved
   const [saving, setSaving] = useState(false);
   const [files, setFiles] = useState([]);
   const set = (key) => (e) => { setForm((f) => ({ ...f, [key]: e.target.value })); setErrors((er) => ({ ...er, [key]: undefined })); };
+  function handleTripChange(e) {
+    const nextTrip = trips.find((t) => t.id === e.target.value);
+    const prevTrip = trips.find((t) => t.id === form.trip_id);
+    setForm((f) => {
+      // Only fill the dates if the user hasn't typed their own.
+      const untouched = (!f.start_date && !f.end_date) || (f.start_date === prevTrip?.start_date && f.end_date === prevTrip?.end_date);
+      return {
+        ...f,
+        trip_id: e.target.value,
+        ...(untouched && !editingId ? { start_date: nextTrip?.start_date || "", end_date: nextTrip?.end_date || "" } : {}),
+      };
+    });
+    setErrors((er) => ({ ...er, trip_id: undefined }));
+  }
+  const selectedTrip = form.scope === "trip" ? trips.find((t) => t.id === form.trip_id) : null;
+  const datesFromTrip = !editingId && selectedTrip?.start_date && form.start_date === selectedTrip.start_date && form.end_date === selectedTrip.end_date;
 
   function pickFiles(event) {
     const picked = [...event.target.files];
@@ -83,7 +99,7 @@ export default function BookingForm({ trips, groups, initial, editingId, onSaved
         {form.scope === "trip" ? (
           <div className="ts-field">
             <label htmlFor="bk-trip">Trip</label>
-            <select id="bk-trip" value={form.trip_id} onChange={set("trip_id")} disabled={Boolean(editingId)} aria-invalid={Boolean(errors.trip_id) || undefined}>
+            <select id="bk-trip" value={form.trip_id} onChange={handleTripChange} disabled={Boolean(editingId)} aria-invalid={Boolean(errors.trip_id) || undefined}>
               <option value="">Select a trip…</option>
               {trips.map((t) => <option key={t.id} value={t.id}>{t.destination}{t.duration ? ` · ${t.duration} days` : ""}</option>)}
             </select>
@@ -130,6 +146,9 @@ export default function BookingForm({ trips, groups, initial, editingId, onSaved
           <input id="bk-end" type="date" value={form.end_date} min={form.start_date || undefined} onChange={set("end_date")} aria-invalid={Boolean(errors.end_date) || undefined} />
           {errors.end_date && <span className="ts-error" role="alert">{errors.end_date}</span>}
         </div>
+        {datesFromTrip && (
+          <p className="ts-muted ts-small bookings-wide">Filled in from your trip dates. Change them if this booking is different.</p>
+        )}
         <div className="ts-field bookings-wide">
           <label htmlFor="bk-notes">Notes <span className="ts-hint">(optional)</span></label>
           <textarea id="bk-notes" value={form.notes} maxLength={500} onChange={set("notes")} />

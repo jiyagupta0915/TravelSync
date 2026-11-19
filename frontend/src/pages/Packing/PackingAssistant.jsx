@@ -4,12 +4,10 @@ import {
   Shirt, CloudRain, Plug, FileText, Backpack, HeartPulse,
   CloudSun, Sparkles, Plus, Trash2, ArrowLeft,
 } from "lucide-react";
-import { getTrip } from "../../services/tripApi";
-import {
-  getPackingList, generatePackingList, updatePackingList, setTripDates,
-} from "../../services/packingApi";
 import { isAbort } from "../../services/apiClient";
 import "./Packing.css";
+import { getTrip, updateTrip } from "../../services/tripApi";
+import { getPackingList, generatePackingList, updatePackingList } from "../../services/packingApi";
 
 const CATEGORY_META = {
   Clothing: { icon: Shirt, accent: "var(--pastel-blue)" },
@@ -77,6 +75,8 @@ export default function PackingAssistant() {
         }
         if (!active) return;
         confirmedItems.current = list.items;
+        setStartDate(trip.start_date || "");
+        setEndDate(trip.end_date || "");
         setData({ tripId, status: "ready", trip, list, error: "" });
       } catch (err) {
         if (!active || isAbort(err)) return;
@@ -130,25 +130,35 @@ export default function PackingAssistant() {
     persistItems([...packingList.items, { id: newCustomItemId(), category, name, quantity: 1, packed: false, source: "custom" }]);
   }
 
-  async function handleSaveDates(event) {
-    event.preventDefault();
-    if (savingDates) return;
-    if (!startDate || !endDate) { setActionError("Choose both a start and an end date."); return; }
-    if (endDate < startDate) { setActionError("The end date can't be earlier than the start date."); return; }
-    setSavingDates(true);
-    setActionError("");
-    try {
-      await setTripDates(tripId, startDate, endDate);
-      const { packing_list } = await generatePackingList(tripId, { regenerate: true });
-      confirmedItems.current = packing_list.items;
-      setList(() => packing_list);
-      setData((previous) => ({ ...previous, trip: { ...previous.trip, start_date: startDate, end_date: endDate } }));
-    } catch (err) {
-      setActionError(err.message);
-    } finally {
-      setSavingDates(false);
-    }
+  async function applyDates(start, end) {
+  setSavingDates(true);
+  setActionError("");
+  try {
+    const { trip: updated } = await updateTrip(tripId, { start_date: start, end_date: end });
+    const { packing_list } = await getPackingList(tripId);   // the server already refreshed it
+    confirmedItems.current = packing_list.items;
+    setData((previous) => ({ ...previous, trip: updated, list: packing_list }));
+    return true;
+  } catch (err) {
+    setActionError(err.message);
+    return false;
+  } finally {
+    setSavingDates(false);
   }
+}
+
+async function handleSaveDates(event) {
+  event.preventDefault();
+  if (savingDates) return;
+  if (!startDate || !endDate) { setActionError("Choose both a start and an end date."); return; }
+  if (endDate < startDate) { setActionError("The end date can't be earlier than the start date."); return; }
+  await applyDates(startDate, endDate);
+}
+
+async function handleClearDates() {
+  if (savingDates) return;
+  if (await applyDates(null, null)) { setStartDate(""); setEndDate(""); }
+}
 
   const back = (
     <button className="packing-back" onClick={() => navigate("/packing")}>
@@ -186,6 +196,8 @@ export default function PackingAssistant() {
   const totalItems = packingList.items.length;
   const packedItems = packingList.items.filter((i) => i.packed).length;
   const progressPct = totalItems ? Math.round((packedItems / totalItems) * 100) : 0;
+  const hasSavedDates = Boolean(trip?.start_date && trip?.end_date);
+  const forecastWorked = packingList.tier === "forecast";
 
   return (
     <main className="dashboard__content">
@@ -207,21 +219,30 @@ export default function PackingAssistant() {
           : `Based on ${trip?.region || "destination"} climate & terrain profile`}
       </div>
 
-      {packingList.tier === "climate" && (
         <form className="packing-dates-card" onSubmit={handleSaveDates}>
           <div>
-            <strong>Know your exact travel dates?</strong>
-            <p>Add them to refine this list with a real weather forecast. If the forecast can't be fetched, the climate-based list stays.</p>
+            <strong>
+              {!hasSavedDates ? "Know your travel dates?" : forecastWorked ? "Your travel dates" : "No forecast available for these dates yet"}
+            </strong>
+            <p>
+              {!hasSavedDates
+                ? "Add the dates you'll be there to see the real weather forecast for those days. If we can't get a forecast, we'll show the usual weather for this region."
+                : forecastWorked
+                  ? "Change your dates and we'll refresh the forecast and packing list."
+                  : "Forecasts only cover roughly the next 2 weeks, so we're showing the usual weather for this region. Check back closer to your trip."}
+            </p>
           </div>
           <div className="packing-dates-card__inputs">
             <input type="date" aria-label="Trip start date" value={startDate} onChange={(e) => setStartDate(e.target.value)} required />
             <input type="date" aria-label="Trip end date" value={endDate} min={startDate || undefined} onChange={(e) => setEndDate(e.target.value)} required />
             <button type="submit" className="btn btn--primary" disabled={savingDates}>
-              {savingDates ? "Refining…" : "Refine with forecast"}
+              {savingDates ? "Updating…" : hasSavedDates ? "Update forecast" : "Get forecast"}
             </button>
+            {hasSavedDates && (
+              <button type="button" className="packing-dates-card__clear" onClick={handleClearDates} disabled={savingDates}>Clear dates</button>
+            )}
           </div>
         </form>
-      )}
 
       <div className="packing-progress">
         <span>{packedItems} of {totalItems} packed</span>

@@ -50,7 +50,12 @@ export default function Bookings() {
   function openAdd() {
     const initial = { ...EMPTY_BOOKING };
     if (filter.startsWith("group:") && state.groups.some((g) => g.id === filter.slice(6))) { initial.scope = "group"; initial.group_id = filter.slice(6); }
-    else if (filter.startsWith("trip:") && state.trips.some((t) => t.id === filter.slice(5))) initial.trip_id = filter.slice(5);
+    else if (filter.startsWith("trip:") && state.trips.some((t) => t.id === filter.slice(5))) {
+      const preset = state.trips.find((t) => t.id === filter.slice(5));
+      initial.trip_id = preset.id;
+      initial.start_date = preset.start_date || "";
+      initial.end_date = preset.end_date || "";
+    }
     else if (state.trips.length === 0) initial.scope = "group";
     setNotice(""); setActionError(""); setModal({ mode: "add", initial });
   }

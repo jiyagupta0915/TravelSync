@@ -251,3 +251,6 @@
 @media (max-width: 760px) {
   .packing-dates-card { flex-direction: column; align-items: flex-start; }
 }
+
+.packing-dates-card__clear { font-size: 0.8rem; font-weight: 800; color: var(--ink-soft); text-decoration: underline; }
+.packing-dates-card__clear:disabled { opacity: 0.6; cursor: default; }

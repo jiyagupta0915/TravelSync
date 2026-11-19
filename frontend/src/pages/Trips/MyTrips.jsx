@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Briefcase, CalendarDays, Ticket, Trash2, Users, WalletCards } from "lucide-react";
+import { Briefcase, CalendarDays, Pencil, Ticket, Trash2, Users, WalletCards } from "lucide-react";
 import DeleteTripDialog from "../../components/DeleteTripDialog/DeleteTripDialog";
+import EditTripDialog from "../../components/EditTripDialog/EditTripDialog";
 import { getTrips } from "../../services/tripApi";
 import { formatTripDates, isPreviousTrip, todayIso } from "./tripFormat";
 import "../Packing/Packing.css"; // reuses the "back" link style
@@ -20,6 +21,7 @@ export default function MyTrips() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [tripToDelete, setTripToDelete] = useState(null);
+  const [tripToEdit, setTripToEdit] = useState(null);
   const [filter, setFilter] = useState("all");
 
   useEffect(() => {
@@ -34,6 +36,11 @@ export default function MyTrips() {
   function handleDeleted(trip) {
     setTrips((prev) => prev.filter((t) => t.id !== trip.id));
     setTripToDelete(null);
+  }
+
+  function handleEdited(updated) {
+    setTrips((prev) => prev.map((t) => (t.id === updated.id ? updated : t)));
+    setTripToEdit(null);
   }
 
   const visible = useMemo(() => {
@@ -82,7 +89,7 @@ export default function MyTrips() {
           <h3>{filter === "previous" ? "No previous trips yet" : "No upcoming trips"}</h3>
           <p>
             {filter === "previous"
-              ? "A trip moves here once its end date has passed. Add travel dates to a trip from its Packing assistant."
+              ? "A trip moves here once its end date has passed. Add travel dates to a trip with Edit trip."
               : "Every trip you have has already ended. Plan a new one from Home."}
           </p>
         </div>
@@ -107,6 +114,9 @@ export default function MyTrips() {
                 )}
                 <span className="mytrip-card__cta"><Briefcase size={14} /> Open trip space →</span>
               </button>
+              <button type="button" className="mytrip-card__edit" onClick={() => setTripToEdit(trip)} aria-label={`Edit trip to ${trip.destination}`} title="Edit trip">
+                <Pencil size={16} />
+              </button>
               <button type="button" className="mytrip-card__delete" onClick={() => setTripToDelete(trip)} aria-label={`Delete trip to ${trip.destination}`} title="Delete trip">
                 <Trash2 size={16} />
               </button>
@@ -117,6 +127,10 @@ export default function MyTrips() {
 
       {tripToDelete && (
         <DeleteTripDialog key={tripToDelete.id} trip={tripToDelete} onClose={() => setTripToDelete(null)} onDeleted={handleDeleted} />
+      )}
+
+      {tripToEdit && (
+        <EditTripDialog key={tripToEdit.id} trip={tripToEdit} onClose={() => setTripToEdit(null)} onSaved={handleEdited} />
       )}
     </main>
   );

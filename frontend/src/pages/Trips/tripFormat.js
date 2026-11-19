@@ -21,3 +21,8 @@ export function todayIso() {
 export function isPreviousTrip(trip, today = todayIso()) {
   return Boolean(trip.end_date) && trip.end_date < today;
 }
+
+export function daysBetween(start, end) {
+  if (!start || !end) return null;
+  return Math.round((new Date(`${end}T00:00:00`) - new Date(`${start}T00:00:00`)) / 86400000) + 1;
+}
