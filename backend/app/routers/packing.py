@@ -35,21 +35,9 @@ async def get_packing_list(trip_id: str, user: dict = Depends(require_current_us
         raise HTTPException(status_code=404, detail="No packing list generated yet.")
     return {"packing_list": _serialize(doc)}
 
-
-@router.post("", status_code=201)
-async def generate_packing_list(
-    trip_id: str, payload: GenerateRequest, user: dict = Depends(require_current_user)
-):
-    db = get_db()
-    trip = await _get_owned_trip(trip_id, user, db)
-    object_id = ObjectId(trip_id)
-
+async def refresh_packing_list(db, trip: dict, activities: list[str] | None = None) -> dict:
+    object_id = trip["_id"]
     existing = await db.packing_lists.find_one({"trip_id": object_id})
-    if existing is not None and not payload.regenerate:
-        raise HTTPException(
-            status_code=409,
-            detail=ALREADY_EXISTS,
-        )
 
     tier, condition, weather_summary = "climate", None, None
     start_date, end_date = trip.get("start_date"), trip.get("end_date")
@@ -67,7 +55,7 @@ async def generate_packing_list(
     if condition is None:
         condition = REGION_CLIMATE.get(trip.get("region"), "mild")
 
-    new_items = build_checklist(trip.get("duration"), condition, payload.activities)
+    new_items = build_checklist(trip.get("duration"), condition, activities or [])
 
     now = datetime.now(timezone.utc)
 
@@ -86,7 +74,7 @@ async def generate_packing_list(
             await db.packing_lists.insert_one(doc)
         except DuplicateKeyError:
             raise HTTPException(status_code=409, detail=ALREADY_EXISTS)
-        return {"packing_list": _serialize(doc)}
+        return doc
 
     # Regenerate: keep packed state and any custom items, replace rule-suggested ones.
     kept = [item for item in existing["items"] if item.get("packed") or item.get("source") == "custom"]
@@ -102,6 +90,23 @@ async def generate_packing_list(
         "updated_at": now,
     }
     await db.packing_lists.update_one({"trip_id": object_id}, {"$set": doc}, upsert=True)
+    return doc
+
+@router.post("", status_code=201)
+async def generate_packing_list(
+    trip_id: str, payload: GenerateRequest, user: dict = Depends(require_current_user)
+):
+    db = get_db()
+    trip = await _get_owned_trip(trip_id, user, db)
+    object_id = ObjectId(trip_id)
+
+    existing = await db.packing_lists.find_one({"trip_id": object_id})
+    if existing is not None and not payload.regenerate:
+        raise HTTPException(
+            status_code=409,
+            detail=ALREADY_EXISTS,
+        )
+    doc = await refresh_packing_list(db, trip, payload.activities)
     return {"packing_list": _serialize(doc)}
 
 

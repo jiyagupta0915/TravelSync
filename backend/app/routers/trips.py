@@ -1,4 +1,6 @@
 from datetime import datetime, timezone
+from datetime import date, datetime, timedelta, timezone
+from app.models.limits import MAX_DURATION_DAYS
 
 from bson import ObjectId
 from bson.errors import InvalidId
@@ -66,6 +68,15 @@ async def get_owned_trip(trip_id: str, user: dict, db=None) -> dict:
         raise HTTPException(status_code=404, detail="Trip not found.")
 
     return trip
+
+def check_trip_dates(start: date, end: date) -> int:
+    span = (end - start).days + 1
+    if span > MAX_DURATION_DAYS:
+        raise HTTPException(status_code=422, detail=f"A trip can be at most {MAX_DURATION_DAYS} days long.")
+    today = date.today()
+    if start < today - timedelta(days=5 * 365) or end > today + timedelta(days=3 * 365):
+        raise HTTPException(status_code=422, detail="Please choose dates within the next three years.")
+    return span
 
 
 @router.get("")
