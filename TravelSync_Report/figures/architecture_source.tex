@@ -1,0 +1,57 @@
+\documentclass[12pt,border=1pt]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{positioning,fit,arrows.meta}
+\begin{document}
+\begin{tikzpicture}[
+    font=\footnotesize,
+    box/.style={draw, rectangle, align=center, minimum height=0.9cm,
+      inner sep=4pt},
+    layer/.style={draw, dashed, rounded corners, inner sep=6pt},
+    arr/.style={-{Stealth[length=2mm]}, thick},
+    darr/.style={{Stealth[length=2mm]}-{Stealth[length=2mm]}, thick}
+  ]
+  % Client
+  \node[box, text width=13.4cm] (spa) {\textbf{React single-page application} (Vite build)\\
+    Pages \textbullet{} Components \textbullet{} AuthProvider \textbullet{}
+    ProtectedRoute \textbullet{} apiClient \textbullet{} Leaflet map};
+  \node[above=0.15cm of spa, font=\footnotesize\bfseries] {Browser};
+
+  % Backend
+  \node[box, below=1.7cm of spa, text width=13.4cm] (mw)
+    {\textbf{FastAPI middleware}: CORS (exact origins) \textbullet{}
+     Origin/Referer CSRF check \textbullet{} security headers \textbullet{}
+     error handlers};
+  \node[box, below=0.35cm of mw, text width=13.4cm] (rt)
+    {\textbf{Routers (16)}: auth, users, destinations, recommend, trips,
+     trip\_manage, trip\_map, packing, places, stays,\\ travel\_health,
+     groups (REST + WebSocket), bookings, notifications, chat, meta};
+  \node[box, below=0.35cm of rt, text width=13.4cm] (sv)
+    {\textbf{Services}: recommendation engine (weighted KNN) \textbullet{}
+     packing engine \textbullet{} health engine \textbullet{} stay service
+     \textbullet{} map service\\ chatbot \textbullet{} assistant model client
+     \textbullet{} chat hub \textbullet{} notifications \textbullet{}
+     booking files \textbullet{} e-mail};
+  \node[layer, fit=(mw)(rt)(sv)] (api) {};
+  \node[anchor=south west, font=\footnotesize\bfseries] at (api.north west)
+    {Python backend (Uvicorn)};
+
+  % Data and external
+  \node[box, below=1.2cm of sv, minimum width=3.8cm] (ds)
+    {\textbf{Bundled datasets}\\ destinations, places,\\
+     start locations, health};
+  \node[box, left=0.4cm of ds, minimum width=3.8cm] (db)
+    {\textbf{MongoDB}\\ (Motor driver)\\ 15 collections};
+  \node[box, right=0.4cm of ds, minimum width=3.8cm] (ext)
+    {\textbf{External services}\\ Geoapify, Open-Meteo,\\
+     SMTP, optional LLM API};
+
+  \draw[darr] (spa) -- node[right, align=left, font=\scriptsize]
+    {JSON REST over HTTPS (session cookie)\\
+     WebSocket for live group chat} (mw);
+  \draw[arr] (mw) -- (rt);
+  \draw[arr] (rt) -- (sv);
+  \draw[darr] (sv.south -| db.north) -- (db.north);
+  \draw[arr] (sv.south -| ds.north) -- (ds.north);
+  \draw[darr] (sv.south -| ext.north) -- (ext.north);
+\end{tikzpicture}
+\end{document}

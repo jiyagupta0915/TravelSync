@@ -1,0 +1,80 @@
+{
+  "machine": {
+    "python": "3.14.4",
+    "os": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "processor": "arm",
+    "cpu_count": 10
+  },
+  "response_times": {
+    "GET /api/health": {
+      "median_ms": 0.5069164908491075,
+      "p95_ms": 0.5663329502567649
+    },
+    "GET /api/trips": {
+      "median_ms": 0.6784585420973599,
+      "p95_ms": 0.7454169681295753
+    },
+    "GET /api/trips/{id}/packing-list": {
+      "median_ms": 0.7144370465539396,
+      "p95_ms": 0.777499983087182
+    },
+    "GET /api/bookings": {
+      "median_ms": 0.795020954683423,
+      "p95_ms": 1.8951250240206718
+    },
+    "GET /api/groups/{id}/messages": {
+      "median_ms": 0.7777084829285741,
+      "p95_ms": 0.8552910294383764
+    },
+    "GET /api/places/{destination}": {
+      "median_ms": 1.001395983621478,
+      "p95_ms": 1.2067079078406096
+    },
+    "GET /api/destinations/search": {
+      "median_ms": 1.0140209924429655,
+      "p95_ms": 1.0914580198004842
+    },
+    "POST /api/chat": {
+      "median_ms": 1.351208018604666,
+      "p95_ms": 1.4223329490050673
+    },
+    "POST /api/recommend": {
+      "median_ms": 2.241770562250167,
+      "p95_ms": 2.550792065449059
+    },
+    "GET /api/travel-health/{destination}": {
+      "median_ms": 5.165395967196673,
+      "p95_ms": 5.367958918213844
+    },
+    "POST /api/auth/login": {
+      "median_ms": 167.665020970162,
+      "p95_ms": 168.3631669729948
+    }
+  },
+  "throughput": {
+    "GET /api/trips": {
+      "requests_per_second": 740.8311776085133,
+      "errors": 0
+    },
+    "GET /api/groups/{id}/messages": {
+      "requests_per_second": 728.2614875490548,
+      "errors": 0
+    },
+    "GET /api/places/{destination}": {
+      "requests_per_second": 730.3950563593464,
+      "errors": 0
+    },
+    "POST /api/chat": {
+      "requests_per_second": 830.8490437022899,
+      "errors": 0
+    },
+    "POST /api/recommend": {
+      "requests_per_second": 491.1552223414099,
+      "errors": 0
+    },
+    "GET /api/travel-health/{destination}": {
+      "requests_per_second": 186.5213310711748,
+      "errors": 0
+    }
+  }
+}

@@ -1,0 +1,87 @@
+% ===== CHAPTER 4: CONCLUSION =====
+
+\chapter{Conclusion}
+
+\section{Summary of Work}
+
+TravelSync set out to replace the fragmented, multi-application process of
+planning a trip with a single platform. The team built a React single-page
+application backed by an asynchronous FastAPI service and MongoDB, organised
+around the idea that a chosen destination becomes a trip and every
+supporting feature works from that trip.
+
+All four objectives from Section~\ref{sec:objectives} were achieved. An undecided traveller
+receives ranked, explained destination recommendations from a weighted
+nearest-neighbour engine over 250 destinations that respects duration,
+budget and distance constraints (Objective~1). Each trip opens a workspace
+with its top places, a two-tier weather-aware packing list, scored
+accommodation recommendations, historical health context and a map with
+driving distances (Objective~2). Groups collaborate through invite codes,
+live WebSocket chat, structured suggestions, one-member-one-vote voting and
+an owner-confirmed decision (Objective~3). Bookings with private file
+attachments, trip history, notifications and a privacy-preserving assistant
+complete the platform, protected throughout by session security and per-user
+authorisation (Objective~4). The system is covered by 303 passing automated
+tests.
+
+\section{Key Findings}
+
+\begin{itemize}
+  \item \textbf{Finding 1:} A transparent, content-based nearest-neighbour
+    ranking combined with simple constraint scores was sufficient for
+    destination recommendation without any training data. The engine
+    reached a Precision@5 of 97.5\% against a random baseline of 57\%,
+    answered each request in under 2\,ms, and never violated the budget
+    ceiling or the distance tolerance.
+  \item \textbf{Finding 2:} Designing every external dependency to fail
+    gracefully, through caching, per-user limits and local fallbacks, made
+    it possible to build on free-tier services while keeping the application
+    usable when a provider was slow, exhausted or unavailable.
+  \item \textbf{Finding 3:} The evaluation exposed an unexpected interaction
+    in the ranking: the fixed weight given to the traveller type can
+    outweigh a single selected interest, so that for some combinations (for
+    example Culture with the Solo type) the recommendations favour the
+    traveller-type profile over the interest itself.
+\end{itemize}
+
+\section{Future Work and Recommendations}
+\label{sec:future-work}
+
+The current version provides a complete foundation that can be extended in
+the following directions:
+
+\begin{enumerate}
+  \item Potential enhancements to the system: tune the traveller-type
+    weight and the final-score weights using recorded user choices, so that
+    the recommender learns from which destinations users actually select
+    \cite{lops2011content}.
+  \item Alternative approaches worth exploring: combine the content-based
+    engine with collaborative filtering once enough trips have been
+    recorded, and replace the hand-curated health alerts with an automated
+    feed from official surveillance sources \cite{idsp}.
+  \item Scalability improvements: move the in-process chat hub to a shared
+    message broker so that several backend workers can serve WebSocket
+    clients, and move booking files to object storage as their volume grows.
+  \item Integration with other systems: link TravelSync with transport and
+    hotel providers that publish real prices and availability, and allow
+    itineraries to be exported to calendar applications.
+  \item Real-world deployment considerations: conduct a formal usability
+    study, add multilingual support, and complete a production deployment
+    with HTTPS, monitoring and automated backups of the MongoDB database.
+\end{enumerate}
+
+\section{Final Remarks}
+
+Building TravelSync gave the team practical experience of the complete
+software engineering life cycle: turning a proposal into requirements and
+UML models, revising the design when implementation revealed better options
+(such as replacing a planned administrator role with versioned datasets, and
+a separate messaging service with native WebSockets), and validating the
+result with automated tests and measurements. The most valuable lessons
+were the importance of explainable algorithms that can be defended to users
+and evaluators, of security and authorisation designed in from the first
+increment rather than added at the end, and of honest presentation of data,
+such as labelling estimated prices and historical health information for
+what they are. The resulting platform demonstrates that discovery,
+preparation and group coordination for a trip can be brought together in one
+coherent and trustworthy experience.

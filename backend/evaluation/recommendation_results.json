@@ -1,0 +1,312 @@
+{
+  "machine": {
+    "python": "3.14.4",
+    "os": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "processor": "arm",
+    "cpu_count": 10
+  },
+  "precision_0_5": {
+    "threshold": 0.5,
+    "relevant": 234,
+    "total": 240,
+    "precision_at_5": 0.975,
+    "top1_relevant": 48,
+    "queries": 48,
+    "random_baseline": 0.5696666666666667,
+    "non_relevant_results": [
+      {
+        "interest": "Adventure",
+        "traveller_type": "Couple",
+        "destination": "Ganpatipule",
+        "interest_score": 0.45,
+        "traveller_type_score": 0.95
+      },
+      {
+        "interest": "Culture",
+        "traveller_type": "Couple",
+        "destination": "Andaman",
+        "interest_score": 0.45,
+        "traveller_type_score": 0.95
+      },
+      {
+        "interest": "Culture",
+        "traveller_type": "Solo",
+        "destination": "Bir Billing",
+        "interest_score": 0.35,
+        "traveller_type_score": 0.9
+      },
+      {
+        "interest": "Culture",
+        "traveller_type": "Solo",
+        "destination": "Auli",
+        "interest_score": 0.35,
+        "traveller_type_score": 0.9
+      },
+      {
+        "interest": "Nightlife",
+        "traveller_type": "Solo",
+        "destination": "Andaman",
+        "interest_score": 0.45,
+        "traveller_type_score": 0.85
+      },
+      {
+        "interest": "Spiritual",
+        "traveller_type": "Solo",
+        "destination": "Leh",
+        "interest_score": 0.45,
+        "traveller_type_score": 0.9
+      }
+    ]
+  },
+  "precision_0_7": {
+    "threshold": 0.7,
+    "relevant": 207,
+    "total": 240,
+    "precision_at_5": 0.8625,
+    "top1_relevant": 47,
+    "queries": 48,
+    "random_baseline": 0.435,
+    "non_relevant_results": [
+      {
+        "interest": "Mountain",
+        "traveller_type": "Couple",
+        "destination": "Kodaikanal",
+        "interest_score": 0.65,
+        "traveller_type_score": 0.9
+      },
+      {
+        "interest": "Mountain",
+        "traveller_type": "Couple",
+        "destination": "Coorg",
+        "interest_score": 0.55,
+        "traveller_type_score": 0.9
+      },
+      {
+        "interest": "Beach",
+        "traveller_type": "Family",
+        "destination": "Pondicherry",
+        "interest_score": 0.65,
+        "traveller_type_score": 0.85
+      },
+      {
+        "interest": "Beach",
+        "traveller_type": "Family",
+        "destination": "Kochi",
+        "interest_score": 0.55,
+        "traveller_type_score": 0.85
+      },
+      {
+        "interest": "Adventure",
+        "traveller_type": "Couple",
+        "destination": "Ganpatipule",
+        "interest_score": 0.45,
+        "traveller_type_score": 0.95
+      },
+      {
+        "interest": "Culture",
+        "traveller_type": "Couple",
+        "destination": "Goa",
+        "interest_score": 0.6,
+        "traveller_type_score": 0.95
+      },
+      {
+        "interest": "Culture",
+        "traveller_type": "Couple",
+        "destination": "Andaman",
+        "interest_score": 0.45,
+        "traveller_type_score": 0.95
+      },
+      {
+        "interest": "Culture",
+        "traveller_type": "Friends",
+        "destination": "Goa",
+        "interest_score": 0.6,
+        "traveller_type_score": 0.95
+      },
+      {
+        "interest": "Culture",
+        "traveller_type": "Solo",
+        "destination": "Leh",
+        "interest_score": 0.55,
+        "traveller_type_score": 0.9
+      },
+      {
+        "interest": "Culture",
+        "traveller_type": "Solo",
+        "destination": "Goa",
+        "interest_score": 0.6,
+        "traveller_type_score": 0.85
+      },
+      {
+        "interest": "Culture",
+        "traveller_type": "Solo",
+        "destination": "Bir Billing",
+        "interest_score": 0.35,
+        "traveller_type_score": 0.9
+      },
+      {
+        "interest": "Culture",
+        "traveller_type": "Solo",
+        "destination": "Auli",
+        "interest_score": 0.35,
+        "traveller_type_score": 0.9
+      },
+      {
+        "interest": "Nightlife",
+        "traveller_type": "Family",
+        "destination": "Jaipur",
+        "interest_score": 0.65,
+        "traveller_type_score": 0.85
+      },
+      {
+        "interest": "Nightlife",
+        "traveller_type": "Couple",
+        "destination": "Bakkhali",
+        "interest_score": 0.55,
+        "traveller_type_score": 0.95
+      },
+      {
+        "interest": "Nightlife",
+        "traveller_type": "Couple",
+        "destination": "Maravanthe",
+        "interest_score": 0.55,
+        "traveller_type_score": 0.95
+      },
+      {
+        "interest": "Nightlife",
+        "traveller_type": "Couple",
+        "destination": "Ganpatipule",
+        "interest_score": 0.55,
+        "traveller_type_score": 0.95
+      },
+      {
+        "interest": "Nightlife",
+        "traveller_type": "Couple",
+        "destination": "Mandvi",
+        "interest_score": 0.55,
+        "traveller_type_score": 0.95
+      },
+      {
+        "interest": "Nightlife",
+        "traveller_type": "Solo",
+        "destination": "Andaman",
+        "interest_score": 0.45,
+        "traveller_type_score": 0.85
+      },
+      {
+        "interest": "Nightlife",
+        "traveller_type": "Solo",
+        "destination": "Pondicherry",
+        "interest_score": 0.55,
+        "traveller_type_score": 0.8
+      },
+      {
+        "interest": "Spiritual",
+        "traveller_type": "Couple",
+        "destination": "Andaman",
+        "interest_score": 0.65,
+        "traveller_type_score": 0.95
+      },
+      {
+        "interest": "Spiritual",
+        "traveller_type": "Couple",
+        "destination": "Goa",
+        "interest_score": 0.55,
+        "traveller_type_score": 0.95
+      },
+      {
+        "interest": "Spiritual",
+        "traveller_type": "Couple",
+        "destination": "Pondicherry",
+        "interest_score": 0.65,
+        "traveller_type_score": 0.9
+      },
+      {
+        "interest": "Spiritual",
+        "traveller_type": "Friends",
+        "destination": "Andaman",
+        "interest_score": 0.65,
+        "traveller_type_score": 0.9
+      },
+      {
+        "interest": "Spiritual",
+        "traveller_type": "Friends",
+        "destination": "Pondicherry",
+        "interest_score": 0.65,
+        "traveller_type_score": 0.9
+      },
+      {
+        "interest": "Spiritual",
+        "traveller_type": "Solo",
+        "destination": "Leh",
+        "interest_score": 0.45,
+        "traveller_type_score": 0.9
+      },
+      {
+        "interest": "Spiritual",
+        "traveller_type": "Solo",
+        "destination": "Andaman",
+        "interest_score": 0.65,
+        "traveller_type_score": 0.85
+      },
+      {
+        "interest": "Spiritual",
+        "traveller_type": "Solo",
+        "destination": "Goa",
+        "interest_score": 0.55,
+        "traveller_type_score": 0.85
+      },
+      {
+        "interest": "Trekking",
+        "traveller_type": "Family",
+        "destination": "Mussoorie",
+        "interest_score": 0.65,
+        "traveller_type_score": 0.9
+      },
+      {
+        "interest": "Trekking",
+        "traveller_type": "Family",
+        "destination": "Shimla",
+        "interest_score": 0.65,
+        "traveller_type_score": 0.9
+      },
+      {
+        "interest": "Heritage",
+        "traveller_type": "Solo",
+        "destination": "Leh",
+        "interest_score": 0.6,
+        "traveller_type_score": 0.9
+      },
+      {
+        "interest": "Heritage",
+        "traveller_type": "Solo",
+        "destination": "Auli",
+        "interest_score": 0.6,
+        "traveller_type_score": 0.9
+      },
+      {
+        "interest": "Heritage",
+        "traveller_type": "Solo",
+        "destination": "Munsiyari",
+        "interest_score": 0.6,
+        "traveller_type_score": 0.9
+      },
+      {
+        "interest": "Heritage",
+        "traveller_type": "Solo",
+        "destination": "Kasol",
+        "interest_score": 0.6,
+        "traveller_type_score": 0.9
+      }
+    ]
+  },
+  "constraints": {
+    "requests": 300,
+    "results": 1542,
+    "within_max_distance": 1508,
+    "within_10pct_tolerance": 1542,
+    "over_125pct_budget": 0,
+    "engine_ms_median": 1.444479450583458,
+    "engine_ms_p95": 1.5652090078219771
+  }
+}

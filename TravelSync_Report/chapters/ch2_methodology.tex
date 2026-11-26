@@ -1,0 +1,920 @@
+% ===== CHAPTER 2: METHODOLOGY & DESIGN =====
+
+\chapter{Methodology and Design}
+\label{chap:methodology}
+
+\section{System Architecture}
+
+TravelSync was developed with an iterative and incremental process
+\cite{sommerville2016}. Each increment delivered one working feature slice,
+covering its API endpoints, service logic, user interface and automated
+tests, and was integrated into the shared GitHub repository through feature
+commits and pull requests. The backend was first prototyped in Flask in late
+August 2026 and was migrated to FastAPI \cite{fastapi} immediately afterwards
+so that the application could use asynchronous database access, declarative
+request validation and native WebSocket support. Later increments added the
+packing assistant (September), the health and safety module (October), top
+places, stays and the trip workspace (October), real-time group chat and the
+assistant (November), and finally bookings, the interactive map and trip
+editing (November).
+
+The resulting system follows a layered client--server architecture. A React
+single-page application runs in the browser and communicates with a FastAPI
+backend through a JSON REST API and, for group chat, a WebSocket connection.
+The backend is organised into routers (HTTP and WebSocket endpoints),
+services (business logic and the recommendation, packing, health and stay
+engines) and models (request validation), with cross-cutting security code
+kept in a separate core package. Persistent data is stored in MongoDB through
+the asynchronous Motor driver, while curated datasets are shipped with the
+backend as versioned CSV and JSON files.
+
+\subsection{High-Level Design}
+\label{sec:high-level-design}
+
+Figure~\ref{fig:architecture} shows the major components and their
+interactions. Every browser request passes through a fixed middleware chain
+before reaching a router: CORS handling restricted to the configured
+frontend origins, an Origin/Referer check that rejects state-changing
+requests from other sites, and a middleware that adds security headers.
+Routers authenticate the caller from the session cookie, validate the request
+body against a Pydantic model and delegate to a service. Services read and
+write MongoDB, consult the bundled datasets, or call an external provider, and
+every provider call is wrapped so that a timeout or quota error produces a
+clear, user-safe message rather than an unhandled failure.
+
+\begin{figure}[htbp]
+\centering
+% Pre-rendered from figures/architecture_source.tex (TikZ), so the
+% report compiles faster.
+\includegraphics{architecture.pdf}
+\caption{High-level architecture of TravelSync}
+\label{fig:architecture}
+\end{figure}
+
+Real-time collaboration is implemented with the WebSocket protocol
+\cite{rfc6455} directly in FastAPI rather than through an additional
+messaging service. The socket is receive-only: a chat message is still sent
+with an ordinary authenticated \texttt{POST} request, so validation and
+membership checks remain in one place, and once the message is stored the
+in-process chat hub pushes it to every open socket of that group. The same
+channel carries message deletions, read receipts, new suggestions, vote
+changes and group decisions.
+
+The actors that interact with the system are the following:
+
+\begin{itemize}
+  \item \textbf{Traveller:} registers and logs in, plans trips through
+    either known-destination selection or recommendation, and uses the
+    packing, stays, health, map, bookings and assistant features for those
+    trips.
+  \item \textbf{Group Member:} a traveller who has joined a travel group
+    through its invite code; reads and sends chat messages, suggests
+    destinations, votes, and sees bookings shared with the group. The
+    member who created the group is its \emph{owner} and can additionally
+    confirm or reopen the group decision and delete the group.
+  \item \textbf{External services:} Geoapify \cite{geoapify} supplies
+    accommodation listings drawn from OpenStreetMap \cite{haklay2008osm}
+    and driving distances; Open-Meteo \cite{openmeteo} supplies weather
+    forecasts; OpenStreetMap tile servers supply map tiles directly to the
+    browser; an SMTP server delivers password-reset e-mails; and an optional
+    OpenAI-compatible chat API answers assistant questions that the built-in
+    logic cannot.
+\end{itemize}
+
+The mid-semester design included an Administrator actor. During
+implementation the team decided not to build an administration interface:
+the destination, places and health datasets are curated files maintained in
+the repository, which keeps the attack surface smaller and every data change
+reviewable through version control.
+
+The UML models and data flow diagrams in the remainder of this section were
+produced during the analysis and design phases of the project. They
+therefore still show some elements that changed during implementation:
+the Administrator actor, and external interfaces whose role became narrower
+(weather is used only by the packing assistant, and accommodation comes from
+Geoapify with estimated rather than live prices). Where a diagram and the implementation differ, the implementation
+described in Section~\ref{sec:implementation} reflects the delivered
+system.
+
+\subsubsection{Use Case Diagram}
+
+Figure~\ref{fig:use-case} shows the use case diagram of TravelSync, covering
+the Traveller and Group Member actors and the external services on which the
+system depends. Each use case corresponds to one or more of the functional
+requirements in Table~\ref{tab:functional-requirements}.
+
+% UPLOAD: Use Case Diagram
+\begin{figure}[htbp]
+  \centering
+  % Replace by saving the image as figures/use_case_diagram.jpg
+  \diagram{use_case_diagram.jpg}{USE CASE DIAGRAM}{0.75\textheight}
+  \caption{TravelSync use case diagram}
+  \label{fig:use-case}
+\end{figure}
+
+\subsubsection{Use Case Specifications}
+
+Figures~\ref{fig:uc01}--\ref{fig:uc10} document the detailed specification
+of the principal use cases shown in Figure~\ref{fig:use-case}, including the
+actors, pre-conditions, task sequence and post-conditions of each.
+
+% UPLOAD: Use Case Specification UC-01
+\begin{figure}[htbp]
+  \centering
+  \diagram{uc01_plan_trip.jpg}{UC-01 PLAN TRIP SPECIFICATION}{0.36\textheight}
+  \caption{UC-01 -- Plan Trip}
+  \label{fig:uc01}
+\end{figure}
+
+% UPLOAD: Use Case Specification UC-02
+\begin{figure}[htbp]
+  \centering
+  \diagram{uc02_register_login.jpg}{UC-02 REGISTER / LOGIN SPECIFICATION}{0.36\textheight}
+  \caption{UC-02 -- Register / Login}
+  \label{fig:uc02}
+\end{figure}
+
+% UPLOAD: Use Case Specification UC-03
+\begin{figure}[htbp]
+  \centering
+  \diagram{uc03_view_top_places.jpg}{UC-03 VIEW TOP PLACES SPECIFICATION}{0.36\textheight}
+  \caption{UC-03 -- View Top Places at the Destination}
+  \label{fig:uc03}
+\end{figure}
+
+% UPLOAD: Use Case Specification UC-04
+\begin{figure}[htbp]
+  \centering
+  \diagram{uc04_generate_packing_list.jpg}{UC-04 GENERATE PACKING LIST SPECIFICATION}{0.36\textheight}
+  \caption{UC-04 -- Generate a Packing List}
+  \label{fig:uc04}
+\end{figure}
+
+% UPLOAD: Use Case Specification UC-05
+\begin{figure}[htbp]
+  \centering
+  \diagram{uc05_view_interactive_map.jpg}{UC-05 VIEW INTERACTIVE MAP SPECIFICATION}{0.36\textheight}
+  \caption{UC-05 -- View Interactive Map}
+  \label{fig:uc05}
+\end{figure}
+
+% UPLOAD: Use Case Specification UC-06
+\begin{figure}[htbp]
+  \centering
+  \diagram{uc06_view_recommended_hotels.jpg}{UC-06 VIEW RECOMMENDED HOTELS SPECIFICATION}{0.36\textheight}
+  \caption{UC-06 -- View Recommended Hotels}
+  \label{fig:uc06}
+\end{figure}
+
+% UPLOAD: Use Case Specification UC-07
+\begin{figure}[htbp]
+  \centering
+  \diagram{uc07_health_safety.jpg}{UC-07 HEALTH \& SAFETY SPECIFICATION}{0.36\textheight}
+  \caption{UC-07 -- Travel Health \& Safety Warnings}
+  \label{fig:uc07}
+\end{figure}
+
+% UPLOAD: Use Case Specification UC-08
+\begin{figure}[htbp]
+  \centering
+  \diagram{uc08_group_trip_collaboration.jpg}{UC-08 GROUP TRIP COLLABORATION SPECIFICATION}{0.36\textheight}
+  \caption{UC-08 -- Group Trip Collaboration}
+  \label{fig:uc08}
+\end{figure}
+
+% UPLOAD: Use Case Specification UC-09
+\begin{figure}[htbp]
+  \centering
+  \diagram{uc09_manage_bookings.jpg}{UC-09 MANAGE BOOKINGS SPECIFICATION}{0.36\textheight}
+  \caption{UC-09 -- Manage Travel Bookings and Tickets}
+  \label{fig:uc09}
+\end{figure}
+
+% UPLOAD: Use Case Specification UC-10
+\begin{figure}[htbp]
+  \centering
+  \diagram{uc10_travel_assistant.jpg}{UC-10 TRAVEL ASSISTANT SPECIFICATION}{0.36\textheight}
+  \caption{UC-10 -- Interact with Travel Chatbot}
+  \label{fig:uc10}
+\end{figure}
+
+\subsubsection{Activity Diagram}
+
+Figure~\ref{fig:activity} traces the end-to-end flow of a traveller through
+TravelSync: registration and login, the decision between selecting a known
+destination and requesting ranked recommendations, retrieval of the
+destination's information, the optional packing list, the interactive map,
+the branch for group travel (creating or joining a group, discussing and
+voting, and confirming the group destination), and finally bookings and the
+travel history. The assistant runs in parallel with the whole session.
+
+% Activity Diagram
+\begin{figure}[htbp]
+  \centering
+  \diagram{activity_diagram.jpg}{ACTIVITY DIAGRAM}{0.8\textheight}
+  \caption{TravelSync activity diagram}
+  \label{fig:activity}
+\end{figure}
+
+\subsubsection{Swimlane Diagram}
+
+Figure~\ref{fig:swimlane} presents the same workflow as a swimlane diagram,
+assigning each activity to the lane responsible for it: the traveller, the
+TravelSync system and the machine-learning module. It makes the hand-offs
+between the user interface, the backend and the recommendation engine
+explicit.
+
+% Swimlane Diagram
+\begin{figure}[htbp]
+  \centering
+  \diagram{swimlane_diagram.jpg}{SWIMLANE DIAGRAM}{0.8\textheight}
+  \caption{TravelSync swimlane diagram}
+  \label{fig:swimlane}
+\end{figure}
+
+\subsubsection{Sequence Diagram}
+
+Figure~\ref{fig:sequence} presents the messages exchanged between the user,
+the frontend, the backend and the database during a typical session: login
+and session creation, recommendation and saving of a trip, preparation of
+the trip (packing list, stay and health information), synchronisation of
+group chat and shared suggestions, a question to the travel assistant, and
+retrieval of the travel history.
+
+% Sequence Diagram
+\begin{figure}[htbp]
+  \centering
+  \diagram{sequence_diagram.jpg}{SEQUENCE DIAGRAM}{0.78\textheight}
+  \caption{TravelSync sequence diagram}
+  \label{fig:sequence}
+\end{figure}
+
+\subsubsection{Collaboration Diagram}
+
+Figure~\ref{fig:collaboration} shows the same interaction from the point of
+view of the participating objects: the user, the frontend, the backend and
+the database. The numbered messages on each link (login, trip discovery and
+creation, trip preparation, group collaboration, the assistant query and the
+travel history) give the order in which the objects collaborate. Because the
+diagram is wide, it is printed on a rotated page.
+
+% Collaboration Diagram (printed rotated on its own page)
+\begin{sidewaysfigure}
+  \centering
+  \diagram[\textheight]{collaboration_diagram.jpg}{COLLABORATION DIAGRAM}{0.82\textwidth}
+  \caption{TravelSync collaboration diagram}
+  \label{fig:collaboration}
+\end{sidewaysfigure}
+
+\subsubsection{Class Diagram}
+
+Figure~\ref{fig:class} shows the UML class diagram of TravelSync, with the
+user, trip, destination, group, message, packing list, packing item, booking
+and related classes, their attributes and operations, and the associations,
+aggregations and compositions between them. The persistent classes
+correspond to the MongoDB collections described in
+Section~\ref{sec:database-design}, while destinations and places are served
+from the curated datasets.
+
+% Class Diagram (printed rotated on its own page)
+\begin{sidewaysfigure}
+  \centering
+  \diagram[\textheight]{class_diagram.jpg}{CLASS DIAGRAM}{0.82\textwidth}
+  \caption{TravelSync UML class diagram}
+  \label{fig:class}
+\end{sidewaysfigure}
+
+\subsubsection{Component and Deployment Diagrams}
+
+Figure~\ref{fig:component} shows the main software components and their
+interfaces: the web frontend calls the backend API through its REST
+interface; the backend uses the recommendation and health-insight
+component, reads and writes the TravelSync database, and fetches data from
+external services; and the group chat component delivers chat messages,
+suggestions and votes over WebSockets.
+
+% Component Diagram
+\begin{figure}[htbp]
+  \centering
+  \diagram{component_diagram.jpg}{COMPONENT DIAGRAM}{0.32\textheight}
+  \caption{TravelSync UML component diagram}
+  \label{fig:component}
+\end{figure}
+
+Figure~\ref{fig:deployment} shows the target deployment topology: the
+static React build is served from a frontend host, the client's web browser
+loads it and calls the REST API, a Python/FastAPI application server hosts
+the backend API together with the recommendation engine, packing engine,
+health engine and group chat server, and the database server runs MongoDB
+Atlas. The application server is the only node that contacts the external
+APIs.
+
+% Deployment Diagram
+\begin{figure}[htbp]
+  \centering
+  \diagram{deployment_diagram.jpg}{DEPLOYMENT DIAGRAM}{0.36\textheight}
+  \caption{TravelSync UML deployment diagram}
+  \label{fig:deployment}
+\end{figure}
+
+\subsubsection{Data Flow Diagrams}
+
+Figure~\ref{fig:dfd0} shows the context-level (Level~0) data flow diagram, in
+which TravelSync is a single process exchanging data with its users and
+external data sources. Figure~\ref{fig:dfd1} decomposes the system into eight
+processes: 1.0 Authenticate and Manage User, 2.0 Recommend Destination,
+3.0 Plan and Manage Trip, 4.0 Manage Group Trip, 5.0 Provide Travel
+Recommendations, 6.0 Generate Smart Packing Checklist, 7.0 Travel
+Assistant/Chatbot and 8.0 Manage Bookings and Trip History.
+Figures~\ref{fig:dfd2-p1}--\ref{fig:dfd2-p8} refine each of these processes
+into its Level~2 sub-processes and the data stores they use. The Level~1
+diagram is printed on a rotated page.
+
+% Level 0 Data Flow Diagram
+\begin{figure}[htbp]
+  \centering
+  \diagram{dfd_level0.jpg}{LEVEL 0 DATA FLOW DIAGRAM}{0.4\textheight}
+  \caption{Level 0 (context) data flow diagram}
+  \label{fig:dfd0}
+\end{figure}
+
+% Level 1 Data Flow Diagram (printed rotated on its own page)
+\begin{sidewaysfigure}
+  \centering
+  \diagram[\textheight]{dfd_level1.jpg}{LEVEL 1 DATA FLOW DIAGRAM}{0.82\textwidth}
+  \caption{Level 1 data flow diagram}
+  \label{fig:dfd1}
+\end{sidewaysfigure}
+
+% Level 2 Data Flow Diagrams
+\begin{figure}[htbp]
+  \centering
+  \diagram{dfd_level2_p1.jpg}{LEVEL 2 DFD -- PROCESS 1.0}{0.38\textheight}
+  \caption{Level 2 DFD -- Process 1.0: Authenticate and Manage User}
+  \label{fig:dfd2-p1}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \diagram{dfd_level2_p2.jpg}{LEVEL 2 DFD -- PROCESS 2.0}{0.38\textheight}
+  \caption{Level 2 DFD -- Process 2.0: Recommend Destination}
+  \label{fig:dfd2-p2}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \diagram{dfd_level2_p3.jpg}{LEVEL 2 DFD -- PROCESS 3.0}{0.38\textheight}
+  \caption{Level 2 DFD -- Process 3.0: Plan and Manage Trip}
+  \label{fig:dfd2-p3}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \diagram{dfd_level2_p4.jpg}{LEVEL 2 DFD -- PROCESS 4.0}{0.38\textheight}
+  \caption{Level 2 DFD -- Process 4.0: Manage Group Trip}
+  \label{fig:dfd2-p4}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \diagram{dfd_level2_p5.jpg}{LEVEL 2 DFD -- PROCESS 5.0}{0.38\textheight}
+  \caption{Level 2 DFD -- Process 5.0: Provide Travel Recommendations}
+  \label{fig:dfd2-p5}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \diagram{dfd_level2_p6.jpg}{LEVEL 2 DFD -- PROCESS 6.0}{0.38\textheight}
+  \caption{Level 2 DFD -- Process 6.0: Generate Smart Packing Checklist}
+  \label{fig:dfd2-p6}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \diagram{dfd_level2_p7.jpg}{LEVEL 2 DFD -- PROCESS 7.0}{0.38\textheight}
+  \caption{Level 2 DFD -- Process 7.0: Travel Assistant / Chatbot}
+  \label{fig:dfd2-p7}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \diagram{dfd_level2_p8.jpg}{LEVEL 2 DFD -- PROCESS 8.0}{0.38\textheight}
+  \caption{Level 2 DFD -- Process 8.0: Manage Bookings and Trip History}
+  \label{fig:dfd2-p8}
+\end{figure}
+
+\FloatBarrier
+
+\subsection{Technical Stack}
+
+\begin{itemize}
+  \item \textbf{Framework/Language:} JavaScript with React~19 \cite{react},
+    React Router~7 and the Vite~8 build tool for the frontend; Python with
+    FastAPI \cite{fastapi}, Pydantic validation and the Uvicorn ASGI server
+    for the backend.
+  \item \textbf{Database:} MongoDB \cite{mongodb}, accessed asynchronously
+    through the Motor driver, used locally during development and through
+    MongoDB Atlas for the shared deployment.
+  \item \textbf{Machine learning and data:} scikit-learn
+    \cite{pedregosa2011sklearn} for feature scaling, Isolation Forest and
+    K-Means, together with NumPy and pandas.
+  \item \textbf{Security:} bcrypt password hashing \cite{provos1999bcrypt}
+    and PyJWT for signed session tokens \cite{rfc7519}.
+  \item \textbf{Tools:} Git and GitHub for version control and pull
+    requests; pytest \cite{pytest} with pytest-asyncio and mongomock-motor
+    for backend tests; Vitest \cite{vitest}, Testing Library and jsdom for
+    frontend tests; ESLint for static analysis.
+  \item \textbf{Libraries and external services:} Leaflet \cite{leaflet}
+    with OpenStreetMap tiles for maps; lucide-react for icons; HTTPX for
+    outgoing HTTP calls; the Geoapify Places and Route Matrix APIs
+    \cite{geoapify}; the Open-Meteo forecast API \cite{openmeteo}; the
+    browser Geolocation API; and, optionally, any OpenAI-compatible chat
+    completion API for the assistant.
+\end{itemize}
+
+Table~\ref{tab:api} summarises the REST API exposed by the sixteen routers.
+All paths are prefixed with \texttt{/api}; every route except the public
+metadata, destination search, places and authentication routes requires a
+valid session.
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{|L{0.34\textwidth}|L{0.58\textwidth}|}
+  \hline
+  \textbf{Base path} & \textbf{Main operations} \\
+  \hline
+  \texttt{/auth} & signup, login, logout, current user, change password,
+    recovery status, forgot and reset password \\
+  \hline
+  \texttt{/users/me} & read and update profile; read and update settings \\
+  \hline
+  \texttt{/destinations}, \texttt{/start-locations} & search destinations,
+    read one destination profile, search starting locations \\
+  \hline
+  \texttt{/recommend} & ranked destination recommendations \\
+  \hline
+  \texttt{/trips} & list, read, create, edit (budget, duration, dates) and
+    delete trips \\
+  \hline
+  \texttt{/trips/\{id\}/packing-list} & read, generate, edit items, set
+    dates and refresh forecast \\
+  \hline
+  \texttt{/trips/\{id\}/stays} & recommendations, saved stays, save and
+    remove a stay \\
+  \hline
+  \texttt{/trips/\{id\}/map} & map data; driving distances from the user \\
+  \hline
+  \texttt{/places/\{destination\}} & top five places of a destination \\
+  \hline
+  \texttt{/travel-health/\{dest.\}} & alerts and historical profile for the
+    destination's state \\
+  \hline
+  \texttt{/groups} & create, join, list, read, leave, delete; messages,
+    read receipts, unread counts; suggestions, votes, decision; WebSocket
+    \texttt{/\{id\}/ws} \\
+  \hline
+  \texttt{/bookings} & list, create, edit, delete, share to group; upload,
+    download and delete files \\
+  \hline
+  \texttt{/notifications} & list, mark one or all as read \\
+  \hline
+  \texttt{/chat} & ask the TravelSync assistant \\
+  \hline
+  \texttt{/health}, \texttt{/features} & service status and feature flags \\
+  \hline
+\end{tabular}
+\caption{Summary of the TravelSync REST API}
+\label{tab:api}
+\end{table}
+
+\section{Implementation Details}
+\label{sec:implementation}
+
+\subsection{Module 1: Core Functionality}
+
+The core of TravelSync consists of secure account management, the
+Intelligent Destination Finder, trip management with top places, and the
+Smart Packing Assistant. Together they implement Objective~1 and the
+trip-workspace part of Objective~2.
+
+\subsubsection{Authentication and Session Management}
+
+New passwords must contain 8 to 72 bytes with at least one uppercase letter,
+one lowercase letter, one digit and one special character; the 72-byte limit
+exists because bcrypt ignores input beyond that length, and the frontend
+mirrors the same policy so that users see the rules as they type. Passwords
+are stored only as bcrypt hashes \cite{provos1999bcrypt}. On successful
+signup or login the backend issues an HS256-signed JWT \cite{rfc7519}
+carrying the user identifier, issue time, a seven-day expiry and a
+\emph{token version}, and places it in an \texttt{httpOnly} cookie with the
+\texttt{SameSite=Lax} attribute, so that browser scripts can never read it.
+Changing or resetting a password increments the stored token version, which
+invalidates every token issued earlier and therefore signs the user out on
+all other devices.
+
+Several further measures protect the login flow. A failed login for an
+unknown e-mail address performs a dummy bcrypt comparison, so the response
+time does not reveal whether an account exists, and repeated failures are
+throttled (five failures within fifteen minutes by default). State-changing
+requests that carry the session cookie must come from a configured frontend
+origin, following the OWASP guidance on cross-site request forgery
+\cite{owaspcsrf}. Password recovery is offered only when an SMTP server is
+configured: a random single-use token is e-mailed, only its SHA-256 hash is
+stored, and a MongoDB TTL index deletes it after thirty minutes. In
+production mode the application refuses to start with a weak JWT secret,
+insecure cookies or a wildcard CORS origin.
+
+\subsubsection{Intelligent Destination Finder}
+
+A traveller who knows the destination searches the 250-destination dataset
+by name or state and saves it as a trip directly. An undecided traveller
+selects one or more of twelve interests (Mountain, Beach, Nature, Adventure,
+Culture, Relaxation, Nightlife, Spiritual, Trekking, Photography, Food and
+Heritage), sets the importance of each, chooses a traveller type (Family,
+Couple, Friends or Solo), and enters the trip duration, total budget,
+starting location and maximum travel distance. The recommendation engine is
+a content-based recommender \cite{lops2011content} built on the
+nearest-neighbour principle \cite{cover1967knn}:
+
+\[
+\begin{array}{c}
+\text{User Preferences} \rightarrow \text{Feature Vector} \rightarrow
+\text{Weighted KNN} \\[2pt]
+\rightarrow \text{Constraint Scoring} \rightarrow
+\text{Ranked Recommendations}
+\end{array}
+\]
+
+Every destination is described by sixteen features: the twelve interest
+scores and four traveller-type suitability scores, each between 0 and 1. At
+start-up the engine fits a \texttt{StandardScaler} to these columns. For a
+request, the user vector $\mathbf{u}$ holds the stated interest preferences
+and a one-hot encoding of the traveller type, and the weight vector
+$\mathbf{w}$ holds the importance of each interest (0 to 3) with a fixed
+weight of 3 on the chosen traveller type. The preference distance and score
+of destination $i$ are
+\[
+  d_i = \sqrt{\sum_{j=1}^{16} w_j\,\bigl(x_{ij} - u_j\bigr)^2},
+  \qquad
+  s^{\mathrm{pref}}_i = \frac{1}{1 + d_i},
+\]
+computed on the standardised features. The sixty nearest destinations form
+the candidate set, which is then scored against the practical constraints. A
+destination whose ideal stay is within one day of the requested duration
+receives a duration score of 1.0, decreasing to 0.3 for larger differences.
+The estimated trip cost (average daily budget multiplied by the duration)
+scores highest when it falls between 85\% and 100\% of the stated budget, is
+tolerated with lower scores up to 125\%, and is rejected beyond that. The
+great-circle distance from the starting location is computed with the
+haversine formula \cite{sinnott1984haversine}; destinations within the
+maximum distance score 1.0, those up to 10\% beyond it score 0.75, and the
+rest are removed. The final score is
+\[
+  s_i = 0.60\,s^{\mathrm{pref}}_i + 0.15\,s^{\mathrm{dur}}_i
+      + 0.15\,s^{\mathrm{bud}}_i + 0.10\,s^{\mathrm{dist}}_i ,
+\]
+and the top results (six by default, at most ten) are returned with every
+component score, the estimated budget and the distance, so the interface can
+show why each destination was chosen. The engine needs no external model
+file: everything it requires is in the bundled dataset, which makes the
+recommendations reproducible on a fresh installation.
+
+\subsubsection{Trip Management and Top Places}
+
+Choosing a destination, whether from search, from a recommendation or from a
+group decision, creates a trip that records the destination, its state,
+region and coordinates, the duration, budget, traveller type and the
+source of the decision. The \emph{My Trips} page separates upcoming and
+previous trips, and each trip opens a trip workspace that summarises its
+packing progress, shortlisted stays, health status and bookings. Budget,
+duration and travel dates can be edited later; dates must be valid, ordered
+and no more than ninety days apart. Deleting a trip removes its packing list,
+saved stays and bookings with their files, and never affects another user's
+data.
+
+The top five places for every destination are served from a curated dataset
+of 1{,}250 places with their category, description and coordinates. These
+places are reused by the stays module as location anchors and by the map as
+markers.
+
+\subsubsection{Smart Packing Assistant}
+
+The packing assistant is a transparent rule engine rather than a learned
+model, so every item can be explained and unit-tested. It works in two
+tiers, because exact travel dates are often unknown when planning begins:
+
+\[
+\begin{array}{c}
+\text{Destination climate and terrain} + \text{Duration} \rightarrow
+\text{Tier 1 climate list} \\[2pt]
+\xrightarrow{\ \text{dates added}\ }
+\text{Open-Meteo forecast} \rightarrow \text{Tier 2 forecast list}
+\end{array}
+\]
+
+The \emph{climate} tier is always available: it uses the destination's
+region and its terrain and activity profile from the dataset to generate
+categorised items (clothing, weather, health, electronics, documents and
+activity-specific gear), with clothing quantities scaled to the trip length.
+When the trip has travel dates within the forecast window, the
+\emph{forecast} tier calls the Open-Meteo API \cite{openmeteo}, which needs
+no API key, summarises the expected temperatures and rain, and refines the
+weather-dependent items. If the forecast service fails, the list falls back
+to the climate tier instead of failing. Regenerating a list preserves items
+the user added and items already marked as packed, and a unique index on the
+trip identifier guarantees that two simultaneous first requests create
+exactly one list.
+
+\subsection{Module 2: Secondary Features}
+
+The secondary modules complete Objectives~2 to~4.
+
+\subsubsection{Smart Stay Recommendations}
+
+For a trip, the stay service first builds an \emph{anchor} from the
+coordinates of the destination's top five places, falling back to the
+destination centre when necessary, and fetches nearby accommodation from the
+Geoapify Places API \cite{geoapify}, whose listings come from OpenStreetMap
+\cite{haklay2008osm}. Results are cached in MongoDB for seven days per
+destination through a TTL index, which keeps usage within the provider's
+free quota. Each stay receives a 0--100 match score from four explainable
+parts: location (40\%, the average haversine distance to the top five
+places), budget (30\%, the estimated price per person against the trip's
+nightly budget), traveller fit (20\%, how well the stay type suits the
+traveller type) and quality (10\%, star rating and listing completeness).
+Each recommendation carries plain-language reasons. Because neither Geoapify
+nor OpenStreetMap provides live prices, the price shown is an estimated band
+derived from the stay type, star rating and the destination's cost level,
+and it is always labelled as an estimate. Users can shortlist stays on a
+trip; a unique index on the trip and stay key makes saving idempotent.
+
+\subsubsection{Travel Health and Safety Intelligence}
+
+The health module answers the question ``what has happened here before?''
+for the state of the chosen destination, and it is explicitly presented as
+historical context rather than a prediction or a safety score. It has two
+parts. The first is a short list of current outbreak alerts curated from
+official public-health sources, each with its source, severity and
+reporting date; an alert is shown as active for 45 days and as an earlier
+alert for up to a year, and the absence of an alert is never presented as
+evidence of safety. The second part analyses a historical outbreak dataset
+stored in the weekly outbreak format of the Integrated Disease Surveillance
+Programme \cite{idsp}, containing 33{,}076 outbreak records from 2009 to
+2026 across 34 states and union territories. At start-up the health engine
+computes:
+
+\begin{itemize}
+  \item \textbf{Seasonal patterns:} outbreak counts by calendar month for
+    each state and disease group, which the interface can filter by the
+    intended travel month.
+  \item \textbf{Anomaly detection:} two Isolation Forest models
+    \cite{liu2008iforest} with 200 trees each, one flagging state-months
+    with unusually high outbreak activity and one flagging individual
+    outbreaks that were unusually large for their disease.
+  \item \textbf{Clustering:} K-Means \cite{lloyd1982kmeans} over
+    standardised per-state profiles (the share of each disease group, the
+    log mean case count, the log case-fatality rate and a cyclic encoding of
+    the peak month), grouping states with similar historical patterns.
+\end{itemize}
+
+
+
+\subsubsection{Collaborative Travel Hub}
+
+A user creates a group with a name and description and receives a unique
+invite code; others join by entering the code, up to twenty members per
+group, with the capacity re-checked atomically to prevent over-filling. Group
+chat loads the newest fifty messages and pages back through older ones on
+request; new messages, deletions and read receipts arrive live through the
+WebSocket described in Section~\ref{sec:high-level-design}, and unread counts
+are shown in the navigation. Deleting a message is a soft delete that also
+erases its text from the database.
+
+Any member can suggest a destination, optionally with a budget, duration,
+note and the interests it fits; the suggestion appears both in the
+\emph{Destination ideas \& votes} panel and as a card in the chat. Each
+member has exactly one vote, enforced by a unique index on the group and
+user, and voting for another idea moves the vote. The owner confirms the
+winning suggestion, which closes voting and notifies the other members, and
+can reopen voting if the group changes its mind. A confirmed decision can be
+turned into a trip whose companions are the group's members.
+
+\subsubsection{Bookings, Tickets and Trip History}
+
+Bookings record hotel, flight, train, bus, activity or other reservations
+that the user has made elsewhere; TravelSync does not make, pay for or
+confirm bookings. Each booking belongs to exactly one personal trip or one
+group. Group bookings are visible to all members and editable only by their
+author or the group owner, and a booking can be shared into the group chat
+as a card that deliberately omits the reference number, amount and files.
+
+Up to five files of at most 5\,MB each can be attached to a booking. The file
+type is determined from the file's first bytes rather than its name or
+declared content type, and only PDF, PNG, JPEG and WebP files are accepted.
+Files are stored in a dedicated MongoDB collection, have no public URL and
+can only be downloaded through an endpoint that checks the caller's access.
+Deleting a booking, trip or group removes the related files. Together with
+the upcoming and previous trip views, this provides the structured travel
+history required by Objective~4.
+
+\subsubsection{Interactive Travel Map}
+
+The trip map is a lazily loaded Leaflet \cite{leaflet} page that draws
+OpenStreetMap tiles, the destination centre, the top five places and the
+shortlisted stays. With the user's permission, the browser Geolocation API
+provides the current position, and the backend requests driving distances
+and times from the Geoapify Route Matrix API. To protect privacy and the
+free quota, the origin is rounded to two decimal places (about one
+kilometre) before it is sent or cached, cached results expire after
+twenty-four hours and are keyed only by coordinates (never by user or trip),
+and each user is limited to twenty live lookups per hour. If routing is
+unavailable, the page falls back to straight-line haversine distances
+computed in the browser.
+
+\subsubsection{TravelSync Assistant}
+
+The floating assistant answers questions from TravelSync's own data. It
+identifies what a question is about (a destination or state named in the
+message, the destination already under discussion, or the user's most
+recent trip) and what is being asked by counting keyword matches for
+intents such as places, packing, health, recommendations, trips, groups and
+destination facts. It then builds the answer from the same services used
+elsewhere in the application, with in-app links and suggested follow-up
+questions, and it can only ever see the logged-in user's own trips and
+groups. If an OpenAI-compatible model is configured, questions that the
+built-in logic cannot match are forwarded to it; only the question text is
+sent, never the user's name, trips or groups, each user may ask eight such
+questions per ten minutes, and any timeout, quota error or empty answer
+falls back to the built-in reply.
+
+\subsubsection{Notifications}
+
+In-app notifications are created only by real events, such as a member
+joining, a destination being suggested or a decision being confirmed. They
+are private to the recipient, shown under a bell icon with an unread count,
+and can be marked as read individually or all at once.
+
+\subsection{Database Design}
+\label{sec:database-design}
+
+TravelSync uses MongoDB because most of its entities are naturally
+document-shaped: a packing list is a list of items, a group holds an array of
+member identifiers, and a stay recommendation is cached as the provider
+returned it. Relationships are expressed through identifier references, and
+the access rules are enforced in the service layer. Table~\ref{tab:collections}
+lists the fifteen collections and the indexes that the application creates
+at start-up. Index creation is idempotent; if the database is unavailable at
+start-up, a background task retries until every index exists, and the
+application never deletes user data to make an index build succeed.
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{|L{0.25\textwidth}|L{0.36\textwidth}|L{0.29\textwidth}|}
+  \hline
+  \textbf{Collection} & \textbf{Purpose} & \textbf{Indexes} \\
+  \hline
+  \texttt{users} & accounts, profile, settings, token version
+    & e-mail (unique) \\
+  \hline
+  \texttt{trips} & saved trips & user, created date \\
+  \hline
+  \texttt{packing\_lists} & one packing list per trip & trip (unique) \\
+  \hline
+  \texttt{saved\_stays} & shortlisted stays & trip + stay key (unique) \\
+  \hline
+  \texttt{stay\_cache} & provider results per destination
+    & TTL, 7 days \\
+  \hline
+  \texttt{map\_distance\_cache} & driving distances & TTL, 24 hours \\
+  \hline
+  \texttt{password\_resets} & hashed reset tokens
+    & token hash (unique), TTL \\
+  \hline
+  \texttt{groups} & groups, members, owner, decision
+    & invite code (unique); member, date \\
+  \hline
+  \texttt{group\_messages} & chat messages & group, created date \\
+  \hline
+  \texttt{group\_suggestions} & destination ideas
+    & group + destination (unique) \\
+  \hline
+  \texttt{group\_votes} & one vote per member & group + user (unique) \\
+  \hline
+  \texttt{group\_reads} & read receipts & group + user (unique) \\
+  \hline
+  \texttt{bookings} & personal and group bookings
+    & user, trip, date; group, date \\
+  \hline
+  \texttt{booking\_files} & attached files & booking \\
+  \hline
+  \texttt{notifications} & in-app notifications & user, created date \\
+  \hline
+\end{tabular}
+\caption{MongoDB collections and indexes}
+\label{tab:collections}
+\end{table}
+
+The relationships between these collections follow the associations of the
+class diagram in Figure~\ref{fig:class}: a user owns trips and bookings, a
+trip has at most one packing list and any number of saved stays, and a
+group references its members and owns its messages, suggestions, votes,
+read receipts and group bookings.
+
+\subsection{Frontend Implementation}
+
+The frontend is a React single-page application. Routing is defined in one
+place: public routes cover the landing, login, signup and password-recovery
+pages, while every other page is wrapped in a \texttt{ProtectedRoute} that
+redirects anonymous visitors to the login page. An \texttt{AuthProvider}
+context loads the current user from \texttt{/api/auth/me} at start-up and
+exposes login, signup and logout to the rest of the application. Logged-in
+pages share an application shell with a collapsible sidebar, a destination
+search bar, the notifications bell and the floating map and assistant
+buttons.
+
+All network access goes through a single \texttt{apiClient} module that sends
+requests with the session cookie, converts network failures and the
+backend's uniform error format into readable messages, attaches field-level
+validation errors to the relevant inputs, and returns the user to the login
+page when a session expires. Each feature has a thin service
+module (for example \texttt{tripApi}, \texttt{groupApi} and
+\texttt{bookingApi}) on top of this client. Group pages open the chat
+WebSocket and keep a light polling loop as a fallback, which also catches up
+on anything missed after a reconnection. The
+Leaflet map is loaded on demand, so its code is not downloaded until a user
+opens a map. Forms validate input before sending it, move focus to the
+first invalid field, and announce results through ARIA live regions.
+
+\subsection{Application Screens}
+
+Figures~\ref{fig:scr-landing}--\ref{fig:scr-assistant} show the implemented
+application. The screens were captured from the running system populated
+with the four team accounts, a trip to Manali, the group \emph{Winter
+Himachal Trip} and three bookings.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.9\textwidth]{screenshots/landing_page.jpg}
+  \caption{Landing page}
+  \label{fig:scr-landing}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.9\textwidth]{screenshots/home_dashboard.jpg}
+  \caption{Home dashboard with the two planning paths and saved trips}
+  \label{fig:scr-home}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.9\textwidth]{screenshots/recommendation_form.jpg}
+  \caption{Recommendation form: interest priorities and trip constraints}
+  \label{fig:scr-rec-form}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.9\textwidth]{screenshots/recommendation_results.jpg}
+  \caption{Ranked recommendations with match score, budget, stay and
+    distance checks}
+  \label{fig:scr-rec-results}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.9\textwidth]{screenshots/trip_hub.jpg}
+  \caption{Trip workspace for a saved trip}
+  \label{fig:scr-trip}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.9\textwidth]{screenshots/packing_assistant.jpg}
+  \caption{Smart Packing Assistant}
+  \label{fig:scr-packing}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.82\textwidth]{screenshots/group_collaboration.jpg}
+  \caption{Collaborative Travel Hub: destination suggestions, votes and
+    group chat}
+  \label{fig:scr-group}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.9\textwidth]{screenshots/bookings.jpg}
+  \caption{Bookings and tickets}
+  \label{fig:scr-bookings}
+\end{figure}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.9\textwidth]{screenshots/travel_assistant.jpg}
+  \caption{TravelSync assistant answering a packing question}
+  \label{fig:scr-assistant}
+\end{figure}
+
+\FloatBarrier

@@ -1,0 +1,130 @@
+\documentclass[openany]{tietreport}  % openany: no blank pages before chapters
+
+% Import images
+\usepackage{graphicx}
+\graphicspath{{figures/}}   % all diagram and screenshot files live in figures/
+
+% Additions to the official template (no layout changes):
+\usepackage[figuresright]{rotating}  % sidewaysfigure: wide UML diagrams on a rotated float page
+\usepackage{array}    % ragged-right table columns (L)
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\usepackage{placeins}  % \FloatBarrier: keep screenshots inside their subsection
+
+% Bibliography configuration (unchanged from the official template)
+\usepackage[
+  date=year,
+  style=alphabetic,
+  backend=biber,
+  sorting=nty,
+  maxnames=5,
+  minnames=3,
+  maxalphanames=4,
+  minalphanames=3,
+  backref=true,
+  doi=false,
+  isbn=false,
+  url=false,
+  eprint=false
+]{biblatex}
+\addbibresource{references.bib}
+% let long URLs in online references break across lines
+\setcounter{biburlnumpenalty}{9000}
+\setcounter{biburllcpenalty}{7000}
+\setcounter{biburlucpenalty}{8000}
+
+% Only affects paragraphs that would otherwise overflow the margin
+\emergencystretch=1.5em
+
+%% ==================================================
+%% DIAGRAM PLACEHOLDERS
+%% ==================================================
+%% \diagram[<max width>]{<file name>}{<what to upload>}{<max height>}
+%% If figures/<file name> exists it is inserted automatically;
+%% otherwise a framed placeholder box is drawn so the report
+%% still compiles. To add a diagram, save the image in the
+%% figures/ folder under the exact file name below. No code
+%% change is needed.
+\newcommand{\diagram}[4][\linewidth]{%
+  \IfFileExists{figures/#2}{%
+    \includegraphics[width=#1,height=#4,keepaspectratio]{#2}%
+  }{%
+    \fbox{\parbox[c][#4][c]{0.92#1}{\centering
+      \textbf{UPLOAD #3 HERE}\\[0.6em]
+      Save the image as \texttt{figures/\detokenize{#2}}}}%
+  }%
+}
+
+%% FASTER COMPILES ON OVERLEAF (free plan):
+%% while editing one chapter, uncomment the line below and list only
+%% that chapter. Page and figure numbers of the other chapters are kept.
+%% Comment it out again before the final compile.
+% \includeonly{chapters/ch3_results}
+
+%% ==================================================
+%% PROJECT FIELDS
+%% ==================================================
+
+% Course/Lab header
+\TitlePageHeader{%
+  UCS503 - Software Engineering Project%
+}
+
+% Main project title
+\ProjectTitle{%
+  TravelSync%
+}
+
+% Subtitle or project description
+\ProjectSubTitle{%
+  An Intelligent and Collaborative Travel Platform%
+}
+
+% Student information (up to 4 students)
+\author{%
+  \texttt{1024030501} Jiya Gupta \\
+  \texttt{1024030510} Himani Nayyar \\
+  \texttt{1024030520} Shreya \\
+  \texttt{1024030524} Molika Goela%
+}
+
+% Group number, degree, year, program
+\TitlePageSubText{%
+  Group: \texttt{3C34} BE Third Year, COE%
+}
+
+% Faculty advisor/guide name
+\AdvisorName{%
+  Dr. Nisha Thakur%
+}
+
+% Evaluation period and department info
+\TitlePageFooterText{{%
+    \large End-Semester Evaluation \\[0.2cm]
+    \bfseries Computer Science and Engineering
+    Department%
+  } \\[0.15cm]
+  Thapar Institute of Engineering and Technology,
+  Patiala%
+}
+
+%% ==================================================
+
+\begin{document}
+
+% Generate title page
+\maketitle
+
+% Table of contents (auto-generated from chapters)
+\tableofcontents
+
+\include{chapters/ch1_introduction}
+\include{chapters/ch2_methodology}
+\include{chapters/ch3_results}
+\include{chapters/ch4_conclusion}
+
+% ===== BIBLIOGRAPHY =====
+
+% Print bibliography with heading in TOC
+\printbibliography[heading=bibintoc]
+
+\end{document}

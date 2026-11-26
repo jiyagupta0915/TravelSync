@@ -1,0 +1,245 @@
+% ===== CHAPTER 1: INTRODUCTION =====
+
+\chapter{Introduction}
+
+\section{Background and Context}
+
+Planning a trip typically requires a traveller to move between many
+disconnected services: one source for destination ideas, another for
+attractions, another for accommodation, a weather service, a map, and
+separate sources for health and safety advisories. When the trip is planned
+with friends or family, the group usually adds a messaging application and a
+shared spreadsheet to compare options and reach a decision, while tickets and
+booking confirmations remain scattered across e-mail inboxes and files. The
+result is a planning process that is time-consuming, fragmented and difficult
+to personalise.
+
+TravelSync is a web application that brings these activities into a single
+platform for travel within India. It serves two kinds of travellers. A
+traveller who already knows the destination can select it directly and move
+straight to exploring and preparing for it. A traveller who is undecided can
+instead describe what the trip should offer, namely travel interests, the
+importance of each interest, traveller type, trip duration, total budget,
+starting location and the maximum distance they are willing to travel, and
+receive a ranked list of destinations that are both similar to these
+preferences and practically feasible.
+
+Once a destination is chosen it becomes a \emph{trip}, and every other
+module of the platform is organised around that trip: the five top places at
+the destination, a smart packing list that adapts to the weather forecast,
+accommodation recommendations near the places the traveller intends to visit,
+destination-specific health and safety information, an interactive map with
+driving distances, and a store for bookings and tickets. A Collaborative
+Travel Hub lets a group create a shared space, chat in real time, suggest
+destinations, vote, and lock in a final decision that can be converted
+directly into a trip. A floating TravelSync assistant answers travel questions
+from the platform's own data throughout the application.
+
+\subsection{Problem Statement}
+
+Existing travel-planning workflows are scattered across multiple platforms
+and are rarely personalised enough to be genuinely useful. Specifically:
+
+\begin{itemize}
+  \item Travellers who are unsure where to go usually have implicit
+    constraints, such as budget, duration and acceptable travel distance,
+    but no single tool converts these constraints together with their
+    interests into a ranked and comparable set of destination options.
+  \item General-purpose recommendation lists rarely consider a traveller's
+    interests, traveller type, trip duration, budget and starting location
+    at the same time.
+  \item Information needed once a destination is chosen, such as places to
+    visit, accommodation, weather and health advisories, is distributed
+    across different services instead of being available in one place.
+  \item Packing is handled with generic checklists that do not account
+    together for the destination's climate and terrain, the trip length and
+    the forecast for the actual travel dates.
+  \item Groups travelling together lack a structured way to propose
+    destinations, discuss them and reach a collective decision, and fall
+    back on separate communication tools.
+  \item Bookings, tickets and records of past trips are spread across
+    e-mails, files and applications rather than being attached to the trip
+    or group they belong to.
+\end{itemize}
+
+TravelSync addresses these problems by combining a content-based
+recommendation engine with deterministic feasibility constraints,
+consolidated destination information, trip-preparation tools, real-time group
+collaboration with voting, and booking and travel-history management within
+one secure, account-based platform.
+
+\subsection{Existing Systems and Proposed System}
+
+Travellers today rely on several categories of existing systems, each of
+which solves part of the problem. Online travel agencies and hotel
+aggregators are optimised for booking transport and accommodation once a
+destination is already known; they do not help an undecided traveller choose
+where to go. Map and review platforms describe places in detail but treat
+each destination in isolation. Weather services, public-health advisories
+and packing checklists are separate tools, and group decisions are typically
+made in general-purpose messaging applications in which suggestions, votes
+and the final decision are lost in the conversation history.
+
+The proposed system differs from these in three ways. First, it supports the
+\emph{undecided} traveller with an explainable, content-based recommender
+\cite{lops2011content} that ranks destinations by similarity to the
+traveller's interests and then applies duration, budget and distance
+constraints. Second, it makes the trip the central object: every supporting
+module (places, packing, stays, health, map and bookings) reads its context
+from the saved trip, so the traveller never re-enters the destination, dates
+or budget. Third, it treats group planning as a first-class workflow, with
+structured destination suggestions, one vote per member, live updates and an
+owner-confirmed decision that becomes a shared trip.
+
+\section{Project Objectives}
+\label{sec:objectives}
+
+\begin{enumerate}
+  \item \textbf{Objective 1:} Build an intelligent trip planner that lets a
+    user either select a known destination or obtain a ranked list of up to
+    ten recommended destinations from a dataset of 250 Indian destinations,
+    using weighted nearest-neighbour similarity over twelve interest features
+    and four traveller types, combined with duration, budget and
+    great-circle distance constraints.
+  \item \textbf{Objective 2:} Consolidate the information and preparation a
+    chosen destination needs into a single trip workspace: the top five
+    places, a weather-aware packing list, scored accommodation
+    recommendations, destination-specific health and safety information and
+    an interactive map with driving distances.
+  \item \textbf{Objective 3:} Provide a Collaborative Travel Hub in which
+    groups of travellers can join through an invite code, chat in real time,
+    suggest destinations, vote, and confirm a final destination that is
+    converted into a trip for the group.
+  \item \textbf{Objective 4:} Support trip management end to end, through
+    bookings and tickets with private file attachments, a record of upcoming
+    and previous trips, in-app notifications and a conversational travel
+    assistant, while protecting every user's data with secure authentication
+    and per-user authorisation.
+\end{enumerate}
+
+These objectives were framed to be Specific, Measurable, Achievable, Relevant
+and Time-bound (SMART). Each objective maps to concrete modules and API
+endpoints described in Chapter~\ref{chap:methodology}, each is verified by
+automated tests reported in Chapter~\ref{chap:results}, and all four were
+delivered within the semester's development window (August to November
+2026).
+
+\subsection{Scope of the Project}
+
+The scope of TravelSync is domestic travel within India. The destination
+dataset covers 250 destinations, the places dataset contains the top five
+places for each of them (1{,}250 places), and 258 starting locations are
+available for distance calculations. The following capabilities are in
+scope: account management; known-destination selection and preference-based
+recommendation; trip creation, editing and deletion; the top places of each
+destination; packing lists; accommodation recommendations; health and safety
+information; group collaboration; bookings with file attachments; an
+interactive map; notifications; and the travel assistant.
+
+The following are deliberately out of scope. TravelSync does not book or pay
+for transport or accommodation; bookings are records that the user enters.
+It does not display live hotel prices or availability, because the
+accommodation data source does not provide them. Its health module provides
+general travel awareness only and does not offer medical advice or a
+``safe to travel'' score. There is no administrator interface; the curated
+datasets are maintained by the development team as versioned files in the
+repository.
+
+Development followed the time-to-value order set out in the project
+proposal. The core discovery workflow (known-destination selection and
+recommendation) was delivered first, followed by the trip workspace and its
+supporting modules (top places, packing, stays and health), then the
+Collaborative Travel Hub with voting, and finally bookings, the interactive
+map and the travel assistant.
+
+\subsection{Software Requirements Specification}
+
+The requirements below follow the structure recommended by IEEE Std 830
+\cite{ieee830}. Table~\ref{tab:functional-requirements} lists the functional
+requirements and the module that implements each one.
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{|l|L{0.56\textwidth}|l|}
+  \hline
+  \textbf{ID} & \textbf{Functional requirement} & \textbf{Module} \\
+  \hline
+  FR-01 & Register, log in, log out, change and reset a password & Auth \\
+  \hline
+  FR-02 & Search the destination dataset and select a known destination
+    & Planner \\
+  \hline
+  FR-03 & Recommend ranked destinations from interests, importance,
+    traveller type, duration, budget, start and maximum distance & Planner \\
+  \hline
+  FR-04 & Save, list, edit (dates, budget, duration) and delete trips
+    & Trips \\
+  \hline
+  FR-05 & Show the top five places of a destination & Places \\
+  \hline
+  FR-06 & Generate, edit and tick off a packing list; refine it with a
+    forecast once dates are set & Packing \\
+  \hline
+  FR-07 & Recommend, explain, save and remove accommodation for a trip
+    & Stays \\
+  \hline
+  FR-08 & Show current health alerts and historical outbreak patterns for
+    the destination's state & Health \\
+  \hline
+  FR-09 & Create and join groups, chat in real time, suggest destinations,
+    vote and confirm a decision & Groups \\
+  \hline
+  FR-10 & Record personal and group bookings and attach ticket files
+    & Bookings \\
+  \hline
+  FR-11 & Show a trip's places and saved stays on a map with driving
+    distances & Map \\
+  \hline
+  FR-12 & Answer travel questions through a conversational assistant
+    & Assistant \\
+  \hline
+  FR-13 & Notify users of group events and let them mark notifications read
+    & Notifications \\
+  \hline
+\end{tabular}
+\caption{Functional requirements}
+\label{tab:functional-requirements}
+\end{table}
+
+The non-functional requirements are as follows:
+
+\begin{itemize}
+  \item \textbf{Security:} passwords are stored only as bcrypt hashes;
+    sessions use a signed JWT in an \texttt{httpOnly} cookie; every private
+    endpoint verifies that the requested trip, group, booking or file
+    belongs to the caller; and state-changing requests from other origins
+    are rejected.
+  \item \textbf{Reliability:} failures of external providers (accommodation,
+    routing, weather and the optional language model) degrade to a clear
+    message or a fallback rather than breaking the page, and a database
+    outage returns HTTP 503 instead of logging the user out.
+  \item \textbf{Performance:} interactive API requests other than
+    deliberately slow password hashing should complete well within the
+    100\,ms range on a single server process (measured in
+    Section~\ref{sec:performance}).
+  \item \textbf{Usability and accessibility:} validation errors are shown
+    next to the field concerned, live regions announce results to screen
+    readers, and the interface adapts to desktop and mobile widths.
+  \item \textbf{Maintainability:} the backend is split into routers,
+    services and models, every rule-based engine is a pure, unit-tested
+    function, and configuration is supplied only through environment
+    variables.
+  \item \textbf{Transparency:} recommendation and accommodation scores are
+    explained to the user, estimated prices are labelled as estimates, and
+    health information is labelled as historical, not predictive.
+\end{itemize}
+
+The software required to build and run the system is Python 3.10 or later
+with the packages listed in \texttt{backend/requirements.txt}; Node.js
+22.12 or later for the frontend build and test tool chain; MongoDB (a local
+server or MongoDB Atlas); and a current web browser. Optional components are
+a Geoapify API key for accommodation and driving distances, an SMTP server
+for password recovery, and an OpenAI-compatible chat API key for the
+assistant's fallback answers. No special hardware is required: the
+measurements in Chapter~\ref{chap:results} were taken on a standard laptop,
+and the client runs in any modern desktop or mobile browser.
